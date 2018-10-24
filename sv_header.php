@@ -32,7 +32,7 @@
 			
 			ob_start();
 			include($this->get_path('lib/tpl/frontend.php'));
-			$output									= ob_get_contents();
+			$output									= do_shortcode(ob_get_contents());
 			ob_end_clean();
 			
 			return $output;
