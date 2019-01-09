@@ -9,16 +9,22 @@ namespace sv_100;
  * @since			1.0
  * @license			See license.txt or https://straightvisions.com
  */
-class sv_header extends init {
-	static $scripts_loaded						= false;
 
+class sv_header extends init {
 	public function __construct() {
+
 	}
 
-	public function init(){
+	public function init() {
+		// Module Info
+		$this->set_module_title( 'SV Common' );
+		$this->set_module_desc( __( 'This module gives the ability to display the header via the "[sv_header]" shortcode.', $this->get_module_name() ) );
+
+		// Shortcodes
 		add_shortcode( $this->get_module_name(), array( $this, 'shortcode' ) );
 	}
-	public function shortcode( $settings, $content='' ) {
+
+	public function shortcode( $settings, $content = '' ) {
 		$settings								= shortcode_atts(
 			array(
 				'inline'						=> false
@@ -26,8 +32,6 @@ class sv_header extends init {
 			$settings,
 			$this->get_module_name()
 		);
-
-		$this->module_enqueue_scripts( true );
 
 		ob_start();
 		include( $this->get_file_path( 'lib/tpl/frontend.php' ) );
