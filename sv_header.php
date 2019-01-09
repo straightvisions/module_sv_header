@@ -12,14 +12,12 @@ namespace sv_100;
 class sv_header extends init {
 	static $scripts_loaded						= false;
 
-	public function __construct( $path, $url ) {
-		$this->path								= $path;
-		$this->url								= $url;
-		$this->name								= get_class( $this );
-
-		add_shortcode( $this->get_module_name(), array( $this, 'shortcode' ) );
+	public function __construct() {
 	}
 
+	public function init(){
+		add_shortcode( $this->get_module_name(), array( $this, 'shortcode' ) );
+	}
 	public function shortcode( $settings, $content='' ) {
 		$settings								= shortcode_atts(
 			array(
