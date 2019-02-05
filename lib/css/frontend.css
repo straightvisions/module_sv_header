@@ -162,5 +162,5 @@ header #header_widgets .search-form .search-submit [class*="fa-"]{
 	padding: 0;
 	padding-top:34px;
 	padding-bottom:33px;
-    max-width: 140px;
+    max-width: 140px; /* in frontend.php is an override to prevent flashing before css load */
 }
