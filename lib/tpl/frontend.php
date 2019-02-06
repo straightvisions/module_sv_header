@@ -19,7 +19,7 @@
 					<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 header-navigation-primary">
 						<?php echo do_shortcode('[sv_navigation_primary inline="1"]'); ?>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 header-navigation-logo" style="max-width:140px">
+					<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 header-navigation-logo" style="width:140px">
 						<a href="<?php echo home_url(); ?>"><img src="<?php echo $GLOBALS['sv_100']->get_url('lib/modules/sv_common/lib/img/logo_mit_schrift.svg'); ?>" /></a>
 					</div>
 				</div>
