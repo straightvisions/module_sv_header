@@ -1,5 +1,8 @@
 .sv_100_sv_header {
 	background: rgb( var( --color-bg-primary ) );
+	box-shadow: 0 0 10px 0 rgba( 0, 0, 0, 0.1 );
+	position: relative;
+	z-index: 1000;
 }
 
 .sv_100_sv_header_bar {
