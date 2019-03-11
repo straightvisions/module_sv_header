@@ -33,7 +33,7 @@ class sv_header extends init {
 	public function shortcode( $settings, $content = '' ) {
 		$settings								= shortcode_atts(
 			array(
-				'inline'						=> false
+				'inline'						=> true
 			),
 			$settings,
 			$this->get_module_name()
