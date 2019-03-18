@@ -2,6 +2,8 @@
 	position: absolute;
 	width: 100%;
 	z-index: 1000;
+	background: transparent;
+	box-shadow: none;
 }
 
 .sv_100_sv_header_bar {
