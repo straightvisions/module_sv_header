@@ -11,12 +11,8 @@
 	flex-direction: row;
 	flex-wrap: nowrap;
 	align-items: stretch;
-	min-height: 100px;
 }
 
-.sv_100_sv_header_branding,
-.sv_100_sv_header_search {
-	display: flex;
-	align-content: center;
-	align-items: center;
+.sv_100_sv_header_bar > * {
+	min-height: 100px;
 }
