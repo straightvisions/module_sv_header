@@ -12,6 +12,8 @@ namespace sv_100;
  */
 
 class sv_header extends init {
+	protected $template                         = '';
+
 	public function __construct() {
 
 	}
@@ -24,28 +26,35 @@ class sv_header extends init {
 		// Shortcodes
 		add_shortcode( $this->get_module_name(), array( $this, 'shortcode' ) );
 
-		$this->scripts_queue['frontend']			= static::$scripts->create( $this )
-			->set_ID('frontend')
-			->set_path( 'lib/css/frontend.css' )
+		$this->scripts_queue['frontend_default']			= static::$scripts->create( $this )
+			->set_ID('frontend_default')
+			->set_path( 'lib/css/frontend_default.css' )
+			->set_inline(true);
+
+		$this->scripts_queue['frontend_frontpage']			= static::$scripts->create( $this )
+			->set_ID('frontend_frontpage')
+			->set_path( 'lib/css/frontend_frontpage.css' )
 			->set_inline(true);
 	}
 
 	public function shortcode( $settings, $content = '' ) {
 		$settings								= shortcode_atts(
 			array(
-				'inline'						=> true
+				'inline'						=> true,
+				'template'                      => false,
 			),
 			$settings,
 			$this->get_module_name()
 		);
 
-		// Load Styles
-		$this->scripts_queue['frontend']
-			->set_inline($settings['inline'])
-			->set_is_enqueued();
+		$this->template							= $settings[ 'template' ];
 
 		ob_start();
-		include( $this->get_path( 'lib/tpl/frontend.php' ) );
+		if ( $this->template && file_exists( $this->get_path( $this->template ) ) ) {
+			include ( $this->get_path( $this->template ) );
+		} else {
+			include ( $this->get_path( 'lib/tpl/frontend_default.php' ) );
+		}
 		$output									= do_shortcode( ob_get_contents() );
 		ob_end_clean();
 
