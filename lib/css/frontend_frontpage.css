@@ -16,4 +16,57 @@
 
 .sv_100_sv_header_bar > * {
 	min-height: 100px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+}
+
+/* Widgets */
+.sv_100_sv_header_sidebar .widget_search .screen-reader-text {
+	display: none;
+}
+
+.sv_100_sv_header_sidebar .widget_search input {
+	padding: 8px 12px;
+	background-color: transparent;
+	border: 0;
+	border-bottom: 1px solid rgba( var( --color-contrast ), .7 );
+	color: rgba( var( --color-contrast ), .7 );
+	outline: none;
+	box-shadow: none;
+	font-size: .8rem;
+	transition: .25s ease;
+}
+
+.sv_100_sv_header_sidebar .widget_search input:hover,
+.sv_100_sv_header_sidebar .widget_search input:focus,
+.sv_100_sv_header_sidebar .widget_search input:active {
+	border-color: rgb( var( --color-contrast ) );
+	color: rgb( var( --color-contrast ) );
+}
+
+.sv_100_sv_header_sidebar .widget_search input::placeholder {
+	color: rgb( var( --color-contrast ), .7 );
+}
+
+.sv_100_sv_header_sidebar .widget_search input[type="submit"] {
+	cursor: pointer;
+	color: transparent;
+	background: url(/wp-content/themes/straightvisions_100/lib/modules/sv_header/lib/img/magnifier.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+	border: none;
+	height: 30px;
+	padding: 0;
+	width: 30px;
+	background-size: 1rem;
+	opacity: .6;
+	filter: invert( 1 );
+	transition: opacity .25s ease;
+}
+
+.sv_100_sv_header_sidebar .widget_search input[type="submit"]:hover {
+	opacity: 1;
 }
