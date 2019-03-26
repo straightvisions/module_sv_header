@@ -29,7 +29,7 @@ class sv_header extends init {
 		// Shortcodes
 		add_shortcode( $this->get_module_name(), array( $this, 'shortcode' ) );
 
-		$this->register_scripts()->register_sidebars();
+		$this->register_scripts()->register_navs()->register_sidebars();
 	}
 
 	protected function register_scripts() :sv_header {
@@ -45,6 +45,19 @@ class sv_header extends init {
 			->set_ID( 'frontend_frontpage' )
 			->set_path( 'lib/css/frontend_frontpage.css' )
 			->set_inline( true );
+
+		return $this;
+	}
+
+	protected function register_navs() :sv_header {
+		if ( isset( $this->get_root()->sv_navigation ) ) {
+			$this->get_root()
+				->sv_navigation
+				->create( $this )
+				->set_desc( __( 'Primary Menu', $this->get_module_name() ) )
+				->set_css( 'sv_header/lib/css/navigation_default.css' )
+				->load_nav();
+		}
 
 		return $this;
 	}
