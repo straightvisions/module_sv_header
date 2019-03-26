@@ -16,7 +16,7 @@
 			<div class="<?php echo $this->get_prefix( 'bar' ); ?> sv_common_container">
 				<?php echo do_shortcode( '[sv_navigation_primary inline="true"]' ); ?>
 				<aside class="<?php echo $this->get_prefix( 'sidebar' ); ?>">
-					<?php echo do_shortcode( '[sv_sidebar template = "navigation"]' ); ?>
+					<?php echo do_shortcode( '[sv_sidebar template="' . $this->get_module_name() . '"]' ); ?>
 				</aside>
 			</div>
 		</header>

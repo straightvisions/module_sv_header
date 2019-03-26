@@ -29,15 +29,38 @@ class sv_header extends init {
 		// Shortcodes
 		add_shortcode( $this->get_module_name(), array( $this, 'shortcode' ) );
 
-		$this->scripts_queue['frontend_default']			= static::$scripts->create( $this )
-			->set_ID('frontend_default')
-			->set_path( 'lib/css/frontend_default.css' )
-			->set_inline(true);
+		$this->register_scripts()->register_sidebars();
+	}
 
-		$this->scripts_queue['frontend_frontpage']			= static::$scripts->create( $this )
-			->set_ID('frontend_frontpage')
+	protected function register_scripts() :sv_header {
+		// Register Styles
+		$this->scripts_queue['frontend_default']			= static::$scripts
+			->create( $this )
+			->set_ID( 'frontend_default' )
+			->set_path( 'lib/css/frontend_default.css' )
+			->set_inline( true );
+
+		$this->scripts_queue['frontend_frontpage']			= static::$scripts
+			->create( $this )
+			->set_ID( 'frontend_frontpage' )
 			->set_path( 'lib/css/frontend_frontpage.css' )
-			->set_inline(true);
+			->set_inline( true );
+
+		return $this;
+	}
+
+	protected function register_sidebars() :sv_header {
+		if ( isset( $this->get_root()->sv_sidebar ) ) {
+			$this->get_root()
+				 ->sv_sidebar
+				 ->create( $this )
+				 ->set_name( __( 'Header', $this->get_module_name() ) )
+				 ->set_desc( __( 'Widgets in this area will be shown in the header, next to the navigation.', $this->get_module_name() ) )
+				 ->set_css( 'sv_header/lib/css/widgets_default.css' )
+				 ->load_sidebar();
+		}
+
+		return $this;
 	}
 
 	public function shortcode( $settings, $content = '' ) {
