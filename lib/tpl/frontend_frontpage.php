@@ -16,7 +16,12 @@
 			<div class="<?php echo $this->get_prefix( 'bar' ); ?> sv_common_container">
 				<?php echo do_shortcode( '[sv_navigation_primary inline="true" template="lib/tpl/frontend_frontpage.php"]' ); ?>
 				<aside class="<?php echo $this->get_prefix( 'sidebar' ); ?>">
-					<?php echo do_shortcode( '[sv_sidebar template = "navigation"]' ); ?>
+					<?php
+					$this->get_root()->sv_sidebar
+						 ->set_css( 'sv_header/lib/css/widgets_frontpage.css', $this->get_module_name() );
+
+					echo do_shortcode( '[sv_sidebar template="' . $this->get_module_name() .'"]' );
+					?>
 				</aside>
 			</div>
 		</header>
