@@ -14,13 +14,18 @@
 	<body <?php body_class(); ?>>
 		<header class="<?php echo $this->get_prefix(); ?>">
 			<div class="<?php echo $this->get_prefix( 'bar' ); ?> sv_common_container">
-				<?php echo do_shortcode( '[sv_navigation_primary inline="true" template="lib/tpl/frontend_frontpage.php"]' ); ?>
+				<?php
+				$this->get_root()->sv_navigation
+					->set_css( 'sv_header/lib/css/navigation_frontpage.css', $this->get_module_name() );
+
+				echo do_shortcode( '[sv_navigation inline="true" location="' . $this->get_module_name() .'"]' );
+				?>
 				<aside class="<?php echo $this->get_prefix( 'sidebar' ); ?>">
 					<?php
 					$this->get_root()->sv_sidebar
 						 ->set_css( 'sv_header/lib/css/widgets_frontpage.css', $this->get_module_name() );
 
-					echo do_shortcode( '[sv_sidebar template="' . $this->get_module_name() .'"]' );
+					echo do_shortcode( '[sv_sidebar id="' . $this->get_module_name() .'"]' );
 					?>
 				</aside>
 			</div>
