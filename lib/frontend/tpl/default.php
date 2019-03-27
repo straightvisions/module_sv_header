@@ -4,17 +4,12 @@
 		<meta charset="<?php echo get_bloginfo( 'charset' ); ?>" />
 		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-		<?php
-		wp_head();
-
-		// Load Styles
-		$this->scripts_queue['frontend_default']->set_inline($settings['inline'])->set_is_enqueued();
-		?>
+		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class(); ?>>
 		<header class="<?php echo $this->get_prefix(); ?>">
 			<div class="<?php echo $this->get_prefix( 'bar' ); ?> sv_common_container">
-				<?php echo do_shortcode( '[sv_navigation inline="true" location="' . $this->get_module_name() . '"]' ); ?>
+				<?php echo do_shortcode( '[sv_navigation location="' . $this->get_module_name() . '"]' ); ?>
 				<aside class="<?php echo $this->get_prefix( 'sidebar' ); ?>">
 					<?php echo do_shortcode( '[sv_sidebar id="' . $this->get_module_name() . '"]' ); ?>
 				</aside>
