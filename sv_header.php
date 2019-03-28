@@ -12,8 +12,6 @@ namespace sv_100;
  */
 
 class sv_header extends init {
-	protected $template                         = '';
-
 	public function __construct() {
 
 	}
@@ -34,16 +32,40 @@ class sv_header extends init {
 
 	protected function register_scripts() :sv_header {
 		// Register Styles
-		$this->scripts_queue['frontend_default']			= static::$scripts
+		$this->scripts_queue['default']			= static::$scripts
 			->create( $this )
-			->set_ID( 'frontend_default' )
-			->set_path( 'lib/css/frontend_default.css' )
+			->set_ID( 'default' )
+			->set_path( 'lib/frontend/css/default.css' )
 			->set_inline( true );
 
-		$this->scripts_queue['frontend_frontpage']			= static::$scripts
+		$this->scripts_queue['frontpage']			= static::$scripts
 			->create( $this )
-			->set_ID( 'frontend_frontpage' )
-			->set_path( 'lib/css/frontend_frontpage.css' )
+			->set_ID( 'frontpage' )
+			->set_path( 'lib/frontend/css/frontpage.css' )
+			->set_inline( true );
+
+		$this->scripts_queue['navigation_default']			= static::$scripts
+			->create( $this )
+			->set_ID( 'navigation_default' )
+			->set_path( 'lib/frontend/css/navigation_default.css' )
+			->set_inline( true );
+
+		$this->scripts_queue['navigation_frontpage']		= static::$scripts
+			->create( $this )
+			->set_ID( 'navigation_frontpage' )
+			->set_path( 'lib/frontend/css/navigation_frontpage.css' )
+			->set_inline( true );
+
+		$this->scripts_queue['sidebar_default']			    = static::$scripts
+			->create( $this )
+			->set_ID( 'sidebar_default' )
+			->set_path( 'lib/frontend/css/sidebar_default.css' )
+			->set_inline( true );
+
+		$this->scripts_queue['sidebar_frontpage']			= static::$scripts
+			->create( $this )
+			->set_ID( 'sidebar_frontpage' )
+			->set_path( 'lib/frontend/css/sidebar_frontpage.css' )
 			->set_inline( true );
 
 		return $this;
@@ -55,7 +77,6 @@ class sv_header extends init {
 				->sv_navigation
 				->create( $this )
 				->set_desc( __( 'Primary Menu', $this->get_module_name() ) )
-				->set_css( 'sv_header/lib/css/navigation_default.css' )
 				->load_nav();
 		}
 
@@ -69,14 +90,13 @@ class sv_header extends init {
 				 ->create( $this )
 				 ->set_name( __( 'Header', $this->get_module_name() ) )
 				 ->set_desc( __( 'Widgets in this area will be shown in the header, next to the navigation.', $this->get_module_name() ) )
-				 ->set_css( 'sv_header/lib/css/widgets_default.css' )
 				 ->load_sidebar();
 		}
 
 		return $this;
 	}
 
-	public function shortcode( $settings, $content = '' ) {
+	public function shortcode( $settings, $content = '' ) :string {
 		$settings								= shortcode_atts(
 			array(
 				'inline'						=> true,
@@ -86,15 +106,48 @@ class sv_header extends init {
 			$this->get_module_name()
 		);
 
-		$this->template							= $settings[ 'template' ];
+		return $this->router( $settings );
+	}
 
-		ob_start();
-		if ( $this->template && file_exists( $this->get_path( $this->template ) ) ) {
-			include ( $this->get_path( $this->template ) );
+	// Handles the routing of the templates
+	protected function router( array $settings ) :string {
+		if ( $settings['template'] ) {
+			switch ( $settings['template'] ) {
+				case 'frontpage':
+					$template = array(
+						'name'      => 'default',
+						'scripts'   => array(
+							$this->scripts_queue[ 'frontpage' ]->set_inline( $settings['inline'] ),
+							$this->scripts_queue[ 'navigation_frontpage' ]->set_inline( $settings['inline'] ),
+							$this->scripts_queue[ 'sidebar_frontpage' ]->set_inline( $settings['inline'] ),
+						),
+					);
+					break;
+			}
 		} else {
-			include ( $this->get_path( 'lib/tpl/frontend_default.php' ) );
+			$template = array(
+				'name'      => 'default',
+				'scripts'   => array(
+					$this->scripts_queue[ 'default' ]->set_inline( $settings['inline'] ),
+					$this->scripts_queue[ 'navigation_default' ]->set_inline( $settings['inline'] ),
+					$this->scripts_queue[ 'sidebar_default' ]->set_inline( $settings['inline'] ),
+				),
+			);
 		}
-		$output									= do_shortcode( ob_get_contents() );
+
+		return $this->load_template( $template, $settings );
+	}
+
+	// Loads the templates
+	protected function load_template( array $template, array $settings ) :string {
+		ob_start();
+		foreach ( $template['scripts'] as $script ) {
+			$script->set_is_enqueued();
+		}
+
+		// Loads the template
+		include ( $this->get_path('lib/frontend/tpl/' . $template['name'] . '.php' ) );
+		$output							        = ob_get_contents();
 		ob_end_clean();
 
 		return $output;
