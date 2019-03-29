@@ -123,6 +123,12 @@ class sv_header extends init {
 						),
 					);
 					break;
+				case 'no_header':
+					$template = array(
+						'name'      => 'no_header',
+						'scripts'   => array(),
+					);
+					break;
 			}
 		} else {
 			$template = array(
