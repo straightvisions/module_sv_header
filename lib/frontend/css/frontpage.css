@@ -1,0 +1,24 @@
+.sv_100_sv_header {
+	position: absolute;
+	width: 100%;
+	z-index: 1000;
+	background: transparent;
+	box-shadow: none;
+}
+
+.sv_100_sv_header_bar {
+	margin: 0 auto;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: stretch;
+}
+
+.sv_100_sv_header_bar > * {
+	min-height: 100px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+}
