@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sv_header\n"
-"POT-Creation-Date: 2019-03-19 17:53+0100\n"
-"PO-Revision-Date: 2019-03-19 17:54+0100\n"
+"POT-Creation-Date: 2019-04-09 10:38+0200\n"
+"PO-Revision-Date: 2019-04-09 10:39+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -21,13 +21,28 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: sv_header.php:27
+#: sv_header.php:25
 msgid ""
 "This module gives the ability to display the header via the \"[sv_header]\" "
 "shortcode."
 msgstr ""
-"Dieses Modul gibt die Möglichkeit, den Header über den \"[sv_header]\" "
+"Dieses Modul gibt die Möglichkeit, die Kopfzeile über den \"[sv_header]\" "
 "Shortcode anzuzeigen."
+
+#: sv_header.php:79
+msgid "Primary Menu"
+msgstr "Hauptmenü"
+
+#: sv_header.php:91
+msgid "Header"
+msgstr "Kopfzeile"
+
+#: sv_header.php:92
+msgid ""
+"Widgets in this area will be shown in the header, next to the navigation."
+msgstr ""
+"Widgets in diesem Bereich werden in der Kopfzeile neben der Navigation "
+"angezeigt."
 
 #. Theme Name of the plugin/theme
 msgid "sv_header"
