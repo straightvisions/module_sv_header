@@ -1,5 +1,15 @@
+.sv_100_sv_header_sidebar {
+	display: none;
+}
+
+.sv_100_sv_header_sidebar > .sv_100_sv_sidebar {
+	display: flex;
+	align-items: center;
+}
+
 /* Widgets */
-.sv_100_sv_header_sidebar .widget_search .screen-reader-text {
+.sv_100_sv_header_sidebar .widget_search .screen-reader-text,
+.sv_100_sv_header_sidebar .widget_search h3 {
 	display: none;
 }
 
@@ -45,4 +55,11 @@
 
 .sv_100_sv_header_sidebar .widget_search input[type="submit"]:hover {
 	opacity: 1;
+}
+
+/* Breakpoints */
+@media ( min-width: 1350px ) {
+	.sv_100_sv_header_sidebar {
+		display: flex;
+	}
 }
