@@ -1,7 +1,6 @@
 /* Mobile Header */
 .sv_100_sv_header {
 	background: rgb( var( --color-bg-primary ) );
-	position: fixed;
 	box-shadow: 0 0 10px 0 rgba( 0, 0, 0, 0.1 );
 	z-index: 1000;
 	width: 100%;
@@ -17,8 +16,7 @@
 
 .sv_100_sv_header_bar > *:not( a ),
 img.sv_100_sv_header_branding {
-	min-height: 50px;
-	max-height: 100px;
+	min-height: 100px;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: row;
