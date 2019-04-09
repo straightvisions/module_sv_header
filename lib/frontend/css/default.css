@@ -1,8 +1,10 @@
+/* Mobile Header */
 .sv_100_sv_header {
 	background: rgb( var( --color-bg-primary ) );
+	position: fixed;
 	box-shadow: 0 0 10px 0 rgba( 0, 0, 0, 0.1 );
-	position: relative;
 	z-index: 1000;
+	width: 100%;
 }
 
 .sv_100_sv_header_bar {
@@ -13,11 +15,29 @@
 	align-items: stretch;
 }
 
-.sv_100_sv_header_bar > * {
-	min-height: 100px;
+.sv_100_sv_header_bar > *:not( a ),
+img.sv_100_sv_header_branding {
+	min-height: 50px;
+	max-height: 100px;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
-	align-items: center;
+	align-items: stretch;
+}
+
+.sv_100_sv_header_bar > a {
+	display: flex;
+}
+
+img.sv_100_sv_header_branding {
+	max-width: 230px;
+	height: auto;
+}
+
+/* Desktop Header */
+@media ( min-width: 850px ) {
+	.sv_100_sv_header {
+		position: relative;
+	}
 }
