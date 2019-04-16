@@ -9,7 +9,7 @@
     <body <?php body_class(); ?>>
         <header class="<?php echo $this->get_prefix(); ?>">
             <div class="<?php echo $this->get_prefix( 'bar' ); ?> sv_common_container">
-                <?php echo do_shortcode( '[sv_navigation location="' . $this->get_module_name() . '" show_images="1"]' ); ?>
+                <?php echo do_shortcode( '[sv_navigation location="' . $this->get_module_name() . '" show_images="1" class="no-branding"]' ); ?>
                 <aside class="<?php echo $this->get_prefix( 'sidebar' ); ?>">
                     <?php echo do_shortcode( '[sv_sidebar id="' . $this->get_module_name() . '"]' ); ?>
                 </aside>

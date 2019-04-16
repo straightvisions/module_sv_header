@@ -30,6 +30,10 @@
 }
 
 /* Main menu */
+.sv_100_sv_navigation.no-branding ul.menu > li:first-of-type > a {
+	padding-left: 0;
+}
+
 .sv_100_sv_navigation ul.menu > li:not(:last-of-type) > a {
 	margin-right: 10px;
 }
