@@ -27,10 +27,6 @@
 	align-items: stretch;
 }
 
-.sv_100_sv_header_bar > a {
-	display: flex;
-}
-
 img.sv_100_sv_header_branding {
 	max-width: 230px;
 	height: auto;
