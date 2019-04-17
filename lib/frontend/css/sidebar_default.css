@@ -61,5 +61,10 @@
 @media ( min-width: 1350px ) {
 	.sv_100_sv_header_sidebar {
 		display: flex;
+		min-height: 100px;
+		margin: 0 auto;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-items: stretch;
 	}
 }

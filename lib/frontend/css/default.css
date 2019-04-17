@@ -12,10 +12,14 @@
 	flex-direction: row;
 	flex-wrap: nowrap;
 	align-items: stretch;
+	min-height: 1px;
+	width: 100%;
+	padding-left: var( --padding );
+	padding-right: var( --padding );
+	transition: max-width .25s ease;
 }
 
-.sv_100_sv_header_bar > *:not( a ),
-img.sv_100_sv_header_branding {
+.sv_100_sv_header_branding {
 	min-height: 100px;
 	margin: 0 auto;
 	display: flex;
@@ -33,9 +37,25 @@ img.sv_100_sv_header_branding {
 	height: auto;
 }
 
-/* Desktop Header */
+/* Breakpoints */
 @media ( min-width: 850px ) {
 	.sv_100_sv_header {
 		position: relative;
+	}
+
+	.sv_100_sv_header_bar {
+		max-width: var( --width-mb );
+	}
+}
+
+@media ( min-width: 1050px ) {
+	.sv_100_sv_header_bar {
+		max-width: var( --width-dt );
+	}
+}
+
+@media ( min-width: 1350px ) {
+	.sv_100_sv_header_bar {
+		max-width: var( --width-lg );
 	}
 }
