@@ -68,6 +68,13 @@ class sv_header extends init {
 			->set_path( 'lib/frontend/css/sidebar_frontpage.css' )
 			->set_inline( true );
 
+		// Register Scripts
+		$this->scripts_queue['navigation_mobile']			= static::$scripts
+			->create( $this )
+			->set_ID( 'navigation_mobile' )
+			->set_path( 'lib/frontend/js/navigation_mobile.js' )
+			->set_type( 'js' );
+
 		return $this;
 	}
 
@@ -120,6 +127,7 @@ class sv_header extends init {
 							$this->scripts_queue[ 'frontpage' ]->set_inline( $settings['inline'] ),
 							$this->scripts_queue[ 'navigation_frontpage' ]->set_inline( $settings['inline'] ),
 							$this->scripts_queue[ 'sidebar_frontpage' ]->set_inline( $settings['inline'] ),
+							$this->scripts_queue[ 'navigation_mobile' ],
 						),
 					);
 					break;
@@ -136,6 +144,7 @@ class sv_header extends init {
 							$this->scripts_queue[ 'default' ]->set_inline( $settings['inline'] ),
 							$this->scripts_queue[ 'navigation_default' ]->set_inline( $settings['inline'] ),
 							$this->scripts_queue[ 'sidebar_default' ]->set_inline( $settings['inline'] ),
+							$this->scripts_queue[ 'navigation_mobile' ],
 						),
 					);
 					break;
@@ -147,6 +156,7 @@ class sv_header extends init {
 					$this->scripts_queue[ 'default' ]->set_inline( $settings['inline'] ),
 					$this->scripts_queue[ 'navigation_default' ]->set_inline( $settings['inline'] ),
 					$this->scripts_queue[ 'sidebar_default' ]->set_inline( $settings['inline'] ),
+					$this->scripts_queue[ 'navigation_mobile' ],
 				),
 			);
 		}

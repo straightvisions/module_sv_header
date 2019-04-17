@@ -1,8 +1,7 @@
-.sv_100_sv_header {
-	position: absolute;
+.sv_100_sv_header {;
 	width: 100%;
 	z-index: 1000;
-	background: transparent;
+	background: rgb( var( --color-bg-primary ) );
 	box-shadow: none;
 }
 
@@ -12,10 +11,14 @@
 	flex-direction: row;
 	flex-wrap: nowrap;
 	align-items: stretch;
+	min-height: 1px;
+	width: 100%;
+	padding-left: var( --padding );
+	padding-right: var( --padding );
+	transition: max-width .25s ease;
 }
 
-.sv_100_sv_header_bar > *:not( a ),
-img.sv_100_sv_header_branding {
+.sv_100_sv_header_branding {
 	min-height: 100px;
 	margin: 0 auto;
 	display: flex;
@@ -31,4 +34,28 @@ img.sv_100_sv_header_branding {
 img.sv_100_sv_header_branding {
 	max-width: 230px;
 	height: auto;
+}
+
+/* Breakpoints */
+@media ( min-width: 850px ) {
+	.sv_100_sv_header {
+		position: absolute;
+		background-color: transparent;
+	}
+
+	.sv_100_sv_header_bar {
+		max-width: var( --width-mb );
+	}
+}
+
+@media ( min-width: 1050px ) {
+	.sv_100_sv_header_bar {
+		max-width: var( --width-dt );
+	}
+}
+
+@media ( min-width: 1350px ) {
+	.sv_100_sv_header_bar {
+		max-width: var( --width-lg );
+	}
 }
