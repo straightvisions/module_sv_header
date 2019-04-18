@@ -9,6 +9,7 @@
     <body <?php body_class(); ?>>
         <header class="<?php echo $this->get_prefix(); ?>">
             <div class="<?php echo $this->get_prefix( 'bar' ); ?>">
+				<?php echo do_shortcode( '[sv_logo]' ); ?>
                 <?php echo do_shortcode( '[sv_navigation location="' . $this->get_module_name() . '" show_images="1"]' ); ?>
                 <aside class="<?php echo $this->get_prefix( 'sidebar' ); ?>">
                     <?php echo do_shortcode( '[sv_sidebar id="' . $this->get_module_name() . '"]' ); ?>
