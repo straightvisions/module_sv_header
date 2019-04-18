@@ -14,7 +14,7 @@
 	background-color: rgb( var( --color-bg-secondary ) );
 	left: -100%;
 	padding: 10px 0;
-	transition: left .5s ease;
+	transition: left .5s ease-out;
 }
 
 body.admin-bar .sv_100_sv_navigation_sv_header {
@@ -74,17 +74,15 @@ body.admin-bar .sv_100_sv_navigation_sv_header {
 	position: relative;
 	display: flex;
 	max-height: 0;
-	opacity: 0;
-	z-index: -1;
 	background: rgb( var( --color-bg-secondary ) );
 	flex-direction: column;
-	transition: opacity .25s ease .1s, max-height .25s ease;
+	overflow: hidden;
+	transition: max-height .5s cubic-bezier( 0, 1, 0, 1 );
+	-webkit-transition: max-height .5s cubic-bezier( 0, 1, 0, 1 );
 }
 
 .sv_100_sv_navigation_sv_header ul li:hover > ul.sub-menu {
-	max-height: 1000vh;
-	opacity: 1;
-	z-index: 100;
+	max-height: 1000px;
 }
 
 .sv_100_sv_navigation_sv_header ul.sub-menu li {
@@ -154,9 +152,20 @@ button.sv_100_sv_navigation_mobile_menu_toggle.open {
 	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>');
 }
 
-/* Desktop Navigation */
+/* Breakpoints */
+
+/* Admin-Bar Distance */
+@media ( min-width: 783px ) {
+	/* General */
+	body.admin-bar .sv_100_sv_navigation_sv_header {
+		top: calc( 80px + 32px );
+		height: calc( 100% - ( 80px + 32px ) );
+	}
+}
+
 @media ( min-width: 850px ) {
 	/* General */
+	.sv_100_sv_header.open .sv_100_sv_navigation_sv_header,
 	.sv_100_sv_navigation_sv_header {
 		display: flex;
 		align-items: stretch;
@@ -168,6 +177,7 @@ button.sv_100_sv_navigation_mobile_menu_toggle.open {
 		background-color: transparent;
 		position: static;
 		padding: 0;
+		overflow: hidden;
 		width: auto;
 	}
 	.sv_100_sv_navigation_sv_header ul {
@@ -197,6 +207,10 @@ button.sv_100_sv_navigation_mobile_menu_toggle.open {
 	}
 
 	/* Main menu */
+	.sv_100_sv_navigation_sv_header ul.menu > li > a {
+		position: relative;
+	}
+	
 	.sv_100_sv_navigation_sv_header ul.menu > li:first-of-type > a {
 			 padding-left: 0;
 	 }
@@ -210,12 +224,12 @@ button.sv_100_sv_navigation_mobile_menu_toggle.open {
 	}
 
 	.sv_100_sv_navigation_sv_header ul.menu > li > a::after {
-		display: block;
 		height: 2px;
 		background: rgb( var( --color-highlight ) );
 		content: '';
-		margin-top: 5px;
 		width: 0;
+		position: absolute;
+		margin-top: 5px;
 		transition: .25s ease;
 	}
 
