@@ -12,25 +12,10 @@
 	flex-direction: row;
 	flex-wrap: nowrap;
 	align-items: stretch;
-	min-height: 1px;
 	width: 100%;
 	padding-left: var( --padding );
 	padding-right: var( --padding );
 	transition: max-width .25s ease;
-}
-
-.sv_100_sv_header_branding {
-	min-height: 100px;
-	margin: 0 auto;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	align-items: stretch;
-}
-
-img.sv_100_sv_header_branding {
-	max-width: 230px;
-	height: auto;
 }
 
 /* Breakpoints */

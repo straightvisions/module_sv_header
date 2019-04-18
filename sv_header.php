@@ -124,8 +124,11 @@ class sv_header extends init {
 					$template = array(
 						'name'      => 'default',
 						'scripts'   => array(
+							$this->scripts_queue[ 'default' ]->set_inline( $settings['inline'] ),
 							$this->scripts_queue[ 'frontpage' ]->set_inline( $settings['inline'] ),
+							$this->scripts_queue[ 'navigation_default' ]->set_inline( $settings['inline'] ),
 							$this->scripts_queue[ 'navigation_frontpage' ]->set_inline( $settings['inline'] ),
+							$this->scripts_queue[ 'sidebar_default' ]->set_inline( $settings['inline'] ),
 							$this->scripts_queue[ 'sidebar_frontpage' ]->set_inline( $settings['inline'] ),
 							$this->scripts_queue[ 'navigation_mobile' ],
 						),
