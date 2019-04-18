@@ -74,15 +74,16 @@ body.admin-bar .sv_100_sv_navigation_sv_header {
 	position: relative;
 	display: flex;
 	max-height: 0;
+	overflow: hidden;
 	background: rgb( var( --color-bg-secondary ) );
 	flex-direction: column;
-	overflow: hidden;
-	transition: max-height .5s cubic-bezier( 0, 1, 0, 1 );
-	-webkit-transition: max-height .5s cubic-bezier( 0, 1, 0, 1 );
+	transition: max-height 1s cubic-bezier( 0, 1, 0, 1 );
+	-webkit-transition: max-height 1s cubic-bezier( 0, 1, 0, 1 );
 }
 
 .sv_100_sv_navigation_sv_header ul li:hover > ul.sub-menu {
 	max-height: 1000px;
+	transition: max-height 1s ease-in-out;
 }
 
 .sv_100_sv_navigation_sv_header ul.sub-menu li {
@@ -165,7 +166,11 @@ button.sv_100_sv_navigation_mobile_menu_toggle.open {
 
 @media ( min-width: 850px ) {
 	/* General */
-	.sv_100_sv_header.open .sv_100_sv_navigation_sv_header,
+	.sv_100_sv_header,
+	.sv_100_sv_header.open {
+		position: static;
+	}
+
 	.sv_100_sv_navigation_sv_header {
 		display: flex;
 		align-items: stretch;
@@ -177,9 +182,14 @@ button.sv_100_sv_navigation_mobile_menu_toggle.open {
 		background-color: transparent;
 		position: static;
 		padding: 0;
-		overflow: hidden;
 		width: auto;
 	}
+
+	.sv_100_sv_header.open .sv_100_sv_navigation_sv_header {
+		overflow: visible;
+		position: static;
+	}
+
 	.sv_100_sv_navigation_sv_header ul {
 		display: flex;
 		flex-direction: row;
@@ -210,10 +220,10 @@ button.sv_100_sv_navigation_mobile_menu_toggle.open {
 	.sv_100_sv_navigation_sv_header ul.menu > li > a {
 		position: relative;
 	}
-	
+
 	.sv_100_sv_navigation_sv_header ul.menu > li:first-of-type > a {
-			 padding-left: 0;
-	 }
+		padding-left: 0;
+	}
 
 	.sv_100_sv_navigation_sv_header ul.menu > li:last-of-type > a {
 		padding-right: 0;
@@ -242,36 +252,47 @@ button.sv_100_sv_navigation_mobile_menu_toggle.open {
 	}
 
 	.sv_100_sv_navigation_sv_header ul.menu > li:hover > a::after {
-		width: 100%;
+		width: calc( 100% - 20px );
+	}
+
+	.sv_100_sv_navigation_sv_header ul.menu > li:first-of-type:hover > a::after,
+	.sv_100_sv_navigation_sv_header ul.menu > li:last-of-type:hover > a::after{
+		width: calc( 100% - 10px );
 	}
 
 	/* Sub Menus */
+	.sv_100_sv_header.open .sv_100_sv_navigation_sv_header ul.sub-menu,
 	.sv_100_sv_navigation_sv_header ul.sub-menu {
 		position: absolute;
-		z-index: 200;
 		top: 100%;
 		left: 0;
-		visibility: hidden;
-		opacity: 0;
 		background: rgb( var( --color-bg-primary ) );
 		display: flex;
 		flex-direction: column;
+		overflow: visible;
+		visibility: hidden;
+		opacity: 0;
+		max-height: none;
 		box-shadow: 0 0 4px rgba( 0, 0, 0, .2 );
-		transition: .25s ease;
+		transition: opacity .25s ease;
 	}
 
+	.sv_100_sv_header.open .sv_100_sv_navigation_sv_header  ul li:hover > ul.sub-menu,
+	.sv_100_sv_navigation_sv_header ul li:hover > ul.sub-menu {
+		opacity: 1;
+		visibility: visible;
+		transition: opacity .25s ease;
+	}
+
+	.sv_100_sv_header.open .sv_100_sv_navigation_sv_header  ul.sub-menu ul.sub-menu,
 	.sv_100_sv_navigation_sv_header ul.sub-menu ul.sub-menu {
 		left: 251px;
 		top: -10px;
 	}
 
+	.sv_100_sv_header.open .sv_100_sv_navigation_sv_header  ul.sub-menu li:first-of-type ul.sub-menu,
 	.sv_100_sv_navigation_sv_header ul.sub-menu li:first-of-type ul.sub-menu {
 		top: 0;
-	}
-
-	.sv_100_sv_navigation_sv_header ul li:hover > ul.sub-menu {
-		visibility: visible;
-		opacity: 1;
 	}
 
 	.sv_100_sv_navigation_sv_header ul.sub-menu li {
