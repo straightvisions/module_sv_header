@@ -18,11 +18,35 @@
 	transition: max-width .25s ease;
 }
 
-.sv_100_sv_header_bar .sv_100_sv_logo {
+.sv_100_sv_header_bar .sv_100_sv_header_branding {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	margin-right: 20px;
+	color: rgb( var( --color-primary ) );
+	transition: color .25s ease;
+}
+
+.sv_100_sv_header_bar .sv_100_sv_header_branding .sv_100_sv_header_website_name {
+	margin: 0;
+	line-height: 100%;
+}
+
+.sv_100_sv_header_bar .sv_100_sv_header_website_desc {
+	font-size: .8rem;
+	margin: .5em 0 0 0;
+	line-height: 100%;
+}
+
+.sv_100_sv_header_bar .sv_100_sv_header_branding:hover,
+.sv_100_sv_header_bar .sv_100_sv_header_branding:focus {
+	color: rgb( var( --color-highlight ) );
+}
+
+.sv_100_sv_header_bar .sv_100_sv_header_branding > img {
 	height: 100%;
 	width: auto;
 	max-height: 40px;
-	margin: auto 20px auto 0;
 }
 
 /* Breakpoints */
