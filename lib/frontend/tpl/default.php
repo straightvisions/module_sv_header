@@ -9,7 +9,7 @@
     <body <?php body_class(); ?>>
         <header class="<?php echo $this->get_prefix(); ?>">
             <div class="<?php echo $this->get_prefix( 'bar' ); ?>">
-				<a href="<?php home_url(); ?>" class="<?php echo $this->get_prefix( 'branding' ); ?>">
+				<a href="<?php echo home_url(); ?>" class="<?php echo $this->get_prefix( 'branding' ); ?>">
 					<?php
 						if ( do_shortcode( '[sv_logo]' ) && do_shortcode( '[sv_logo]' ) !== '[sv_logo]' ) {
 							echo do_shortcode( '[sv_logo]' );
