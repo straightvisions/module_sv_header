@@ -95,7 +95,7 @@ class sv_header extends init {
 			$this->get_root()
 				 ->sv_sidebar
 				 ->create( $this )
-				 ->set_name( __( 'Header', $this->get_module_name() ) )
+				 ->set_title( __( 'Header', $this->get_module_name() ) )
 				 ->set_desc( __( 'Widgets in this area will be shown in the header, next to the navigation.', $this->get_module_name() ) )
 				 ->load_sidebar();
 		}
