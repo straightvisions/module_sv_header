@@ -188,7 +188,7 @@ class sv_header extends init {
 	}
 	
 	public function set_favicon(){
-		if ( $this->get_root()->sv_icon && ! is_array( $this->get_root()->sv_icon->s['favicon']->get_data() ) ) {
+		if ( isset( $this->get_root()->sv_icon ) && ! is_array( $this->get_root()->sv_icon->s['favicon']->get_data() ) ) {
 			$this->favicon						= intval( $this->get_root()->sv_icon->s['favicon']->get_data() );
 			
 			remove_action ( 'wp_head', 'wp_site_icon', 99 );
