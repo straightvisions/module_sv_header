@@ -12,6 +12,8 @@ namespace sv_100;
  */
 
 class sv_header extends init {
+	protected $favicon							= 0;
+	
 	public function __construct() {
 
 	}
@@ -26,8 +28,11 @@ class sv_header extends init {
 
 		// Shortcodes
 		add_shortcode( $this->get_module_name(), array( $this, 'shortcode' ) );
-
+		
 		$this->register_scripts()->register_navs()->register_sidebars();
+		
+		// Action Hooks & Filter
+		add_action( 'init', array( $this, 'set_favicon' ) );
 	}
 
 	protected function register_scripts() :sv_header {
@@ -180,5 +185,17 @@ class sv_header extends init {
 		ob_end_clean();
 
 		return $output;
+	}
+	
+	public function set_favicon(){
+		if ( $this->get_root()->sv_icon && ! is_array( $this->get_root()->sv_icon->s['favicon']->get_data() ) ) {
+			$this->favicon						= intval( $this->get_root()->sv_icon->s['favicon']->get_data() );
+			
+			remove_action ( 'wp_head', 'wp_site_icon', 99 );
+		}
+	}
+	
+	protected function get_favicon(): int {
+		return $this->favicon;
 	}
 }

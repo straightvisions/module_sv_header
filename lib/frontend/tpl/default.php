@@ -3,8 +3,14 @@
     <head>
         <meta charset="<?php echo get_bloginfo( 'charset' ); ?>" />
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-
-        <?php wp_head(); ?>
+		
+        <?php
+			if ( $this->get_favicon() > 0 ) {
+				echo '<link rel="icon" href="' . wp_get_attachment_url( $this->get_favicon() ) . '">';
+			}
+			
+			wp_head();
+		?>
     </head>
     <body <?php body_class(); ?>>
         <header class="<?php echo $this->get_prefix(); ?>">
