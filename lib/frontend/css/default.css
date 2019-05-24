@@ -24,21 +24,12 @@
 	flex-direction: column;
 	margin-right: 25px;
 	color: rgb( var( --color-primary ) );
-	text-decoration: none;
 	transition: color .25s ease;
 }
 
 .sv_100_sv_header_bar .sv_100_sv_header_branding .sv_100_sv_header_website_name {
 	margin: 0;
 	line-height: 100%;
-	font-size: 1.5rem;
-	font-weight: 400;
-}
-
-@media ( min-width: 850px ) {
-	.sv_100_sv_header_bar .sv_100_sv_header_branding .sv_100_sv_header_website_name {
-		font-size: 2rem;
-	}
 }
 
 .sv_100_sv_header_bar .sv_100_sv_header_website_desc {
