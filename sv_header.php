@@ -53,10 +53,10 @@ class sv_header extends init {
 			->set_path( 'lib/frontend/css/default.css' )
 			->set_inline( true );
 
-		$this->scripts_queue['frontpage']			= static::$scripts
+		$this->scripts_queue['home']			= static::$scripts
 			->create( $this )
-			->set_ID( 'frontpage' )
-			->set_path( 'lib/frontend/css/frontpage.css' )
+			->set_ID( 'home' )
+			->set_path( 'lib/frontend/css/home.css' )
 			->set_inline( true );
 
 		$this->scripts_queue['navigation_default']			= static::$scripts
@@ -65,10 +65,10 @@ class sv_header extends init {
 			->set_path( 'lib/frontend/css/navigation_default.css' )
 			->set_inline( true );
 
-		$this->scripts_queue['navigation_frontpage']		= static::$scripts
+		$this->scripts_queue['navigation_home']		= static::$scripts
 			->create( $this )
-			->set_ID( 'navigation_frontpage' )
-			->set_path( 'lib/frontend/css/navigation_frontpage.css' )
+			->set_ID( 'navigation_home' )
+			->set_path( 'lib/frontend/css/navigation_home.css' )
 			->set_inline( true );
 
 		$this->scripts_queue['sidebar_default']			    = static::$scripts
@@ -77,10 +77,10 @@ class sv_header extends init {
 			->set_path( 'lib/frontend/css/sidebar_default.css' )
 			->set_inline( true );
 
-		$this->scripts_queue['sidebar_frontpage']			= static::$scripts
+		$this->scripts_queue['sidebar_home']			= static::$scripts
 			->create( $this )
-			->set_ID( 'sidebar_frontpage' )
-			->set_path( 'lib/frontend/css/sidebar_frontpage.css' )
+			->set_ID( 'sidebar_home' )
+			->set_path( 'lib/frontend/css/sidebar_home.css' )
 			->set_inline( true );
 
 		// Register Scripts
@@ -142,16 +142,16 @@ class sv_header extends init {
 	protected function router( array $settings ) :string {
 		if ( $settings['template'] ) {
 			switch ( $settings['template'] ) {
-				case 'frontpage':
+				case 'home':
 					$template = array(
-						'name'      => 'default',
+						'name'      => 'home',
 						'scripts'   => array(
 							$this->scripts_queue[ 'default' ]->set_inline( $settings['inline'] ),
-							$this->scripts_queue[ 'frontpage' ]->set_inline( $settings['inline'] ),
+							$this->scripts_queue[ 'home' ]->set_inline( $settings['inline'] ),
 							$this->scripts_queue[ 'navigation_default' ]->set_inline( $settings['inline'] ),
-							$this->scripts_queue[ 'navigation_frontpage' ]->set_inline( $settings['inline'] ),
+							$this->scripts_queue[ 'navigation_home' ]->set_inline( $settings['inline'] ),
 							$this->scripts_queue[ 'sidebar_default' ]->set_inline( $settings['inline'] ),
-							$this->scripts_queue[ 'sidebar_frontpage' ]->set_inline( $settings['inline'] ),
+							$this->scripts_queue[ 'sidebar_home' ]->set_inline( $settings['inline'] ),
 							$this->scripts_queue[ 'navigation_mobile' ],
 						),
 					);
