@@ -1,0 +1,12 @@
+/* Breakpoints */
+@media ( min-width: 850px ) {
+	.sv_100_sv_header_home_slider {
+		position: absolute;
+		background-color: transparent;
+		box-shadow: none;
+	}
+
+	.sv_100_sv_header_home_slider .sv_100_sv_header_branding {
+		color: rgb( var( --color-contrast ) );
+	}
+}
