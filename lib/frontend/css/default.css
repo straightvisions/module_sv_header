@@ -4,7 +4,13 @@
 	box-shadow: 0 0 10px 0 rgba( 0, 0, 0, 0.1 );
 	z-index: 1000;
 	width: 100%;
-	height: 100px;
+	height: 80px;
+}
+
+@media ( min-width: 850px ) {
+	.sv_100_sv_header {
+		height: 100px;
+	}
 }
 
 .sv_100_sv_header_bar {
