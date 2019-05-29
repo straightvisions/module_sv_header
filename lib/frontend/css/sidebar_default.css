@@ -14,6 +14,10 @@
 	color: rgb( var( --color-primary ) );
 }
 
+.sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget h3 {
+	display: none;
+}
+
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget ul {
 	padding: 0;
 	list-style-type: none;
