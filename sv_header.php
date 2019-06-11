@@ -33,16 +33,11 @@ class sv_header extends init {
 		
 		// Action Hooks & Filter
 		add_action( 'init', array( $this, 'set_favicon' ) );
+		$this->is_first_load() ? add_action( 'widgets_init', array( $this, 'add_widgets' ) ) : false;
 	}
 	
-	protected function is_first_load(): bool {
-		if ( get_option( $this->get_prefix( 'first_load' ) ) ) {
-			return false;
-		} else {
-			add_option( $this->get_prefix( 'first_load' ), true );
-			
-			return true;
-		}
+	public function add_widgets() {
+		$this->add_widget_to_sidebar( 'search', 'sv_100_sv_sidebar_sv_header' );
 	}
 
 	protected function register_scripts() :sv_header {
@@ -113,13 +108,6 @@ class sv_header extends init {
 				 ->set_title( __( 'Header', $this->get_module_name() ) )
 				 ->set_desc( __( 'Widgets in this area will be shown in the header, next to the navigation.', $this->get_module_name() ) )
 				 ->load_sidebar();
-		}
-		
-		if ( $this->is_first_load() ) {
-			$widgets 											= get_option( 'sidebars_widgets' );
-			$widgets['sv_100_sv_sidebar_sv_header'] 			= array( 'search-1' );
-			
-			update_option( 'sidebars_widgets', $widgets );
 		}
 
 		return $this;
