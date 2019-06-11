@@ -11,7 +11,7 @@
 }
 
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget {
-	color: rgb( var( --color-primary ) );
+	color: rgb( var( --sv-100-color-primary ) );
 }
 
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget h3 {
@@ -34,12 +34,12 @@
 
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget a {
 	text-decoration: none;
-	color: rgb( var( --color-primary ) );
+	color: rgb( var( --sv-100-color-primary ) );
 	transition: .25s ease;
 }
 
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget a:hover {
-	color: rgb( var( --color-highlight ) );
+	color: rgb( var( --sv-100-color-highlight ) );
 }
 
 /* Widgets - Archive, Categories (List), Meta, Posts & Pages */
@@ -52,9 +52,9 @@
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
-	color: rgb( var( --color-primary ) );
+	color: rgb( var( --sv-100-color-primary ) );
 	text-decoration: none;
-	background-color: rgb( var( --color-bg-secondary ) );
+	background-color: rgb( var( --sv-100-color-bg-secondary ) );
 	padding: 8px 12px;
 	cursor: pointer;
 	transition: color .25s ease, background-color .25s ease;
@@ -65,7 +65,7 @@
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_meta li a,
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_recent_entries li a,
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_pages li a {
-	color: rgb( var( --color-primary ) );
+	color: rgb( var( --sv-100-color-primary ) );
 	transition: color .25s ease;
 }
 
@@ -79,8 +79,8 @@
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_recent_entries li:focus,
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_pages li:hover,
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_pages li:focus {
-	color: rgb( var( --color-contrast ) );
-	background-color: rgb( var( --color-highlight ) );
+	color: rgb( var( --sv-100-color-contrast ) );
+	background-color: rgb( var( --sv-100-color-highlight ) );
 }
 
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_archive li:hover a,
@@ -93,24 +93,24 @@
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_recent_entries li:focus a,
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_pages li:hover a,
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_pages li:focus a {
-	color: rgb( var( --color-contrast ) );
+	color: rgb( var( --sv-100-color-contrast ) );
 }
 
 /* Widgets - Archive & Categories (Select) */
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_archive select,
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_categories select {
 	border: none;
-	border-bottom: 1px solid rgba( var( --color-primary ), .6 );
+	border-bottom: 1px solid rgba( var( --sv-100-color-primary ), .6 );
 	padding: 8px 12px;
 	outline: none;
 	box-shadow: none;
-	color: rgba( var( --color-primary ), .6 );
+	color: rgba( var( --sv-100-color-primary ), .6 );
 	transition: .25s ease;
 }
 
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_archive select:hover,
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_categories select:hover {
-	color: rgba( var( --color-primary ), 1 );
+	color: rgba( var( --sv-100-color-primary ), 1 );
 }
 
 /* Widgets - Navigation (General) */
@@ -121,9 +121,9 @@
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
-	color: rgb( var( --color-primary ) );
+	color: rgb( var( --sv-100-color-primary ) );
 	text-decoration: none;
-	background-color: rgb( var( --color-bg-secondary ) );
+	background-color: rgb( var( --sv-100-color-bg-secondary ) );
 	cursor: pointer;
 	transition: color .25s ease, background-color .25s ease;
 }
@@ -136,22 +136,22 @@
 
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_nav_menu ul.menu > li:hover,
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_nav_menu ul.menu > li:focus {
-	background-color: rgb( var( --color-highlight ) );
+	background-color: rgb( var( --sv-100-color-highlight ) );
 }
 
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_nav_menu ul.menu > li:hover > a,
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_nav_menu ul.menu > li:focus > a {
-	color: rgb( var( --color-contrast ) );
+	color: rgb( var( --sv-100-color-contrast ) );
 }
 
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_nav_menu ul.menu > li.menu-item-has-children:hover,
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_nav_menu ul.menu > li.menu-item-has-children:focus {
-	background-color: rgb( var( --color-bg-secondary ) );
+	background-color: rgb( var( --sv-100-color-bg-secondary ) );
 }
 
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_nav_menu ul.menu > li.menu-item-has-children:hover > a,
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_nav_menu ul.menu > li.menu-item-has-children:focus > a {
-	color: rgb( var( --color-highlight ) );
+	color: rgb( var( --sv-100-color-highlight ) );
 }
 
 /* Widgets - Navigation (Sub Menu) */
@@ -180,14 +180,14 @@
 
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_nav_menu ul.sub-menu > li:hover > a,
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_nav_menu ul.sub-menu > li:focus > a {
-	color: rgb( var( --color-highlight ) );
+	color: rgb( var( --sv-100-color-highlight ) );
 }
 
 /* Widgets - Recent Comments */
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_recent_comments li {
 	font-size: .9rem;
 	padding: 8px 12px;
-	background-color: rgb( var( --color-bg-secondary ) );
+	background-color: rgb( var( --sv-100-color-bg-secondary ) );
 }
 
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_recent_comments li > .comment-author-link,
@@ -215,8 +215,8 @@
 	padding: 8px 12px;
 	background-color: transparent;
 	border: 0;
-	border-bottom: 1px solid rgba( var( --color-primary ), .6 );
-	color: rgba( var( --color-primary ), .6 );
+	border-bottom: 1px solid rgba( var( --sv-100-color-primary ), .6 );
+	color: rgba( var( --sv-100-color-primary ), .6 );
 	outline: none;
 	box-shadow: none;
 	font-size: .8rem;
@@ -224,7 +224,7 @@
 }
 
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_search input::placeholder {
-	color: rgb( var( --color-primary ), .6 );
+	color: rgb( var( --sv-100-color-primary ), .6 );
 }
 
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_search input[type="submit"] {
@@ -286,7 +286,7 @@
 	flex-direction: column;
 	flex-wrap: wrap;
 	display: flex;
-	background-color: rgb( var( --color-bg-secondary ) );
+	background-color: rgb( var( --sv-100-color-bg-secondary ) );
 	padding: 15px;
 	width: 100%;
 	margin-bottom: 10px;
@@ -298,7 +298,7 @@
 
 .sv_100_sv_header_sidebar .sv_100_sv_sidebar .widget_rss ul li > span.rss-date {
 	font-size: .9rem;
-	color: rgb( var( --color-secondary ) );
+	color: rgb( var( --sv-100-color-secondary ) );
 	margin-top: .3em;
 }
 
@@ -311,7 +311,7 @@
 	font-size: .9rem;
 	font-weight: bold;
 	font-style: italic;
-	color: rgb( var( --color-secondary ) );
+	color: rgb( var( --sv-100-color-secondary ) );
 }
 
 /* Breakpoints */
