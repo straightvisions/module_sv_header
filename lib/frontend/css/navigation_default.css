@@ -58,6 +58,11 @@ body.admin-bar .sv_100_sv_navigation_sv_header {
 	transition: color .25s ease;
 }
 
+.sv_100_sv_navigation_sv_header ul li a,
+.sv_100_sv_navigation_sv_header ul li a .item-title {
+	word-break: keep-all;
+}
+
 .sv_100_sv_navigation_sv_header ul li:hover,
 .sv_100_sv_navigation_sv_header ul li:focus {
 	color: rgb( var( --sv-100-color-highlight ) );
