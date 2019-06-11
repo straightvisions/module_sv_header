@@ -29,11 +29,38 @@ class sv_header extends init {
 		// Shortcodes
 		add_shortcode( $this->get_module_name(), array( $this, 'shortcode' ) );
 		
-		$this->register_scripts()->register_navs()->register_sidebars();
-		
 		// Action Hooks & Filter
 		add_action( 'init', array( $this, 'set_favicon' ) );
-		$this->is_first_load() ? add_action( 'widgets_init', array( $this, 'add_widgets' ) ) : false;
+		
+		$this->register_scripts()->register_navs()->register_sidebars();
+		
+		if ( $this->is_first_load() ) {
+			add_action( 'wp_loaded', array( $this, 'add_widgets' ) );
+			$this->first_load();
+		}
+	}
+	
+	protected function first_load(): sv_header {
+		$this->get_root()
+			->sv_navigation
+			->create_menu( $this )
+			->set_menu_name( __( 'Main Menu', $this->get_module_name() ) )
+			->set_menu_item( array(
+			   'menu-item-title'	=> 'Home',
+			   'menu-item-type'		=> 'custom',
+			   'menu-item-url'		=> $_SERVER['REQUEST_URI'],
+			   'menu-item-status'	=> 'publish',
+		   	) )
+			->set_menu_item( array(
+			   'menu-item-title'	=> 'Theme by straightvisions',
+			   'menu-item-type'		=> 'custom',
+			   'menu-item-url'		=> 'https://straightvisions.com',
+			   'menu-item-target'	=> '_blank',
+			   'menu-item-status'	=> 'publish',
+		    ) )
+			->load_menu();
+		
+		return $this;
 	}
 	
 	public function add_widgets() {
@@ -90,7 +117,7 @@ class sv_header extends init {
 		return $this;
 	}
 
-	protected function register_navs() :sv_header {
+	protected function register_navs(): sv_header {
 		if ( isset( $this->get_root()->sv_navigation ) ) {
 			$this->get_root()
 				->sv_navigation
@@ -102,7 +129,7 @@ class sv_header extends init {
 		return $this;
 	}
 
-	protected function register_sidebars() :sv_header {
+	protected function register_sidebars(): sv_header {
 		if ( isset( $this->get_root()->sv_sidebar ) ) {
 			$this->get_root()
 				 ->sv_sidebar
@@ -115,7 +142,7 @@ class sv_header extends init {
 		return $this;
 	}
 
-	public function shortcode( $settings, $content = '' ) :string {
+	public function shortcode( $settings, $content = '' ): string {
 		$settings								= shortcode_atts(
 			array(
 				'inline'						=> true,
@@ -129,7 +156,7 @@ class sv_header extends init {
 	}
 
 	// Handles the routing of the templates
-	protected function router( array $settings ) :string {
+	protected function router( array $settings ): string {
 		if ( $settings['template'] ) {
 			switch ( $settings['template'] ) {
 				case 'home':
@@ -180,7 +207,7 @@ class sv_header extends init {
 	}
 
 	// Loads the templates
-	protected function load_template( array $template, array $settings ) :string {
+	protected function load_template( array $template, array $settings ): string {
 		ob_start();
 		foreach ( $template['scripts'] as $script ) {
 			$script->set_is_enqueued();
@@ -194,7 +221,7 @@ class sv_header extends init {
 		return $output;
 	}
 	
-	public function set_favicon(){
+	public function set_favicon() {
 		if ( isset( $this->get_root()->sv_icon ) && ! is_array( $this->get_root()->sv_icon->s['favicon']->run_type()->get_data() ) ) {
 			$this->favicon						= intval( $this->get_root()->sv_icon->s['favicon']->run_type()->get_data() );
 			
