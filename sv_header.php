@@ -37,7 +37,9 @@ class sv_header extends init {
 	}
 	
 	public function add_widgets() {
-		$this->add_widget_to_sidebar( 'search', 'sv_100_sv_sidebar_sv_header' );
+		$this->get_root()->sv_sidebar
+			->clear_sidebar( 'sv_100_sv_sidebar_sv_header' )
+			->add_widget_to_sidebar( 'search', 'sv_100_sv_sidebar_sv_header' );
 	}
 
 	protected function register_scripts() :sv_header {
