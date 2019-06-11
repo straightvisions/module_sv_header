@@ -1,6 +1,6 @@
 /* Mobile Header */
 .sv_100_sv_header {
-	background: rgb( var( --color-bg-primary ) );
+	background: rgb( var( --sv-100-color-bg-primary ) );
 	box-shadow: 0 0 10px 0 rgba( 0, 0, 0, 0.1 );
 	z-index: 1000;
 	width: 100%;
@@ -31,7 +31,7 @@
 	justify-content: center;
 	flex-direction: column;
 	margin-right: 25px;
-	color: rgb( var( --color-primary ) );
+	color: rgb( var( --sv-100-color-primary ) );
 	text-decoration: none;
 	transition: color .25s ease;
 }
@@ -57,7 +57,7 @@
 
 .sv_100_sv_header_bar .sv_100_sv_header_branding:hover,
 .sv_100_sv_header_bar .sv_100_sv_header_branding:focus {
-	color: rgb( var( --color-highlight ) );
+	color: rgb( var( --sv-100-color-highlight ) );
 }
 
 .sv_100_sv_header_bar .sv_100_sv_header_branding > img {

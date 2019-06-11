@@ -7,15 +7,15 @@
 	}
 
 	.sv_100_sv_header_home_slider .sv_100_sv_navigation_sv_header ul li {
-		color: rgb( var( --color-contrast ) );
+		color: rgb( var( --sv-100-color-contrast ) );
 	}
 
 	.sv_100_sv_header_home_slider .sv_100_sv_navigation_sv_header ul li a {
-		color: rgb( var( --color-contrast ) );
+		color: rgb( var( --sv-100-color-contrast ) );
 	}
 
 	.sv_100_sv_header_home_slider .sv_100_sv_navigation_sv_header ul li:hover > a,
 	.sv_100_sv_header_home_slider .sv_100_sv_navigation_sv_header ul li:focus > a {
-		color: rgb( var( --color-contrast ) );
+		color: rgb( var( --sv-100-color-contrast ) );
 	}
 }
