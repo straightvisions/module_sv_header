@@ -20,11 +20,11 @@ class sv_header extends init {
 
 	public function init() {
 		// Translates the module
-		load_theme_textdomain( $this->get_module_name(), $this->get_path( 'languages' ) );
+		load_theme_textdomain( 'sv_header', $this->get_path( 'languages' ) );
 
 		// Module Info
 		$this->set_module_title( 'SV Header' );
-		$this->set_module_desc( __( 'This module gives the ability to display the header via the "[sv_header]" shortcode.', $this->get_module_name() ) );
+		$this->set_module_desc( __( 'This module gives the ability to display the header via the "[sv_header]" shortcode.', 'sv_header' ) );
 
 		// Shortcodes
 		add_shortcode( $this->get_module_name(), array( $this, 'shortcode' ) );
@@ -44,7 +44,7 @@ class sv_header extends init {
 		$this->get_root()
 			->sv_navigation
 			->create_menu( $this )
-			->set_menu_name( __( 'Main Menu', $this->get_module_name() ) )
+			->set_menu_name( __( 'Main Menu', 'sv_header' ) )
 			->set_menu_item( array(
 			   'menu-item-title'	=> 'Home',
 			   'menu-item-type'		=> 'custom',
@@ -122,7 +122,7 @@ class sv_header extends init {
 			$this->get_root()
 				->sv_navigation
 				->create( $this )
-				->set_desc( __( 'Primary Menu', $this->get_module_name() ) )
+				->set_desc( __( 'Primary Menu', 'sv_header' ) )
 				->load_nav();
 		}
 
@@ -134,8 +134,8 @@ class sv_header extends init {
 			$this->get_root()
 				 ->sv_sidebar
 				 ->create( $this )
-				 ->set_title( __( 'Header', $this->get_module_name() ) )
-				 ->set_desc( __( 'Widgets in this area will be shown in the header, next to the navigation.', $this->get_module_name() ) )
+				 ->set_title( __( 'Header', 'sv_header' ) )
+				 ->set_desc( __( 'Widgets in this area will be shown in the header, next to the navigation.', 'sv_header' ) )
 				 ->load_sidebar();
 		}
 
