@@ -127,7 +127,7 @@ class sv_header extends init {
 		return $this;
 	}
 
-	public function load( $settings = array() ): string {
+	public function load( $settings, $content = '' ): string {
 		$settings								= shortcode_atts(
 			array(
 				'inline'						=> true,

@@ -9,7 +9,7 @@
 <?php
 	// Checks if slider has posts and is home
 	if (
-		$this->get_root()->sv_content->get_setting( 'home_slider' )->run_type()->get_data()
+		$this->get_root()->sv_content->s['home_slider']->run_type()->get_data()
 		&& isset( $this->get_root()->sv_posts )
 		&& isset( $this->get_root()->sv_slick )
 		&& is_home()
@@ -34,23 +34,9 @@
 				}
 			?>
         </a>
-		<?php
-			echo $this->get_root()->get_module( 'sv_navigation' )
-				? $this->get_root()->get_module( 'sv_navigation' )->load( array(
-					'location' 		=> $this->get_module_name(),
-					'show_images'	=> true,
-				) )
-				: '';
-			
-			?>
+		<?php echo do_shortcode( '[sv_navigation location="' . $this->get_module_name() . '" show_images="1"]' ); ?>
         <aside class="<?php echo $this->get_prefix( 'sidebar' ); ?>">
-			<?php
-				echo $this->get_root()->get_module( 'sv_sidebar' )
-					? $this->get_root()->get_module( 'sv_sidebar' )->load( array(
-						'id' 			=> $this->get_module_name(),
-					) )
-					: '';
-			?>
+			<?php echo do_shortcode( '[sv_sidebar id="' . $this->get_module_name() . '"]' ); ?>
         </aside>
     </div>
 </header>
