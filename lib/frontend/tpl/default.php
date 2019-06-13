@@ -7,14 +7,19 @@
 </head>
 
 <?php
-	// Checks if slider has posts
-    if(is_home()) {
-		$shortcode = do_shortcode( '[sv_posts slider="1" slider_theme="' . $theme . '" image="1" show_image="1" show_category="0" show_excerpt="1" show_date="0" max_length="80"]' );
+	// Checks if slider has posts and is home
+	if (
+		$this->get_root()->sv_content->s['home_slider']->run_type()->get_data()
+		&& isset( $this->get_root()->sv_posts )
+		&& isset( $this->get_root()->sv_slick )
+		&& is_home()
+	) {
+		$shortcode = do_shortcode( '[sv_posts slider="1" image="1" show_image="1"]' );
 	}
 ?>
 
 <body <?php body_class(); ?>>
-<header class="<?php echo $this->get_prefix(); echo empty( $shortcode ) ? '' : ' ' . $this->get_prefix( 'home_slider' ); ?>">
+<header class="<?php echo $this->get_prefix(); echo isset( $shortcode ) && ! empty( $shortcode ) ? ' ' . $this->get_prefix( 'home_slider' ) : ''; ?>">
     <div class="<?php echo $this->get_prefix( 'bar' ); ?>">
         <a href="<?php echo home_url(); ?>" class="<?php echo $this->get_prefix( 'branding' ); ?>">
 			<?php
