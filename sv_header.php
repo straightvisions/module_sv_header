@@ -17,9 +17,6 @@ class sv_header extends init {
 	}
 
 	public function init() {
-		// Translates the module
-		load_theme_textdomain( $this->get_module_name(), $this->get_path( 'languages' ) );
-
 		// Module Info
 		$this->set_module_title( 'SV Header' );
 		$this->set_module_desc( __( 'This module gives the ability to display the header via the "[sv_header]" shortcode.', $this->get_module_name() ) );
