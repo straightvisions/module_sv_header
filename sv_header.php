@@ -12,17 +12,10 @@ namespace sv_100;
  */
 
 class sv_header extends init {
-	public function __construct() {
-
-	}
-
 	public function init() {
 		// Module Info
 		$this->set_module_title( 'SV Header' );
 		$this->set_module_desc( __( 'This module gives the ability to display the header via the "[sv_header]" shortcode.', 'sv_100' ) );
-
-		// Shortcodes
-		add_shortcode( $this->get_module_name(), array( $this, 'shortcode' ) );
 		
 		$this->register_scripts()->register_navs()->register_sidebars();
 		
@@ -134,7 +127,7 @@ class sv_header extends init {
 		return $this;
 	}
 
-	public function shortcode( $settings, $content = '' ): string {
+	public function load( $settings, $content = '' ): string {
 		$settings								= shortcode_atts(
 			array(
 				'inline'						=> true,
