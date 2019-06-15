@@ -23,8 +23,8 @@
     <div class="<?php echo $this->get_prefix( 'bar' ); ?>">
         <a href="<?php echo home_url(); ?>" class="<?php echo $this->get_prefix( 'branding' ); ?>">
 			<?php
-				if ( do_shortcode( '[sv_logo]' ) && do_shortcode( '[sv_logo]' ) !== '[sv_logo]' ) {
-					echo do_shortcode( '[sv_logo]' );
+				if ( $GLOBALS['sv_100']->get_module('sv_logo')) {
+					echo $GLOBALS['sv_100']->get_module('sv_header')->load();
 				} else {
 					echo '<h3 class="' . $this->get_prefix( 'website_name' ) .'">' . get_bloginfo( 'name' ) . '</h2>';
 					
