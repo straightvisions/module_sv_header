@@ -97,7 +97,8 @@ class sv_header extends init {
 			->create( $this )
 			->set_ID( 'navigation_mobile' )
 			->set_path( 'lib/frontend/js/navigation_mobile.js' )
-			->set_type( 'js' );
+			->set_type( 'js' )
+			->set_deps( array(  'jquery' ) );
 
 		return $this;
 	}
