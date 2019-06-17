@@ -62,10 +62,10 @@ class sv_header extends init {
 			->set_path( 'lib/frontend/css/default.css' )
 			->set_inline( true );
 
-		$this->scripts_queue['home']			= static::$scripts
+		$this->scripts_queue['slider']			= static::$scripts
 			->create( $this )
-			->set_ID( 'home' )
-			->set_path( 'lib/frontend/css/home.css' )
+			->set_ID( 'slider' )
+			->set_path( 'lib/frontend/css/slider.css' )
 			->set_inline( true );
 
 		$this->scripts_queue['navigation_default']			= static::$scripts
@@ -74,10 +74,10 @@ class sv_header extends init {
 			->set_path( 'lib/frontend/css/navigation_default.css' )
 			->set_inline( true );
 
-		$this->scripts_queue['navigation_home']		= static::$scripts
+		$this->scripts_queue['navigation_slider']		= static::$scripts
 			->create( $this )
-			->set_ID( 'navigation_home' )
-			->set_path( 'lib/frontend/css/navigation_home.css' )
+			->set_ID( 'navigation_slider' )
+			->set_path( 'lib/frontend/css/navigation_slider.css' )
 			->set_inline( true );
 
 		$this->scripts_queue['sidebar_default']			    = static::$scripts
@@ -86,10 +86,10 @@ class sv_header extends init {
 			->set_path( 'lib/frontend/css/sidebar_default.css' )
 			->set_inline( true );
 
-		$this->scripts_queue['sidebar_home']			= static::$scripts
+		$this->scripts_queue['sidebar_slider']			= static::$scripts
 			->create( $this )
 			->set_ID( 'sidebar_home' )
-			->set_path( 'lib/frontend/css/sidebar_home.css' )
+			->set_path( 'lib/frontend/css/sidebar_slider.css' )
 			->set_inline( true );
 
 		// Register Scripts
@@ -144,16 +144,16 @@ class sv_header extends init {
 	protected function router( array $settings ): string {
 		if ( $settings['template'] ) {
 			switch ( $settings['template'] ) {
-				case 'home':
+				case 'slider':
 					$template = array(
-						'name'      => 'home',
+						'name'      => 'slider',
 						'scripts'   => array(
 							$this->scripts_queue[ 'default' ]->set_inline( $settings['inline'] ),
-							$this->scripts_queue[ 'home' ]->set_inline( $settings['inline'] ),
+							$this->scripts_queue[ 'slider' ]->set_inline( $settings['inline'] ),
 							$this->scripts_queue[ 'navigation_default' ]->set_inline( $settings['inline'] ),
-							$this->scripts_queue[ 'navigation_home' ]->set_inline( $settings['inline'] ),
+							$this->scripts_queue[ 'navigation_slider' ]->set_inline( $settings['inline'] ),
 							$this->scripts_queue[ 'sidebar_default' ]->set_inline( $settings['inline'] ),
-							$this->scripts_queue[ 'sidebar_home' ]->set_inline( $settings['inline'] ),
+							$this->scripts_queue[ 'sidebar_slider' ]->set_inline( $settings['inline'] ),
 							$this->scripts_queue[ 'navigation_mobile' ],
 						),
 					);
