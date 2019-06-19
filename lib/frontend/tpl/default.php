@@ -13,7 +13,7 @@
 		&& isset( $this->get_root()->sv_posts )
 		&& isset( $this->get_root()->sv_slick )
 	) {
-		if ( is_home() && $this->get_root()->sv_content->get_setting( 'home_slider' )->run_type()->get_data() ) {
+		if ( is_home() && $this->get_root()->sv_content->get_setting( 'home_slider' )->run_type()->get_data() !== '1' ) {
 			$shortcode = do_shortcode( '[sv_posts slider="1" image="1" show_image="1"]' );
 		} else {
 			$shortcode = do_shortcode( '[sv_posts slider="1" image="1" show_image="1"]' );
