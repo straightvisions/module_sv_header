@@ -191,14 +191,22 @@ class sv_header extends init {
 
 		return $this->load_template( $template, $settings );
 	}
-
 	// Loads the templates
 	protected function load_template( array $template, array $settings ): string {
 		ob_start();
-		foreach ( $template['scripts'] as $script ) {
+		foreach ( $template['scripts'] as $script_name =>  $script ) {
+			if(
+			(
+				$script->get_ID() == 'navigation_default' ||
+				$script->get_ID() == 'navigation_mobile'
+			) &&
+				$this->get_root()->get_module( 'sv_navigation' ) &&
+				!$this->get_root()->get_module( 'sv_navigation' )->has_items($this->get_module_name())){
+				continue;
+			}
 			$script->set_is_enqueued();
 		}
-
+		
 		// Loads the template
 		include ( $this->get_path('lib/frontend/tpl/' . $template['name'] . '.php' ) );
 		$output							        = ob_get_contents();
