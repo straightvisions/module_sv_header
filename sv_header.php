@@ -104,11 +104,11 @@ class sv_header extends init {
 	}
 
 	protected function register_navs(): sv_header {
-		if ( isset( $this->get_root()->sv_navigation ) ) {
-			$this->get_root()
-				->sv_navigation
+		if ( $this->get_module('sv_navigation') ) {
+			$this->get_module('sv_navigation')
 				->create( $this )
 				->set_desc( __( 'Primary Menu', 'straightvisions_100' ) )
+				->set_location('primary')
 				->load_nav();
 		}
 
@@ -116,9 +116,8 @@ class sv_header extends init {
 	}
 
 	protected function register_sidebars(): sv_header {
-		if ( isset( $this->get_root()->sv_sidebar ) ) {
-			$this->get_root()
-				 ->sv_sidebar
+		if ( $this->get_module('sv_sidebar') ) {
+			$this->get_module('sv_sidebar')
 				 ->create( $this )
 				 ->set_title( __( 'Header', 'straightvisions_100' ) )
 				 ->set_desc( __( 'Widgets in this area will be shown in the header, next to the navigation.', 'straightvisions_100' ) )
@@ -201,7 +200,7 @@ class sv_header extends init {
 				$script->get_ID() == 'navigation_mobile'
 			) &&
 				$this->get_root()->get_module( 'sv_navigation' ) &&
-				!$this->get_root()->get_module( 'sv_navigation' )->has_items($this->get_module_name())){
+				!$this->get_root()->get_module( 'sv_navigation' )->has_items($this->get_module_name().'_primary')){
 				continue;
 			}
 			$script->set_is_enqueued();
