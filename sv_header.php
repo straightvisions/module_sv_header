@@ -1,10 +1,10 @@
 <?php
-namespace sv_100;
+namespace sv100;
 
 /**
  * @version         1.00
  * @author			straightvisions GmbH
- * @package			sv_100
+ * @package			sv100
  * @copyright		2017 straightvisions GmbH
  * @link			https://straightvisions.com
  * @since			1.0
@@ -15,7 +15,7 @@ class sv_header extends init {
 	public function init() {
 		// Module Info
 		$this->set_module_title( 'SV Header' );
-		$this->set_module_desc( __( 'This module gives the ability to display the header via the "[sv_header]" shortcode.', 'straightvisions-100' ) );
+		$this->set_module_desc( __( 'This module gives the ability to display the header via the "[sv_header]" shortcode.', 'sv100' ) );
 		
 		$this->register_scripts()->register_navs()->register_sidebars();
 		
@@ -26,10 +26,9 @@ class sv_header extends init {
 	}
 	
 	protected function first_load(): sv_header {
-		$this->get_root()
-			->sv_navigation
-			->create_menu( $this )
-			->set_menu_name( __( 'Main Menu', 'straightvisions-100' ) )
+		$this->get_module( 'sv_navigation' )
+			->create_menu( $this, 'primary' )
+			->set_menu_name( __( 'Main Menu', 'sv100' ) )
 			->set_menu_item( array(
 			   'menu-item-title'	=> 'Home',
 			   'menu-item-type'		=> 'custom',
@@ -50,8 +49,8 @@ class sv_header extends init {
 	
 	public function add_widgets() {
 		$this->get_root()->sv_sidebar
-			->clear_sidebar( 'sv_100_sv_sidebar_sv_header' )
-			->add_widget_to_sidebar( 'search', 'sv_100_sv_sidebar_sv_header' );
+			->clear_sidebar( 'sv100_sv_sidebar_sv_header' )
+			->add_widget_to_sidebar( 'search', 'sv100_sv_sidebar_sv_header' );
 	}
 
 	protected function register_scripts() :sv_header {
@@ -88,7 +87,7 @@ class sv_header extends init {
 
 		$this->scripts_queue['sidebar_slider']			= static::$scripts
 			->create( $this )
-			->set_ID( 'sidebar_home' )
+			->set_ID( 'sidebar_slider' )
 			->set_path( 'lib/frontend/css/sidebar_slider.css' )
 			->set_inline( true );
 
@@ -104,11 +103,11 @@ class sv_header extends init {
 	}
 
 	protected function register_navs(): sv_header {
-		if ( $this->get_module('sv_navigation') ) {
-			$this->get_module('sv_navigation')
+		if ( $this->get_module( 'sv_navigation' ) ) {
+			$this->get_module( 'sv_navigation' )
 				->create( $this )
-				->set_desc( __( 'Primary Menu', 'straightvisions-100' ) )
-				->set_location('primary')
+				->set_desc( __( 'Primary Menu', 'sv100' ) )
+				->set_location( 'primary' )
 				->load_nav();
 		}
 
@@ -116,11 +115,11 @@ class sv_header extends init {
 	}
 
 	protected function register_sidebars(): sv_header {
-		if ( $this->get_module('sv_sidebar') ) {
-			$this->get_module('sv_sidebar')
+		if ( $this->get_module( 'sv_sidebar' ) ) {
+			$this->get_module( 'sv_sidebar' )
 				 ->create( $this )
-				 ->set_title( __( 'Header', 'straightvisions-100' ) )
-				 ->set_desc( __( 'Widgets in this area will be shown in the header, next to the navigation.', 'straightvisions-100' ) )
+				 ->set_title( __( 'Header', 'sv100' ) )
+				 ->set_desc( __( 'Widgets in this area will be shown in the header, next to the navigation.', 'sv100' ) )
 				 ->load_sidebar();
 		}
 
@@ -200,7 +199,7 @@ class sv_header extends init {
 				$script->get_ID() == 'navigation_mobile'
 			) &&
 				$this->get_root()->get_module( 'sv_navigation' ) &&
-				!$this->get_root()->get_module( 'sv_navigation' )->has_items($this->get_module_name().'_primary')){
+				! $this->get_root()->get_module( 'sv_navigation' )->has_items( $this->get_module_name() . '_primary' ) ) {
 				continue;
 			}
 			$script->set_is_enqueued();

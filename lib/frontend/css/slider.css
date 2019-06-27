@@ -1,12 +1,12 @@
 /* Breakpoints */
 @media ( min-width: 850px ) {
-	.sv_100_sv_header_slider {
+	.sv100_sv_header_slider {
 		position: absolute;
 		background-color: transparent;
 		box-shadow: none;
 	}
 
-	.sv_100_sv_header_slider .sv_100_sv_header_branding {
+	.sv100_sv_header_slider .sv100_sv_header_branding {
 		color: rgb( var( --sv-100-color-contrast ) );
 	}
 }
