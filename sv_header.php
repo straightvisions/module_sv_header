@@ -15,7 +15,7 @@ class sv_header extends init {
 	public function init() {
 		// Module Info
 		$this->set_module_title( 'SV Header' );
-		$this->set_module_desc( __( 'This module gives the ability to display the header via the "[sv_header]" shortcode.', 'straightvisions_100' ) );
+		$this->set_module_desc( __( 'This module gives the ability to display the header via the "[sv_header]" shortcode.', 'straightvisions-100' ) );
 		
 		$this->register_scripts()->register_navs()->register_sidebars();
 		
@@ -29,7 +29,7 @@ class sv_header extends init {
 		$this->get_root()
 			->sv_navigation
 			->create_menu( $this )
-			->set_menu_name( __( 'Main Menu', 'straightvisions_100' ) )
+			->set_menu_name( __( 'Main Menu', 'straightvisions-100' ) )
 			->set_menu_item( array(
 			   'menu-item-title'	=> 'Home',
 			   'menu-item-type'		=> 'custom',
@@ -107,7 +107,7 @@ class sv_header extends init {
 		if ( $this->get_module('sv_navigation') ) {
 			$this->get_module('sv_navigation')
 				->create( $this )
-				->set_desc( __( 'Primary Menu', 'straightvisions_100' ) )
+				->set_desc( __( 'Primary Menu', 'straightvisions-100' ) )
 				->set_location('primary')
 				->load_nav();
 		}
@@ -119,8 +119,8 @@ class sv_header extends init {
 		if ( $this->get_module('sv_sidebar') ) {
 			$this->get_module('sv_sidebar')
 				 ->create( $this )
-				 ->set_title( __( 'Header', 'straightvisions_100' ) )
-				 ->set_desc( __( 'Widgets in this area will be shown in the header, next to the navigation.', 'straightvisions_100' ) )
+				 ->set_title( __( 'Header', 'straightvisions-100' ) )
+				 ->set_desc( __( 'Widgets in this area will be shown in the header, next to the navigation.', 'straightvisions-100' ) )
 				 ->load_sidebar();
 		}
 
