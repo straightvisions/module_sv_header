@@ -1,2 +1,2 @@
 <?php
-include('default.php');
+include( 'default.php' );

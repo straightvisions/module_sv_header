@@ -1,5 +1,5 @@
 /* Mobile Header */
-.sv_100_sv_header {
+.sv100_sv_header {
 	background: rgb( var( --sv-100-color-bg-primary ) );
 	box-shadow: 0 0 10px 0 rgba( 0, 0, 0, 0.1 );
 	z-index: 1000;
@@ -8,12 +8,12 @@
 }
 
 @media ( min-width: 850px ) {
-	.sv_100_sv_header {
+	.sv100_sv_header {
 		height: 100px;
 	}
 }
 
-.sv_100_sv_header_bar {
+.sv100_sv_header_bar {
 	margin: 0 auto;
 	display: flex;
 	flex-direction: row;
@@ -26,7 +26,7 @@
 	transition: max-width .25s ease;
 }
 
-.sv_100_sv_header_bar .sv_100_sv_header_branding {
+.sv100_sv_header_bar .sv100_sv_header_branding {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
@@ -37,31 +37,25 @@
 	transition: color .25s ease;
 }
 
-.sv_100_sv_header_bar .sv_100_sv_header_branding .sv_100_sv_header_website_name {
+.sv100_sv_header_bar .sv100_sv_header_branding .sv100_sv_header_website_name {
 	margin: 0;
 	line-height: 100%;
 	font-size: 1.5rem;
 	font-weight: 400;
 }
 
-@media ( min-width: 850px ) {
-	.sv_100_sv_header_bar .sv_100_sv_header_branding .sv_100_sv_header_website_name {
-		font-size: 2rem;
-	}
-}
-
-.sv_100_sv_header_bar .sv_100_sv_header_website_desc {
+.sv100_sv_header_bar .sv100_sv_header_website_desc {
 	font-size: .8rem;
 	margin: .5em 0 0 0;
 	line-height: 100%;
 }
 
-.sv_100_sv_header_bar .sv_100_sv_header_branding:hover,
-.sv_100_sv_header_bar .sv_100_sv_header_branding:focus {
-	color: rgb( var( --sv-100-color-highlight ) );
+.sv100_sv_header_bar .sv100_sv_header_branding:hover,
+.sv100_sv_header_bar .sv100_sv_header_branding:focus {
+	color: rgb( var( --sv100_sv_color-highlight ) );
 }
 
-.sv_100_sv_header_bar .sv_100_sv_header_branding > img {
+.sv100_sv_header_bar .sv100_sv_header_branding > img {
 	height: 100%;
 	width: auto;
 	max-height: 40px;
@@ -69,27 +63,27 @@
 
 /* Breakpoints */
 @media ( min-width: 850px ) {
-	.sv_100_sv_header {
+	.sv100_sv_header {
 		position: relative;
 	}
 
-	.sv_100_sv_header_bar {
+	.sv100_sv_header_bar {
 		max-width: var( --width-mb );
 	}
 
-	.sv_100_sv_header_bar .sv_100_sv_logo {
+	.sv100_sv_header_bar .sv100_sv_logo {
 		max-height: 60px;
 	}
 }
 
 @media ( min-width: 1050px ) {
-	.sv_100_sv_header_bar {
+	.sv100_sv_header_bar {
 		max-width: var( --width-dt );
 	}
 }
 
 @media ( min-width: 1350px ) {
-	.sv_100_sv_header_bar {
+	.sv100_sv_header_bar {
 		max-width: var( --width-lg );
 	}
 }
