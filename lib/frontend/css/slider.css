@@ -7,6 +7,6 @@
 	}
 
 	.sv100_sv_header_slider .sv100_sv_header_branding {
-		color: rgb( var( --sv-100-color-contrast ) );
+		color: rgb( var( --sv100_sv_color-contrast ) );
 	}
 }

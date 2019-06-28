@@ -32,7 +32,7 @@ class sv_header extends init {
 			->set_menu_item( array(
 			   'menu-item-title'	=> 'Home',
 			   'menu-item-type'		=> 'custom',
-			   'menu-item-url'		=> $_SERVER['REQUEST_URI'],
+			   'menu-item-url'		=> get_home_url(),
 			   'menu-item-status'	=> 'publish',
 		   	) )
 			->set_menu_item( array(
@@ -55,19 +55,19 @@ class sv_header extends init {
 
 	protected function register_scripts() :sv_header {
 		// Register Styles
-		$this->scripts_queue['default']			= static::$scripts
+		$this->scripts_queue['default']					= static::$scripts
 			->create( $this )
 			->set_ID( 'default' )
 			->set_path( 'lib/frontend/css/default.css' )
 			->set_inline( true );
 
-		$this->scripts_queue['slider']			= static::$scripts
+		$this->scripts_queue['slider']					= static::$scripts
 			->create( $this )
 			->set_ID( 'slider' )
 			->set_path( 'lib/frontend/css/slider.css' )
 			->set_inline( true );
 
-		$this->scripts_queue['navigation_default']			= static::$scripts
+		$this->scripts_queue['navigation_default']		= static::$scripts
 			->create( $this )
 			->set_ID( 'navigation_default' )
 			->set_path( 'lib/frontend/css/navigation_default.css' )
@@ -79,7 +79,7 @@ class sv_header extends init {
 			->set_path( 'lib/frontend/css/navigation_slider.css' )
 			->set_inline( true );
 
-		$this->scripts_queue['sidebar_default']			    = static::$scripts
+		$this->scripts_queue['sidebar_default']			= static::$scripts
 			->create( $this )
 			->set_ID( 'sidebar_default' )
 			->set_path( 'lib/frontend/css/sidebar_default.css' )
@@ -92,7 +92,7 @@ class sv_header extends init {
 			->set_inline( true );
 
 		// Register Scripts
-		$this->scripts_queue['navigation_mobile']			= static::$scripts
+		$this->scripts_queue['navigation_mobile']		= static::$scripts
 			->create( $this )
 			->set_ID( 'navigation_mobile' )
 			->set_path( 'lib/frontend/js/navigation_mobile.js' )
@@ -193,15 +193,14 @@ class sv_header extends init {
 	protected function load_template( array $template, array $settings ): string {
 		ob_start();
 		foreach ( $template['scripts'] as $script_name =>  $script ) {
-			if(
-			(
-				$script->get_ID() == 'navigation_default' ||
-				$script->get_ID() == 'navigation_mobile'
-			) &&
-				$this->get_root()->get_module( 'sv_navigation' ) &&
-				! $this->get_root()->get_module( 'sv_navigation' )->has_items( $this->get_module_name() . '_primary' ) ) {
+			if (
+				( $script->get_ID() == 'navigation_default' || $script->get_ID() == 'navigation_mobile' )
+				&& $this->get_module( 'sv_navigation' )
+				&& ! $this->get_module( 'sv_navigation' )->has_items( $this->get_module_name() . '_primary' )
+			) {
 				continue;
 			}
+			
 			$script->set_is_enqueued();
 		}
 		

@@ -8,39 +8,35 @@
 
 <?php
 	// Checks if slider has posts and is home
-	if (
-		$settings['template'] === 'slider'
-		&& isset( $this->get_root()->sv_posts )
-		&& isset( $this->get_root()->sv_slick )
-	) {
-		if ( is_home() && $this->get_root()->sv_content->get_setting( 'home_slider' )->run_type()->get_data() !== '1' ) {
-			$shortcode = do_shortcode( '[sv_posts slider="1" image="1" show_image="1"]' );
-		} else {
-			$shortcode = do_shortcode( '[sv_posts slider="1" image="1" show_image="1"]' );
-		}
-	}
+	$slider_support = $settings['template'] === 'slider' ? true : false;
 ?>
 
 <body <?php body_class(); ?>>
-<header class="<?php echo $this->get_prefix(); echo isset( $shortcode ) && ! empty( $shortcode ) ? ' ' . $this->get_prefix( 'slider' ) : ''; ?>">
+<header class="<?php echo $this->get_prefix(); echo $slider_support ? ' ' . $this->get_prefix( 'slider' ) : ''; ?>">
     <div class="<?php echo $this->get_prefix( 'bar' ); ?>">
         <a href="<?php echo home_url(); ?>" class="<?php echo $this->get_prefix( 'branding' ); ?>">
 			<?php
-				if ( $this->get_module('sv_logo')) {
-					echo $this->get_module('sv_logo')->load();
+				if (
+					$this->get_module( 'sv_logo' )
+					&& $this->get_module( 'sv_logo' )->get_setting( 'primary' )->run_type()->get_data()
+					&& ! is_array( $this->get_module( 'sv_logo' )->get_setting( 'primary' )->run_type()->get_data()  )
+				) {
+					echo $this->get_module( 'sv_logo' )->load();
 				} else {
 					echo '<h3 class="' . $this->get_prefix( 'website_name' ) .'">' . get_bloginfo( 'name' ) . '</h2>';
 					
+					/* @info Disabled because often the name or desc are too long
 					if ( ! empty( get_bloginfo( 'description' ) ) ) {
 						echo '<h6 class="' . $this->get_prefix( 'website_desc' ) .'">' . get_bloginfo( 'description' ) . '</h2>';
 					}
+					*/
 				}
 			?>
         </a>
 		<?php
 			echo $this->get_root()->get_module( 'sv_navigation' )
 				? $this->get_root()->get_module( 'sv_navigation' )->load( array(
-					'location' 		=> $this->get_module_name(),
+					'location' 		=> $this->get_module_name() . '_primary',
 					'show_images'	=> true,
 				) )
 				: '';

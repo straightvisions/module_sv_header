@@ -44,12 +44,6 @@
 	font-weight: 400;
 }
 
-@media ( min-width: 850px ) {
-	.sv100_sv_header_bar .sv100_sv_header_branding .sv100_sv_header_website_name {
-		font-size: 2rem;
-	}
-}
-
 .sv100_sv_header_bar .sv100_sv_header_website_desc {
 	font-size: .8rem;
 	margin: .5em 0 0 0;
@@ -58,7 +52,7 @@
 
 .sv100_sv_header_bar .sv100_sv_header_branding:hover,
 .sv100_sv_header_bar .sv100_sv_header_branding:focus {
-	color: rgb( var( --sv-100-color-highlight ) );
+	color: rgb( var( --sv100_sv_color-highlight ) );
 }
 
 .sv100_sv_header_bar .sv100_sv_header_branding > img {
