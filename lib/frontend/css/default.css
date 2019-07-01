@@ -56,7 +56,7 @@
 }
 
 .sv100_sv_header_bar .sv100_sv_header_branding > img {
-	height: 100%;
+	height: auto;
 	width: auto;
 	max-height: 40px;
 }

@@ -53,7 +53,7 @@
 				->add_widget_to_sidebar( 'search', 'sv100_sv_sidebar_sv_header' );
 		}
 	
-		protected function register_scripts() :sv_header {
+		protected function register_scripts(): sv_header {
 			// Register Styles
 			$this->scripts_queue['default']					= static::$scripts
 				->create( $this )
