@@ -19,10 +19,11 @@
 			
 			$this->register_scripts()->register_navs()->register_sidebars();
 			
-			if ( $this->is_first_load() ) {
+			// @todo: make this optional and move it to companion plugins -> demo content is plugin territory!
+			/*if ( $this->is_first_load() ) {
 				add_action( 'wp_loaded', array( $this, 'add_widgets' ) );
 				$this->first_load();
-			}
+			}*/
 		}
 		
 		protected function first_load(): sv_header {

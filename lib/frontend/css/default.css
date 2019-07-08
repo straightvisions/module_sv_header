@@ -16,13 +16,14 @@
 .sv100_sv_header_bar {
 	margin: 0 auto;
 	display: flex;
+	justify-content: center;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	align-items: stretch;
 	width: 100%;
 	height: 100%;
-	padding-left: var( --padding );
-	padding-right: var( --padding );
+	padding-left: var( --sv100_sv_common-padding );
+	padding-right: var( --sv100_sv_common-padding );
 	transition: max-width .25s ease;
 }
 
@@ -30,7 +31,6 @@
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
-	margin-right: 25px;
 	color: rgb( var( --sv-100-color-primary ) );
 	text-decoration: none;
 	word-break: keep-all;
@@ -56,9 +56,10 @@
 }
 
 .sv100_sv_header_bar .sv100_sv_header_branding > img {
-	height: auto;
-	width: auto;
-	max-height: 40px;
+	height: 100%;
+	width: 100%;
+	object-fit: contain;
+	object-position: center;
 }
 
 /* Breakpoints */
@@ -68,7 +69,7 @@
 	}
 
 	.sv100_sv_header_bar {
-		max-width: var( --width-mb );
+		max-width: var( --sv100_sv_common-max-width-mb );
 	}
 
 	.sv100_sv_header_bar .sv100_sv_logo {
@@ -78,12 +79,12 @@
 
 @media ( min-width: 1050px ) {
 	.sv100_sv_header_bar {
-		max-width: var( --width-dt );
+		max-width: var( --sv100_sv_common-max-width-dt );
 	}
 }
 
 @media ( min-width: 1350px ) {
 	.sv100_sv_header_bar {
-		max-width: var( --width-lg );
+		max-width: var( --sv100_sv_common-max-width-lg );
 	}
 }
