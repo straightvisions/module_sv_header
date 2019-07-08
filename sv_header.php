@@ -15,9 +15,17 @@
 		public function init() {
 			// Module Info
 			$this->set_module_title( 'SV Header' );
-			$this->set_module_desc( __( 'This module gives the ability to display the header via the "[sv_header]" shortcode.', 'sv100' ) );
+			$this->set_module_desc( __( 'The header for your website.', 'sv100' ) );
 			
-			$this->register_scripts()->register_navs()->register_sidebars();
+			// Section Info
+			$this->set_section_title( __( 'Header', 'sv100' ) )
+				 ->set_section_desc( __( 'The header for your website.', 'sv100' ) )
+				 ->set_section_type( 'settings' )
+				 ->set_section_template_path( $this->get_path( 'lib/backend/tpl/settings.php' ) );
+			
+			$this->get_root()->add_section( $this );
+			
+			$this->load_settings()->register_scripts()->register_navs()->register_sidebars();
 			
 			// @todo: make this optional and move it to companion plugins -> demo content is plugin territory!
 			/*if ( $this->is_first_load() ) {
@@ -52,6 +60,12 @@
 			$this->get_root()->sv_sidebar
 				->clear_sidebar( 'sv100_sv_sidebar_sv_header' )
 				->add_widget_to_sidebar( 'search', 'sv100_sv_sidebar_sv_header' );
+		}
+		
+		protected function load_settings(): sv_header {
+			$this->settings_draft_font()->settings_draft_background();
+			
+			return $this;
 		}
 	
 		protected function register_scripts(): sv_header {
@@ -187,6 +201,12 @@
 					),
 				);
 			}
+			
+			$this->scripts_queue[ 'inline_config' ] = static::$scripts->create( $this )
+																	  ->set_ID('inline_config')
+																	  ->set_path( 'lib/frontend/css/config.php' )
+																	  ->set_inline(true)
+																	  ->set_is_enqueued();
 	
 			return $this->load_template( $template, $settings );
 		}
