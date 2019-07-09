@@ -1,6 +1,5 @@
 /* Mobile Header */
 .sv100_sv_header {
-	background: rgb( var( --sv-100-color-bg-primary ) );
 	box-shadow: 0 0 10px 0 rgba( 0, 0, 0, 0.1 );
 	z-index: 1000;
 	width: 100%;
@@ -29,6 +28,7 @@
 
 .sv100_sv_header_bar .sv100_sv_header_branding {
 	display: flex;
+	margin-right: 20px;
 	justify-content: center;
 	flex-direction: column;
 	color: rgb( var( --sv-100-color-primary ) );
@@ -57,7 +57,7 @@
 
 .sv100_sv_header_bar .sv100_sv_header_branding > img {
 	height: 100%;
-	width: 100%;
+	width: auto;
 	object-fit: contain;
 	object-position: center;
 }
