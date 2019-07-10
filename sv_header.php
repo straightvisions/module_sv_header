@@ -63,7 +63,53 @@
 		}
 		
 		protected function load_settings(): sv_header {
-			$this->settings_draft_font()->settings_draft_background();
+			// Header Text Settings
+			$this->get_settings_component( 'font_family','font_family' );
+			$this->get_settings_component( 'font_size','font_size' );
+			$this->get_settings_component( 'text_color','text_color' );
+			
+			// Header Background Settings
+			$this->get_settings_component( 'bg_color','background_color' );
+			$this->get_settings_component( 'bg_image','background_image' );
+			$this->get_settings_component( 'bg_media_size','background_media_size' );
+			$this->get_settings_component( 'bg_position','background_position' );
+			$this->get_settings_component( 'bg_size','background_size' );
+			$this->get_settings_component( 'bg_fit','background_fit' );
+			$this->get_settings_component( 'bg_repeat','background_repeat' );
+			$this->get_settings_component( 'bg_attachment','background_attachment' );
+			
+			// Submenu Item Settings
+			$this->get_settings_component( 'text_deco_sub','text_decoration' );
+			$this->get_settings_component( 'font_size_sub','font_size' );
+			$this->get_settings_component( 'text_color_sub','text_color' );
+			$this->s['text_bg_active_sub'] =
+				$this->get_setting()
+					 ->set_ID( 'text_bg_active_sub' )
+					 ->set_title( __( 'Activate Background Color', 'sv100' ) )
+					 ->set_default_value( 0 )
+					 ->load_type( 'checkbox' );
+			$this->get_settings_component( 'text_bg_color_sub','background_color' );
+			
+			// Submenu Background Settings
+			$this->get_settings_component( 'bg_color_sub','background_color' );
+			$this->get_settings_component( 'bg_image_sub','background_image' );
+			$this->get_settings_component( 'bg_media_size_sub','background_media_size' );
+			$this->get_settings_component( 'bg_position_sub','background_position' );
+			$this->get_settings_component( 'bg_size_sub','background_size' );
+			$this->get_settings_component( 'bg_fit_sub','background_fit' );
+			$this->get_settings_component( 'bg_repeat_sub','background_repeat' );
+			$this->get_settings_component( 'bg_attachment_sub','background_attachment' );
+			
+			// Submenu Item Settings (Hover/Focus)
+			$this->get_settings_component( 'text_deco_sub_hover','text_decoration' );
+			$this->get_settings_component( 'text_color_sub_hover','text_color' );
+			$this->s['text_bg_active_sub_hover'] =
+				$this->get_setting()
+					 ->set_ID( 'text_bg_active_sub_hover' )
+					 ->set_title( __( 'Activate Background Color', 'sv100' ) )
+					 ->set_default_value( 0 )
+					 ->load_type( 'checkbox' );
+			$this->get_settings_component( 'text_bg_color_sub_hover','background_color' );
 			
 			return $this;
 		}
