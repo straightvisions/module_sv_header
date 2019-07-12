@@ -43,6 +43,11 @@
 
 .sv100_sv_header_bar .sv100_sv_header_branding a.sv100_sv_header_website_title {
 	margin: 0;
+	text-decoration: none;
+}
+
+.sv100_sv_header_bar .sv100_sv_header_branding a.sv100_sv_header_website_title h3 {
+	margin: 0;
 	line-height: 100%;
 	font-size: 1.5rem;
 	font-weight: 400;
