@@ -14,32 +14,33 @@
 <body <?php body_class(); ?>>
 <header class="<?php echo $this->get_prefix(); echo $slider_support ? ' ' . $this->get_prefix( 'slider' ) : ''; ?>">
     <div class="<?php echo $this->get_prefix( 'bar' ); ?>">
-        <a href="<?php echo home_url(); ?>" class="<?php echo $this->get_prefix( 'branding' ); ?>">
-			<?php
-				if (
-					$this->get_module( 'sv_logo' )
-					&& $this->get_module( 'sv_logo' )->get_setting( 'primary' )->run_type()->get_data()
-					&& ! is_array( $this->get_module( 'sv_logo' )->get_setting( 'primary' )->run_type()->get_data()  )
-				) {
-					echo $this->get_module( 'sv_logo' )->load();
-				} else {
-					echo '<h3 class="' . $this->get_prefix( 'website_name' ) .'">' . get_bloginfo( 'name' ) . '</h2>';
-					
-					/* @info Disabled because often the name or desc are too long
-					if ( ! empty( get_bloginfo( 'description' ) ) ) {
-						echo '<h6 class="' . $this->get_prefix( 'website_desc' ) .'">' . get_bloginfo( 'description' ) . '</h2>';
+		<?php if ( $this->get_setting( 'branding' )->run_type()->get_data() !== 'disabled' ) { ?>
+			<div class="<?php echo $this->get_prefix( 'branding' ); ?>">
+				<?php
+					if ( $this->get_setting( 'branding' )->run_type()->get_data() === 'logo' ) {
+						echo get_custom_logo();
 					}
-					*/
-				}
-			?>
-        </a>
-		<?php
-			echo $this->get_root()->get_module( 'sv_navigation' )
-				? $this->get_root()->get_module( 'sv_navigation' )->load( array(
-					'location' 		=> $this->get_module_name() . '_primary',
-					'show_images'	=> true,
-				) )
-				: '';
+					
+					if ( $this->get_setting( 'branding' )->run_type()->get_data() === 'title' ) {
+						$title = empty( $this->get_setting( 'branding_title' )->run_type()->get_data() )
+							? get_bloginfo( 'name' )
+							: $this->get_setting( 'branding_title' )->run_type()->get_data();
+						
+						echo '<a href="' . home_url() . '" class="' . $this->get_prefix( 'website_title' ) . '">
+							<h3>' . $title . '</h3>
+							</a>';
+					}
+				?>
+			</div>
+			<?php
+		}
+		
+		echo $this->get_root()->get_module( 'sv_navigation' )
+			? $this->get_root()->get_module( 'sv_navigation' )->load( array(
+				'location' 		=> $this->get_module_name() . '_primary',
+				'show_images'	=> true,
+			) )
+			: '';
 			
 			?>
         <aside class="<?php echo $this->get_prefix( 'sidebar' ); ?>">

@@ -63,7 +63,84 @@
 		}
 		
 		protected function load_settings(): sv_header {
-			$this->settings_draft_font()->settings_draft_background();
+			$branding_options = array(
+				'disabled' => __( 'No Branding', 'sv100' ),
+				'title'    => __( 'Title', 'sv100' ),
+			);
+			
+			if ( get_custom_logo() ) {
+				$branding_options['logo'] = 'Logo';
+			}
+			
+			// Header Branding Settings
+			$this->s['branding'] =
+				$this->get_setting()
+					 ->set_ID( 'branding' )
+					 ->set_title( __( 'Branding', 'sv100' ) )
+					 ->set_description( '<p>
+					' . __( 'Decide in which way you wanna display your brand/website in the header.', 'sv100' ) . '<br>
+					' . __( 'If you uploaded a logo in the Customizer, the option', 'sv100' )
+					. ' <strong>Logo</strong> ' . __( 'will be available.' ) . '
+					</p>' )
+					 ->set_default_value( 'title' )
+					 ->load_type( 'select' )
+					 ->set_options( $branding_options );
+			
+			$this->s['branding_title'] =
+				$this->get_setting()
+					 ->set_ID( 'branding_title' )
+					 ->set_title( __( 'Title Text', 'sv100' ) )
+					 ->set_description( __( 'On default the title will be your Website title, but you can change the title that will be displayed in your header.', 'sv100' ) )
+					 ->set_default_value( get_bloginfo( 'name' ) )
+					 ->load_type( 'text' );
+			
+			// Header Text Settings
+			$this->get_settings_component( 'font_family','font_family' );
+			$this->get_settings_component( 'font_size','font_size', 16 );
+			$this->get_settings_component( 'text_color','text_color', '#1e1f22' );
+			
+			// Header Background Settings
+			$this->get_settings_component( 'bg_color','background_color', '#ffffff' );
+			$this->get_settings_component( 'bg_image','background_image' );
+			$this->get_settings_component( 'bg_media_size','background_media_size', 'large' );
+			$this->get_settings_component( 'bg_position','background_position', 'center top' );
+			$this->get_settings_component( 'bg_size','background_size', 0 );
+			$this->get_settings_component( 'bg_fit','background_fit', 'cover' );
+			$this->get_settings_component( 'bg_repeat','background_repeat', 'no-repeat' );
+			$this->get_settings_component( 'bg_attachment','background_attachment', 'fixed' );
+			
+			// Submenu Item Settings
+			$this->get_settings_component( 'text_deco_sub','text_decoration', 'none' );
+			$this->get_settings_component( 'font_size_sub','font_size', 14 );
+			$this->get_settings_component( 'text_color_sub','text_color', '#1e1f22' );
+			$this->s['text_bg_active_sub'] =
+				$this->get_setting()
+					 ->set_ID( 'text_bg_active_sub' )
+					 ->set_title( __( 'Activate Background Color', 'sv100' ) )
+					 ->set_default_value( 0 )
+					 ->load_type( 'checkbox' );
+			$this->get_settings_component( 'text_bg_color_sub','background_color', '#ffffff' );
+			
+			// Submenu Background Settings
+			$this->get_settings_component( 'bg_color_sub','background_color', '#ffffff' );
+			$this->get_settings_component( 'bg_image_sub','background_image' );
+			$this->get_settings_component( 'bg_media_size_sub','background_media_size', 'medium_large' );
+			$this->get_settings_component( 'bg_position_sub','background_position', 'center top' );
+			$this->get_settings_component( 'bg_size_sub','background_size', 0 );
+			$this->get_settings_component( 'bg_fit_sub','background_fit', 'cover' );
+			$this->get_settings_component( 'bg_repeat_sub','background_repeat', 'no-repeat' );
+			$this->get_settings_component( 'bg_attachment_sub','background_attachment', 'fixed' );
+			
+			// Submenu Item Settings (Hover/Focus)
+			$this->get_settings_component( 'text_deco_sub_hover','text_decoration', 'none' );
+			$this->get_settings_component( 'text_color_sub_hover','text_color', '#358ae9' );
+			$this->s['text_bg_active_sub_hover'] =
+				$this->get_setting()
+					 ->set_ID( 'text_bg_active_sub_hover' )
+					 ->set_title( __( 'Activate Background Color', 'sv100' ) )
+					 ->set_default_value( 1 )
+					 ->load_type( 'checkbox' );
+			$this->get_settings_component( 'text_bg_color_sub_hover','background_color', '#eaf3fd' );
 			
 			return $this;
 		}
