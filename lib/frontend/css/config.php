@@ -66,6 +66,9 @@
 <?php } ?>
 }
 
+.sv100_sv_header .sv100_sv_header_website_title,
+.sv100_sv_header .sv100_sv_header_website_title:hover,
+.sv100_sv_header .sv100_sv_header_website_title:focus,
 .sv100_sv_header ul.menu li > a,
 .sv100_sv_header ul.menu li:hover > a,
 .sv100_sv_header ul.menu li:focus > a {

@@ -3,6 +3,14 @@
 		?>
 		<div class="sv_section_description"><?php echo $module->get_section_desc(); ?></div>
 
+		<h3 class="divider"><?php _e( 'Header Branding', 'sv100' ); ?></h3>
+		<div class="sv_setting_flex">
+			<?php
+				echo $module->get_setting('branding')->run_type()->form();
+				echo $module->get_setting('branding_title')->run_type()->form();
+			?>
+		</div>
+		
 		<h3 class="divider"><?php _e( 'Header Text Settings', 'sv100' ); ?></h3>
 		<div class="sv_setting_flex">
 			<?php
@@ -66,7 +74,7 @@
 		</div>
 		<div class="sv_setting_flex">
 			<?php
-				echo $module->get_settings()['text_bg_active_sub']->run_type()->form();
+				echo $module->get_setting('text_bg_active_sub')->run_type()->form();
 				echo $module->get_settings_component( 'text_bg_color_sub' )->run_type()->form();
 			?>
 		</div>
@@ -76,7 +84,7 @@
 			<?php
 				echo $module->get_settings_component( 'text_deco_sub_hover' )->run_type()->form();
 				echo $module->get_settings_component( 'text_color_sub_hover' )->run_type()->form();
-				echo $module->get_settings()['text_bg_active_sub_hover']->run_type()->form();
+				echo $module->get_setting('text_bg_active_sub_hover')->run_type()->form();
 				echo $module->get_settings_component( 'text_bg_color_sub_hover' )->run_type()->form();
 			?>
 		</div>
