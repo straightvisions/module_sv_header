@@ -80,7 +80,7 @@
 					 ->set_description( '<p>
 					' . __( 'Decide in which way you wanna display your brand/website in the header.', 'sv100' ) . '<br>
 					' . __( 'If you uploaded a logo in the Customizer, the option', 'sv100' )
-					. ' <strong>Logo</strong> ' . __( 'will be available.' ) . '
+					. ' <strong>Logo</strong> ' . __( 'will be available.', 'sv100' ) . '
 					</p>' )
 					 ->set_default_value( 'title' )
 					 ->load_type( 'select' )
