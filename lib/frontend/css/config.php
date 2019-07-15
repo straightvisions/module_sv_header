@@ -1,4 +1,7 @@
 <?php
+	// Header Settings
+	$position					= $script->get_parent()->get_setting( 'position' )->run_type()->get_data();
+	
 	// Header Text Settings
 	$font_family				= $script->get_parent()->get_setting( 'font_family' )->run_type()->get_data();
 	
@@ -47,6 +50,7 @@
 
 /* Header */
 .sv100_sv_header {
+	position: <?php echo $position; ?>;
 	font-family: <?php echo ( $font ? '"' . $font['family'] . '", ' : '' ); ?>sans-serif;
 	font-weight: <?php echo ( $font ? '"' . $font['weight'] . '", ' : '400' ); ?>;
 	font-size: <?php echo $font_size; ?>px;

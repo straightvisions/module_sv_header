@@ -63,6 +63,9 @@
 		}
 		
 		protected function load_settings(): sv_header {
+			// Header Settings
+			$this->get_settings_component( 'position','position' );
+			
 			$branding_options = array(
 				'disabled' => __( 'No Branding', 'sv100' ),
 				'title'    => __( 'Title', 'sv100' ),
