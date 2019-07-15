@@ -13,6 +13,7 @@
 	
 	$font_size					= $script->get_parent()->get_setting( 'font_size' )->run_type()->get_data();
 	$text_color					= $script->get_parent()->get_setting( 'text_color' )->run_type()->get_data();
+	$color_highlight			= $script->get_parent()->get_setting( 'color_highlight' )->run_type()->get_data();
 	
 	// Header Background Settings
 	$bg_color					= $script->get_parent()->get_setting( 'bg_color' )->run_type()->get_data();
@@ -46,6 +47,12 @@
 	$text_color_sub_hover		= $script->get_parent()->get_setting( 'text_color_sub_hover' )->run_type()->get_data();
 	$text_bg_active_sub_hover	= $script->get_parent()->get_setting( 'text_bg_active_sub_hover' )->run_type()->get_data();
 	$text_bg_color_sub_hover	= $script->get_parent()->get_setting( 'text_bg_color_sub_hover' )->run_type()->get_data();
+	
+	// Mobile Settings
+	$menu_icon_closed			= $script->get_parent()->get_setting( 'menu_icon_closed' )->run_type()->get_data();
+	$menu_icon_closed_color		= $script->get_parent()->get_setting( 'menu_icon_closed_color' )->run_type()->get_data();
+	$menu_icon_open				= $script->get_parent()->get_setting( 'menu_icon_open' )->run_type()->get_data();
+	$menu_icon_open_color		= $script->get_parent()->get_setting( 'menu_icon_open_color' )->run_type()->get_data();
 ?>
 
 /* Header */
@@ -70,20 +77,21 @@
 <?php } ?>
 }
 
-.sv100_sv_header .sv100_sv_header_website_title,
-.sv100_sv_header .sv100_sv_header_website_title:hover,
-.sv100_sv_header .sv100_sv_header_website_title:focus,
-.sv100_sv_header ul.menu li > a,
-.sv100_sv_header ul.menu li:hover > a,
-.sv100_sv_header ul.menu li:focus > a {
+/* Header Branding */
+.sv100_sv_header .sv100_sv_header_website_title {
 	color: <?php echo $text_color; ?>;
 }
 
-/* Submenu */
-.sv100_sv_header ul.sub-menu {
+.sv100_sv_header .sv100_sv_header_website_title:hover,
+.sv100_sv_header .sv100_sv_header_website_title:focus {
+	color: <?php echo $color_highlight; ?>;
+}
+
+/* Menu */
+.sv100_sv_navigation_sv_header_primary {
 	background-color: <?php echo $bg_color_sub; ?>;
 <?php
-	if ( $bg_image_sub ) {
+if ( $bg_image_sub ) {
 	$bg_size_sub = $bg_size_sub > 0 ? $bg_size_sub . 'px' : $bg_fit_sub;
 	?>
 	background-image: url( '<?php echo wp_get_attachment_image_src( $bg_image_sub, $bg_media_size_sub )[0]; ?>' );
@@ -94,9 +102,56 @@
 <?php } ?>
 }
 
+@media ( min-width: 850px ) {
+	.sv100_sv_navigation_sv_header_primary {
+		background: transparent;
+	}
+}
+
+.sv100_sv_header .sv100_sv_navigation_sv_header_primary ul li > a {
+	font-family: <?php echo ( $font ? '"' . $font['family'] . '", ' : '' ); ?>sans-serif;
+}
+
+.sv100_sv_header ul.menu li > a,
+.sv100_sv_header ul.menu li:hover > a,
+.sv100_sv_header ul.menu li:focus > a {
+	color: <?php echo $text_color; ?>;
+}
+
+.sv100_sv_navigation_sv_header_primary ul.menu > li > a::after {
+	background: <?php echo $color_highlight; ?>;
+}
+
+/* Menu Icon */
+.sv100_sv_header button.sv100_sv_navigation_mobile_menu_toggle::before {
+	-webkit-mask-image: url( 'data:image/svg+xml;utf8,<?php echo $menu_icon_closed; ?>' );
+	background-color: <?php echo $menu_icon_closed_color; ?>;
+}
+
+.sv100_sv_header button.sv100_sv_navigation_mobile_menu_toggle.open::before {
+	-webkit-mask-image: url( 'data:image/svg+xml;utf8,<?php echo $menu_icon_open; ?>' );
+	background-color: <?php echo $menu_icon_open_color; ?>;
+}
+
+/* Submenu */
+@media ( min-width: 850px ) {
+	.sv100_sv_header ul.sub-menu {
+		background-color: <?php echo $bg_color_sub; ?>;
+	<?php
+		if ( $bg_image_sub ) {
+		$bg_size_sub = $bg_size_sub > 0 ? $bg_size_sub . 'px' : $bg_fit_sub;
+		?>
+		background-image: url( '<?php echo wp_get_attachment_image_src( $bg_image_sub, $bg_media_size_sub )[0]; ?>' );
+		background-position:<?php echo $bg_position_sub; ?>;
+		background-size:<?php echo $bg_size_sub; ?>;
+		background-repeat:<?php echo $bg_repeat_sub; ?>;
+		background-attachment:<?php echo $bg_attachment_sub; ?>;
+	<?php } ?>
+	}
+}
+
 /* Submenu Items */
 .sv100_sv_header ul.sub-menu li > a {
-	font-family: <?php echo ( $font ? '"' . $font['family'] . '", ' : '' ); ?>sans-serif;
 	font-weight: <?php echo ( $font ? '"' . $font['weight'] . '", ' : '400' ); ?>;
 	font-size: <?php echo $font_size_sub; ?>px;
 	color: <?php echo $text_color_sub; ?>;
@@ -109,4 +164,77 @@
 	color: <?php echo $text_color_sub_hover; ?>;
 	text-decoration: <?php echo $text_deco_sub_hover; ?>;
 	background-color: <?php echo $text_bg_active_sub_hover ? $text_bg_color_sub_hover : 'transparent'; ?>
+}
+
+/* Widgets */
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget a,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_archive li,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_categories li,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_meta li,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_recent_entries li,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_pages li,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_archive li a,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_categories li a,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_meta li a,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_recent_entries li a,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_pages li a,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_nav_menu ul > li {
+	color: <?php echo $text_color; ?>;
+}
+
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget a:hover,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_nav_menu ul.menu > li.menu-item-has-children:hover > a,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_nav_menu ul.menu > li.menu-item-has-children:focus > a,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_nav_menu ul.sub-menu > li:hover > a,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_nav_menu ul.sub-menu > li:focus > a {
+	color: <?php echo $color_highlight; ?>;
+}
+
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_archive li,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_categories li,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_meta li,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_recent_entries li,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_pages li,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_nav_menu ul.menu > li {
+	color: <?php echo $text_color_sub; ?>;
+	background-color: <?php echo $text_bg_active_sub ? $text_bg_color_sub : 'transparent'; ?>
+}
+
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_archive li:hover,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_archive li:focus,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_categories li:hover,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_categories li:focus,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_meta li:hover,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_meta li:focus,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_recent_entries li:hover,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_recent_entries li:focus,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_pages li:hover,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_pages li:focus,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_nav_menu ul.menu > li:hover,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_nav_menu ul.menu > li:focus {
+	background-color: <?php echo $text_bg_active_sub_hover ? $text_bg_color_sub_hover : 'transparent'; ?>;
+}
+
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_archive li:hover > a,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_archive li:focus > a,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_categories li:hover > a,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_categories li:focus > a,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_meta li:hover > a,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_meta li:focus > a,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_recent_entries li:hover > a,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_recent_entries li:focus > a,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_pages li:hover > a,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_pages li:focus > a,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_nav_menu ul.menu > li:hover > a,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_nav_menu ul.menu > li:focus > a {
+	color: <?php echo $text_color_sub_hover; ?>;
+}
+
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_archive select,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_categories select,
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_search input[type="search"],
+.sv100_sv_header_sidebar .sv100_sv_sidebar .widget_search input::placeholder {
+	color: <?php echo $text_color_sub; ?>;
+	border-bottom-color: <?php echo $text_color_sub; ?>;
 }
