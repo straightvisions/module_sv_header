@@ -101,6 +101,13 @@
 			$this->get_settings_component( 'font_family','font_family' );
 			$this->get_settings_component( 'font_size','font_size', 16 );
 			$this->get_settings_component( 'text_color','text_color', '#1e1f22' );
+			$this->s['color_highlight'] =
+				$this->get_setting()
+					 ->set_ID( 'color_highlight' )
+					 ->set_title( __( 'Highlight Color', 'sv100' ) )
+					 ->set_description( __( 'Defines the text color of the branding title and the underline color of the menu item on hover/focus.', 'sv100' ) )
+					 ->set_default_value( '#358ae9' )
+					 ->load_type( 'color' );
 			
 			// Header Background Settings
 			$this->get_settings_component( 'bg_color','background_color', '#ffffff' );
@@ -144,6 +151,41 @@
 					 ->set_default_value( 1 )
 					 ->load_type( 'checkbox' );
 			$this->get_settings_component( 'text_bg_color_sub_hover','background_color', '#eaf3fd' );
+			
+			$this->s['menu_icon_closed'] =
+				$this->get_setting()
+					 ->set_ID( 'menu_icon_closed' )
+					 ->set_title( __( 'Menu Icon (Closed)', 'sv100' ) )
+					 ->set_description(
+				'<p>' . __( 'The menu icon for the mobile menu, when it\'s open.', 'sv100' ) . '<br>'
+							. __( 'Please post for SVG embed code below.', 'sv100' ) . '</p>' )
+					 ->set_default_value( '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/></svg>' )
+					 ->load_type( 'textarea' );
+			
+			$this->s['menu_icon_closed_color'] =
+				$this->get_setting()
+					 ->set_ID( 'menu_icon_closed_color' )
+					 ->set_title( __( 'Menu Icon (Closed) Color', 'sv100' ) )
+					 ->set_default_value( '#1e1f22' )
+					 ->load_type( 'color' );
+			
+			$this->s['menu_icon_open'] =
+				$this->get_setting()
+					 ->set_ID( 'menu_icon_open' )
+					 ->set_title( __( 'Menu Icon (Open)', 'sv100' ) )
+					 ->set_description(
+					'<p>' . __( 'The menu icon for the mobile menu, when it\'s open.', 'sv100' ) . '<br>'
+							. __( 'Please post for SVG embed code below.', 'sv100' ) . '</p>'
+					 )
+					 ->set_default_value( '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>' )
+					 ->load_type( 'textarea' );
+			
+			$this->s['menu_icon_open_color'] =
+				$this->get_setting()
+					 ->set_ID( 'menu_icon_open_color' )
+					 ->set_title( __( 'Menu Icon (Open) Color', 'sv100' ) )
+					 ->set_default_value( '#1e1f22' )
+					 ->load_type( 'color' );
 			
 			return $this;
 		}

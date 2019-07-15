@@ -23,8 +23,14 @@ body.admin-bar .sv100_sv_navigation_sv_header_primary {
 }
 
 .sv100_sv_header.open,
-.sv100_sv_header.open .sv100_sv_navigation_sv_header_primary {
+.sv100_sv_header .sv100_sv_navigation_sv_header_primary {
 	position: fixed;
+}
+
+@media ( min-width: 850px ) {
+	.sv100_sv_header .sv100_sv_navigation_sv_header_primary {
+		position: static;
+	}
 }
 
 .sv100_sv_header.open .sv100_sv_navigation_sv_header_primary {
@@ -45,13 +51,11 @@ body.admin-bar .sv100_sv_navigation_sv_header_primary {
 .sv100_sv_navigation_sv_header_primary ul li {
 	list-style-type: none;
 	display: block;
-	color: rgb( var( --sv100_sv_color-primary ) );
 	transition: color .25s ease, background-color .25s ease;
 }
 
 .sv100_sv_navigation_sv_header_primary ul li a {
 	text-decoration: none;
-	color: rgb( var( --sv100_sv_color-primary ) );
 	font-weight: 600;
 	display: block;
 	padding: 10px 20px;
@@ -63,24 +67,12 @@ body.admin-bar .sv100_sv_navigation_sv_header_primary {
 	word-break: keep-all;
 }
 
-.sv100_sv_navigation_sv_header_primary ul li:hover,
-.sv100_sv_navigation_sv_header_primary ul li:focus {
-	color: rgb( var( --sv100_sv_color-highlight ) );
-	background-color: rgba( var( --sv100_sv_color-highlight ), .1 );
-}
-
-.sv100_sv_navigation_sv_header_primary ul li:hover > a,
-.sv100_sv_navigation_sv_header_primary ul li:focus > a {
-	color: rgb( var( --sv100_sv_color-highlight ) );
-}
-
 /* Sub Menus */
 .sv100_sv_navigation_sv_header_primary ul.sub-menu {
 	position: relative;
 	display: flex;
 	max-height: 0;
 	overflow: hidden;
-	background: rgb( var( --sv100_sv_color-bg-secondary ) );
 	flex-direction: column;
 	transition: max-height 1s cubic-bezier( 0, 1, 0, 1 );
 	-webkit-transition: max-height 1s cubic-bezier( 0, 1, 0, 1 );
@@ -93,13 +85,11 @@ body.admin-bar .sv100_sv_navigation_sv_header_primary {
 
 .sv100_sv_navigation_sv_header_primary ul.sub-menu li {
 	width: 100%;
-	color: rgb( var( --sv100_sv_color-primary ) );
 	background-clip: content-box;
 	transition: color .25s ease, background-color .25s ease;
 }
 
 .sv100_sv_navigation_sv_header_primary ul.sub-menu li:hover {
-	background: rgba( var( --sv100_sv_color-highlight ), .1 );
 	color: #2dcecb;
 	background-clip: content-box;
 }
@@ -115,10 +105,6 @@ body.admin-bar .sv100_sv_navigation_sv_header_primary {
 
 .sv100_sv_navigation_sv_header_primary ul.sub-menu li ul.sub-menu li > a {
 	padding: 10px 30px;
-}
-
-.sv100_sv_navigation_sv_header_primary ul.sub-menu li:hover > a {
-	color: rgb( var( --sv100_sv_color-highlight ) );
 }
 
 /* Navigation Images */
@@ -144,18 +130,20 @@ button.sv100_sv_navigation_mobile_menu_toggle {
 	cursor: pointer;
 	color: transparent;
 	background-color: transparent;
-	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/></svg>');
-	background-position: center;
-	background-repeat: no-repeat;
 	padding: 0;
 	width: 18px;
 	height: 80px;
-	background-size: 18px;
-	transition: background-image 1s ease;
 }
 
-button.sv100_sv_navigation_mobile_menu_toggle.open {
-	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>');
+button.sv100_sv_navigation_mobile_menu_toggle::before {
+	content: '';
+	display: block;
+	height: 100%;
+	width: 100%;
+	-webkit-mask-size: 100%;
+	-webkit-mask-position: center;
+	-webkit-mask-repeat: no-repeat;
+	transition: -webkit-mask-image .5s ease-in-out;
 }
 
 /* Breakpoints */
@@ -210,13 +198,11 @@ button.sv100_sv_navigation_mobile_menu_toggle.open {
 		align-items: center;
 		display: flex;
 		position: relative;
-		color: rgb( var( --sv100_sv_color-primary ) );
 		transition: color .25s ease, background-color .25s ease;
 	}
 
 	.sv100_sv_navigation_sv_header_primary ul li a {
 		text-decoration: none;
-		color: rgb( var( --sv100_sv_color-primary ) );
 		font-weight: 600;
 		padding: 10px;
 	}
@@ -240,7 +226,6 @@ button.sv100_sv_navigation_mobile_menu_toggle.open {
 
 	.sv100_sv_navigation_sv_header_primary ul.menu > li > a::after {
 		height: 2px;
-		background: rgb( var( --sv100_sv_color-highlight ) );
 		content: '';
 		width: 0;
 		position: absolute;

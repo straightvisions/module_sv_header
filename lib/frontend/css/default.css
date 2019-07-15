@@ -23,7 +23,14 @@
 	height: 100%;
 	padding-left: var( --sv100_sv_common-padding );
 	padding-right: var( --sv100_sv_common-padding );
+	border-bottom: 1px solid rgba( 0, 0, 0, 0.1 );
 	transition: max-width .25s ease;
+}
+
+@media ( min-width: 850px ) {
+	.sv100_sv_header_bar {
+		border-bottom-color: transparent;
+	}
 }
 
 .sv100_sv_header_bar .sv100_sv_header_branding {
@@ -54,11 +61,6 @@
 	text-decoration: none;
 	word-break: keep-all;
 	transition: color .25s ease;
-}
-
-.sv100_sv_header_bar .sv100_sv_header_branding:hover,
-.sv100_sv_header_bar .sv100_sv_header_branding:focus {
-	color: rgb( var( --sv100_sv_color-highlight ) );
 }
 
 .sv100_sv_header_bar .sv100_sv_header_branding a.custom-logo-link {

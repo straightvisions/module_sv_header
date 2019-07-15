@@ -24,6 +24,7 @@
 				echo $module->get_settings_component( 'font_family' )->run_type()->form();
 				echo $module->get_settings_component( 'font_size' )->run_type()->form();
 				echo $module->get_settings_component( 'text_color' )->run_type()->form();
+				echo $module->get_settings_component( 'color_highlight' )->run_type()->form();
 			?>
 		</div>
 
@@ -93,6 +94,20 @@
 				echo $module->get_settings_component( 'text_color_sub_hover' )->run_type()->form();
 				echo $module->get_setting('text_bg_active_sub_hover')->run_type()->form();
 				echo $module->get_settings_component( 'text_bg_color_sub_hover' )->run_type()->form();
+			?>
+		</div>
+
+		<h3 class="divider"><?php _e( 'Mobile Settings', 'sv100' ); ?></h3>
+		<div class="sv_setting_flex">
+			<?php
+				echo $module->get_setting('menu_icon_closed')->run_type()->form();
+				echo $module->get_setting('menu_icon_closed_color')->run_type()->form();
+			?>
+		</div>
+		<div class="sv_setting_flex">
+			<?php
+				echo $module->get_setting('menu_icon_open')->run_type()->form();
+				echo $module->get_setting('menu_icon_open_color')->run_type()->form();
 			?>
 		</div>
 		
