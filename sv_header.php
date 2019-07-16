@@ -57,7 +57,7 @@
 		}
 		
 		public function add_widgets() {
-			$this->get_root()->sv_sidebar
+			$this->get_module( 'sv_sidebar' )
 				->clear_sidebar( 'sv100_sv_sidebar_sv_header' )
 				->add_widget_to_sidebar( 'search', 'sv100_sv_sidebar_sv_header' );
 		}
@@ -192,46 +192,32 @@
 	
 		protected function register_scripts(): sv_header {
 			// Register Styles
-			$this->scripts_queue['default']					= static::$scripts
-				->create( $this )
-				->set_ID( 'default' )
+			$this->get_script('default')
 				->set_path( 'lib/frontend/css/default.css' )
 				->set_inline( true );
 	
-			$this->scripts_queue['slider']					= static::$scripts
-				->create( $this )
-				->set_ID( 'slider' )
+			$this->get_script('slider')
 				->set_path( 'lib/frontend/css/slider.css' )
 				->set_inline( true );
 	
-			$this->scripts_queue['navigation_default']		= static::$scripts
-				->create( $this )
-				->set_ID( 'navigation_default' )
+			$this->get_script('navigation_default')
 				->set_path( 'lib/frontend/css/navigation_default.css' )
 				->set_inline( true );
 	
-			$this->scripts_queue['navigation_slider']		= static::$scripts
-				->create( $this )
-				->set_ID( 'navigation_slider' )
+			$this->get_script('navigation_slider')
 				->set_path( 'lib/frontend/css/navigation_slider.css' )
 				->set_inline( true );
 	
-			$this->scripts_queue['sidebar_default']			= static::$scripts
-				->create( $this )
-				->set_ID( 'sidebar_default' )
+			$this->get_script('sidebar_default')
 				->set_path( 'lib/frontend/css/sidebar_default.css' )
 				->set_inline( true );
 	
-			$this->scripts_queue['sidebar_slider']			= static::$scripts
-				->create( $this )
-				->set_ID( 'sidebar_slider' )
+			$this->get_script('sidebar_slider')
 				->set_path( 'lib/frontend/css/sidebar_slider.css' )
 				->set_inline( true );
 	
 			// Register Scripts
-			$this->scripts_queue['navigation_mobile']		= static::$scripts
-				->create( $this )
-				->set_ID( 'navigation_mobile' )
+			$this->get_script('navigation_mobile')
 				->set_path( 'lib/frontend/js/navigation_mobile.js' )
 				->set_type( 'js' )
 				->set_deps( array(  'jquery' ) );
@@ -284,13 +270,13 @@
 						$template = array(
 							'name'      => 'slider',
 							'scripts'   => array(
-								$this->scripts_queue[ 'default' ]->set_inline( $settings['inline'] ),
-								$this->scripts_queue[ 'slider' ]->set_inline( $settings['inline'] ),
-								$this->scripts_queue[ 'navigation_default' ]->set_inline( $settings['inline'] ),
-								$this->scripts_queue[ 'navigation_slider' ]->set_inline( $settings['inline'] ),
-								$this->scripts_queue[ 'sidebar_default' ]->set_inline( $settings['inline'] ),
-								$this->scripts_queue[ 'sidebar_slider' ]->set_inline( $settings['inline'] ),
-								$this->scripts_queue[ 'navigation_mobile' ],
+								$this->get_script('default')->set_inline( $settings['inline'] ),
+								$this->get_script('slider')->set_inline( $settings['inline'] ),
+								$this->get_script('navigation_default')->set_inline( $settings['inline'] ),
+								$this->get_script('navigation_slider')->set_inline( $settings['inline'] ),
+								$this->get_script('sidebar_default')->set_inline( $settings['inline'] ),
+								$this->get_script('sidebar_slider')->set_inline( $settings['inline'] ),
+								$this->get_script('navigation_mobile'),
 							),
 						);
 						break;
@@ -304,10 +290,10 @@
 						$template = array(
 							'name'      => 'default',
 							'scripts'   => array(
-								$this->scripts_queue[ 'default' ]->set_inline( $settings['inline'] ),
-								$this->scripts_queue[ 'navigation_default' ]->set_inline( $settings['inline'] ),
-								$this->scripts_queue[ 'sidebar_default' ]->set_inline( $settings['inline'] ),
-								$this->scripts_queue[ 'navigation_mobile' ],
+								$this->get_script('default')->set_inline( $settings['inline'] ),
+								$this->get_script('navigation_default')->set_inline( $settings['inline'] ),
+								$this->get_script('sidebar_default')->set_inline( $settings['inline'] ),
+								$this->get_script('navigation_mobile'),
 							),
 						);
 						break;
@@ -316,16 +302,15 @@
 				$template = array(
 					'name'      => 'default',
 					'scripts'   => array(
-						$this->scripts_queue[ 'default' ]->set_inline( $settings['inline'] ),
-						$this->scripts_queue[ 'navigation_default' ]->set_inline( $settings['inline'] ),
-						$this->scripts_queue[ 'sidebar_default' ]->set_inline( $settings['inline'] ),
-						$this->scripts_queue[ 'navigation_mobile' ],
+						$this->get_script('default')->set_inline( $settings['inline'] ),
+						$this->get_script('navigation_default')->set_inline( $settings['inline'] ),
+						$this->get_script('sidebar_default')->set_inline( $settings['inline'] ),
+						$this->get_script('navigation_mobile'),
 					),
 				);
 			}
 			
-			$this->scripts_queue[ 'inline_config' ] = static::$scripts->create( $this )
-																	  ->set_ID('inline_config')
+			$this->scripts_queue[ 'inline_config' ] = $this->get_script('inline_config')
 																	  ->set_path( 'lib/frontend/css/config.php' )
 																	  ->set_inline(true)
 																	  ->set_is_enqueued();
