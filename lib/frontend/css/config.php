@@ -13,7 +13,7 @@
 	
 	$font_size					= $script->get_parent()->get_setting( 'font_size' )->run_type()->get_data();
 	$text_color					= $script->get_parent()->get_setting( 'text_color' )->run_type()->get_data();
-	$color_highlight			= $script->get_parent()->get_setting( 'color_highlight' )->run_type()->get_data();
+	$highlight_color			= $script->get_parent()->get_setting( 'highlight_color' )->run_type()->get_data();
 	
 	// Header Background Settings
 	$bg_color					= $script->get_parent()->get_setting( 'bg_color' )->run_type()->get_data();
@@ -59,7 +59,7 @@
 .sv100_sv_header {
 	position: <?php echo $position; ?>;
 	font-family: <?php echo ( $font ? '"' . $font['family'] . '", ' : '' ); ?>sans-serif;
-	font-weight: <?php echo ( $font ? '"' . $font['weight'] . '", ' : '400' ); ?>;
+	font-weight: <?php echo ( $font ? $font['weight'] : '400' ); ?>;
 	font-size: <?php echo $font_size; ?>px;
 	color: <?php echo $text_color; ?>;
 	background-color: <?php echo $bg_color; ?>;
@@ -77,6 +77,20 @@
 <?php } ?>
 }
 
+<?php if ( $position === 'fixed' ) { ?>
+body.admin-bar .sv100_sv_header {
+	position: sticky;
+	top: 0;
+}
+
+@media ( min-width: 782px ) {
+	body.admin-bar .sv100_sv_header {
+		position: fixed;
+		top: 32px;
+	}
+}
+<?php } ?>
+
 /* Header Branding */
 .sv100_sv_header .sv100_sv_header_website_title {
 	color: <?php echo $text_color; ?>;
@@ -84,7 +98,7 @@
 
 .sv100_sv_header .sv100_sv_header_website_title:hover,
 .sv100_sv_header .sv100_sv_header_website_title:focus {
-	color: <?php echo $color_highlight; ?>;
+	color: <?php echo $highlight_color; ?>;
 }
 
 /* Menu */
@@ -119,7 +133,7 @@ if ( $bg_image_sub ) {
 }
 
 .sv100_sv_navigation_sv_header_primary ul.menu > li > a::after {
-	background: <?php echo $color_highlight; ?>;
+	background: <?php echo $highlight_color; ?>;
 }
 
 /* Menu Icon */
@@ -152,7 +166,7 @@ if ( $bg_image_sub ) {
 
 /* Submenu Items */
 .sv100_sv_header ul.sub-menu li > a {
-	font-weight: <?php echo ( $font ? '"' . $font['weight'] . '", ' : '400' ); ?>;
+	font-weight: <?php echo ( $font ? $font['weight'] : '400' ); ?>;
 	font-size: <?php echo $font_size_sub; ?>px;
 	color: <?php echo $text_color_sub; ?>;
 	text-decoration: <?php echo $text_deco_sub; ?>;
@@ -188,7 +202,7 @@ if ( $bg_image_sub ) {
 .sv100_sv_header_sidebar .sv100_sv_sidebar .widget_nav_menu ul.menu > li.menu-item-has-children:focus > a,
 .sv100_sv_header_sidebar .sv100_sv_sidebar .widget_nav_menu ul.sub-menu > li:hover > a,
 .sv100_sv_header_sidebar .sv100_sv_sidebar .widget_nav_menu ul.sub-menu > li:focus > a {
-	color: <?php echo $color_highlight; ?>;
+	color: <?php echo $highlight_color; ?>;
 }
 
 .sv100_sv_header_sidebar .sv100_sv_sidebar .widget_archive li,
