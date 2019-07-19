@@ -14,13 +14,13 @@
 	class sv_header extends init {
 		public function init() {
 			$this->set_module_title( 'SV Header' )
-				 ->set_module_desc( __( 'The header for your website.', 'sv100' ) )
+				 ->set_module_desc( __( 'Manages the header.', 'sv100' ) )
 				 ->load_settings()
 				 ->register_scripts()
 				 ->register_navs()
 				 ->register_sidebars()
 				 ->set_section_title( __( 'Header', 'sv100' ) )
-				 ->set_section_desc( __( 'The header for your website.', 'sv100' ) )
+				 ->set_section_desc( __( 'Text, Color & Branding settings.', 'sv100' ) )
 				 ->set_section_type( 'settings' )
 				 ->set_section_template_path( $this->get_path( 'lib/backend/tpl/settings.php' ) )
 				 ->get_root()
@@ -32,7 +32,7 @@
 			$this->get_settings_component( 'position','position' );
 			
 			$branding_options = array(
-				'disabled' => __( 'No Branding', 'sv100' ),
+				'disabled' => __( 'No branding', 'sv100' ),
 				'title'    => __( 'Title', 'sv100' ),
 			);
 			
@@ -54,8 +54,8 @@
 				 ->set_options( $branding_options );
 			
 			$this->get_setting( 'branding_title' )
-				 ->set_title( __( 'Title Text', 'sv100' ) )
-				 ->set_description( __( 'On default the title will be your Website title, but you can change the title that will be displayed in your header.', 'sv100' ) )
+				 ->set_title( __( 'Title', 'sv100' ) )
+				 ->set_description( __( 'On default the title will be your website title, but you can change the title that will be displayed in your header.', 'sv100' ) )
 				 ->set_default_value( get_bloginfo( 'name' ) )
 				 ->load_type( 'text' );
 			
@@ -82,7 +82,7 @@
 			$this->get_settings_component( 'text_bg_color_sub','background_color', '#ffffff' );
 			
 			$this->get_setting( 'text_bg_active_sub' )
-				 ->set_title( __( 'Activate Background Color', 'sv100' ) )
+				 ->set_title( __( 'Activate background color', 'sv100' ) )
 				 ->set_default_value( 0 )
 				 ->load_type( 'checkbox' );
 			
@@ -102,35 +102,35 @@
 			$this->get_settings_component( 'text_bg_color_sub_hover','background_color', '#eaf3fd' );
 			
 			$this->get_setting( 'text_bg_active_sub_hover' )
-				 ->set_title( __( 'Activate Background Color', 'sv100' ) )
+				 ->set_title( __( 'Activate background color', 'sv100' ) )
 				 ->set_default_value( 1 )
 				 ->load_type( 'checkbox' );
 			
 			$this->get_setting( 'menu_icon_closed' )
-				 ->set_title( __( 'Menu Icon (Closed)', 'sv100' ) )
+				 ->set_title( __( 'Menu icon (closed)', 'sv100' ) )
 				 ->set_description(
 				 	'<p>' . __( 'The menu icon for the mobile menu, when it\'s open.', 'sv100' ) . '<br>'
-					. __( 'Please post for SVG embed code below.', 'sv100' ) . '</p>'
+					. __( 'Please post your SVG embed code below.', 'sv100' ) . '</p>'
 				 )
 				 ->set_default_value( '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/></svg>' )
 				 ->load_type( 'textarea' );
 			
 			$this->get_setting( 'menu_icon_closed_color' )
-				 ->set_title( __( 'Menu Icon (Closed) Color', 'sv100' ) )
+				 ->set_title( __( 'Menu icon (closed) color', 'sv100' ) )
 				 ->set_default_value( '#1e1f22' )
 				 ->load_type( 'color' );
 			
 			$this->get_setting( 'menu_icon_open' )
-				 ->set_title( __( 'Menu Icon (Open)', 'sv100' ) )
+				 ->set_title( __( 'Menu icon (open)', 'sv100' ) )
 				 ->set_description(
 				 	'<p>' . __( 'The menu icon for the mobile menu, when it\'s open.', 'sv100' ) . '<br>'
-					. __( 'Please post for SVG embed code below.', 'sv100' ) . '</p>'
+					. __( 'Please post your SVG embed code below.', 'sv100' ) . '</p>'
 				 )
 				 ->set_default_value( '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>' )
 				 ->load_type( 'textarea' );
 			
 			$this->get_setting( 'menu_icon_open_color' )
-				 ->set_title( __( 'Menu Icon (Open) Color', 'sv100' ) )
+				 ->set_title( __( 'Menu icon (open) color', 'sv100' ) )
 				 ->set_default_value( '#1e1f22' )
 				 ->load_type( 'color' );
 			
@@ -181,7 +181,7 @@
 			if ( $this->get_module( 'sv_navigation' ) ) {
 				$this->get_module( 'sv_navigation' )
 					->create( $this )
-					->set_desc( __( 'Primary Menu', 'sv100' ) )
+					->set_desc( __( 'Primary menu', 'sv100' ) )
 					->set_location( 'primary' )
 					->load_nav();
 			}
@@ -194,7 +194,7 @@
 				$this->get_module( 'sv_sidebar' )
 					 ->create( $this )
 					 ->set_title( __( 'Header', 'sv100' ) )
-					 ->set_desc( __( 'Widgets in this area will be shown in the header, next to the navigation.', 'sv100' ) )
+					 ->set_desc( __( 'Widgets in this sidebar will be shown in the header, next to the navigation.', 'sv100' ) )
 					 ->load_sidebar();
 			}
 	
