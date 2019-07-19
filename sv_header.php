@@ -62,8 +62,8 @@
 			// Header Text Settings
 			$this->get_settings_component( 'font_family','font_family' );
 			$this->get_settings_component( 'font_size','font_size', 16 );
-			$this->get_settings_component( 'text_color','text_color', '#1e1f22' );
-			$this->get_settings_component( 'highlight_color','highlight_color', '#358ae9' );
+			$this->get_settings_component( 'text_color','text_color', '#1e1e1e' );
+			$this->get_settings_component( 'highlight_color','highlight_color', '#328ce6' );
 			
 			// Header Background Settings
 			$this->get_settings_component( 'bg_color','background_color', '#ffffff' );
@@ -78,7 +78,7 @@
 			// Submenu Item Settings
 			$this->get_settings_component( 'text_deco_sub','text_decoration', 'none' );
 			$this->get_settings_component( 'font_size_sub','font_size', 14 );
-			$this->get_settings_component( 'text_color_sub','text_color', '#1e1f22' );
+			$this->get_settings_component( 'text_color_sub','text_color', '#1e1e1e' );
 			$this->get_settings_component( 'text_bg_color_sub','background_color', '#ffffff' );
 			
 			$this->get_setting( 'text_bg_active_sub' )
@@ -98,8 +98,8 @@
 			
 			// Submenu Item Settings (Hover/Focus)
 			$this->get_settings_component( 'text_deco_sub_hover','text_decoration', 'none' );
-			$this->get_settings_component( 'text_color_sub_hover','text_color', '#358ae9' );
-			$this->get_settings_component( 'text_bg_color_sub_hover','background_color', '#eaf3fd' );
+			$this->get_settings_component( 'text_color_sub_hover','text_color', '#328ce6' );
+			$this->get_settings_component( 'text_bg_color_sub_hover','background_color', '#dcf0fa' );
 			
 			$this->get_setting( 'text_bg_active_sub_hover' )
 				 ->set_title( __( 'Activate background color', 'sv100' ) )
@@ -117,7 +117,7 @@
 			
 			$this->get_setting( 'menu_icon_closed_color' )
 				 ->set_title( __( 'Menu icon (closed) color', 'sv100' ) )
-				 ->set_default_value( '#1e1f22' )
+				 ->set_default_value( '#1e1e1e' )
 				 ->load_type( 'color' );
 			
 			$this->get_setting( 'menu_icon_open' )
@@ -131,7 +131,7 @@
 			
 			$this->get_setting( 'menu_icon_open_color' )
 				 ->set_title( __( 'Menu icon (open) color', 'sv100' ) )
-				 ->set_default_value( '#1e1f22' )
+				 ->set_default_value( '#1e1e1e' )
 				 ->load_type( 'color' );
 			
 			return $this;
