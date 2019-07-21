@@ -81,7 +81,8 @@ body.admin-bar .sv100_sv_header {
 
 .sv100_sv_header_bar .sv100_sv_header_branding a.custom-logo-link > img {
 	height: 100%;
-	width: auto;
+	width: 100%;
+	padding:10px;
 	max-width: 100%;
 	object-fit: contain;
 	object-position: center;
