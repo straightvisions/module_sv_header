@@ -14,22 +14,19 @@
 <body <?php body_class(); ?>>
 <header class="<?php echo $this->get_prefix(); echo $slider_support ? ' ' . $this->get_prefix( 'slider' ) : ''; ?>">
     <div class="<?php echo $this->get_prefix( 'bar' ); ?>">
-		<?php if ( $this->get_setting( 'branding' )->run_type()->get_data() !== 'disabled' ) { ?>
+		<?php if ( $this->get_setting( 'branding' )->run_type()->get_data() ) { ?>
 			<div class="<?php echo $this->get_prefix( 'branding' ); ?>">
 				<?php
-					if ( $this->get_setting( 'branding' )->run_type()->get_data() === 'logo' ) {
-						echo get_custom_logo();
-					}
-					
-					if ( $this->get_setting( 'branding' )->run_type()->get_data() === 'title' ) {
-						$title = empty( $this->get_setting( 'branding_title' )->run_type()->get_data() )
-							? get_bloginfo( 'name' )
-							: $this->get_setting( 'branding_title' )->run_type()->get_data();
-						
-						echo '<a href="' . home_url() . '" class="' . $this->get_prefix( 'website_title' ) . '">
-							<h3>' . $title . '</h3>
-							</a>';
-					}
+                    if ( get_custom_logo() ) {
+                        echo get_custom_logo();
+                    } else {
+                        $title = empty( $this->get_setting( 'branding_title' )->run_type()->get_data() )
+                            ? get_bloginfo( 'name' )
+                            : $this->get_setting( 'branding_title' )->run_type()->get_data();
+                        echo '<a href="' . home_url() . '" class="' . $this->get_prefix( 'website_title' ) . '">
+                                <h3>' . $title . '</h3>
+                                </a>';
+                    }
 				?>
 			</div>
 			<?php

@@ -30,28 +30,13 @@
 		protected function load_settings(): sv_header {
 			// Header Settings
 			$this->get_settings_component( 'position','position' );
-			
-			$branding_options = array(
-				'disabled' => __( 'No branding', 'sv100' ),
-				'title'    => __( 'Title', 'sv100' ),
-			);
-			
-			if ( get_custom_logo() ) {
-				$branding_options['logo'] = 'Logo';
-			}
-			
+
 			// Header Branding Settings
 			$this->get_setting( 'branding' )
-				 ->set_title( __( 'Branding', 'sv100' ) )
-				 ->set_description( '<p>
-					' . __( 'Decide in which way you wanna display your brand/website in the header.', 'sv100' ) . '<br>
-					' . __( 'If you uploaded a logo in the Customizer, the option', 'sv100' ) .
-					' <strong>Logo</strong> ' . __( 'will be available.', 'sv100' ) . '
-					</p>'
-				 )
-				 ->set_default_value( 'title' )
-				 ->load_type( 'select' )
-				 ->set_options( $branding_options );
+			     ->set_title( __( 'Branding', 'sv100' ) )
+			     ->set_description( __( 'Activate or deactivate branding in the header.', 'sv100' ) )
+			     ->set_default_value( 1 )
+			     ->load_type( 'checkbox' );
 			
 			$this->get_setting( 'branding_title' )
 				 ->set_title( __( 'Title', 'sv100' ) )
