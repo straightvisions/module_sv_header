@@ -49,9 +49,9 @@
 	$text_bg_color_sub_hover	= $script->get_parent()->get_setting( 'text_bg_color_sub_hover' )->run_type()->get_data();
 	
 	// Mobile Settings
-	$menu_icon_closed			= $script->get_parent()->get_setting( 'menu_icon_closed' )->run_type()->get_data();
+	$menu_icon_closed			= $script->get_parent()->menu_icon_closed;
 	$menu_icon_closed_color		= $script->get_parent()->get_setting( 'menu_icon_closed_color' )->run_type()->get_data();
-	$menu_icon_open				= $script->get_parent()->get_setting( 'menu_icon_open' )->run_type()->get_data();
+	$menu_icon_open				= $script->get_parent()->menu_icon_open;
 	$menu_icon_open_color		= $script->get_parent()->get_setting( 'menu_icon_open_color' )->run_type()->get_data();
 ?>
 

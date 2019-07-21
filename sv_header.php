@@ -12,6 +12,9 @@
 	 */
 	
 	class sv_header extends init {
+		public $menu_icon_closed = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/></svg>';
+		public $menu_icon_open   = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>';
+
 		public function init() {
 			$this->set_module_title( 'SV Header' )
 				 ->set_module_desc( __( 'Manages the header.', 'sv100' ) )
@@ -91,28 +94,10 @@
 				 ->set_default_value( 1 )
 				 ->load_type( 'checkbox' );
 			
-			$this->get_setting( 'menu_icon_closed' )
-				 ->set_title( __( 'Menu icon (closed)', 'sv100' ) )
-				 ->set_description(
-				 	'<p>' . __( 'The menu icon for the mobile menu, when it\'s open.', 'sv100' ) . '<br>'
-					. __( 'Please post your SVG embed code below.', 'sv100' ) . '</p>'
-				 )
-				 ->set_default_value( '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/></svg>' )
-				 ->load_type( 'textarea' );
-			
 			$this->get_setting( 'menu_icon_closed_color' )
 				 ->set_title( __( 'Menu icon (closed) color', 'sv100' ) )
 				 ->set_default_value( '#1e1e1e' )
 				 ->load_type( 'color' );
-			
-			$this->get_setting( 'menu_icon_open' )
-				 ->set_title( __( 'Menu icon (open)', 'sv100' ) )
-				 ->set_description(
-				 	'<p>' . __( 'The menu icon for the mobile menu, when it\'s open.', 'sv100' ) . '<br>'
-					. __( 'Please post your SVG embed code below.', 'sv100' ) . '</p>'
-				 )
-				 ->set_default_value( '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>' )
-				 ->load_type( 'textarea' );
 			
 			$this->get_setting( 'menu_icon_open_color' )
 				 ->set_title( __( 'Menu icon (open) color', 'sv100' ) )
