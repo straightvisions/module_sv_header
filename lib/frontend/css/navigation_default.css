@@ -67,6 +67,18 @@ body.admin-bar .sv100_sv_navigation_sv_header_primary {
 	word-break: keep-all;
 }
 
+.sv100_sv_navigation_sv_header_primary .menu-item-has-children:after{
+	content:'';
+	display:block;
+	background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"/></svg>');
+	background-position: center;
+	background-repeat: no-repeat;
+	width: 10px;
+	height: 10px;
+	margin-left: -15px;
+	margin-right: 15px;
+}
+
 /* Sub Menus */
 .sv100_sv_navigation_sv_header_primary ul.sub-menu {
 	position: relative;
