@@ -66,7 +66,6 @@ body.admin-bar .sv100_sv_navigation_sv_header_primary {
 .sv100_sv_navigation_sv_header_primary ul li a .item-title {
 	word-break: keep-all;
 }
-
 .sv100_sv_navigation_sv_header_primary .menu-item-has-children:after{
 	content:'';
 	display:block;
@@ -77,6 +76,15 @@ body.admin-bar .sv100_sv_navigation_sv_header_primary {
 	height: 10px;
 	margin-left: -15px;
 	margin-right: 15px;
+}
+@media ( max-width: 849px ) {
+	.sv100_sv_navigation_sv_header_primary .menu-item-has-children:after {
+		width:20px;
+		height:20px;
+		position: absolute;
+		right: 0;
+		top: 20px;
+	}
 }
 
 /* Sub Menus */
