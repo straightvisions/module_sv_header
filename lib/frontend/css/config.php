@@ -33,7 +33,7 @@
 	$text_bg_color_sub			= $script->get_parent()->get_setting( 'text_bg_color_sub' )->run_type()->get_data();
 	
 	// Submenu Background Settings
-	$bg_color_sub				= $script->get_parent()->get_setting( 'bg_color_sub' )->run_type()->get_data();
+	$bg_color_sub				= sscanf( $script->get_parent()->get_setting( 'bg_color_sub' )->run_type()->get_data(), "#%02x%02x%02x" );
 	$bg_image_sub				= $script->get_parent()->get_setting( 'bg_image_sub' )->run_type()->get_data();
 	$bg_media_size_sub			= $script->get_parent()->get_setting( 'bg_media_size_sub' )->run_type()->get_data();
 	$bg_position_sub			= $script->get_parent()->get_setting( 'bg_position_sub' )->run_type()->get_data();
@@ -49,6 +49,7 @@
 	$text_bg_color_sub_hover	= $script->get_parent()->get_setting( 'text_bg_color_sub_hover' )->run_type()->get_data();
 	
 	// Mobile Settings
+	$bg_opacity_mobile			= $script->get_parent()->get_setting( 'bg_opacity_mobile' )->run_type()->get_data() / 100;
 	$menu_icon_closed			= $script->get_parent()->menu_icon_closed;
 	$menu_icon_closed_color		= $script->get_parent()->get_setting( 'menu_icon_closed_color' )->run_type()->get_data();
 	$menu_icon_open				= $script->get_parent()->menu_icon_open;
@@ -103,7 +104,7 @@ body.admin-bar .sv100_sv_header {
 
 /* Menu */
 .sv100_sv_navigation_sv_header_primary {
-	background-color: <?php echo $bg_color_sub; ?>;
+	background-color: rgba( <?php echo $bg_color_sub[0] . ',' . $bg_color_sub[1] . ',' . $bg_color_sub[2], ',' . $bg_opacity_mobile; ?> );
 <?php
 if ( $bg_image_sub ) {
 	$bg_size_sub = $bg_size_sub > 0 ? $bg_size_sub . 'px' : $bg_fit_sub;
@@ -150,7 +151,7 @@ if ( $bg_image_sub ) {
 /* Submenu */
 @media ( min-width: 850px ) {
 	.sv100_sv_header ul.sub-menu {
-		background-color: <?php echo $bg_color_sub; ?>;
+		background-color: rgb( <?php echo $bg_color_sub[0] . ',' . $bg_color_sub[1] . ',' . $bg_color_sub[2]; ?> );
 	<?php
 		if ( $bg_image_sub ) {
 		$bg_size_sub = $bg_size_sub > 0 ? $bg_size_sub . 'px' : $bg_fit_sub;

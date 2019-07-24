@@ -51,6 +51,7 @@
     <h3 class="divider"><?php _e( 'Mobile', 'sv100' ); ?></h3>
     <div class="sv_setting_flex">
 		<?php
+		echo $module->get_setting( 'bg_opacity_mobile' )->run_type()->form();
 		echo $module->get_setting( 'menu_icon_closed_color' )->run_type()->form();
 		echo $module->get_setting( 'menu_icon_open_color' )->run_type()->form();
 		?>

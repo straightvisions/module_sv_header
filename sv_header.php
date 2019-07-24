@@ -94,6 +94,7 @@
 				 ->set_default_value( 1 )
 				 ->load_type( 'checkbox' );
 			
+			// Mobile Settings
 			$this->get_setting( 'menu_icon_closed_color' )
 				 ->set_title( __( 'Menu icon (closed) color', 'sv100' ) )
 				 ->set_default_value( '#1e1e1e' )
@@ -103,6 +104,14 @@
 				 ->set_title( __( 'Menu icon (open) color', 'sv100' ) )
 				 ->set_default_value( '#1e1e1e' )
 				 ->load_type( 'color' );
+			
+			$this->get_setting( 'bg_opacity_mobile' )
+				 ->set_title( __( 'Menu background opacity', 'sv100' ) )
+				 ->set_description( __( 'Define the background opacity of the mobile menu, in percent.', 'sv100' ) )
+				 ->set_default_value( 100 )
+				 ->set_max( 100 )
+				 ->set_min( 0 )
+				 ->load_type( 'number' );
 			
 			return $this;
 		}
