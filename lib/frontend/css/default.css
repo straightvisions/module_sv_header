@@ -30,3 +30,7 @@
 	max-width: 100%;
 	object-fit: contain;
 }
+
+.sv100_sv_header .sv100_sv_header_branding a {
+	text-decoration: none;
+}
