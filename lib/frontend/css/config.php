@@ -54,6 +54,12 @@
 	$menu_icon_closed_color		= $script->get_parent()->get_setting( 'menu_icon_closed_color' )->run_type()->get_data();
 	$menu_icon_open				= $script->get_parent()->menu_icon_open;
 	$menu_icon_open_color		= $script->get_parent()->get_setting( 'menu_icon_open_color' )->run_type()->get_data();
+	
+	// Branding Logo
+	$logo_width					= $script->get_parent()->get_setting( 'branding_logo_width' )->run_type()->get_data();
+	$logo_height				= $script->get_parent()->get_setting( 'branding_logo_height' )->run_type()->get_data();
+	$logo_width_mobile			= $script->get_parent()->get_setting( 'branding_logo_width_mobile' )->run_type()->get_data();
+	$logo_height_mobile			= $script->get_parent()->get_setting( 'branding_logo_height_mobile' )->run_type()->get_data();
 ?>
 
 /* Header */
@@ -84,9 +90,16 @@ body.admin-bar .sv100_sv_header {
 	top: 0;
 }
 
-@media ( min-width: 782px ) {
+
+@media ( min-width: 600px ) {
 	body.admin-bar .sv100_sv_header {
 		position: fixed;
+		top: 46px;
+	}
+}
+
+@media ( min-width: 782px ) {
+	body.admin-bar .sv100_sv_header {
 		top: 32px;
 	}
 }
@@ -100,6 +113,28 @@ body.admin-bar .sv100_sv_header {
 .sv100_sv_header .sv100_sv_header_website_title:hover,
 .sv100_sv_header .sv100_sv_header_website_title:focus {
 	color: <?php echo $highlight_color; ?>;
+}
+
+.sv100_sv_header .sv100_sv_header_branding img {
+	width: <?php echo $logo_width_mobile < 1 ? 'auto' : $logo_width_mobile . 'px'; ?>;
+	height: <?php echo $logo_height_mobile < 1 ? 'auto' : $logo_height_mobile . 'px'; ?>;
+	max-height: <?php echo $logo_height_mobile < 1 ? '100px' : $logo_height_mobile . 'px'; ?>;
+}
+
+.sv100_sv_header .sv100_sv_header_bar {
+	grid-template-columns: <?php echo $logo_width_mobile < 1 ? '80%' : $logo_width_mobile . 'px'; ?> auto;
+}
+
+@media ( min-width: 1350px ) {
+	.sv100_sv_header .sv100_sv_header_branding img {
+		width: <?php echo $logo_width < 1 ? 'auto' : $logo_width . 'px'; ?>;
+		height: <?php echo $logo_height < 1 ? 'auto' : $logo_height . 'px'; ?>;
+		max-height: <?php echo $logo_height < 1 ? '100px' : $logo_height . 'px'; ?>;
+	}
+
+	.sv100_sv_header .sv100_sv_header_bar {
+		grid-template-columns: <?php echo $logo_width < 1 ? '20%' : $logo_width . 'px'; ?> 1fr auto;
+	}
 }
 
 /* Menu */
@@ -117,7 +152,7 @@ if ( $bg_image_sub ) {
 <?php } ?>
 }
 
-@media ( min-width: 850px ) {
+@media ( min-width: 1350px ) {
 	.sv100_sv_navigation_sv_header_primary {
 		background: transparent;
 	}
@@ -166,7 +201,7 @@ if ( $bg_image_sub ) {
 }
 
 /* Submenu Items */
-.sv100_sv_header ul.sub-menu li > a {
+.sv100_sv_header ul.sub-menu li > a > .item-title {
 	font-weight: <?php echo ( $font ? $font['weight'] : '400' ); ?>;
 	font-size: <?php echo $font_size_sub; ?>px;
 	color: <?php echo $text_color_sub; ?>;
@@ -174,8 +209,8 @@ if ( $bg_image_sub ) {
 	background-color: <?php echo $text_bg_active_sub ? $text_bg_color_sub : 'transparent'; ?>
 }
 
-.sv100_sv_header ul.sub-menu li:hover > a,
-.sv100_sv_header ul.sub-menu li:focus > a {
+.sv100_sv_header ul.sub-menu li:hover > a > .item-title,
+.sv100_sv_header ul.sub-menu li:focus > a > .item-title {
 	color: <?php echo $text_color_sub_hover; ?>;
 	text-decoration: <?php echo $text_deco_sub_hover; ?>;
 	background-color: <?php echo $text_bg_active_sub_hover ? $text_bg_color_sub_hover : 'transparent'; ?>

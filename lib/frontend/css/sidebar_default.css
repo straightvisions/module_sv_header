@@ -6,7 +6,9 @@
 
 .sv100_sv_header_sidebar .sv100_sv_sidebar_sv_header {
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
 }
 
 .sv100_sv_header_sidebar .widget a {

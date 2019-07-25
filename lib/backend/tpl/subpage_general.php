@@ -14,6 +14,20 @@
 		echo $module->get_setting( 'branding_title' )->run_type()->form();
 		?>
     </div>
+	<?php if ( get_custom_logo() ) { ?>
+	<div class="sv_setting_flex">
+		<?php
+			echo $module->get_setting( 'branding_logo_width' )->run_type()->form();
+			echo $module->get_setting( 'branding_logo_height' )->run_type()->form();
+		?>
+	</div>
+	<div class="sv_setting_flex">
+		<?php
+			echo $module->get_setting( 'branding_logo_width_mobile' )->run_type()->form();
+			echo $module->get_setting( 'branding_logo_height_mobile' )->run_type()->form();
+		?>
+	</div>
+	<?php } ?>
 
     <h3 class="divider"><?php _e( 'Text', 'sv100' ); ?></h3>
     <div class="sv_setting_flex">

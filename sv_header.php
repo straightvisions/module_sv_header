@@ -47,6 +47,34 @@
 				 ->set_default_value( get_bloginfo( 'name' ) )
 				 ->load_type( 'text' );
 			
+			$this->get_setting( 'branding_logo_width' )
+				 ->set_title( __( 'Logo width', 'sv100' ) )
+				 ->set_description( __( 'Width in pixel. 0 = auto', 'sv100' ) )
+				 ->set_default_value( 0 )
+				 ->set_min( 0 )
+				 ->load_type( 'number' );
+			
+			$this->get_setting( 'branding_logo_height' )
+				 ->set_title( __( 'Logo height', 'sv100' ) )
+				 ->set_description( __( 'Height in pixel. 0 = auto', 'sv100' ) )
+				 ->set_default_value( 0 )
+				 ->set_min( 0 )
+				 ->load_type( 'number' );
+			
+			$this->get_setting( 'branding_logo_width_mobile' )
+				 ->set_title( __( 'Logo width (mobile)', 'sv100' ) )
+				 ->set_description( __( 'Width in pixel. 0 = auto', 'sv100' ) )
+				 ->set_default_value( 0 )
+				 ->set_min( 0 )
+				 ->load_type( 'number' );
+			
+			$this->get_setting( 'branding_logo_height_mobile' )
+				 ->set_title( __( 'Logo height (mobile)', 'sv100' ) )
+				 ->set_description( __( 'Height in pixel. 0 = auto', 'sv100' ) )
+				 ->set_default_value( 0 )
+				 ->set_min( 0 )
+				 ->load_type( 'number' );
+			
 			// Header Text Settings
 			$this->get_settings_component( 'font_family','font_family' );
 			$this->get_settings_component( 'font_size','font_size', 16 );
