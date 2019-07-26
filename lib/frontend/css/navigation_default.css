@@ -59,7 +59,7 @@ button.sv100_sv_navigation_mobile_menu_toggle::before {
 	}
 }
 
-.sv100_sv_navigation_sv_header_primary.open {
+.sv100_sv_header.open .sv100_sv_navigation_sv_header_primary {
 	left: 0;
 	visibility: visible;
 	transition: visibility 0s ease-in-out 0s, left .5s ease-in-out;

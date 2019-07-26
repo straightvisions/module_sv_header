@@ -96,16 +96,16 @@
 <?php } ?>
 }
 
-<?php if ( $position === 'fixed' ) { ?>
+<?php if ( $position === 'fixed' || $position === 'sticky' ) { ?>
 body.admin-bar .sv100_sv_header {
-	position: sticky;
+	<?php echo $position === 'fixed' ? 'position: sticky;' : ''; ?>
 	top: 0;
 }
 
 
 @media ( min-width: 600px ) {
 	body.admin-bar .sv100_sv_header {
-		position: fixed;
+		<?php echo $position === 'fixed' ? 'position: fixed;' : ''; ?>
 		top: 46px;
 	}
 }
