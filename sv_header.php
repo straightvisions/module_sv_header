@@ -284,6 +284,14 @@
 					continue;
 				}
 				
+				if (
+				( $script->get_ID() === 'sidebar_default' || $script->get_ID() === 'sidebar_slider' )
+				&& $this->get_module( 'sv_sidebar' )
+				&& empty( $this->get_module( 'sv_sidebar' )->load( array( 'id' => $this->get_module_name(), ) ) )
+				) {
+					continue;
+				}
+				
 				$script->set_is_enqueued();
 			}
 			

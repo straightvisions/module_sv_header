@@ -38,16 +38,18 @@
 				'show_images'	=> true,
 			) )
 			: '';
+		
+		if ( $this->get_root()->get_module( 'sv_sidebar' )
+			 && ! empty( $this->get_root()->get_module( 'sv_sidebar' )->load( array( 'id' => $this->get_module_name(), ) ) )
+			) {
 			
 			?>
         <aside class="<?php echo $this->get_prefix( 'sidebar' ); ?>">
 			<?php
 				echo $this->get_root()->get_module( 'sv_sidebar' )
-					? $this->get_root()->get_module( 'sv_sidebar' )->load( array(
-						'id' 			=> $this->get_module_name(),
-					) )
-					: '';
+									  ->load( array( 'id' => $this->get_module_name(), ) );
 			?>
         </aside>
+		<?php } ?>
     </div>
 </header>

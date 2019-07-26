@@ -60,6 +60,12 @@
 	$logo_height				= $script->get_parent()->get_setting( 'branding_logo_height' )->run_type()->get_data();
 	$logo_width_mobile			= $script->get_parent()->get_setting( 'branding_logo_width_mobile' )->run_type()->get_data();
 	$logo_height_mobile			= $script->get_parent()->get_setting( 'branding_logo_height_mobile' )->run_type()->get_data();
+	
+	$has_navigation				= ( $script->get_parent()->get_module( 'sv_navigation' )
+									   && $script->get_parent()
+												 ->get_module( 'sv_navigation' )
+												 ->has_items( $script->get_parent()->get_module_name() . '_primary' ) )
+									? true : false;
 ?>
 
 /* Header */
@@ -105,6 +111,30 @@ body.admin-bar .sv100_sv_header {
 }
 <?php } ?>
 
+/* Header Bar */
+.sv100_sv_header .sv100_sv_header_bar {
+	grid-template-columns: <?php echo $logo_width_mobile < 1 ? '50%' : $logo_width_mobile . 'px'; ?> auto;
+}
+
+<?php if ( ! $has_navigation ) { ?>
+.sv100_sv_header .sv100_sv_header_bar {
+	grid-template-columns: auto <?php echo $logo_width_mobile < 1 ? '50%' : $logo_width_mobile . 'px'; ?> auto;
+	grid-template-areas: '. branding sidebar';
+}
+<?php } ?>
+
+@media ( min-width: 1350px ) {
+	.sv100_sv_header .sv100_sv_header_bar {
+		grid-template-columns: <?php echo $logo_width < 1 ? '20%' : $logo_width . 'px'; ?> 1fr auto;
+	}
+
+	<?php if ( ! $has_navigation ) { ?>
+		.sv100_sv_header .sv100_sv_header_bar {
+			grid-template-columns: auto <?php echo $logo_width < 1 ? '20%' : $logo_width . 'px'; ?> auto;
+		}
+	<?php } ?>
+}
+
 /* Header Branding */
 .sv100_sv_header .sv100_sv_header_website_title {
 	color: <?php echo $text_color; ?>;
@@ -121,19 +151,11 @@ body.admin-bar .sv100_sv_header {
 	max-height: <?php echo $logo_height_mobile < 1 ? '100px' : $logo_height_mobile . 'px'; ?>;
 }
 
-.sv100_sv_header .sv100_sv_header_bar {
-	grid-template-columns: <?php echo $logo_width_mobile < 1 ? '80%' : $logo_width_mobile . 'px'; ?> auto;
-}
-
 @media ( min-width: 1350px ) {
 	.sv100_sv_header .sv100_sv_header_branding img {
 		width: <?php echo $logo_width < 1 ? 'auto' : $logo_width . 'px'; ?>;
 		height: <?php echo $logo_height < 1 ? 'auto' : $logo_height . 'px'; ?>;
 		max-height: <?php echo $logo_height < 1 ? '100px' : $logo_height . 'px'; ?>;
-	}
-
-	.sv100_sv_header .sv100_sv_header_bar {
-		grid-template-columns: <?php echo $logo_width < 1 ? '20%' : $logo_width . 'px'; ?> 1fr auto;
 	}
 }
 

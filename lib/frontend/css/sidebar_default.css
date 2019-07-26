@@ -2,6 +2,8 @@
 .sv100_sv_header_sidebar {
 	display: none;
 	align-items: stretch;
+	justify-content: flex-end;
+	grid-area: sidebar;
 }
 
 .sv100_sv_header_sidebar .sv100_sv_sidebar_sv_header {

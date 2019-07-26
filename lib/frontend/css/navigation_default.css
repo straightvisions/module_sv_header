@@ -1,6 +1,7 @@
 /* ### Mobile ### */
 /* Menu Toggle */
 button.sv100_sv_navigation_mobile_menu_toggle {
+	grid-area: menu_icon;
 	margin-left: auto;
 	border: none;
 	outline: none;
@@ -33,6 +34,7 @@ button.sv100_sv_navigation_mobile_menu_toggle::before {
 
 /* Navigation */
 .sv100_sv_navigation_sv_header_primary {
+	grid-area: navigation;
 	position: absolute;
 	top: 100%;
 	height: 100vh;

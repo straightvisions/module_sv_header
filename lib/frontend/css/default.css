@@ -10,6 +10,7 @@
 	padding: 10px 20px;
 	display: grid;
 	grid-template-rows: 1fr;
+	grid-template-areas: 'branding menu_icon';
 	align-items: center;
 	grid-column-gap: 20px;
 	position: relative;
@@ -20,12 +21,16 @@
 
 @media ( min-width: 1350px ) {
 	.sv100_sv_header .sv100_sv_header_bar {
-		grid-template-columns: 20% 1fr auto;
 		min-height: 100px;
+		grid-template-areas: 'branding navigation sidebar';
 	}
 }
 
 /* Branding */
+.sv100_sv_header .sv100_sv_header_branding {
+	grid-area: branding;
+}
+
 .sv100_sv_header .sv100_sv_header_branding img {
 	max-width: 100%;
 	object-fit: contain;
