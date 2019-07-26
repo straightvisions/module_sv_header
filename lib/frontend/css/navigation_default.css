@@ -136,6 +136,14 @@ button.sv100_sv_navigation_mobile_menu_toggle::before {
 		padding: 15px;
 	}
 
+	.sv100_sv_navigation_sv_header_primary .menu > li:first-of-type > a {
+		padding-left: 0;
+	}
+
+	.sv100_sv_navigation_sv_header_primary .menu > li:last-of-type > a {
+		padding-right: 0;
+	}
+
 	.sv100_sv_navigation_sv_header_primary .menu > li > a::after {
 		content: '';
 		display: block;

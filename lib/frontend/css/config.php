@@ -62,10 +62,16 @@
 	$logo_height_mobile			= $script->get_parent()->get_setting( 'branding_logo_height_mobile' )->run_type()->get_data();
 	
 	$has_navigation				= ( $script->get_parent()->get_module( 'sv_navigation' )
-									   && $script->get_parent()
-												 ->get_module( 'sv_navigation' )
-												 ->has_items( $script->get_parent()->get_module_name() . '_primary' ) )
+								   && $script->get_parent()
+											 ->get_module( 'sv_navigation' )
+											 ->has_items( $script->get_parent()->get_module_name() . '_primary' ) )
 									? true : false;
+	$has_sidebar				= ( $script->get_parent()->get_module( 'sv_sidebar' )
+								  && ! empty( $script->get_parent()
+													 ->get_module( 'sv_sidebar' )
+													 ->load( array( 'id' => $script->get_parent()->get_module_name(), ) ) ) )
+									? true : false;
+	$has_branding				= $script->get_parent()->get_setting( 'branding' )->run_type()->get_data();
 ?>
 
 /* Header */
@@ -113,26 +119,46 @@ body.admin-bar .sv100_sv_header {
 
 /* Header Bar */
 .sv100_sv_header .sv100_sv_header_bar {
-	grid-template-columns: <?php echo $logo_width_mobile < 1 ? '50%' : $logo_width_mobile . 'px'; ?> auto;
+	grid-template-areas: '<?php
+		echo $has_branding ? 'branding' : '';
+		echo $has_navigation ? ' menu_icon' : '';
+	?>';
+	grid-template-columns: <?php
+		if ( $has_branding ) {
+			echo $logo_width_mobile < 1 ? '50%' : $logo_width_mobile . 'px';
+		}
+		
+		echo $has_navigation ? ' auto' : '';
+	?>;
 }
-
-<?php if ( ! $has_navigation ) { ?>
-.sv100_sv_header .sv100_sv_header_bar {
-	grid-template-columns: auto <?php echo $logo_width_mobile < 1 ? '50%' : $logo_width_mobile . 'px'; ?> auto;
-	grid-template-areas: '. branding sidebar';
-}
-<?php } ?>
 
 @media ( min-width: 1350px ) {
 	.sv100_sv_header .sv100_sv_header_bar {
-		grid-template-columns: <?php echo $logo_width < 1 ? '20%' : $logo_width . 'px'; ?> 1fr auto;
+		grid-template-areas: '<?php
+			if ( $has_branding ) {
+				echo $has_navigation ? 'branding' : '. branding';
+			}
+			
+			echo $has_navigation ? ' navigation' : '';
+			echo $has_sidebar ? ' sidebar' : '';
+		?>';
+		grid-template-columns: <?php
+			if ( $has_branding ) {
+				if ( $has_navigation ) {
+					echo $logo_width < 1 ? '20%' : $logo_width . 'px';
+				} else {
+					echo '1fr ';
+					echo $logo_width < 1 ? '20%' : $logo_width . 'px';
+				}
+			}
+			
+			echo $has_navigation ? ' 1fr' : '';
+			
+			if ( $has_sidebar ) {
+				echo $has_navigation ? ' auto' : ' 1fr';
+			}
+		?>;
 	}
-
-	<?php if ( ! $has_navigation ) { ?>
-		.sv100_sv_header .sv100_sv_header_bar {
-			grid-template-columns: auto <?php echo $logo_width < 1 ? '20%' : $logo_width . 'px'; ?> auto;
-		}
-	<?php } ?>
 }
 
 /* Header Branding */
