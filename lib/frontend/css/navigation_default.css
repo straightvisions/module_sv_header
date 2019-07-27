@@ -1,7 +1,6 @@
 /* ### Mobile ### */
 /* Menu Toggle */
 button.sv100_sv_navigation_mobile_menu_toggle {
-	grid-area: menu_icon;
 	margin-left: auto;
 	border: none;
 	outline: none;
@@ -34,7 +33,6 @@ button.sv100_sv_navigation_mobile_menu_toggle::before {
 
 /* Navigation */
 .sv100_sv_navigation_sv_header_primary {
-	grid-area: navigation;
 	position: absolute;
 	top: 100%;
 	height: 100vh;
@@ -101,12 +99,6 @@ button.sv100_sv_navigation_mobile_menu_toggle::before {
 	-webkit-mask-size: 10px;
 	-webkit-mask-repeat: no-repeat;
 	-webkit-mask-position: center;
-	transform: rotate( 90deg );
-	transition: transform .25s ease-in-out;
-}
-
-.sv100_sv_navigation_sv_header_primary ul li.dropdown.open > a > .item-title::after {
-	transform: rotate( 0 );
 }
 
 @media ( min-width: 1350px ) {

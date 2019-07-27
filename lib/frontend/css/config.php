@@ -118,49 +118,6 @@ body.admin-bar .sv100_sv_header {
 <?php } ?>
 
 /* Header Bar */
-.sv100_sv_header .sv100_sv_header_bar {
-	grid-template-areas: '<?php
-		echo $has_branding ? 'branding' : '';
-		echo $has_navigation ? ' menu_icon' : '';
-	?>';
-	grid-template-columns: <?php
-		if ( $has_branding ) {
-			echo $logo_width_mobile < 1 ? '50%' : $logo_width_mobile . 'px';
-		}
-		
-		echo $has_navigation ? ' auto' : '';
-	?>;
-}
-
-@media ( min-width: 1350px ) {
-	.sv100_sv_header .sv100_sv_header_bar {
-		grid-template-areas: '<?php
-			if ( $has_branding ) {
-				echo $has_navigation ? 'branding' : '. branding';
-			}
-			
-			echo $has_navigation ? ' navigation' : '';
-			echo $has_sidebar ? ' sidebar' : '';
-		?>';
-		grid-template-columns: <?php
-			if ( $has_branding ) {
-				if ( $has_navigation ) {
-					echo $logo_width < 1 ? '20%' : $logo_width . 'px';
-				} else {
-					echo '1fr ';
-					echo $logo_width < 1 ? '20%' : $logo_width . 'px';
-				}
-			}
-			
-			echo $has_navigation ? ' 1fr' : '';
-			
-			if ( $has_sidebar ) {
-				echo $has_navigation ? ' auto' : ' 1fr';
-			}
-		?>;
-	}
-}
-
 /* Header Branding */
 .sv100_sv_header .sv100_sv_header_website_title {
 	color: <?php echo $text_color; ?>;

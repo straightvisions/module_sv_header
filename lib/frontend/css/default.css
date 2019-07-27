@@ -5,6 +5,13 @@
 	z-index: 900;
 	box-shadow: 0 1px 10px rgba( 0, 0, 0, 0.1 );
 }
+.sv100_sv_header_branding:not(:last-child){
+	padding-right:60px;
+}
+
+.sv100_sv_header .sv100_sv_header_bar{
+	justify-content:center;
+}
 
 .sv100_sv_header.open {
 	position: sticky;
@@ -30,10 +37,8 @@ body.admin-bar .sv100_sv_header.open {
 .sv100_sv_header .sv100_sv_header_bar {
 	min-height: 80px;
 	padding: 10px 20px;
-	display: grid;
-	grid-template-rows: 1fr;
+	display: flex;
 	align-items: center;
-	grid-column-gap: 20px;
 	position: relative;
 	margin-left: auto;
 	margin-right: auto;
@@ -47,9 +52,6 @@ body.admin-bar .sv100_sv_header.open {
 }
 
 /* Branding */
-.sv100_sv_header .sv100_sv_header_branding {
-	grid-area: branding;
-}
 
 .sv100_sv_header .sv100_sv_header_branding img {
 	max-width: 100%;
@@ -57,5 +59,6 @@ body.admin-bar .sv100_sv_header.open {
 }
 
 .sv100_sv_header .sv100_sv_header_branding a {
+	display:block;
 	text-decoration: none;
 }
