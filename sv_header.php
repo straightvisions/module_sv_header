@@ -90,7 +90,15 @@
 			$this->get_settings_component( 'bg_fit','background_fit', 'cover' );
 			$this->get_settings_component( 'bg_repeat','background_repeat', 'no-repeat' );
 			$this->get_settings_component( 'bg_attachment','background_attachment', 'fixed' );
-			
+
+			// Menu Item Settings
+			$this->get_settings_component( 'text_deco_menu','text_decoration', 'none' );
+			$this->get_settings_component( 'text_color_menu','text_color', '#1e1e1e' );
+
+			// Menu Item Settings (Hover/Focus)
+			$this->get_settings_component( 'text_deco_menu_hover','text_decoration', 'underline' );
+			$this->get_settings_component( 'text_color_menu_hover','text_color', '#1e1e1e' );
+
 			// Submenu Item Settings
 			$this->get_settings_component( 'text_deco_sub','text_decoration', 'none' );
 			$this->get_settings_component( 'font_size_sub','font_size', 14 );

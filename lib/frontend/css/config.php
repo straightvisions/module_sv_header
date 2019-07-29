@@ -24,7 +24,15 @@
 	$bg_fit						= $script->get_parent()->get_setting( 'bg_fit' )->run_type()->get_data();
 	$bg_repeat					= $script->get_parent()->get_setting( 'bg_repeat' )->run_type()->get_data();
 	$bg_attachment				= $script->get_parent()->get_setting( 'bg_attachment' )->run_type()->get_data();
-	
+
+    // Menu Item Settings
+    $text_deco_menu				= $script->get_parent()->get_setting( 'text_deco_menu' )->run_type()->get_data();
+    $text_color_menu			= $script->get_parent()->get_setting( 'text_color_menu' )->run_type()->get_data();
+
+    // Menu Item Settings (Hover/Focus)
+    $text_deco_menu_hover		= $script->get_parent()->get_setting( 'text_deco_menu_hover' )->run_type()->get_data();
+    $text_color_menu_hover	    = $script->get_parent()->get_setting( 'text_color_menu_hover' )->run_type()->get_data();
+
 	// Submenu Item Settings
 	$font_size_sub				= $script->get_parent()->get_setting( 'font_size_sub' )->run_type()->get_data();
 	$text_deco_sub				= $script->get_parent()->get_setting( 'text_deco_sub' )->run_type()->get_data();
@@ -203,6 +211,53 @@ if ( $bg_image_sub ) {
 		background-attachment:<?php echo $bg_attachment_sub; ?>;
 	<?php } ?>
 	}
+}
+
+/* Main Menu Items */
+.sv100_sv_navigation_sv_header_primary .menu > li > a > .item-title {
+    color: <?php echo $text_color_menu; ?>;
+}
+
+.sv100_sv_navigation_sv_header_primary .menu > li:hover > a > .item-title,
+.sv100_sv_navigation_sv_header_primary .menu > li:focus > a > .item-title {
+    color: <?php echo $text_color_menu_hover; ?>;
+}
+
+.sv100_sv_navigation_sv_header_primary .menu > li > a {
+    text-decoration: <?php echo $text_deco_menu === 'underline' ? 'none' : $text_deco_menu ?>;
+}
+
+@media ( min-width: 1350px ) {
+    <?php if ( $text_deco_menu === 'underline' ) { ?>
+    .sv100_sv_navigation_sv_header_primary .menu > li > a::after {
+        width: 100%;
+    }
+    <?php
+    }
+    if ($text_deco_menu === 'none' ) {
+    ?>
+    .sv100_sv_navigation_sv_header_primary .menu > li > a::after {
+        width: 0;
+    }
+    <?php
+    }
+
+    if ( $text_deco_menu_hover === 'underline' ) {
+    ?>
+    .sv100_sv_navigation_sv_header_primary .menu > li:hover > a::after,
+    .sv100_sv_navigation_sv_header_primary .menu > li:focus > a::after {
+        width: 100%;
+    }
+    <?php
+    }
+
+    if ( $text_deco_menu_hover === 'none' ) {
+    ?>
+    .sv100_sv_navigation_sv_header_primary .menu > li:hover > a::after,
+    .sv100_sv_navigation_sv_header_primary .menu > li:focus > a::after {
+        width: 0;
+    }
+    <?php } ?>
 }
 
 /* Submenu Items */

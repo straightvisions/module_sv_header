@@ -1,6 +1,22 @@
 <div class="sv_setting_subpage">
 	<h2><?php _e('Menu', 'sv100'); ?></h2>
 
+    <h3 class="divider"><?php _e( 'Menu - Items', 'sv100' ); ?></h3>
+    <div class="sv_setting_flex">
+		<?php
+		echo $module->get_settings_component( 'text_deco_menu' )->run_type()->form();
+		echo $module->get_settings_component( 'text_color_menu' )->run_type()->form();
+		?>
+    </div>
+
+    <h3 class="divider"><?php _e( 'Menu - Items (Hover/Focus)', 'sv100' ); ?></h3>
+    <div class="sv_setting_flex">
+		<?php
+		echo $module->get_settings_component( 'text_deco_menu_hover' )->run_type()->form();
+		echo $module->get_settings_component( 'text_color_menu_hover' )->run_type()->form();
+		?>
+    </div>
+
     <h3 class="divider"><?php _e( 'Submenu - Background', 'sv100' ); ?></h3>
     <div class="sv_setting_flex">
 		<?php
