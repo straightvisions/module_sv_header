@@ -22,11 +22,11 @@
 					} elseif ( get_custom_logo() ) {
                         echo get_custom_logo();
                     } else {
-                        $title = empty( $this->get_setting( 'branding_title' )->run_type()->get_data() )
+                        $post_title = empty( $this->get_setting( 'branding_title' )->run_type()->get_data() )
                             ? get_bloginfo( 'name' )
                             : $this->get_setting( 'branding_title' )->run_type()->get_data();
                         echo '<a href="' . home_url() . '" class="' . $this->get_prefix( 'website_title' ) . '">
-                                <h3>' . $title . '</h3>
+                                <h3>' . $post_title . '</h3>
                                 </a>';
                     }
 				?>
