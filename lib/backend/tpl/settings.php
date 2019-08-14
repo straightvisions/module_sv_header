@@ -5,6 +5,10 @@
 		<?php
             require_once( $module->get_path( 'lib/backend/tpl/subpage_general.php' ) );
             require_once( $module->get_path( 'lib/backend/tpl/subpage_menu.php' ) );
+            
+	        if ( $count = count( $module->get_module( 'sv_sidebar' )->get_sidebars( $module ) ) > 0 ) {
+				require_once( $module->get_path( 'lib/backend/tpl/subpage_sidebar.php' ) );
+			}
 		?>
     </div>
 	<?php
