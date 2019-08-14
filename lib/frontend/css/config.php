@@ -348,3 +348,25 @@ if ( $bg_image_sub ) {
 	color: <?php echo $text_color_sub; ?>;
 	border-bottom-color: <?php echo $text_color_sub; ?>;
 }
+
+/* Sidebar - Alignment */
+<?php
+if ( count( $script->get_parent()->get_module( 'sv_sidebar' )->get_sidebars( $script->get_parent() ) ) > 0 ) {
+	foreach ( $script->get_parent()->get_module( 'sv_sidebar' )->get_sidebars( $script->get_parent() ) as $sidebar ) {
+		$value = $script->get_parent()->get_setting( $sidebar['id'] )->run_type()->get_data();
+		
+		switch ( $value ) {
+			case 'left':
+				$value = 'flex-start';
+				break;
+			case 'right':
+				$value = 'flex-end';
+				break;
+		}
+		
+		echo '.' . $sidebar['id'] . '{';
+		echo 'align-items: ' . $value . ';';
+		echo '}';
+	}
+}
+?>
