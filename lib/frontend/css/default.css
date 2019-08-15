@@ -36,7 +36,7 @@ body.admin-bar .sv100_sv_header.open {
 
 .sv100_sv_header .sv100_sv_header_bar {
 	min-height: 80px;
-	padding: 10px 20px;
+	padding: 10px var( --sv100_sv_common-padding );
 	display: flex;
 	align-items: center;
 	position: relative;
