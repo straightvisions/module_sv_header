@@ -111,7 +111,7 @@ body.admin-bar .sv100_sv_header {
 }
 
 
-@media ( min-width: 600px ) {
+@media ( min-width: 601px ) {
 	body.admin-bar .sv100_sv_header {
 		<?php echo $position === 'fixed' ? 'position: fixed;' : ''; ?>
 		top: 46px;
