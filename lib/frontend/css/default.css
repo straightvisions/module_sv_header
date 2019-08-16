@@ -28,14 +28,15 @@ body.admin-bar .sv100_sv_header.open {
 	}
 }
 
-@media ( min-width: 782px ) {
+@media ( min-width: 783px ) {
 	body.admin-bar .sv100_sv_header.open {
 		top: 32px;
 	}
 }
 
 .sv100_sv_header .sv100_sv_header_bar {
-	min-height: 80px;
+	max-height: 80px;
+	height: 100%;
 	padding: 10px var( --sv100_sv_common-padding );
 	display: flex;
 	align-items: center;
@@ -52,7 +53,6 @@ body.admin-bar .sv100_sv_header.open {
 }
 
 /* Branding */
-
 .sv100_sv_header .sv100_sv_header_branding img {
 	max-width: 100%;
 	object-fit: contain;

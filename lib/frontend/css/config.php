@@ -118,7 +118,7 @@ body.admin-bar .sv100_sv_header {
 	}
 }
 
-@media ( min-width: 782px ) {
+@media ( min-width: 783px ) {
 	body.admin-bar .sv100_sv_header {
 		top: 32px;
 	}
@@ -136,10 +136,31 @@ body.admin-bar .sv100_sv_header {
 	color: <?php echo $highlight_color; ?>;
 }
 
+<?php $header_max_height_mobile = $logo_height_mobile > 0 ? $logo_height_mobile + 20 : '80'; ?>
+.sv100_sv_header .sv100_sv_header_bar {
+    max-height: <?php echo $header_max_height_mobile; ?>px;
+}
+
+@media ( min-width: 1350px ) {
+    .sv100_sv_header .sv100_sv_header_bar {
+        max-height: 100%;
+    }
+}
+
+.sv100_sv_header .sv100_sv_header_branding a {
+    height: <?php echo $logo_height_mobile < 1 ? 'auto' : $logo_height_mobile . 'px'; ?>;
+}
+
+@media ( min-width: 1350px ) {
+    .sv100_sv_header .sv100_sv_header_branding a {
+        height: <?php echo $logo_height < 1 ? 'auto' : $logo_height . 'px'; ?>;
+    }
+}
+
 .sv100_sv_header .sv100_sv_header_branding img {
 	width: <?php echo $logo_width_mobile < 1 ? 'auto' : $logo_width_mobile . 'px'; ?>;
 	height: <?php echo $logo_height_mobile < 1 ? 'auto' : $logo_height_mobile . 'px'; ?>;
-	max-height: <?php echo $logo_height_mobile < 1 ? '100px' : $logo_height_mobile . 'px'; ?>;
+	max-height: <?php echo $logo_height_mobile < 1 ? '60px' : $logo_height_mobile . 'px'; ?>;
 }
 
 @media ( min-width: 1350px ) {
@@ -165,9 +186,27 @@ if ( $bg_image_sub ) {
 <?php } ?>
 }
 
+.sv100_sv_navigation_sv_header_primary {
+    height: calc( 100vh - <?php echo $header_max_height_mobile; ?>px );
+}
+
+@media ( min-width: 601px ) {
+    body.admin-bar .sv100_sv_navigation_sv_header_primary {
+        height: calc( 100vh - <?php echo $header_max_height_mobile; ?>px - 46px );
+    }
+}
+
+@media ( min-width: 783px ) {
+    body.admin-bar .sv100_sv_navigation_sv_header_primary {
+        height: calc( 100vh - <?php echo $header_max_height_mobile; ?>px - 32px );
+    }
+}
+
 @media ( min-width: 1350px ) {
-	.sv100_sv_navigation_sv_header_primary {
+    body.admin-bar .sv100_sv_navigation_sv_header_primary,
+    .sv100_sv_navigation_sv_header_primary {
 		background: transparent;
+        height: 100%;
 	}
 }
 
