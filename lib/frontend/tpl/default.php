@@ -18,7 +18,9 @@
 			<div class="<?php echo $this->get_prefix( 'branding' ); ?>">
 				<?php
                     if ( get_header_image() ) {
-                    	echo '<a href="' . get_home_url() . '"><img src="' . get_header_image() . '" alt="' . get_bloginfo( 'title' ) . '" /></a>';
+                    	echo '<a href="' . get_home_url() . '">
+                    		<img src="' . get_header_image() . '" alt="' . get_bloginfo( 'title' ) . '" />
+                    		</a>';
 					} elseif ( get_custom_logo() ) {
                         echo get_custom_logo();
                     } else {
@@ -41,8 +43,11 @@
 			) )
 			: '';
 		
-		if ( $this->get_root()->get_module( 'sv_sidebar' )
-			 && ! empty( $this->get_root()->get_module( 'sv_sidebar' )->load( array( 'id' => $this->get_module_name(), ) ) )
+		if (
+			$this->get_root()->get_module( 'sv_sidebar' )
+			&& ! empty(
+					$this->get_root()->get_module( 'sv_sidebar' )->load( array( 'id' => $this->get_module_name(), ) )
+				)
 			) {
 			
 			?>
