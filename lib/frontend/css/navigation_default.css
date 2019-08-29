@@ -150,6 +150,71 @@ button.sv100_sv_navigation_mobile_menu_toggle::before {
 	display: none;
 }
 
+/* Menu - Level 1 (Show Images) */
+.sv100_sv_navigation_sv_header_primary ul li.show_images ul.sub-menu {
+	display: flex;
+	flex-direction: column;
+}
+
+@media ( min-width: 760px ) {
+	.sv100_sv_navigation_sv_header_primary ul li.show_images ul.sub-menu {
+		flex-wrap: wrap;
+	}
+
+	.sv100_sv_navigation_sv_header_primary ul li.show_images ul.sub-menu li {
+		max-width: 350px;
+	}
+}
+
+.sv100_sv_navigation_sv_header_primary ul li.show_images ul.sub-menu li > a:hover,
+.sv100_sv_navigation_sv_header_primary ul li.show_images ul.sub-menu li > a:focus,
+.sv100_sv_navigation_sv_header_primary ul li.show_images.active ul.sub-menu li > a,
+.sv100_sv_navigation_sv_header_primary ul li.show_images.sub_menu_open ul.sub-menu li > a {
+	background-color: transparent;
+}
+
+.sv100_sv_navigation_sv_header_primary ul.menu > li.show_images ul.sub-menu img {
+	width: 100%;
+	max-width: 100%;
+	max-height: 180px;
+	height: calc( ( 100vh - 80px ) / 5 );
+	margin-bottom: 5px;
+	object-fit: cover;
+}
+
+body.admin-bar .sv100_sv_navigation_sv_header_primary ul.menu > li.show_images ul.sub-menu img {
+	height: calc( ( 100vh - ( 80px + 46px ) ) / 5 );
+}
+
+@media ( min-width: 768px ) {
+	body.admin-bar .sv100_sv_navigation_sv_header_primary ul.menu > li.show_images ul.sub-menu img {
+		height: calc( ( 100vh - ( 80px + 32px ) ) / 5 );
+	}
+}
+
+@media ( min-width: 1050px ) {
+	.sv100_sv_navigation_sv_header_primary  ul.menu > li.show_images ul.sub-menu {
+		left:0;
+		display: grid;
+		grid-template-columns: repeat( auto-fit, 250px );
+		align-items: flex-start;
+		grid-auto-rows: max-content;
+		padding: 20px;
+		position: absolute;
+		justify-content: center;
+		width: 100%;
+		grid-gap: 20px;
+	}
+
+	.sv100_sv_navigation_sv_header_primary  ul.menu > li.show_images ul.sub-menu > li,
+	.sv100_sv_navigation_sv_header_primary  ul.menu > li.show_images ul.sub-menu > li > a {
+		padding: 0;
+	}
+}
+/* End Menu - Level 1 (Show Images) */
+
+
+
 @media ( min-width: 1350px ) {
 	.sv100_sv_navigation_sv_header_primary .sub-menu {
 		display: flex;
