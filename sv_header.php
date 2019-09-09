@@ -116,6 +116,11 @@
 				 ->set_default_value( 0 )
 				 ->load_type( 'checkbox' );
 			
+			$this->get_setting( 'show_thumbnail_sub' )
+				 ->set_title( __( 'Show Thubmnail', 'sv100' ) )
+				 ->set_default_value( 0 )
+				 ->load_type( 'checkbox' );
+			
 			// Submenu Background Settings
 			$this->get_settings_component( 'bg_color_sub','background_color', '#ffffff' );
 			$this->get_settings_component( 'bg_image_sub','background_image' );
@@ -164,24 +169,12 @@
 				->set_path( 'lib/frontend/css/default.css' )
 				->set_inline( true );
 	
-			$this->get_script( 'slider' )
-				->set_path( 'lib/frontend/css/slider.css' )
-				->set_inline( true );
-	
 			$this->get_script( 'navigation_default' )
 				->set_path( 'lib/frontend/css/navigation_default.css' )
 				->set_inline( true );
 	
-			$this->get_script( 'navigation_slider' )
-				->set_path( 'lib/frontend/css/navigation_slider.css' )
-				->set_inline( true );
-	
 			$this->get_script( 'sidebar_default' )
 				->set_path( 'lib/frontend/css/sidebar_default.css' )
-				->set_inline( true );
-	
-			$this->get_script( 'sidebar_slider' )
-				->set_path( 'lib/frontend/css/sidebar_slider.css' )
 				->set_inline( true );
 	
 			// Register Scripts
@@ -239,20 +232,6 @@
 		protected function router( array $settings ): string {
 			if ( $settings['template'] ) {
 				switch ( $settings['template'] ) {
-					case 'slider':
-						$template = array(
-							'name'      => 'slider',
-							'scripts'   => array(
-								$this->get_script(' default' )->set_inline( $settings['inline'] ),
-								$this->get_script( 'slider' )->set_inline( $settings['inline'] ),
-								$this->get_script( 'navigation_default' )->set_inline( $settings['inline'] ),
-								$this->get_script( 'navigation_slider' )->set_inline( $settings['inline'] ),
-								$this->get_script( 'sidebar_default' )->set_inline( $settings['inline'] ),
-								$this->get_script( 'sidebar_slider' )->set_inline( $settings['inline'] ),
-								$this->get_script( 'navigation_mobile' ),
-							),
-						);
-						break;
 					case 'no_header':
 						$template = array(
 							'name'      => 'no_header',
@@ -299,7 +278,7 @@
 				}
 				
 				if (
-				( $script->get_ID() === 'sidebar_default' || $script->get_ID() === 'sidebar_slider' )
+				$script->get_ID() === 'sidebar_default'
 				&& $this->get_module( 'sv_sidebar' )
 				&& empty( $this->get_module( 'sv_sidebar' )->load( array( 'id' => $this->get_module_name(), ) ) )
 				) {

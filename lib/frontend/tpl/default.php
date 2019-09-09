@@ -6,13 +6,8 @@
 	<?php wp_head(); ?>
 </head>
 
-<?php
-	// Checks if slider has posts and is home
-	$slider_support = $settings['template'] === 'slider' ? true : false;
-?>
-
 <body <?php body_class(); ?>>
-<header class="<?php echo $this->get_prefix(); echo $slider_support ? ' ' . $this->get_prefix( 'slider' ) : ''; ?>">
+<header class="<?php echo $this->get_prefix(); ?>">
     <div class="<?php echo $this->get_prefix( 'bar' ); ?>">
 		<?php if ( $this->get_setting( 'branding' )->run_type()->get_data() ) { ?>
 			<div class="<?php echo $this->get_prefix( 'branding' ); ?>">
