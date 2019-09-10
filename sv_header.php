@@ -178,8 +178,8 @@
 				->set_inline( true );
 	
 			// Register Scripts
-			$this->get_script( 'navigation_mobile' )
-				->set_path( 'lib/frontend/js/navigation_mobile.js' )
+			$this->get_script( 'navigation_js' )
+				->set_path( 'lib/frontend/js/navigation.js' )
 				->set_type( 'js' )
 				->set_deps( array(  'jquery' ) );
 			
@@ -245,7 +245,7 @@
 								$this->get_script( 'default' )->set_inline( $settings['inline'] ),
 								$this->get_script( 'navigation_default' )->set_inline( $settings['inline'] ),
 								$this->get_script( 'sidebar_default' )->set_inline( $settings['inline'] ),
-								$this->get_script( 'navigation_mobile' ),
+								$this->get_script( 'navigation_js' ),
 							),
 						);
 						break;
@@ -257,21 +257,27 @@
 						$this->get_script( 'default' )->set_inline( $settings['inline'] ),
 						$this->get_script( 'navigation_default' )->set_inline( $settings['inline'] ),
 						$this->get_script( 'sidebar_default' )->set_inline( $settings['inline'] ),
-						$this->get_script( 'navigation_mobile' ),
+						$this->get_script( 'navigation_js' ),
 					),
 				);
 			}
-	
-			return $this->load_template( $template, $settings );
+			
+			// @filter: sv100_sv_header_template
+			return $this->load_template(
+				apply_filters(
+					$this->get_prefix( 'template' ),
+					$template, $settings, $this
+				), $settings
+			);
 		}
 		
 		// Loads the templates
 		protected function load_template( array $template, array $settings ): string {
 			ob_start();
+			
 			foreach ( $template['scripts'] as $script_name =>  $script ) {
 				if (
-					( $script->get_ID() == 'navigation_default' || $script->get_ID() == 'navigation_mobile' )
-					&& $this->get_module( 'sv_navigation' )
+					$this->get_module( 'sv_navigation' )
 					&& ! $this->get_module( 'sv_navigation' )->has_items( $this->get_module_name() . '_primary' )
 				) {
 					continue;
@@ -291,7 +297,11 @@
 			$this->get_script( 'inline_config' )->set_is_enqueued();
 			
 			// Loads the template
-			include ( $this->get_path('lib/frontend/tpl/' . $template['name'] . '.php' ) );
+			$path = $template['custom_path']
+				? $template['custom_path']
+				: $this->get_path('lib/frontend/tpl/' . $template['name'] . '.php' );
+			
+			include ( $path );
 			$output							        = ob_get_contents();
 			ob_end_clean();
 	
