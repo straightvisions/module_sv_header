@@ -297,7 +297,7 @@
 			$this->get_script( 'inline_config' )->set_is_enqueued();
 			
 			// Loads the template
-			$path = $template['custom_path']
+			$path = isset($template['custom_path'])
 				? $template['custom_path']
 				: $this->get_path('lib/frontend/tpl/' . $template['name'] . '.php' );
 			
