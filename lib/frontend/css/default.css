@@ -40,7 +40,6 @@ body.admin-bar .sv100_sv_header.open {
 	padding: 10px var( --sv100_sv_common-padding );
 	display: flex;
 	align-items: center;
-	position: relative;
 	margin-left: auto;
 	margin-right: auto;
 }

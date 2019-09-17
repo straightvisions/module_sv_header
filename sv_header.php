@@ -32,8 +32,16 @@
 		
 		protected function load_settings(): sv_header {
 			// Header Settings
-			$this->get_settings_component( 'position','position' );
-
+			$this->get_setting( 'position' )
+				 ->set_title( __( 'Position', 'sv100' ) )
+				 ->set_options( array(
+				 	'relative'		=> __( 'Default', 'sv100' ),
+					'fixed'			=> __( 'Fixed', 'sv100' ),
+					'sticky'		=> __( 'Sticky', 'sv100' )
+				 ) )
+				 ->set_default_value( 'relative' )
+				 ->load_type( 'select' );
+			
 			// Header Branding Settings
 			$this->get_setting( 'branding' )
 			     ->set_title( __( 'Branding', 'sv100' ) )
