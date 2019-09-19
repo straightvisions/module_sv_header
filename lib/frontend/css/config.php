@@ -85,7 +85,7 @@
 /* Header */
 .sv100_sv_header {
 	position: <?php echo $position; ?>;
-	font-family: <?php echo ( $font ? '"' . $font['family'] . '", ' : '' ); ?>sans-serif;
+	<?php echo ( $font ? 'font-family: "' . $font['family'] . '", sans-serif;' : '' ); ?>
 	font-weight: <?php echo ( $font ? $font['weight'] : '400' ); ?>;
 	font-size: <?php echo $font_size; ?>px;
 	color: <?php echo $text_color; ?>;
@@ -211,7 +211,7 @@ if ( $bg_image_sub ) {
 }
 
 .sv100_sv_header .sv100_sv_navigation_sv_header_primary ul li > a {
-	font-family: <?php echo ( $font ? '"' . $font['family'] . '", ' : '' ); ?>sans-serif;
+	<?php echo ( $font ? 'font-family: "' . $font['family'] . '", sans-serif;' : '' ); ?>
 }
 
 .sv100_sv_header ul.menu li > a,
