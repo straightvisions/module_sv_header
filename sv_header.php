@@ -282,15 +282,16 @@
 		// Loads the templates
 		protected function load_template( array $template, array $settings ): string {
 			ob_start();
-			
+
 			foreach ( $template['scripts'] as $script_name =>  $script ) {
 				if (
+					$script->get_ID() === 'navigation_default' &&
 					$this->get_module( 'sv_navigation' )
 					&& ! $this->get_module( 'sv_navigation' )->has_items( $this->get_module_name() . '_primary' )
 				) {
 					continue;
 				}
-				
+
 				if (
 				$script->get_ID() === 'sidebar_default'
 				&& $this->get_module( 'sv_sidebar' )
@@ -298,10 +299,10 @@
 				) {
 					continue;
 				}
-				
+
 				$script->set_is_enqueued();
 			}
-			
+
 			$this->get_script( 'inline_config' )->set_is_enqueued();
 			
 			// Loads the template

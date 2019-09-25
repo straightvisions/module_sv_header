@@ -141,12 +141,6 @@ body.admin-bar .sv100_sv_header {
     max-height: <?php echo $header_max_height_mobile; ?>px;
 }
 
-@media ( min-width: 1350px ) {
-    .sv100_sv_header .sv100_sv_header_bar {
-        max-height: 100%;
-    }
-}
-
 .sv100_sv_header .sv100_sv_header_branding a {
     height: <?php echo $logo_height_mobile < 1 ? 'auto' : $logo_height_mobile . 'px'; ?>;
 }
