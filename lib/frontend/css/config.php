@@ -152,15 +152,15 @@ body.admin-bar .sv100_sv_header {
 }
 
 .sv100_sv_header .sv100_sv_header_branding img {
-	width: <?php echo $logo_width_mobile < 1 ? 'auto' : $logo_width_mobile . 'px'; ?>;
-	height: <?php echo $logo_height_mobile < 1 ? 'auto' : $logo_height_mobile . 'px'; ?>;
+	width: <?php echo $logo_width_mobile < 1 ? '100%' : $logo_width_mobile . 'px'; ?>;
+	height: <?php echo $logo_height_mobile < 1 ? '100%' : $logo_height_mobile . 'px'; ?>;
 	max-height: <?php echo $logo_height_mobile < 1 ? '60px' : $logo_height_mobile . 'px'; ?>;
 }
 
 @media ( min-width: 1350px ) {
 	.sv100_sv_header .sv100_sv_header_branding img {
-		width: <?php echo $logo_width < 1 ? 'auto' : $logo_width . 'px'; ?>;
-		height: <?php echo $logo_height < 1 ? 'auto' : $logo_height . 'px'; ?>;
+		width: <?php echo $logo_width < 1 ? '100%' : $logo_width . 'px'; ?>;
+		height: <?php echo $logo_height < 1 ? '100%' : $logo_height . 'px'; ?>;
 		max-height: <?php echo $logo_height < 1 ? '100px' : $logo_height . 'px'; ?>;
 	}
 }
