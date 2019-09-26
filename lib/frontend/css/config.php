@@ -1,7 +1,12 @@
 <?php
 	// Header Settings
 	$position					= $script->get_parent()->get_setting( 'position' )->run_type()->get_data();
-	
+	$box_margin_top				= $script->get_parent()->get_setting( 'box_margin_top' )->run_type()->get_data();
+
+	$box_shadow_opacity			= ($script->get_parent()->get_setting( 'box_shadow_opacity' )->run_type()->get_data() / 100);
+
+	$box_content_alignment		= $script->get_parent()->get_setting( 'box_content_alignment' )->run_type()->get_data();
+
 	// Header Text Settings
 	$font_family				= $script->get_parent()->get_setting( 'font_family' )->run_type()->get_data();
 	
@@ -17,6 +22,12 @@
 	
 	// Header Background Settings
 	$bg_color					= $script->get_parent()->get_setting( 'bg_color' )->run_type()->get_data();
+	$bg_color_opacity			= $script->get_parent()->get_setting( 'bg_color_opacity' )->run_type()->get_data();
+	// Value is a hex color
+	list( $r, $g, $b )			= sscanf( $bg_color, "#%02x%02x%02x" );
+	$bg_color_rgb				= $r . ',' . $g . ',' . $b;
+	$bg_color_rgba				= $bg_color_rgb . ',' . $bg_color_opacity / 100;
+
 	$bg_image					= $script->get_parent()->get_setting( 'bg_image' )->run_type()->get_data();
 	$bg_media_size				= $script->get_parent()->get_setting( 'bg_media_size' )->run_type()->get_data();
 	$bg_position				= $script->get_parent()->get_setting( 'bg_position' )->run_type()->get_data();
@@ -85,13 +96,13 @@
 /* Header */
 .sv100_sv_header {
 	position: <?php echo $position; ?>;
+	<?php echo ($box_margin_top > 0) ? 'margin-top: '.$box_margin_top.'px;' : ''; ?>
 	<?php echo ( $font ? 'font-family: "' . $font['family'] . '", sans-serif;' : '' ); ?>
 	font-weight: <?php echo ( $font ? $font['weight'] : '400' ); ?>;
 	font-size: <?php echo $font_size; ?>px;
 	color: <?php echo $text_color; ?>;
-	background-color: <?php echo $bg_color; ?>;
-
-
+	background-color: rgba(<?php echo $bg_color_rgba; ?>);
+	box-shadow: 0 1px 10px rgba( 0, 0, 0, <?php echo $box_shadow_opacity; ?> );
 <?php
 	if ( $bg_image ) {
 		$bg_size = $bg_size > 0 ? $bg_size . 'px' : $bg_fit;
@@ -104,7 +115,7 @@
 <?php } ?>
 }
 
-<?php if ( $position === 'fixed' || $position === 'sticky' ) { ?>
+<?php if ( $position === 'fixed' || $position === 'sticky' || $position === 'absolute' ) { ?>
 body.admin-bar .sv100_sv_header {
 	<?php echo $position === 'fixed' ? 'position: sticky;' : ''; ?>
 	top: 0;
@@ -139,6 +150,7 @@ body.admin-bar .sv100_sv_header {
 <?php $header_max_height_mobile = $logo_height_mobile > 0 ? $logo_height_mobile + 20 : '80'; ?>
 .sv100_sv_header .sv100_sv_header_bar {
     max-height: <?php echo $header_max_height_mobile; ?>px;
+	justify-content:<?php echo $box_content_alignment; ?>;
 }
 
 .sv100_sv_header .sv100_sv_header_branding a {

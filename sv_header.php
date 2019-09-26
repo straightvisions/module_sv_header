@@ -35,12 +35,37 @@
 			$this->get_setting( 'position' )
 				 ->set_title( __( 'Position', 'sv100' ) )
 				 ->set_options( array(
-				 	'relative'		=> __( 'Default', 'sv100' ),
+				 	'relative'		=> __( 'Static', 'sv100' ),
+					 'absolute'		=> __( 'Absolute', 'sv100' ),
 					'fixed'			=> __( 'Fixed', 'sv100' ),
 					'sticky'		=> __( 'Sticky', 'sv100' )
 				 ) )
 				 ->set_default_value( 'relative' )
 				 ->load_type( 'select' );
+
+			$this->get_setting('box_margin_top')
+				->set_title( __( 'Top Margin', 'sv100' ) )
+				->set_description( __( 'Top Margin in Pixel for Headerbox.', 'sv100' ) )
+				->set_default_value( 0 )
+				->load_type( 'number' );
+
+			$this->get_setting('box_shadow_opacity')
+				->set_title( __( 'Box Shadow Opacity', 'sv100' ) )
+				->set_description( __( 'Box Shadow Opacity in percent.', 'sv100' ) )
+				->set_default_value( 10 )
+				->set_min( 0 )
+				->set_max( 100 )
+				->load_type( 'number' );
+
+			$this->get_setting( 'box_content_alignment' )
+				->set_title( __( 'Content Alignment', 'sv100' ) )
+				->set_options( array(
+					'start'		=> __( 'Left', 'sv100' ),
+					'center'		=> __( 'Center', 'sv100' ),
+					'end'			=> __( 'Right', 'sv100' )
+				) )
+				->set_default_value( 'center' )
+				->load_type( 'select' );
 			
 			// Header Branding Settings
 			$this->get_setting( 'branding' )
@@ -97,6 +122,15 @@
 			
 			// Header Background Settings
 			$this->get_settings_component( 'bg_color','background_color', '#ffffff' );
+
+			$this->get_setting('bg_color_opacity')
+				->set_title( __( 'Background Color Opacity', 'sv100' ) )
+				->set_description( __( 'Background Color Opacity in percent.', 'sv100' ) )
+				->set_default_value( 30 )
+				->set_min( 0 )
+				->set_max( 100 )
+				->load_type( 'number' );
+
 			$this->get_settings_component( 'bg_image','background_image' );
 			$this->get_settings_component( 'bg_media_size','background_media_size', 'large' );
 			$this->get_settings_component( 'bg_position','background_position', 'center top' );
