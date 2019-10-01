@@ -150,8 +150,27 @@ body.admin-bar .sv100_sv_header {
 <?php $header_max_height_mobile = $logo_height_mobile > 0 ? $logo_height_mobile + 20 : '80'; ?>
 .sv100_sv_header .sv100_sv_header_bar {
     max-height: <?php echo $header_max_height_mobile; ?>px;
-	justify-content:<?php echo $box_content_alignment; ?>;
 }
+
+<?php if($box_content_alignment == 'left'){ ?>
+	.sv100_sv_header .sv100_sv_header_bar {
+		justify-content: start;
+	}
+	.sv100_sv_header .sv100_sv_header_bar > *:only-child{
+		margin-right:auto;
+	}
+<?php }elseif($box_content_alignment == 'right'){ ?>
+	.sv100_sv_header .sv100_sv_header_bar {
+		justify-content: end;
+	}
+	.sv100_sv_header .sv100_sv_header_bar > *:only-child{
+		margin-left:auto;
+	}
+<?php }else{ ?>
+	.sv100_sv_header .sv100_sv_header_bar {
+		justify-content: center;
+	}
+<?php } ?>
 
 .sv100_sv_header .sv100_sv_header_branding a {
     height: <?php echo $logo_height_mobile < 1 ? 'auto' : $logo_height_mobile . 'px'; ?>;

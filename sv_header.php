@@ -60,9 +60,9 @@
 			$this->get_setting( 'box_content_alignment' )
 				->set_title( __( 'Content Alignment', 'sv100' ) )
 				->set_options( array(
-					'start'		=> __( 'Left', 'sv100' ),
+					'left'		=> __( 'Left', 'sv100' ),
 					'center'		=> __( 'Center', 'sv100' ),
-					'end'			=> __( 'Right', 'sv100' )
+					'right'			=> __( 'Right', 'sv100' )
 				) )
 				->set_default_value( 'center' )
 				->load_type( 'select' );
