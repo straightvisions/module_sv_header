@@ -249,12 +249,26 @@
 			if ( $this->get_module( 'sv_sidebar' ) ) {
 				$this->get_module( 'sv_sidebar' )
 					 ->create( $this )
+					 ->set_ID( 'sidebar' )
 					 ->set_title( __( 'Header', 'sv100' ) )
 					 ->set_desc( __( 'Widgets in this sidebar will be shown in the header, next to the navigation.', 'sv100' ) )
 					 ->load_sidebar();
 			}
 	
 			return $this;
+		}
+		
+		public function has_sidebar_content(): bool{
+			if(!$this->get_module( 'sv_sidebar' )){
+				return false;
+			}
+			
+			$i = false;
+			
+			if($this->get_module( 'sv_sidebar' )->load( array( 'id' => $this->get_module_name() . '_sidebar' ) ) ){
+				$i = true;
+			}
+			return $i;
 		}
 	
 		public function load( $settings = array() ): string {
@@ -328,8 +342,7 @@
 
 				if (
 				$script->get_ID() === 'sidebar_default'
-				&& $this->get_module( 'sv_sidebar' )
-				&& empty( $this->get_module( 'sv_sidebar' )->load( array( 'id' => $this->get_module_name(), ) ) )
+				&& $this->has_sidebar_content()
 				) {
 					continue;
 				}

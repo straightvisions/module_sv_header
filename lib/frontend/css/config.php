@@ -147,7 +147,7 @@ body.admin-bar .sv100_sv_header {
 	color: <?php echo $highlight_color; ?>;
 }
 
-<?php $header_max_height_mobile = $logo_height_mobile > 0 ? $logo_height_mobile + 20 : '80'; ?>
+<?php $header_max_height_mobile = $logo_height_mobile > 0 ? $logo_height_mobile + 20 : 'auto'; ?>
 .sv100_sv_header .sv100_sv_header_bar {
     max-height: <?php echo $header_max_height_mobile; ?>px;
 }
