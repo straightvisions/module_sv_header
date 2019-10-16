@@ -147,10 +147,11 @@ body.admin-bar .sv100_sv_header {
 	color: <?php echo $highlight_color; ?>;
 }
 
-<?php $header_max_height_mobile = $logo_height_mobile > 0 ? $logo_height_mobile + 20 : 'auto'; ?>
+<?php if($logo_height_mobile){ ?>
 .sv100_sv_header .sv100_sv_header_bar {
-    max-height: <?php echo $header_max_height_mobile; ?>px;
+    max-height: <?php echo $logo_height_mobile + 20; ?>px;
 }
+<?php } ?>
 
 <?php if($box_content_alignment == 'left'){ ?>
 	.sv100_sv_header .sv100_sv_header_bar {
