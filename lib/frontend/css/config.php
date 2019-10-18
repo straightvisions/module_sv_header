@@ -147,6 +147,8 @@ body.admin-bar .sv100_sv_header {
 	color: <?php echo $highlight_color; ?>;
 }
 
+<?php $logo_height_mobile = $logo_height_mobile > 0 ? $logo_height_mobile + 20 : 0; ?>
+
 <?php if($logo_height_mobile){ ?>
 .sv100_sv_header .sv100_sv_header_bar {
     max-height: <?php echo $logo_height_mobile + 20; ?>px;
@@ -213,18 +215,18 @@ if ( $bg_image_sub ) {
 }
 
 .sv100_sv_navigation_sv_header_primary {
-    height: calc( 100vh - <?php echo $header_max_height_mobile; ?>px );
+    height: calc( 100vh - <?php echo $logo_height_mobile; ?>px );
 }
 
 @media ( min-width: 601px ) {
     body.admin-bar .sv100_sv_navigation_sv_header_primary {
-        height: calc( 100vh - <?php echo $header_max_height_mobile; ?>px - 46px );
+        height: calc( 100vh - <?php echo $logo_height_mobile; ?>px - 46px );
     }
 }
 
 @media ( min-width: 783px ) {
     body.admin-bar .sv100_sv_navigation_sv_header_primary {
-        height: calc( 100vh - <?php echo $header_max_height_mobile; ?>px - 32px );
+        height: calc( 100vh - <?php echo $logo_height_mobile; ?>px - 32px );
     }
 }
 
