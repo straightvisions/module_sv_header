@@ -5,7 +5,7 @@
 		<?php
 		echo $module->get_setting( 'position' )->run_type()->form();
 		echo $module->get_setting( 'box_margin_top' )->run_type()->form();
-		echo $module->get_setting( 'box_shadow_opacity' )->run_type()->form();
+		echo $module->get_setting( 'box_shadow_color' )->run_type()->form();
 		echo $module->get_setting( 'box_content_alignment' )->run_type()->form();
 		?>
     </div>
@@ -46,7 +46,6 @@
     <div class="sv_setting_flex">
 		<?php
 		echo $module->get_settings_component( 'bg_color' )->run_type()->form();
-		echo $module->get_setting( 'bg_color_opacity' )->run_type()->form();
 		echo $module->get_settings_component( 'bg_image' )->run_type()->form();
 		echo $module->get_settings_component( 'bg_media_size' )->run_type()->form();
 		?>

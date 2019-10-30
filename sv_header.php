@@ -49,13 +49,10 @@
 				->set_default_value( 0 )
 				->load_type( 'number' );
 
-			$this->get_setting('box_shadow_opacity')
-				->set_title( __( 'Box Shadow Opacity', 'sv100' ) )
-				->set_description( __( 'Box Shadow Opacity in percent.', 'sv100' ) )
-				->set_default_value( 10 )
-				->set_min( 0 )
-				->set_max( 100 )
-				->load_type( 'number' );
+			$this->get_setting('box_shadow_color')
+				->set_title( __( 'Box Shadow Color', 'sv100' ) )
+				->set_description( __( 'Color of the box shadow.', 'sv100' ) )
+				->load_type( 'color' );
 
 			$this->get_setting( 'box_content_alignment' )
 				->set_title( __( 'Content Alignment', 'sv100' ) )
@@ -122,15 +119,6 @@
 			
 			// Header Background Settings
 			$this->get_settings_component( 'bg_color','background_color', '#ffffff' );
-
-			$this->get_setting('bg_color_opacity')
-				->set_title( __( 'Background Color Opacity', 'sv100' ) )
-				->set_description( __( 'Background Color Opacity in percent.', 'sv100' ) )
-				->set_default_value( 30 )
-				->set_min( 0 )
-				->set_max( 100 )
-				->load_type( 'number' );
-
 			$this->get_settings_component( 'bg_image','background_image' );
 			$this->get_settings_component( 'bg_media_size','background_media_size', 'large' );
 			$this->get_settings_component( 'bg_position','background_position', 'center top' );
@@ -193,14 +181,6 @@
 				 ->set_title( __( 'Menu icon (open) color', 'sv100' ) )
 				 ->set_default_value( '#1e1e1e' )
 				 ->load_type( 'color' );
-			
-			$this->get_setting( 'bg_opacity_mobile' )
-				 ->set_title( __( 'Menu background opacity', 'sv100' ) )
-				 ->set_description( __( 'Define the background opacity of the mobile menu, in percent.', 'sv100' ) )
-				 ->set_default_value( 100 )
-				 ->set_max( 100 )
-				 ->set_min( 0 )
-				 ->load_type( 'number' );
 			
 			return $this;
 		}
