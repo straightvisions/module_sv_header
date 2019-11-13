@@ -78,6 +78,7 @@ button.sv100_sv_navigation_mobile_menu_toggle::before {
 		visibility: visible;
 		padding: 0;
 		height: 100%;
+        width:  auto;
 		border-top: 0;
 		display: flex;
 		left: initial;

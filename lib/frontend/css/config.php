@@ -3,7 +3,7 @@
 // This reduces the lines of code for the needed setting values.
 foreach ( $script->get_parent()->get_settings() as $setting ) {
 	${ $setting->get_ID() } = $setting->run_type()->get_data();
-	
+
 	// If setting is color, it gets the value in the RGB-Format
 	if ( $setting->get_type() === 'setting_color' ) {
 		${ $setting->get_ID() } = $setting->get_rgb( ${ $setting->get_ID() } );
@@ -99,71 +99,40 @@ if ( $bg_image ) {
 <?php
 // ALIGNMENT SETTINGS --------------------------------------------------------------
 ?>
-<?php if($box_content_alignment == 'left'){ // LEFT / FLEX START ------------- ?>
-	.sv100_sv_header .sv100_sv_header_bar {
-	    justify-content: flex-start;
-	}
-
-    .sv100_sv_header .sv100_sv_header_bar > .sv100_sv_header_bar_column,
-    .sv100_sv_header .sv100_sv_header_bar > .sv100_sv_navigation_sv_header_primary
-    {
-        flex: 0 0 auto;
-        width: auto;
-        margin-right: 5%;
+    button.sv100_sv_navigation_mobile_menu_toggle{
+        margin: 0; /* fix flex alignment */
     }
 
-    .sv100_sv_header .sv100_sv_header_bar > *:last-child(){
-        margin-right:0;
-    }
-<?php }elseif($box_content_alignment == 'right'){ // LEFT / FLEX END ------------- ?>
-    .sv100_sv_header .sv100_sv_header_bar {
-        justify-content: flex-end;
+    .sv100_sv_header .sv100_sv_header_bar > *{
+        display: flex;
     }
 
-    .sv100_sv_header .sv100_sv_header_bar > .sv100_sv_header_bar_column,
-    .sv100_sv_header .sv100_sv_header_bar > .sv100_sv_navigation_sv_header_primary{
-        flex: 0 0 auto;
-        width: auto;
-        margin-left: 5%;
-    }
+    <?php
 
-    .sv100_sv_header .sv100_sv_header_bar > *:first-child(){
-        margin-left:0;
-    }
-<?php }elseif($box_content_alignment == 'spread'){ // SPREAD / SPACE BETWEEN ------------- ?>
-    .sv100_sv_header .sv100_sv_header_bar {
-        justify-content: space-between;
-    }
+        $columns_count = 0;
+        $columns_count += $script->get_parent()->get_setting( 'branding' )->run_type()->get_data() ? 1 : 0;
+        $columns_count += $script->get_parent()->get_setting( 'navigation_active' )->run_type()->get_data() ? 1 : 0;
+        $columns_count += $script->get_parent()->get_setting( 'sidebar_active' )->run_type()->get_data() == 1
+        && $script->get_parent()->get_root()->get_module( 'sv_sidebar' )
+        && empty(
+        $script->get_parent()->get_root()->get_module( 'sv_sidebar' )->load( array( 'id' => $script->get_parent()->get_module_name().'_sidebar', ) )
+        ) === false ? 1 : 0;
 
-    .sv100_sv_header .sv100_sv_header_bar > .sv100_sv_header_bar_column,
-    .sv100_sv_header .sv100_sv_header_bar > .sv100_sv_navigation_sv_header_primary{
-        flex: 0 0 auto;
-        width: auto;
-    }
-<?php }else{  // CENTER / FLEX START ------------- ?>
-	.sv100_sv_header .sv100_sv_header_bar {
-	    justify-content: center;
-	}
+        if($columns_count > 0 && $columns_count <= 3){ // 3 test to prevent error
+            include( $script->get_parent()->get_path( 'lib/frontend/css/config_columns_'.$columns_count.'.php' ) );
+        }
 
-    .sv100_sv_header .sv100_sv_header_bar > .sv100_sv_header_bar_column,
-    .sv100_sv_header .sv100_sv_header_bar > .sv100_sv_navigation_sv_header_primary{
-        flex: 0 0 auto;
-        width: auto;
-        margin-left: 5%;
-    }
 
-    .sv100_sv_header .sv100_sv_header_bar > *:first-child(){
-        margin-left:0;
-    }
-<?php } ?>
+
+    ?>
 
 <?php
-// ALIGNMENT SETTINGS --------------------------------------------------------------
+// ORDER SETTINGS --------------------------------------------------------------
 ?>
     .sv100_sv_header .sv100_sv_header_branding{
         order: <?php echo $branding_order; ?>;
     }
-    .sv100_sv_header .sv100_sv_navigation_sv_header_primary{
+    .sv100_sv_header .sv100_sv_navigation_container{
         order: <?php echo $navigation_order; ?>;
     }
     .sv100_sv_header .sv100_sv_header_sidebar{
@@ -418,7 +387,7 @@ if ( $text_deco_menu_hover === 'none' ) {
 if ( count( $script->get_parent()->get_module( 'sv_sidebar' )->get_sidebars( $script->get_parent() ) ) > 0 ) {
 	foreach ( $script->get_parent()->get_module( 'sv_sidebar' )->get_sidebars( $script->get_parent() ) as $sidebar ) {
 		$value = $script->get_parent()->get_setting( $sidebar['id'] )->run_type()->get_data();
-		
+
 		switch ( $value ) {
 			case 'left':
 				$value = 'flex-start';
@@ -427,7 +396,7 @@ if ( count( $script->get_parent()->get_module( 'sv_sidebar' )->get_sidebars( $sc
 				$value = 'flex-end';
 				break;
 		}
-		
+
 		echo '.' . $sidebar['id'] . '{';
 		echo 'align-items: ' . $value . ';';
 		echo '}';

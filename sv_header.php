@@ -92,7 +92,7 @@
                     '2'	=> __( '2', 'sv100' ),
                     '3'	=> __( '3', 'sv100' )
                 ) )
-                ->set_default_value( 'left' )
+                ->set_default_value( '1' )
                 ->load_type( 'select' );
 			
 			$this->get_setting( 'branding_logo_width' )
@@ -147,7 +147,16 @@
                     '2'	=> __( '2', 'sv100' ),
                     '3'	=> __( '3', 'sv100' )
                 ) )
-                ->set_default_value( 'left' )
+                ->set_default_value( '2' )
+                ->load_type( 'select' );
+
+            $this->get_setting( 'navigation_active' )
+                ->set_title( __( 'Show Navigation', 'sv100' ) )
+                ->set_options( array(
+                    '1'	=> __( 'Yes', 'sv100' ),
+                    '0'	=> __( 'No', 'sv100' ),
+                ) )
+                ->set_default_value( '1' )
                 ->load_type( 'select' );
 
 			// Menu Item Settings
@@ -206,6 +215,15 @@
 				 ->load_type( 'color' );
 			
 			// sidebar order settings
+            $this->get_setting( 'sidebar_active' )
+                ->set_title( __( 'Show Header Sidebar', 'sv100' ) )
+                ->set_options( array(
+                    '1'	=> __( 'Yes', 'sv100' ),
+                    '0'	=> __( 'No', 'sv100' ),
+                ) )
+                ->set_default_value( '1' )
+                ->load_type( 'select' );
+
             $this->get_setting( 'sidebar_order' )
                 ->set_title( __( 'Order Position', 'sv100' ) )
                 ->set_options( array(
@@ -213,7 +231,7 @@
                     '2'	=> __( '2', 'sv100' ),
                     '3'	=> __( '3', 'sv100' )
                 ) )
-                ->set_default_value( 'left' )
+                ->set_default_value( '3' )
                 ->load_type( 'select' );
 			
 			return $this;
