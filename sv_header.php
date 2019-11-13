@@ -263,7 +263,7 @@
 			if ( $this->get_module( 'sv_sidebar' ) ) {
 				$this->get_module( 'sv_sidebar' )
 					->create( $this )
-					>set_ID( 'sidebar' )
+					->set_ID( 'sidebar' )
 					->set_title( __( 'Header', 'sv100' ) )
 					->set_desc( __( 'Widgets in this sidebar will be shown in the header, next to the navigation.', 'sv100' ) )
 					->load_sidebar();
