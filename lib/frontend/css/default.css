@@ -3,18 +3,31 @@
 	width: 100%;
 	top: 0;
 	z-index: 900;
-}
-.sv100_sv_header_branding:not(:last-child){
-	padding-right: 60px;
+    /* add these lines when grid container padding is refactored */
+    /*
+    padding-left:var( --sv100_sv_common-padding );
+    padding-right:var( --sv100_sv_common-padding );
+    */
 }
 
 .sv100_sv_header .sv100_sv_header_bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 	height: 100%;
-	padding: 10px var( --sv100_sv_common-padding );
-	display: flex;
-	align-items: center;
+	padding-top:10px;
+	padding-bottom:10px;
+    /* remove these lines when grid container padding is refactored */
+    padding-left: var( --sv100_sv_common-padding );
+    padding-right: var( --sv100_sv_common-padding );
+    /* ------- */
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.sv100_sv_header .sv100_sv_header_bar > *:not(button){
+	display:flex;
+	flex: 0 32%;
 }
 
 @media ( min-width: 1350px ) {

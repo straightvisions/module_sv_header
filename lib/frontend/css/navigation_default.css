@@ -71,14 +71,18 @@ button.sv100_sv_navigation_mobile_menu_toggle::before {
 	transition: visibility 0s ease-in-out .5s, left .5s ease-in-out;
 }
 
+/* desktop position */
 @media ( min-width: 1350px ) {
 	.sv100_sv_navigation_sv_header_primary {
-		position: static;
+		position: relative;
 		visibility: visible;
 		padding: 0;
 		height: 100%;
 		border-top: 0;
 		display: flex;
+		left: initial;
+		z-index: 1;
+		border-top: 0;
 		align-items: stretch;
 	}
 }

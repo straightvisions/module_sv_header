@@ -59,11 +59,12 @@
 				->set_options( array(
 					'left'		=> __( 'Left', 'sv100' ),
 					'center'		=> __( 'Center', 'sv100' ),
-					'right'			=> __( 'Right', 'sv100' )
+					'right'			=> __( 'Right', 'sv100' ),
+					'spread'		=> __( 'Spread', 'sv100' ),
 				) )
 				->set_default_value( 'center' )
 				->load_type( 'select' );
-			
+
 			// Header Branding Settings
 			$this->get_setting( 'branding' )
 			     ->set_title( __( 'Branding', 'sv100' ) )
@@ -83,13 +84,13 @@
 				 ->set_default_value( get_bloginfo( 'name' ) )
 				 ->load_type( 'text' );
 
-            // branding alignment
-            $this->get_setting( 'branding_alignment' )
-                ->set_title( __( 'Alignment', 'sv100' ) )
+            // branding order
+            $this->get_setting( 'branding_order' )
+                ->set_title( __( 'Order Position', 'sv100' ) )
                 ->set_options( array(
-                    'left'		=> __( 'Left', 'sv100' ),
-                    'center'	=> __( 'Center', 'sv100' ),
-                    'right'	=> __( 'Right', 'sv100' )
+                    '1'		=> __( '1', 'sv100' ),
+                    '2'	=> __( '2', 'sv100' ),
+                    '3'	=> __( '3', 'sv100' )
                 ) )
                 ->set_default_value( 'left' )
                 ->load_type( 'select' );
@@ -138,13 +139,13 @@
 			$this->get_settings_component( 'bg_repeat','background_repeat', 'no-repeat' );
 			$this->get_settings_component( 'bg_attachment','background_attachment', 'fixed' );
 
-            // menu alignment
-            $this->get_setting( 'navigation_alignment' )
-                ->set_title( __( 'Alignment', 'sv100' ) )
+            // menu order
+            $this->get_setting( 'navigation_order' )
+                ->set_title( __( 'Order Position', 'sv100' ) )
                 ->set_options( array(
-                    'left'		=> __( 'Left', 'sv100' ),
-                    'center'	=> __( 'Center', 'sv100' ),
-                    'right'	=> __( 'Right', 'sv100' )
+                    '1'		=> __( '1', 'sv100' ),
+                    '2'	=> __( '2', 'sv100' ),
+                    '3'	=> __( '3', 'sv100' )
                 ) )
                 ->set_default_value( 'left' )
                 ->load_type( 'select' );
@@ -204,14 +205,13 @@
 				 ->set_default_value( '#1e1e1e' )
 				 ->load_type( 'color' );
 			
-			// sidebar alignment settings
-            $this->get_setting( 'sidebar_alignment' )
-                ->set_title( __( 'Sidebar', 'sv100' ) )
-                ->set_description( __( 'Sidebar alignment within the header.', 'sv100' ) )
+			// sidebar order settings
+            $this->get_setting( 'sidebar_order' )
+                ->set_title( __( 'Order Position', 'sv100' ) )
                 ->set_options( array(
-                    'left'		=> __( 'Left', 'sv100' ),
-                    'center'	=> __( 'Center', 'sv100' ),
-                    'right'	=> __( 'Right', 'sv100' )
+                    '1'		=> __( '1', 'sv100' ),
+                    '2'	=> __( '2', 'sv100' ),
+                    '3'	=> __( '3', 'sv100' )
                 ) )
                 ->set_default_value( 'left' )
                 ->load_type( 'select' );

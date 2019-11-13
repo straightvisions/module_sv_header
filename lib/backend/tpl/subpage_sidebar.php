@@ -7,7 +7,7 @@
     echo '<h3 class="divider">' . __( 'Sidebar Alignments', 'sv100' ) . '</h3>';
     ?>
     <div class="sv_setting_flex">
-        <?php echo $module->get_setting( 'sidebar_alignment' )->run_type()->form(); ?>
+        <?php echo $module->get_setting( 'sidebar_order' )->run_type()->form(); ?>
     </div>
     <?php
     foreach ( $module->get_module( 'sv_sidebar' )->get_sidebars( $module ) as $sidebar ) {

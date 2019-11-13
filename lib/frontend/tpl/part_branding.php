@@ -1,7 +1,7 @@
 <?php
 
     if ( $this->get_setting( 'branding' )->run_type()->get_data() ) { ?>
-        <div class="<?php echo $this->get_prefix( 'branding' ); ?>">
+        <div class="<?php echo $this->get_prefix( 'branding' ); ?> <?php echo $this->get_prefix( 'bar_column' ); ?>">
             <?php
             if ( get_header_image() ) {
                 echo '<a href="' . get_home_url() . '">
