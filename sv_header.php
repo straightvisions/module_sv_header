@@ -85,6 +85,17 @@
 				 )
 				 ->set_default_value( get_bloginfo( 'name' ) )
 				 ->load_type( 'text' );
+
+            // branding alignment
+            $this->get_setting( 'branding_alignment' )
+                ->set_title( __( 'Alignment', 'sv100' ) )
+                ->set_options( array(
+                    'left'		=> __( 'Left', 'sv100' ),
+                    'center'	=> __( 'Center', 'sv100' ),
+                    'right'	=> __( 'Right', 'sv100' )
+                ) )
+                ->set_default_value( 'left' )
+                ->load_type( 'select' );
 			
 			$this->get_setting( 'branding_logo_width' )
 				 ->set_title( __( 'Logo width', 'sv100' ) )
@@ -138,6 +149,17 @@
 			$this->get_settings_component( 'bg_fit','background_fit', 'cover' );
 			$this->get_settings_component( 'bg_repeat','background_repeat', 'no-repeat' );
 			$this->get_settings_component( 'bg_attachment','background_attachment', 'fixed' );
+
+            // menu alignment
+            $this->get_setting( 'navigation_alignment' )
+                ->set_title( __( 'Alignment', 'sv100' ) )
+                ->set_options( array(
+                    'left'		=> __( 'Left', 'sv100' ),
+                    'center'	=> __( 'Center', 'sv100' ),
+                    'right'	=> __( 'Right', 'sv100' )
+                ) )
+                ->set_default_value( 'left' )
+                ->load_type( 'select' );
 
 			// Menu Item Settings
 			$this->get_settings_component( 'text_deco_menu','text_decoration', 'none' );
@@ -201,6 +223,18 @@
 				 ->set_max( 100 )
 				 ->set_min( 0 )
 				 ->load_type( 'number' );
+
+            // sidebar alignment settings
+            $this->get_setting( 'sidebar_alignment' )
+                ->set_title( __( 'Sidebar', 'sv100' ) )
+                ->set_description( __( 'Sidebar alignment within the header.', 'sv100' ) )
+                ->set_options( array(
+                    'left'		=> __( 'Left', 'sv100' ),
+                    'center'	=> __( 'Center', 'sv100' ),
+                    'right'	=> __( 'Right', 'sv100' )
+                ) )
+                ->set_default_value( 'left' )
+                ->load_type( 'select' );
 			
 			return $this;
 		}
@@ -236,7 +270,7 @@
 		protected function register_navs(): sv_header {
 			if ( $this->get_module( 'sv_navigation' ) ) {
 				$this->get_module( 'sv_navigation' )
-					->create( $this )
+                    ->create( $this )
 					->set_desc( __( 'Primary menu', 'sv100' ) )
 					->set_location( 'primary' )
 					->load_nav();
@@ -248,14 +282,16 @@
 		protected function register_sidebars(): sv_header {
 			if ( $this->get_module( 'sv_sidebar' ) ) {
 				$this->get_module( 'sv_sidebar' )
-					 ->create( $this )
-					 ->set_title( __( 'Header', 'sv100' ) )
-					 ->set_desc( __( 'Widgets in this sidebar will be shown in the header, next to the navigation.', 'sv100' ) )
-					 ->load_sidebar();
+                    ->create( $this )
+                    ->set_ID( 'sidebar' )
+                    ->set_title( __( 'Header', 'sv100' ) )
+                    ->set_desc( __( 'Widgets in this sidebar will be shown in the header, next to the navigation.', 'sv100' ) )
+                    ->load_sidebar();
 			}
 	
 			return $this;
 		}
+
 	
 		public function load( $settings = array() ): string {
 			$settings								= shortcode_atts(

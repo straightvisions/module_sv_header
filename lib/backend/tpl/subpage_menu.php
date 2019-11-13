@@ -1,6 +1,13 @@
 <div class="sv_setting_subpage">
 	<h2><?php _e('Menu', 'sv100'); ?></h2>
 
+    <h3 class="divider"><?php _e( 'Menu - Alignment', 'sv100' ); ?></h3>
+    <div class="sv_setting_flex">
+        <?php
+        echo $module->get_settings_component( 'navigation_alignment' )->run_type()->form();
+        ?>
+    </div>
+
     <h3 class="divider"><?php _e( 'Menu - Items', 'sv100' ); ?></h3>
     <div class="sv_setting_flex">
 		<?php
