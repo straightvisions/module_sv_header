@@ -3,19 +3,23 @@
 	<?php
 	// Sidebars - Alignment Settings
     $i = 0;
-    
+
     echo '<h3 class="divider">' . __( 'Sidebar Alignments', 'sv100' ) . '</h3>';
-    
+    ?>
+    <div class="sv_setting_flex">
+        <?php echo $module->get_setting( 'sidebar_alignment' )->run_type()->form(); ?>
+    </div>
+    <?php
     foreach ( $module->get_module( 'sv_sidebar' )->get_sidebars( $module ) as $sidebar ) {
         echo $i === 0 ? '<div class="sv_setting_flex">' : '';
-        
+
         echo $module->get_setting( $sidebar['id'] )->run_type()->form();
 
         $i++;
-        
+
         if ( $i === 3 || $i === $count ) {
             $i = 0;
-            
+
             echo '</div>';
         }
     }

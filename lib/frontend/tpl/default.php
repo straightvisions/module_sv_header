@@ -1,3 +1,35 @@
+<?php
+
+    $header_parts_content = array( 'branding'=>'', 'navigation'=>'', 'sidebar'=>'');
+    ob_start();
+    include( $this->get_path( 'lib/frontend/tpl/part_branding.php' ) );
+    $header_parts_content['branding'] = ob_get_clean();
+    ob_start();
+    include( $this->get_path( 'lib/frontend/tpl/part_navigation.php' ) );
+    $header_parts_content['navigation'] = ob_get_clean();
+    ob_start();
+    include( $this->get_path( 'lib/frontend/tpl/part_sidebar.php' ) );
+    $header_parts_content['sidebar'] = ob_get_clean();
+
+    $header_parts = array(
+        'left'  => array(),
+        'center'=> array(),
+        'right' => array(),
+    );
+
+    $branding_alignment     = $script->get_parent()->get_setting( 'branding_alignment' )->run_type()->get_data();
+    $navigation_alignment   = $script->get_parent()->get_setting( 'navigation_alignment' )->run_type()->get_data();
+    $sidebar_alignment      = $script->get_parent()->get_setting( 'sidebar_alignment' )->run_type()->get_data();
+
+    $header_parts[$branding_alignment][]    = $header_parts_content['branding'];
+    $header_parts[$navigation_alignment][]  = $header_parts_content['navigation'];
+    $header_parts[$sidebar_alignment][]     = $header_parts_content['sidebar'];
+
+    if($branding_alignment === 'right'){ // give branding priority
+        $header_parts[$branding_alignment] = array_reverse( $header_parts[$branding_alignment] ); // branding is first item, so just do a reverse
+    }
+
+?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -9,49 +41,8 @@
 <body <?php body_class(); ?>>
 <header class="<?php echo $this->get_prefix(); ?>">
     <div class="<?php echo $this->get_prefix( 'bar' ); ?>">
-		<?php if ( $this->get_setting( 'branding' )->run_type()->get_data() ) { ?>
-			<div class="<?php echo $this->get_prefix( 'branding' ); ?>">
-				<?php
-                    if ( get_header_image() ) {
-                    	echo '<a href="' . get_home_url() . '">
-                    		<img src="' . get_header_image() . '" alt="' . get_bloginfo( 'title' ) . '" />
-                    		</a>';
-					} elseif ( get_custom_logo() ) {
-                        echo get_custom_logo();
-                    } else {
-                        $post_title = empty( $this->get_setting( 'branding_title' )->run_type()->get_data() )
-                            ? get_bloginfo( 'name' )
-                            : $this->get_setting( 'branding_title' )->run_type()->get_data();
-                        echo '<a href="' . home_url() . '" class="' . $this->get_prefix( 'website_title' ) . '">
-                                <h3>' . $post_title . '</h3>
-                                </a>';
-                    }
-				?>
-			</div>
-			<?php
-		}
-		
-		echo $this->get_root()->get_module( 'sv_navigation' )
-			? $this->get_root()->get_module( 'sv_navigation' )->load( array(
-				'location' 		=> $this->get_module_name() . '_primary',
-				'show_images'	=> isset($template['show_images']) ? $template['show_images'] : false,
-			) )
-			: '';
-		
-		if (
-			$this->get_root()->get_module( 'sv_sidebar' )
-			&& ! empty(
-					$this->get_root()->get_module( 'sv_sidebar' )->load( array( 'id' => $this->get_module_name(), ) )
-				)
-			) {
-			
-			?>
-        <aside class="<?php echo $this->get_prefix( 'sidebar' ); ?>">
-			<?php
-				echo $this->get_root()->get_module( 'sv_sidebar' )
-									  ->load( array( 'id' => $this->get_module_name(), ) );
-			?>
-        </aside>
-		<?php } ?>
+        <?php foreach($header_parts as $part){
+            echo implode($part);
+        } ?>
     </div>
 </header>

@@ -15,6 +15,7 @@
 		<?php
 		echo $module->get_setting( 'branding' )->run_type()->form();
 		echo $module->get_setting( 'branding_title' )->run_type()->form();
+        echo $module->get_setting( 'branding_alignment' )->run_type()->form();
 		?>
     </div>
 	<?php if ( get_custom_logo() ) { ?>
