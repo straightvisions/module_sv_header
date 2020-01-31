@@ -34,6 +34,7 @@
 			// Header Settings
 			$this->get_setting( 'position' )
 				 ->set_title( __( 'Position', 'sv100' ) )
+				->set_description( __( 'The header bar behavior when scrolling down the page.', 'sv100' ) )
 				 ->set_options( array(
 				 	'relative'		=> __( 'Static', 'sv100' ),
 					 'absolute'		=> __( 'Absolute', 'sv100' ),
@@ -168,6 +169,13 @@
 			$this->get_settings_component( 'text_color_menu_hover','text_color', '#1e1e1e' );
 
 			// Submenu Item Settings
+			$this->get_setting('menu_item_margin')
+				->set_title(__('Margin', 'sv100'))
+				->load_type('margin');
+			$this->get_setting('menu_item_padding')
+				->set_title(__('Padding', 'sv100'))
+				->load_type('margin');
+
 			$this->get_settings_component( 'text_deco_sub','text_decoration', 'none' );
 			$this->get_settings_component( 'font_size_sub','font_size', 14 );
 			$this->get_settings_component( 'text_color_sub','text_color', '#1e1e1e' );
@@ -389,7 +397,7 @@
 				? $template['custom_path']
 				: $this->get_path('lib/frontend/tpl/' . $template['name'] . '.php' );
 			
-			include ( $path );
+			require ( $path );
 			$output							        = ob_get_contents();
 			ob_end_clean();
 	

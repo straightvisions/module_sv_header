@@ -10,6 +10,12 @@
     </div>
 
     <h3 class="divider"><?php _e( 'Menu - Items', 'sv100' ); ?></h3>
+	<div class="sv_setting_flex">
+		<?php
+		echo $module->get_setting( 'menu_item_margin' )->run_type()->form();
+		echo $module->get_setting( 'menu_item_padding' )->run_type()->form();
+		?>
+	</div>
     <div class="sv_setting_flex">
 		<?php
 		echo $module->get_settings_component( 'text_deco_menu' )->run_type()->form();
