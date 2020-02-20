@@ -52,22 +52,6 @@ if ( $bg_image_sub ) {
 <?php } ?>
 }
 
-@media ( min-width: 850px ) {
-.sv100_sv_header ul.sub-menu {
-background-color: rgba(<?php echo $bg_color_sub; ?>);
-<?php
-if ( $bg_image_sub ) {
-	$bg_size_sub = $bg_size_sub > 0 ? $bg_size_sub . 'px' : $bg_fit_sub;
-	?>
-	background-image: url( '<?php echo wp_get_attachment_image_src( $bg_image_sub, $bg_media_size_sub )[0]; ?>' );
-	background-position:<?php echo $bg_position_sub; ?>;
-	background-size:<?php echo $bg_size_sub; ?>;
-	background-repeat:<?php echo $bg_repeat_sub; ?>;
-	background-attachment:<?php echo $bg_attachment_sub; ?>;
-<?php } ?>
-}
-}
-
 /* Main Menu Items */
 .sv100_sv_navigation_sv_header_primary .menu > li > a > .item-title {
 color: rgba(<?php echo $text_color_menu; ?>);
