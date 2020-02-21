@@ -403,4 +403,15 @@
 	
 			return $output;
 		}
+		
+		// Returns the settings value "mobile_zoom" from sv_common
+		public function get_mobile_zoom(): bool {
+			if (
+				! $this->get_module( 'sv_common' )
+				||
+				! $this->get_module( 'sv_common' )->get_settings()['mobile_zoom']
+			) return true;
+
+			return boolval( $this->get_module( 'sv_common' )->get_setting( 'mobile_zoom' )->run_type()->get_data() );
+		}
 	}
