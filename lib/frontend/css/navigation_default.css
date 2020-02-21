@@ -1,4 +1,3 @@
-
 .sv100_sv_header.open {
 	position: sticky;
 }
@@ -103,9 +102,10 @@ button.sv100_sv_navigation_mobile_menu_toggle::before {
 	overflow:auto;
 	background-color:#FFF;
 }
+
 @media ( min-width: 1350px ) {
 	.sv100_sv_header.open .sv100_sv_navigation_sv_header_primary {
-		overflow: hidden;
+		overflow: unset;
 	}
 }
 
@@ -200,7 +200,7 @@ button.sv100_sv_navigation_mobile_menu_toggle::before {
 
 @media ( min-width: 1350px ) {
 	.sv100_sv_navigation_sv_header_primary .sub-menu {
-		display: flex;
+		display: flex !important;
 		flex-direction: column;
 		align-items: flex-start;
 		position: absolute;

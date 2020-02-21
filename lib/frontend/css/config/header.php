@@ -20,6 +20,12 @@ if ( $bg_image ) {
 <?php } ?>
 }
 
+@media (min-width: 1350px) {
+	.sv100_sv_header.open {
+		position: <?php echo $position; ?>;
+	}
+}
+
 <?php if ( $position === 'fixed' || $position === 'sticky' || $position === 'absolute' ) { ?>
 	body.admin-bar .sv100_sv_header {
 	<?php echo $position === 'fixed' ? 'position: sticky;' : ''; ?>
