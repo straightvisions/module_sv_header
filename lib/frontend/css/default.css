@@ -25,6 +25,10 @@
 	margin-right: auto;
 }
 
+.sv100_sv_header .sv100_sv_header_bar > *{
+	display: flex;
+}
+
 @media ( min-width: 1350px ) {
 	.sv100_sv_header .sv100_sv_header_bar {
 		max-width: var( --sv100_sv_common-max-width-lg );

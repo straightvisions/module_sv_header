@@ -2,9 +2,11 @@
 .sv100_sv_header {
 position: <?php echo $position; ?>;
 <?php echo ($box_margin_top > 0) ? 'margin-top: '.$box_margin_top.'px;' : ''; ?>
+<?php echo ($box_margin_bottom > 0) ? 'margin-bottom: '.$box_margin_bottom.'px;' : ''; ?>
 <?php echo ( $font ? 'font-family: "' . $font['family'] . '", sans-serif;' : '' ); ?>
 font-weight: <?php echo ( $font ? $font['weight'] : '400' ); ?>;
 font-size: <?php echo $font_size; ?>px;
+line-height: <?php echo $line_height; ?>;
 color: rgba(<?php echo $text_color; ?>);
 background-color: rgba(<?php echo $bg_color; ?>);
 box-shadow: 0 1px 10px rgba(<?php echo $box_shadow_color; ?>);
@@ -47,28 +49,3 @@ if ( $bg_image ) {
 	}
 <?php } ?>
 
-/* Header Bar */
-/* Header Branding */
-.sv100_sv_header .sv100_sv_header_website_title {
-color: rgba(<?php echo $text_color; ?>);
-}
-
-.sv100_sv_header .sv100_sv_header_website_title:hover,
-.sv100_sv_header .sv100_sv_header_website_title:focus {
-color: rgba(<?php echo $highlight_color; ?>);
-}
-
-<?php $branding_logo_height = $branding_logo_height > 0 ? $branding_logo_height + 20 : 0; ?>
-
-<?php if($branding_logo_height){ ?>
-	.sv100_sv_header .sv100_sv_header_bar {
-	max-height: <?php echo $branding_logo_height + 20; ?>px;
-	}
-<?php } ?>
-button.sv100_sv_navigation_mobile_menu_toggle{
-margin: 0; /* fix flex alignment */
-}
-
-.sv100_sv_header .sv100_sv_header_bar > *{
-display: flex;
-}

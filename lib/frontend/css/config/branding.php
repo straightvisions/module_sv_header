@@ -1,3 +1,20 @@
+.sv100_sv_header .sv100_sv_header_website_title {
+color: rgba(<?php echo $text_color; ?>);
+}
+
+.sv100_sv_header .sv100_sv_header_website_title:hover,
+.sv100_sv_header .sv100_sv_header_website_title:focus {
+color: rgba(<?php echo $highlight_color; ?>);
+}
+
+<?php $branding_logo_height = $branding_logo_height > 0 ? $branding_logo_height + 20 : 0; ?>
+
+<?php if($branding_logo_height){ ?>
+    .sv100_sv_header .sv100_sv_header_bar {
+    max-height: <?php echo $branding_logo_height + 20; ?>px;
+    }
+<?php } ?>
+
 .sv100_sv_header .sv100_sv_header_branding a {
 height: <?php echo $branding_logo_height < 1 ? 'auto' : $branding_logo_height . 'px'; ?>;
 }
