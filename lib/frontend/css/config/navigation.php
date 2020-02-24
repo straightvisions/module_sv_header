@@ -73,8 +73,8 @@ button.sv100_sv_navigation_mobile_menu_toggle {
     border-radius: <?php echo $border_radius_menu_item_mobile; ?>px;
     background-color: rgba(<?php echo $text_bg_color_menu_mobile; ?>);
     text-decoration: <?php
-	echo $tex_deco_menu_mobile && $tex_deco_menu_mobile !== 'undefined'
-		? $tex_deco_menu_mobile
+	echo $text_deco_menu_mobile && $text_deco_menu_mobile !== 'undefined'
+		? $text_deco_menu_mobile
 		: 'none';
 	?>
 }
@@ -90,8 +90,8 @@ button.sv100_sv_navigation_mobile_menu_toggle {
     color: rgba(<?php echo $text_color_menu_mobile_hover; ?>);
     background-color: rgba(<?php echo $text_bg_color_menu_mobile_hover; ?>);
     text-decoration: <?php
-	echo $tex_deco_menu_mobile_hover && $tex_deco_menu_mobile_hover !== 'undefined'
-		? $tex_deco_menu_mobile_hover
+	echo $text_deco_menu_mobile_hover && $text_deco_menu_mobile_hover !== 'undefined'
+		? $text_deco_menu_mobile_hover
 		: 'none';
 	?>
 }
@@ -148,8 +148,8 @@ button.sv100_sv_navigation_mobile_menu_toggle {
     border-radius: <?php echo $border_radius_sub_item_mobile; ?>px;
     background-color: rgba(<?php echo $text_bg_color_sub_mobile; ?>);
     text-decoration: <?php
-	echo $tex_deco_sub_mobile && $tex_deco_sub_mobile !== 'undefined'
-		? $tex_deco_sub_mobile
+	echo $text_deco_sub_mobile && $text_deco_sub_mobile !== 'undefined'
+		? $text_deco_sub_mobile
 		: 'none';
 	?>
 }
@@ -160,8 +160,8 @@ button.sv100_sv_navigation_mobile_menu_toggle {
     color: rgba(<?php echo $text_color_sub_mobile_hover; ?>);
     background-color: rgba(<?php echo $text_bg_color_sub_mobile_hover; ?>);
     text-decoration: <?php
-	echo $tex_deco_sub_mobile_hover && $tex_deco_sub_mobile_hover !== 'undefined'
-		? $tex_deco_sub_mobile_hover
+	echo $text_deco_sub_mobile_hover && $text_deco_sub_mobile_hover !== 'undefined'
+		? $text_deco_sub_mobile_hover
 		: 'none';
 	?>
 }
@@ -213,7 +213,7 @@ button.sv100_sv_navigation_mobile_menu_toggle {
     .sv100_sv_header .sv100_sv_navigation_sv_header_primary a {
         border-radius: <?php echo $border_radius_menu_item; ?>px;
         background-color: rgba(<?php echo $text_bg_color_menu; ?>);
-        text-decoration: <?php echo $tex_deco_menu; ?>;
+        text-decoration: <?php echo $text_deco_menu; ?>;
     }
 
     .sv100_sv_navigation_sv_header_primary ul.menu > li:not(.dropdown) > a > .item-title::after {
@@ -226,7 +226,7 @@ button.sv100_sv_navigation_mobile_menu_toggle {
     .sv100_sv_header .sv100_sv_navigation_sv_header_primary a:focus {
         color: rgba(<?php echo $text_color_menu_hover; ?>);
         background-color: rgba(<?php echo $text_bg_color_menu_hover; ?>);
-        text-decoration: <?php echo $tex_deco_menu_hover; ?>;
+        text-decoration: <?php echo $text_deco_menu_hover; ?>;
     }
 
     .sv100_sv_navigation_sv_header_primary ul.menu > li:not(.dropdown) > a:hover > .item-title::after,
@@ -256,6 +256,15 @@ button.sv100_sv_navigation_mobile_menu_toggle {
         <?php } ?>
     }
 
+    /* Submenu (Desktop) - Depth 1 */
+    .sv100_sv_header .sv100_sv_navigation_sv_header_primary ul.sub-menu > li > ul.sub-menu {
+        margin-left: calc( 1px + <?php echo $sub_padding['left'] ? $sub_padding['left'] : '0'; ?> );
+    }
+
+    .sv100_sv_header .sv100_sv_navigation_sv_header_primary ul.sub-menu > li:first-child > ul.sub-menu {
+        margin-top: calc( -1 * <?php echo $sub_padding['top'] ? $sub_padding['top'] : '0'; ?>);
+    }
+
     /* Submenu (Desktop) - Items - Spacing */
     .sv100_sv_header .sv100_sv_navigation_sv_header_primary ul.sub-menu > li {
         margin-top: <?php echo $sub_item_margin['top'] ? $sub_item_margin['top'] : '0'; ?>;
@@ -278,7 +287,7 @@ button.sv100_sv_navigation_mobile_menu_toggle {
         color: rgba(<?php echo $text_color_sub; ?>);
         border-radius: <?php echo $border_radius_sub_item; ?>px;
         background-color: rgba(<?php echo $text_bg_color_sub; ?>);
-        text-decoration: <?php echo $tex_deco_sub; ?>;
+        text-decoration: <?php echo $text_deco_sub; ?>;
     }
 
     /* Submenu (Desktop) - Items - Fonts & Colors (Hover/Focus) */
@@ -286,7 +295,7 @@ button.sv100_sv_navigation_mobile_menu_toggle {
     .sv100_sv_header .sv100_sv_navigation_sv_header_primary ul.sub-menu > li > a:focus {
         color: rgba(<?php echo $text_color_sub_hover; ?>);
         background-color: rgba(<?php echo $text_bg_color_sub_hover; ?>);
-        text-decoration: <?php echo $tex_deco_sub_hover; ?>;
+        text-decoration: <?php echo $text_deco_sub_hover; ?>;
     }
 }
 <?php } ?>
