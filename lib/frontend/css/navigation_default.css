@@ -96,7 +96,6 @@ button.sv100_sv_navigation_mobile_menu_toggle::before {
 	visibility: visible;
 	transition: visibility 0s ease-in-out 0s, left .5s ease-in-out;
 	overflow:auto;
-	background-color:#FFF;
 }
 
 @media ( min-width: 1350px ) {
