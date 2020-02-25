@@ -63,6 +63,16 @@
 				->set_description( __( 'Bottom Margin in Pixel for Headerbox.', 'sv100' ) )
 				->set_default_value( 0 )
 				->load_type( 'number' );
+			
+			// Header (Desktop) - Padding
+			$this->get_setting('header_padding')
+				 ->set_title(__('Padding (Desktop)', 'sv100'))
+				 ->load_type('margin');
+			
+			// Header (Mobile) - Padding
+			$this->get_setting('header_padding_mobile')
+				 ->set_title(__('Padding (Mobile)', 'sv100'))
+				 ->load_type('margin');
 
 			// Header - Fonts & Colors
 			$this->get_settings_component( 'font_family','font_family' );

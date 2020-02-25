@@ -10,6 +10,12 @@
 			echo $module->get_setting( 'box_margin_bottom' )->run_type()->form();
 		?>
     </div>
+	<div class="sv_setting_flex">
+		<?php
+			echo $module->get_setting( 'header_padding' )->run_type()->form();
+			echo $module->get_setting( 'header_padding_mobile' )->run_type()->form();
+		?>
+	</div>
 
     <h3 class="divider"><?php _e( 'Fonts & Colors', 'sv100' ); ?></h3>
     <div class="sv_setting_flex">

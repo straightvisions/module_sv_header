@@ -49,3 +49,19 @@ if ( $bg_image ) {
 	}
 <?php } ?>
 
+.sv100_sv_header > .sv100_sv_header_bar {
+	padding-top: <?php echo $header_padding_mobile['top'] ? $header_padding_mobile['top'] : '0'; ?>;
+	padding-right: <?php echo $header_padding_mobile['right'] ? $header_padding_mobile['right'] : '0'; ?>;
+	padding-bottom: <?php echo $header_padding_mobile['bottom'] ? $header_padding_mobile['bottom'] : '0'; ?>;
+	padding-left: <?php echo $header_padding_mobile['left'] ? $header_padding_mobile['left'] : '0'; ?>;
+}
+
+@media (min-width: 1350px) {
+	.sv100_sv_header > .sv100_sv_header_bar {
+		padding-top: <?php echo $header_padding['top'] ? $header_padding['top'] : '0'; ?>;
+		padding-right: <?php echo $header_padding['right'] ? $header_padding['right'] : '0'; ?>;
+		padding-bottom: <?php echo $header_padding['bottom'] ? $header_padding['bottom'] : '0'; ?>;
+		padding-left: <?php echo $header_padding['left'] ? $header_padding['left'] : '0'; ?>;
+	}
+}
+
