@@ -149,7 +149,7 @@ button.sv100_sv_navigation_mobile_menu_toggle::before {
 	position: relative;
 }
 
-.sv100_sv_navigation_sv_header_primary .menu > li > a > .item-title::after {
+.sv100_sv_navigation_sv_header_primary .menu > li > a > .item-title::before {
 	content: '';
 	position: absolute;
 	top: calc(100% + 5px);

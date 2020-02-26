@@ -23,7 +23,7 @@ if ( $bg_image ) {
 }
 
 
-<?php if ( $position_mobile !== 'static' ) { ?>
+<?php if ( $position_mobile !== 'relative' ) { ?>
 	body.admin-bar .sv100_sv_header {
 		<?php echo $position_mobile === 'fixed' ? 'position: sticky;' : ''; ?>
 		top: 0;
@@ -46,7 +46,18 @@ if ( $bg_image ) {
 
 /* Header - Desktop */
 @media (min-width: 1350px) {
+	<?php if ( $position !== 'relative' ) { ?>
+		body.admin-bar .sv100_sv_header {
+			top: 32px;
+		}
+	<?php } else { ?>
+		body.admin-bar .sv100_sv_header {
+			top: 0;
+		}
+	<?php } ?>
+	
 	.sv100_sv_header,
+	body.admin-bar .sv100_sv_header,
 	.sv100_sv_header.open {
 		position: <?php echo $position; ?>;
 		<?php echo ($box_margin_top > 0) ? 'margin-top: '.$box_margin_top.'px;' : ''; ?>

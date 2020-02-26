@@ -61,6 +61,20 @@
 		?>
     </div>
 
+	<h3 class="divider"><?php _e( 'Items - Border', 'sv100' ); ?></h3>
+	<div class="sv_setting_flex">
+		<?php
+			echo $module->get_setting( 'border_style_menu_item' )->run_type()->form();
+			echo $module->get_setting( 'border_radius_menu_item' )->run_type()->form();
+			echo $module->get_setting( 'border_color_menu_item' )->run_type()->form();
+		?>
+	</div>
+	<div class="sv_setting_flex">
+		<?php
+			echo $module->get_setting( 'border_width_menu_item' )->run_type()->form();
+		?>
+	</div>
+
     <h3 class="divider"><?php _e( 'Items - Fonts & Colors (Hover/Focus)', 'sv100' ); ?></h3>
     <div class="sv_setting_flex">
 		<?php
@@ -120,9 +134,22 @@
 			echo $module->get_settings_component( 'text_deco_sub' )->run_type()->form();
 			echo $module->get_settings_component( 'text_color_sub' )->run_type()->form();
 			echo $module->get_settings_component( 'text_bg_color_sub' )->run_type()->form();
-			echo $module->get_setting( 'border_radius_sub_item' )->run_type()->form();
 		?>
     </div>
+
+	<h3 class="divider"><?php _e( 'Items - Border', 'sv100' ); ?></h3>
+	<div class="sv_setting_flex">
+		<?php
+			echo $module->get_setting( 'border_style_menu_sub_item' )->run_type()->form();
+			echo $module->get_setting( 'border_radius_menu_sub_item' )->run_type()->form();
+			echo $module->get_setting( 'border_color_menu_sub_item' )->run_type()->form();
+		?>
+	</div>
+	<div class="sv_setting_flex">
+		<?php
+			echo $module->get_setting( 'border_width_menu_sub_item' )->run_type()->form();
+		?>
+	</div>
 
     <h3 class="divider"><?php _e( 'Items - Fonts & Colors (Hover/Focus)', 'sv100' ); ?></h3>
     <div class="sv_setting_flex">
