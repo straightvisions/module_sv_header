@@ -45,16 +45,11 @@ if ( $bg_image ) {
 <?php } ?>
 
 /* Header - Desktop */
-@media (min-width: 1350px) {
-	<?php if ( $position !== 'relative' ) { ?>
-		body.admin-bar .sv100_sv_header {
-			top: 32px;
-		}
-	<?php } else { ?>
-		body.admin-bar .sv100_sv_header {
-			top: 0;
-		}
-	<?php } ?>
+@media ( min-width: 1350px ) {
+	body.admin-bar .sv100_sv_header,
+body.admin-bar .sv100_sv_header.open {
+		top: <?php echo $position !== 'relative' ? '32px' : '0'?>;
+	}
 	
 	.sv100_sv_header,
 	body.admin-bar .sv100_sv_header,
