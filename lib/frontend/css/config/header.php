@@ -1,8 +1,8 @@
-/* Header */
+/* Header - Mobile */
 .sv100_sv_header {
-position: <?php echo $position; ?>;
-<?php echo ($box_margin_top > 0) ? 'margin-top: '.$box_margin_top.'px;' : ''; ?>
-<?php echo ($box_margin_bottom > 0) ? 'margin-bottom: '.$box_margin_bottom.'px;' : ''; ?>
+position: <?php echo $position_mobile; ?>;
+<?php echo ($box_margin_top_mobile > 0) ? 'margin-top: '.$box_margin_top_mobile.'px;' : ''; ?>
+<?php echo ($box_margin_bottom_mobile > 0) ? 'margin-bottom: '.$box_margin_bottom_mobile.'px;' : ''; ?>
 <?php echo ( $font ? 'font-family: "' . $font['family'] . '", sans-serif;' : '' ); ?>
 font-weight: <?php echo ( $font ? $font['weight'] : '400' ); ?>;
 font-size: <?php echo $font_size; ?>px;
@@ -22,32 +22,38 @@ if ( $bg_image ) {
 <?php } ?>
 }
 
-@media (min-width: 1350px) {
-	.sv100_sv_header.open {
-		position: <?php echo $position; ?>;
-	}
-}
 
-<?php if ( $position === 'fixed' || $position === 'sticky' || $position === 'absolute' ) { ?>
+<?php if ( $position_mobile !== 'static' ) { ?>
 	body.admin-bar .sv100_sv_header {
-	<?php echo $position === 'fixed' ? 'position: sticky;' : ''; ?>
-	top: 0;
+		<?php echo $position_mobile === 'fixed' ? 'position: sticky;' : ''; ?>
+		top: 0;
 	}
 
 
 	@media ( min-width: 601px ) {
-	body.admin-bar .sv100_sv_header {
-	<?php echo $position === 'fixed' ? 'position: fixed;' : ''; ?>
-	top: 46px;
-	}
+		body.admin-bar .sv100_sv_header {
+			<?php echo $position_mobile === 'fixed' ? 'position: fixed;' : ''; ?>
+			top: 46px;
+		}
 	}
 
 	@media ( min-width: 783px ) {
-	body.admin-bar .sv100_sv_header {
-	top: 32px;
-	}
+		body.admin-bar .sv100_sv_header {
+			top: 32px;
+		}
 	}
 <?php } ?>
+
+/* Header - Desktop */
+@media (min-width: 1350px) {
+	.sv100_sv_header,
+	.sv100_sv_header.open {
+		position: <?php echo $position; ?>;
+		<?php echo ($box_margin_top > 0) ? 'margin-top: '.$box_margin_top.'px;' : ''; ?>
+		<?php echo ($box_margin_bottom > 0) ? 'margin-bottom: '.$box_margin_bottom.'px;' : ''; ?>
+	}
+}
+
 
 .sv100_sv_header > .sv100_sv_header_bar {
 	padding-top: <?php echo $header_padding_mobile['top'] ? $header_padding_mobile['top'] : '0'; ?>;

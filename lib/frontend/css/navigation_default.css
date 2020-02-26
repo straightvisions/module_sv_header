@@ -21,8 +21,18 @@ body.admin-bar .sv100_sv_header.open {
 
 /* ### Mobile ### */
 /* General */
+body {
+	overflow-x: hidden;
+}
+
 body.sv100_sv_header_open {
-	overflow: hidden;
+	overflow-y: hidden;
+}
+
+@media (min-width: 1350px) {
+	body.sv100_sv_header_open {
+		overflow-y: unset;
+	}
 }
 
 /* Menu Toggle */

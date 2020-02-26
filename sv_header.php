@@ -28,7 +28,7 @@
 		}
 		
 		protected function load_settings(): sv_header {
-			// Header - Position & Alignment
+			// Header - Position & Alignment (Desktop)
 			$this->get_setting( 'position' )
 				 ->set_title( __( 'Position', 'sv100' ) )
 				->set_description( __( 'The header bar behavior when scrolling down the page.', 'sv100' ) )
@@ -64,12 +64,46 @@
 				->set_default_value( 0 )
 				->load_type( 'number' );
 			
-			// Header (Desktop) - Padding
 			$this->get_setting('header_padding')
 				 ->set_title(__('Padding (Desktop)', 'sv100'))
 				 ->load_type('margin');
 			
-			// Header (Mobile) - Padding
+			// Header - Position & Alignment (Mobile)
+			$this->get_setting( 'position_mobile' )
+				 ->set_title( __( 'Position', 'sv100' ) )
+				 ->set_description( __( 'The header bar behavior when scrolling down the page.', 'sv100' ) )
+				 ->set_options( array(
+					 'relative'		=> __( 'Static', 'sv100' ),
+					 'absolute'		=> __( 'Absolute', 'sv100' ),
+					 'fixed'			=> __( 'Fixed', 'sv100' ),
+					 'sticky'		=> __( 'Sticky', 'sv100' )
+				 ) )
+				 ->set_default_value( 'relative' )
+				 ->load_type( 'select' );
+			
+			$this->get_setting( 'box_content_alignment_mobile' )
+				 ->set_title( __( 'Content Alignment', 'sv100' ) )
+				 ->set_options( array(
+					 'left'		=> __( 'Left', 'sv100' ),
+					 'center'		=> __( 'Center', 'sv100' ),
+					 'right'			=> __( 'Right', 'sv100' ),
+					 'spread'		=> __( 'Spread', 'sv100' ),
+				 ) )
+				 ->set_default_value( 'center' )
+				 ->load_type( 'select' );
+			
+			$this->get_setting('box_margin_top_mobile')
+				 ->set_title( __( 'Top Margin', 'sv100' ) )
+				 ->set_description( __( 'Top Margin in Pixel for Headerbox.', 'sv100' ) )
+				 ->set_default_value( 0 )
+				 ->load_type( 'number' );
+			
+			$this->get_setting('box_margin_bottom_mobile')
+				 ->set_title( __( 'Bottom Margin', 'sv100' ) )
+				 ->set_description( __( 'Bottom Margin in Pixel for Headerbox.', 'sv100' ) )
+				 ->set_default_value( 0 )
+				 ->load_type( 'number' );
+			
 			$this->get_setting('header_padding_mobile')
 				 ->set_title(__('Padding (Mobile)', 'sv100'))
 				 ->load_type('margin');

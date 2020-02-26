@@ -1,7 +1,7 @@
 <div class="sv_setting_subpage">
 	<h2><?php _e('Header', 'sv100'); ?></h2>
 
-    <h3 class="divider"><?php _e( 'Position & Alignment', 'sv100' ); ?></h3>
+    <h3 class="divider"><?php _e( 'Position & Alignment (Desktop)', 'sv100' ); ?></h3>
     <div class="sv_setting_flex">
 		<?php
 		    echo $module->get_setting( 'position' )->run_type()->form();
@@ -13,6 +13,20 @@
 	<div class="sv_setting_flex">
 		<?php
 			echo $module->get_setting( 'header_padding' )->run_type()->form();
+		?>
+	</div>
+
+	<h3 class="divider"><?php _e( 'Position & Alignment (Mobile)', 'sv100' ); ?></h3>
+	<div class="sv_setting_flex">
+		<?php
+			echo $module->get_setting( 'position_mobile' )->run_type()->form();
+			echo $module->get_setting( 'box_content_alignment_mobile' )->run_type()->form();
+			echo $module->get_setting( 'box_margin_top_mobile' )->run_type()->form();
+			echo $module->get_setting( 'box_margin_bottom_mobile' )->run_type()->form();
+		?>
+	</div>
+	<div class="sv_setting_flex">
+		<?php
 			echo $module->get_setting( 'header_padding_mobile' )->run_type()->form();
 		?>
 	</div>
