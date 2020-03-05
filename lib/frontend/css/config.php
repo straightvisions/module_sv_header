@@ -2,7 +2,7 @@
 	// Fetches all settings and creates new variables with the setting ID as name and setting data as value.
 	// This reduces the lines of code for the needed setting values.
 	foreach ( $script->get_parent()->get_settings() as $setting ) {
-		${ $setting->get_ID() } = $setting->run_type()->get_data();
+		${ $setting->get_ID() } = $setting->get_data();
 
 		// If setting is color, it gets the value in the RGB-Format
 		if ( $setting->get_type() === 'setting_color' ) {
@@ -29,9 +29,9 @@
 
 	// Columns
 	$columns_count = 0;
-	$columns_count += $script->get_parent()->get_setting( 'branding' )->run_type()->get_data() ? 1 : 0;
-	$columns_count += $script->get_parent()->get_setting( 'navigation_active' )->run_type()->get_data() ? 1 : 0;
-	$columns_count += $script->get_parent()->get_setting( 'sidebar_active' )->run_type()->get_data() == 1
+	$columns_count += $script->get_parent()->get_setting( 'branding' )->get_data() ? 1 : 0;
+	$columns_count += $script->get_parent()->get_setting( 'navigation_active' )->get_data() ? 1 : 0;
+	$columns_count += $script->get_parent()->get_setting( 'sidebar_active' )->get_data() == 1
 	&& $script->get_parent()->get_root()->get_module( 'sv_sidebar' )
 	&& empty(
 	$script->get_parent()->get_root()->get_module( 'sv_sidebar' )->load( array( 'id' => $script->get_parent()->get_module_name().'_sidebar', ) )

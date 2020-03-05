@@ -7,14 +7,14 @@
     echo '<h3 class="divider">' . __( 'Sidebar Alignments', 'sv100' ) . '</h3>';
     ?>
     <div class="sv_setting_flex">
-        <?php echo $module->get_setting( 'sidebar_active' )->run_type()->form(); ?>
-        <?php echo $module->get_setting( 'sidebar_order' )->run_type()->form(); ?>
+        <?php echo $module->get_setting( 'sidebar_active' )->form(); ?>
+        <?php echo $module->get_setting( 'sidebar_order' )->form(); ?>
     </div>
     <?php
     foreach ( $module->get_module( 'sv_sidebar' )->get_sidebars( $module ) as $sidebar ) {
         echo $i === 0 ? '<div class="sv_setting_flex">' : '';
 
-        echo $module->get_setting( $sidebar['id'] )->run_type()->form();
+        echo $module->get_setting( $sidebar['id'] )->form();
 
         $i++;
 

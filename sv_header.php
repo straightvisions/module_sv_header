@@ -2,7 +2,7 @@
 	namespace sv100;
 	
 	/**
-	 * @version         4.160
+	 * @version         4.161
 	 * @author			straightvisions GmbH
 	 * @package			sv100
 	 * @copyright		2019 straightvisions GmbH
@@ -606,6 +606,6 @@
 				! $this->get_module( 'sv_common' )->get_settings()['mobile_zoom']
 			) return true;
 
-			return boolval( $this->get_module( 'sv_common' )->get_setting( 'mobile_zoom' )->run_type()->get_data() );
+			return boolval( $this->get_module( 'sv_common' )->get_setting( 'mobile_zoom' )->get_data() );
 		}
 	}
