@@ -244,38 +244,6 @@
 			$this->get_settings_component( 'text_deco_menu','text_decoration', 'none' );
 			$this->get_settings_component( 'text_color_menu','text_color', '#1e1e1e' );
 			$this->get_settings_component( 'text_bg_color_menu','background_color', '#ffffff' );
-			
-			// Menu (Desktop) - Items - Border
-			/*
-			$this->get_setting( 'border_style_menu_item' )
-				 ->set_title( __( 'Border Style', 'sv100' ) )
-				 ->set_options( array(
-					 'none' 	=> __( 'None', 'sv100' ),
-					 'solid' 	=> __( 'Solid', 'sv100' ),
-					 'dashed' 	=> __( 'Dashed', 'sv100' ),
-					 'dotted' 	=> __( 'Dotted', 'sv100' ),
-					 'double' 	=> __( 'Double', 'sv100' ),
-					 'groove' 	=> __( 'Groove', 'sv100' ),
-					 'ridge' 	=> __( 'Ridge', 'sv100' ),
-					 'inset' 	=> __( 'Inset', 'sv100' ),
-					 'outset' 	=> __( 'Outset', 'sv100' ),
-				 ) )
-				 ->set_default_value( 'solid' )
-				 ->load_type( 'select' );
-			$this->get_setting('border_width_menu_item')
-				 ->set_title(__('Border Width', 'sv100'))
-				 ->load_type('border_width');
-			$this->get_setting( 'border_color_menu_item' )
-				 ->set_title( __( 'Border Color', 'sv100' ) )
-				 ->set_default_value( '#000000' )
-				 ->load_type( 'color' );
-			$this->get_setting( 'border_radius_menu_item' )
-				->set_title( __( 'Border Radius', 'sv100' ) )
-				->set_description( __( 'Border Radius in pixel.', 'sv100' ) )
-				->set_min( '0' )
-				->set_default_value( '0' )
-				->load_type( 'number' );
-			*/
 
 			// Menu (Desktop) - Items - Fonts & Colors (Hover/Focus)
 			$this->get_settings_component( 'text_deco_menu_hover','text_decoration', 'underline' );
@@ -324,38 +292,6 @@
 			$this->get_settings_component( 'text_color_sub','text_color', '#1e1e1e' );
 			$this->get_settings_component( 'text_bg_color_sub','background_color', '#ffffff' );
 			$this->get_settings_component( 'text_deco_sub','text_decoration', 'none' );
-			
-			// Submenu (Desktop) - Items - Border
-			/*
-			$this->get_setting( 'border_style_menu_sub_item' )
-				 ->set_title( __( 'Border Style', 'sv100' ) )
-				 ->set_options( array(
-					 'none' 	=> __( 'None', 'sv100' ),
-					 'solid' 	=> __( 'Solid', 'sv100' ),
-					 'dashed' 	=> __( 'Dashed', 'sv100' ),
-					 'dotted' 	=> __( 'Dotted', 'sv100' ),
-					 'double' 	=> __( 'Double', 'sv100' ),
-					 'groove' 	=> __( 'Groove', 'sv100' ),
-					 'ridge' 	=> __( 'Ridge', 'sv100' ),
-					 'inset' 	=> __( 'Inset', 'sv100' ),
-					 'outset' 	=> __( 'Outset', 'sv100' ),
-				 ) )
-				 ->set_default_value( 'solid' )
-				 ->load_type( 'select' );
-			$this->get_setting('border_width_menu_sub_item')
-				 ->set_title(__('Border Width', 'sv100'))
-				 ->load_type('border_width');
-			$this->get_setting( 'border_color_menu_sub_item' )
-				 ->set_title( __( 'Border Color', 'sv100' ) )
-				 ->set_default_value( '#000000' )
-				 ->load_type( 'color' );
-			$this->get_setting( 'border_radius_menu_sub_item' )
-				 ->set_title( __( 'Border Radius', 'sv100' ) )
-				 ->set_description( __( 'Border Radius in pixel.', 'sv100' ) )
-				 ->set_min( '0' )
-				 ->set_default_value( '0' )
-				 ->load_type( 'number' );
-			*/
 
 			// Submenu (Desktop) - Items - Fonts & Colors (Hover/Focus)
 			$this->get_settings_component( 'text_color_sub_hover','text_color', '#1e1e1e' );
@@ -412,38 +348,6 @@
 			$this->get_settings_component( 'bg_fit_menu_mobile','background_fit', 'cover' );
 			$this->get_settings_component( 'bg_repeat_menu_mobile','background_repeat', 'no-repeat' );
 			$this->get_settings_component( 'bg_attachment_menu_mobile','background_attachment', 'fixed' );
-			
-			// Menu (Mobile) - Items - Border
-			/*
-			$this->get_setting( 'border_style_menu_item_mobile' )
-				 ->set_title( __( 'Border Style', 'sv100' ) )
-				 ->set_options( array(
-					 'none' 	=> __( 'None', 'sv100' ),
-					 'solid' 	=> __( 'Solid', 'sv100' ),
-					 'dashed' 	=> __( 'Dashed', 'sv100' ),
-					 'dotted' 	=> __( 'Dotted', 'sv100' ),
-					 'double' 	=> __( 'Double', 'sv100' ),
-					 'groove' 	=> __( 'Groove', 'sv100' ),
-					 'ridge' 	=> __( 'Ridge', 'sv100' ),
-					 'inset' 	=> __( 'Inset', 'sv100' ),
-					 'outset' 	=> __( 'Outset', 'sv100' ),
-				 ) )
-				 ->set_default_value( 'solid' )
-				 ->load_type( 'select' );
-			$this->get_setting('border_width_menu_item_mobile')
-				 ->set_title(__('Border Width', 'sv100'))
-				 ->load_type('border_width');
-			$this->get_setting( 'border_color_menu_item_mobile' )
-				 ->set_title( __( 'Border Color', 'sv100' ) )
-				 ->set_default_value( '#000000' )
-				 ->load_type( 'color' );
-			$this->get_setting( 'border_radius_menu_item_mobile' )
-				 ->set_title( __( 'Border Radius', 'sv100' ) )
-				 ->set_description( __( 'Border Radius in pixel.', 'sv100' ) )
-				 ->set_min( '0' )
-				 ->set_default_value( '0' )
-				 ->load_type( 'number' );
-			*/
 
 			// Menu (Mobile) - Items - Spacing
 			$this->get_setting('menu_item_margin_mobile')
@@ -506,38 +410,6 @@
 			$this->get_settings_component( 'text_color_sub_mobile','text_color', '#1e1e1e' );
 			$this->get_settings_component( 'text_bg_color_sub_mobile','background_color', '#ffffff' );
 			$this->get_settings_component( 'text_deco_sub_mobile','text_decoration', 'none' );
-			
-			// Submenu (Mobile) - Items - Border
-			/*
-			$this->get_setting( 'border_style_menu_sub_item_mobile' )
-				 ->set_title( __( 'Border Style', 'sv100' ) )
-				 ->set_options( array(
-					 'none' 	=> __( 'None', 'sv100' ),
-					 'solid' 	=> __( 'Solid', 'sv100' ),
-					 'dashed' 	=> __( 'Dashed', 'sv100' ),
-					 'dotted' 	=> __( 'Dotted', 'sv100' ),
-					 'double' 	=> __( 'Double', 'sv100' ),
-					 'groove' 	=> __( 'Groove', 'sv100' ),
-					 'ridge' 	=> __( 'Ridge', 'sv100' ),
-					 'inset' 	=> __( 'Inset', 'sv100' ),
-					 'outset' 	=> __( 'Outset', 'sv100' ),
-				 ) )
-				 ->set_default_value( 'solid' )
-				 ->load_type( 'select' );
-			$this->get_setting('border_width_menu_sub_item_mobile')
-				 ->set_title(__('Border Width', 'sv100'))
-				 ->load_type('border_width');
-			$this->get_setting( 'border_color_menu_sub_item_mobile' )
-				 ->set_title( __( 'Border Color', 'sv100' ) )
-				 ->set_default_value( '#000000' )
-				 ->load_type( 'color' );
-			$this->get_setting( 'border_radius_menu_sub_item_mobile' )
-				 ->set_title( __( 'Border Radius', 'sv100' ) )
-				 ->set_description( __( 'Border Radius in pixel.', 'sv100' ) )
-				 ->set_min( '0' )
-				 ->set_default_value( '0' )
-				 ->load_type( 'number' );
-			*/
 
 			// Submenu (Mobile) - Items - Fonts & Colors (Hover/Focus)
 			$this->get_settings_component( 'text_color_sub_mobile_hover','text_color', '#1e1e1e' );
@@ -734,6 +606,6 @@
 				! $this->get_module( 'sv_common' )->get_settings()['mobile_zoom']
 			) return true;
 
-			return boolval( $this->get_module( 'sv_common' )->get_setting( 'mobile_zoom' )->get_data() );
+			return boolval( $this->get_module( 'sv_common' )->get_setting( 'mobile_zoom' )->run_type()->get_data() );
 		}
 	}

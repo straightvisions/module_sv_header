@@ -30,7 +30,7 @@ button.sv100_sv_navigation_mobile_menu_toggle {
     padding-right: <?php echo $menu_padding_mobile['right'] ? $menu_padding_mobile['right'] : '0'; ?>;
     padding-bottom: <?php echo $menu_padding_mobile['bottom'] ? $menu_padding_mobile['bottom'] : '0'; ?>;
     padding-left: <?php echo $menu_padding_mobile['left'] ? $menu_padding_mobile['left'] : '0'; ?>;
-    /* border-radius: <?php //echo $border_radius_menu_mobile; ?>px; */
+    border-radius: <?php echo $border_radius_menu_mobile; ?>px;
     background-color: rgba(<?php echo $bg_color_menu_mobile; ?>);
 	<?php
 	if ( $bg_image_menu_mobile ) {
@@ -78,19 +78,6 @@ button.sv100_sv_navigation_mobile_menu_toggle {
 	?>
 }
 
-/* Menu (Mobile) - Items - Border */
-.sv100_sv_header .sv100_sv_navigation_sv_header_primary a {
-    /*
-	border-style: <?php //echo $border_style_menu_item_mobile; ?>;
-	border-color: rgba(<?php //echo $border_color_menu_item_mobile; ?>);
-	border-radius: <?php //echo $border_radius_menu_item_mobile; ?>px;
-	border-top-width: <?php //echo $border_width_menu_item_mobile['top'] ? $border_width_menu_item_mobile['top'] : '0'; ?>;
-	border-right-width: <?php //echo $border_width_menu_item_mobile['right'] ? $border_width_menu_item_mobile['right'] : '0'; ?>;
-	border-bottom-width: <?php //echo $border_width_menu_item_mobile['bottom'] ? $border_width_menu_item_mobile['bottom'] : '0'; ?>;
-	border-left-width: <?php //echo $border_width_menu_item_mobile['left'] ? $border_width_menu_item_mobile['left'] : '0'; ?>;
-    */
-}
-
 .sv100_sv_navigation_sv_header_primary ul.menu > li > a {
 	<?php echo $text_deco_menu_mobile === 'underline' ? 'text-decoration: none;' : ''; ?>
 }
@@ -128,7 +115,7 @@ button.sv100_sv_navigation_mobile_menu_toggle {
     padding-right: <?php echo $sub_padding_mobile['right'] ? $sub_padding_mobile['right'] : '0'; ?>;
     padding-bottom: <?php echo $sub_padding_mobile['bottom'] ? $sub_padding_mobile['bottom'] : '0'; ?>;
     padding-left: <?php echo $sub_padding_mobile['left'] ? $sub_padding_mobile['left'] : '0'; ?>;
-    /* border-radius: <?php //echo $border_radius_sub_mobile; ?>px; */
+    border-radius: <?php echo $border_radius_sub_mobile; ?>px;
     background-color: rgba(<?php echo $bg_color_sub_mobile; ?>);
 	<?php
 	if ( $bg_image_sub_mobile ) {
@@ -172,19 +159,6 @@ button.sv100_sv_navigation_mobile_menu_toggle {
 	?>
 }
 
-/* Submenu (Mobile) - Items - Border */
-.sv100_sv_header .sv100_sv_navigation_sv_header_primary ul.sub-menu > li > a {
-    /*
-	border-style: <?php //echo $border_style_menu_sub_item_mobile; ?>;
-	border-color: rgba(<?php //echo $border_color_menu_sub_item_mobile; ?>);
-	border-radius: <?php //echo $border_radius_menu_sub_item_mobile; ?>px;
-	border-top-width: <?php //echo $border_width_menu_sub_item_mobile['top'] ? $border_width_menu_sub_item_mobile['top'] : '0'; ?>;
-	border-right-width: <?php //echo $border_width_menu_sub_item_mobile['right'] ? $border_width_menu_sub_item_mobile['right'] : '0'; ?>;
-	border-bottom-width: <?php //echo $border_width_menu_sub_item_mobile['bottom'] ? $border_width_menu_sub_item_mobile['bottom'] : '0'; ?>;
-	border-left-width: <?php //echo $border_width_menu_sub_item_mobile['left'] ? $border_width_menu_sub_item_mobile['left'] : '0'; ?>;
-    */
-}
-
 /* Submenu (Mobile) - Items - Fonts & Colors (Hover/Focus) */
 .sv100_sv_header .sv100_sv_navigation_sv_header_primary ul.sub-menu > li:hover > a,
 .sv100_sv_header .sv100_sv_navigation_sv_header_primary ul.sub-menu > li:focus > a {
@@ -204,7 +178,7 @@ button.sv100_sv_navigation_mobile_menu_toggle {
         padding-right: <?php echo $menu_padding['right'] ? $menu_padding['right'] : '0'; ?>;
         padding-bottom: <?php echo $menu_padding['bottom'] ? $menu_padding['bottom'] : '0'; ?>;
         padding-left: <?php echo $menu_padding['left'] ? $menu_padding['left'] : '0'; ?>;
-        /* border-radius: <?php //echo $border_radius_menu; ?>px; */
+        border-radius: <?php echo $border_radius_menu; ?>px;
         background-color: rgba(<?php echo $bg_color_menu; ?>);
         <?php
         if ( $bg_image_menu ) {
@@ -245,19 +219,6 @@ button.sv100_sv_navigation_mobile_menu_toggle {
         background-color: rgba(<?php echo $text_bg_color_menu; ?>);
         text-decoration: <?php echo $text_deco_menu; ?>;
     }
-	
-	/* Menu (Desktop) - Items - Border */
-	.sv100_sv_header .sv100_sv_navigation_sv_header_primary a {
-    /*
-		border-style: <?php //echo $border_style_menu_item; ?>;
-		border-color: rgba(<?php //echo $border_color_menu_item; ?>);
-		border-radius: <?php //echo $border_radius_menu_item; ?>px;
-		border-top-width: <?php //echo $border_width_menu_item['top'] ? $border_width_menu_item['top'] : '0'; ?>;
-		border-right-width: <?php //echo $border_width_menu_item['right'] ? $border_width_menu_item['right'] : '0'; ?>;
-		border-bottom-width: <?php // echo $border_width_menu_item['bottom'] ? $border_width_menu_item['bottom'] : '0'; ?>;
-		border-left-width: <?php //echo $border_width_menu_item['left'] ? $border_width_menu_item['left'] : '0'; ?>;
-    */
-	}
 
 	.sv100_sv_header .sv100_sv_navigation_sv_header_primary ul.menu > li > a {
 		<?php echo $text_deco_menu === 'underline' ? 'text-decoration: none;' : ''; ?>
@@ -338,19 +299,6 @@ button.sv100_sv_navigation_mobile_menu_toggle {
         background-color: rgba(<?php echo $text_bg_color_sub; ?>);
         text-decoration: <?php echo $text_deco_sub; ?>;
     }
-
-	/* Submenu (Desktop) - Items - Border */
-	.sv100_sv_header .sv100_sv_navigation_sv_header_primary ul.sub-menu > li > a {
-    /*
-		border-style: <?php //echo $border_style_menu_sub_item; ?>;
-		border-color: rgba(<?php //echo $border_color_menu_sub_item; ?>);
-		border-radius: <?php //echo $border_radius_menu_sub_item; ?>px;
-		border-top-width: <?php //echo $border_width_menu_sub_item['top'] ? $border_width_menu_sub_item['top'] : '0'; ?>;
-		border-right-width: <?php //echo $border_width_menu_sub_item['right'] ? $border_width_menu_sub_item['right'] : '0'; ?>;
-		border-bottom-width: <?php //echo $border_width_menu_sub_item['bottom'] ? $border_width_menu_sub_item['bottom'] : '0'; ?>;
-		border-left-width: <?php //echo $border_width_menu_sub_item['left'] ? $border_width_menu_sub_item['left'] : '0'; ?>;
-    */
-	}
 
     /* Submenu (Desktop) - Items - Fonts & Colors (Hover/Focus) */
     .sv100_sv_header .sv100_sv_navigation_sv_header_primary ul.sub-menu > li:hover > a,
