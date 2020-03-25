@@ -2,7 +2,7 @@
 	namespace sv100;
 	
 	/**
-	 * @version         4.161
+	 * @version         4.162
 	 * @author			straightvisions GmbH
 	 * @package			sv100
 	 * @copyright		2019 straightvisions GmbH
@@ -109,21 +109,103 @@
 				 ->load_type('margin');
 
 			// Header - Fonts & Colors
-			$this->get_settings_component( 'font_family','font_family' );
-			$this->get_settings_component( 'font_size','font_size', 16 );
-			$this->get_settings_component( 'line_height','line_height', 1 );
-			$this->get_settings_component( 'text_color','text_color', '#1e1e1e' );
-			$this->get_settings_component( 'highlight_color','highlight_color', '#328ce6' );
+			$this->get_setting( 'font_family' )
+				 ->set_title( __( 'Font Family', 'sv100' ) )
+				 ->set_description( __( 'Choose a font for your text.', 'sv100' ) )
+				 ->set_options( $this->get_module( 'sv_webfontloader' )->get_font_options() )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'font_size' )
+				 ->set_title( __( 'Font Size', 'sv100' ) )
+				 ->set_description( __( 'Font Size in pixel.', 'sv100' ) )
+				 ->set_default_value( 16 )
+				 ->load_type( 'number' );
+
+			$this->get_setting( 'line_height' )
+				 ->set_title( __( 'Line Height', 'sv100' ) )
+				 ->set_description( __( 'Set line height as multiplier or with a unit.', 'sv100' ) )
+				 ->set_default_value( 1 )
+				 ->load_type( 'text' );
+
+			$this->get_setting( 'text_color' )
+				 ->set_title( __( 'Text Color', 'sv100' ) )
+				 ->set_default_value( '#1e1e1e' )
+				 ->load_type( 'color' );
+
+			$this->get_setting( 'highlight_color' )
+				 ->set_title( __( 'Highlight Color', 'sv100' ) )
+				 ->set_description( __( 'This color is used for highlighting elements, like links on hover/focus.', 'sv100' ) )
+				 ->set_default_value( '#328ce6' )
+				 ->load_type( 'color' );
 			
 			// Header - Background
-			$this->get_settings_component( 'bg_color','background_color', '#ffffff' );
-			$this->get_settings_component( 'bg_image','background_image' );
-			$this->get_settings_component( 'bg_media_size','background_media_size', 'large' );
-			$this->get_settings_component( 'bg_position','background_position', 'center top' );
-			$this->get_settings_component( 'bg_size','background_size', 0 );
-			$this->get_settings_component( 'bg_fit','background_fit', 'cover' );
-			$this->get_settings_component( 'bg_repeat','background_repeat', 'no-repeat' );
-			$this->get_settings_component( 'bg_attachment','background_attachment', 'fixed' );
+			$this->get_setting( 'bg_color' )
+				 ->set_title( __( 'Background Color', 'sv100' ) )
+				 ->set_default_value( '#ffffff' )
+				 ->load_type( 'color' );
+
+			$this->get_setting( 'bg_image' )
+				 ->set_title( __( 'Background Image', 'sv100' ) )
+				 ->load_type( 'upload' );
+
+			$this->get_setting( 'bg_media_size' )
+				 ->set_title( __( 'Background Media Size', 'sv100' ) )
+				 ->set_default_value( 'large' )
+				 ->set_options( array_combine( get_intermediate_image_sizes(), get_intermediate_image_sizes() ) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'bg_position' )
+				 ->set_title( __( 'Background Position', 'sv100' ) )
+				 ->set_default_value( 'center top' )
+				 ->set_placeholder( 'center top' )
+				 ->load_type( 'text' );
+
+			$this->get_setting( 'bg_size' )
+				 ->set_title( __( 'Background Size', 'sv100' ) )
+				 ->set_description( '<p>' . __( 'Background Size in Pixel', 'sv100' ) . '<br>
+				 ' . __( 'If disabled Background Fit will take effect.', 'sv100' ) . '</p>
+				 <p><strong>' . __( '0 = Disabled', 'sv100' ) . '</strong></p>' )
+				 ->set_default_value( 0 )
+				 ->set_placeholder( '0 ' )
+				 ->set_min( 0 )
+				 ->load_type( 'number' );
+
+			$this->get_setting( 'bg_fit' )
+				 ->set_title( __( 'Background Fit', 'sv100' ) )
+				 ->set_description( __( 'Defines how the background image aspect ratio behaves.', 'sv100' ) )
+				 ->set_default_value( 'cover' )
+				 ->set_options( array(
+					'cover' 	=> __( 'Cover', 'sv100' ),
+					'contain' 	=> __( 'Contain', 'sv100' )
+				) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'bg_repeat' )
+				 ->set_title( __( 'Background Repeat', 'sv100' ) )
+				 ->set_default_value( 'no-repeat' )
+				 ->set_options( array(
+					'no-repeat' => __( 'No Repeat', 'sv100' ),
+					'repeat' 	=> __( 'Repeat', 'sv100' ),
+					'repeat-x' 	=> __( 'Repeat Horizontally', 'sv100' ),
+					'repeat-y' 	=> __( 'Repeat Vertically', 'sv100' ),
+					'space' 	=> __( 'Space', 'sv100' ),
+					'round' 	=> __( 'Round', 'sv100' ),
+					'initial' 	=> __( 'Initial', 'sv100' ),
+					'inherit' 	=> __( 'Inherit', 'sv100' )
+				) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'bg_attachment' )
+				 ->set_title( __( 'Background Attachment', 'sv100' ) )
+				 ->set_default_value( 'fixed' )
+				 ->set_options( array(
+					'fixed' 	=> __( 'fixed', 'sv100' ),
+					'scroll' 	=> __( 'scroll', 'sv100' ),
+					'local' 	=> __( 'local', 'sv100' ),
+					'initial' 	=> __( 'initial', 'sv100' ),
+					'inherit' 	=> __( 'inherit', 'sv100' )
+				) )
+				 ->load_type( 'select' );
 
 			// Header - Box Shadow
 			$this->get_setting('box_shadow_color')
@@ -215,14 +297,74 @@
 				->set_min( '0' )
 				->set_default_value( '0' )
 				->load_type( 'number' );
-			$this->get_settings_component( 'bg_color_menu','background_color', '#ffffff' );
-			$this->get_settings_component( 'bg_image_menu','background_image' );
-			$this->get_settings_component( 'bg_media_size_menu','background_media_size', 'medium_large' );
-			$this->get_settings_component( 'bg_position_menu','background_position', 'center top' );
-			$this->get_settings_component( 'bg_size_menu','background_size', 0 );
-			$this->get_settings_component( 'bg_fit_menu','background_fit', 'cover' );
-			$this->get_settings_component( 'bg_repeat_menu','background_repeat', 'no-repeat' );
-			$this->get_settings_component( 'bg_attachment_menu','background_attachment', 'fixed' );
+
+			$this->get_setting( 'bg_color_menu' )
+				 ->set_title( __( 'Background Color', 'sv100' ) )
+				 ->set_default_value( '#ffffff' )
+				 ->load_type( 'color' );
+
+			$this->get_setting( 'bg_image_menu' )
+				 ->set_title( __( 'Background Image', 'sv100' ) )
+				 ->load_type( 'upload' );
+
+			$this->get_setting( 'bg_media_size_menu' )
+				 ->set_title( __( 'Background Media Size', 'sv100' ) )
+				 ->set_default_value( 'medium_large' )
+				 ->set_options( array_combine( get_intermediate_image_sizes(), get_intermediate_image_sizes() ) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'bg_position_menu' )
+				 ->set_title( __( 'Background Position', 'sv100' ) )
+				 ->set_default_value( 'center top' )
+				 ->set_placeholder( 'center top' )
+				 ->load_type( 'text' );
+
+			$this->get_setting( 'bg_size_menu' )
+				 ->set_title( __( 'Background Size', 'sv100' ) )
+				 ->set_description( '<p>' . __( 'Background Size in Pixel', 'sv100' ) . '<br>
+				 ' . __( 'If disabled Background Fit will take effect.', 'sv100' ) . '</p>
+				 <p><strong>' . __( '0 = Disabled', 'sv100' ) . '</strong></p>' )
+				 ->set_default_value( 0 )
+				 ->set_placeholder( '0 ' )
+				 ->set_min( 0 )
+				 ->load_type( 'number' );
+
+			$this->get_setting( 'bg_fit_menu' )
+				 ->set_title( __( 'Background Fit', 'sv100' ) )
+				 ->set_description( __( 'Defines how the background image aspect ratio behaves.', 'sv100' ) )
+				 ->set_default_value( 'cover' )
+				 ->set_options( array(
+					'cover' 	=> __( 'Cover', 'sv100' ),
+					'contain' 	=> __( 'Contain', 'sv100' )
+				) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'bg_repeat_menu' )
+				 ->set_title( __( 'Background Repeat', 'sv100' ) )
+				 ->set_default_value( 'no-repeat' )
+				 ->set_options( array(
+					'no-repeat' => __( 'No Repeat', 'sv100' ),
+					'repeat' 	=> __( 'Repeat', 'sv100' ),
+					'repeat-x' 	=> __( 'Repeat Horizontally', 'sv100' ),
+					'repeat-y' 	=> __( 'Repeat Vertically', 'sv100' ),
+					'space' 	=> __( 'Space', 'sv100' ),
+					'round' 	=> __( 'Round', 'sv100' ),
+					'initial' 	=> __( 'Initial', 'sv100' ),
+					'inherit' 	=> __( 'Inherit', 'sv100' )
+				) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'bg_attachment_menu' )
+				 ->set_title( __( 'Background Attachment', 'sv100' ) )
+				 ->set_default_value( 'fixed' )
+				 ->set_options( array(
+					'fixed' 	=> __( 'fixed', 'sv100' ),
+					'scroll' 	=> __( 'scroll', 'sv100' ),
+					'local' 	=> __( 'local', 'sv100' ),
+					'initial' 	=> __( 'initial', 'sv100' ),
+					'inherit' 	=> __( 'inherit', 'sv100' )
+				) )
+				 ->load_type( 'select' );
 
 			// Menu (Desktop) - Padding
 			$this->get_setting('menu_padding')
@@ -238,17 +380,55 @@
 				->load_type('margin');
 
 			// Menu (Desktop) - Items - Fonts & Colors
-			$this->get_settings_component( 'font_family_menu','font_family' );
-			$this->get_settings_component( 'font_size_menu','font_size', 16 );
-			$this->get_settings_component( 'line_height_menu','line_height', 1 );
-			$this->get_settings_component( 'text_deco_menu','text_decoration', 'none' );
-			$this->get_settings_component( 'text_color_menu','text_color', '#1e1e1e' );
-			$this->get_settings_component( 'text_bg_color_menu','background_color', '#ffffff' );
+			$this->get_setting( 'font_family_menu' )
+				 ->set_title( __( 'Font Family', 'sv100' ) )
+				 ->set_description( __( 'Choose a font for your text.', 'sv100' ) )
+				 ->set_options( $this->get_module( 'sv_webfontloader' )->get_font_options() )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'font_size_menu' )
+				 ->set_title( __( 'Font Size', 'sv100' ) )
+				 ->set_description( __( 'Font Size in pixel.', 'sv100' ) )
+				 ->set_default_value( 16 )
+				 ->load_type( 'number' );
+
+			$this->get_setting( 'line_height_menu' )
+				 ->set_title( __( 'Line Height', 'sv100' ) )
+				 ->set_description( __( 'Set line height as multiplier or with a unit.', 'sv100' ) )
+				 ->set_default_value( 1 )
+				 ->load_type( 'text' );
+
+			$this->get_setting( 'text_color_menu' )
+				 ->set_title( __( 'Text Color', 'sv100' ) )
+				 ->set_default_value( '#ffffff' )
+				 ->load_type( 'color' );
+
+			$this->get_setting( 'bg_color' )
+				 ->set_title( __( 'Background Color', 'sv100' ) )
+				 ->set_default_value( '#ffffff' )
+				 ->load_type( 'color' );
 
 			// Menu (Desktop) - Items - Fonts & Colors (Hover/Focus)
-			$this->get_settings_component( 'text_deco_menu_hover','text_decoration', 'underline' );
-			$this->get_settings_component( 'text_color_menu_hover','text_color', '#1e1e1e' );
-			$this->get_settings_component( 'text_bg_color_menu_hover','background_color', '#ffffff' );
+			$this->get_setting( 'text_deco_menu_hover' )
+				 ->set_title( __( 'Text Decoration', 'sv100' ) )
+				 ->set_default_value( 'underline' )
+				 ->set_options( array(
+					'none'			=> __( 'None', 'sv100' ),
+					'underline'		=> __( 'Underline', 'sv100' ),
+					'line-through'	=> __( 'Line Through', 'sv100' ),
+					'overline'		=> __( 'Overline', 'sv100' ),
+				 ) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'text_color_menu_hover' )
+				 ->set_title( __( 'Text Color', 'sv100' ) )
+				 ->set_default_value( '#1e1e1e' )
+				 ->load_type( 'color' );
+
+			$this->get_setting( 'text_bg_color_menu_hover' )
+				 ->set_title( __( 'Background Color', 'sv100' ) )
+				 ->set_default_value( '#ffffff' )
+				 ->load_type( 'color' );
 
 			// Submenu (Desktop) - Background
 			$this->get_setting( 'border_radius_sub' )
@@ -257,14 +437,74 @@
 				->set_min( '0' )
 				->set_default_value( '0' )
 				->load_type( 'number' );
-			$this->get_settings_component( 'bg_color_sub','background_color', '#ffffff' );
-			$this->get_settings_component( 'bg_image_sub','background_image' );
-			$this->get_settings_component( 'bg_media_size_sub','background_media_size', 'medium_large' );
-			$this->get_settings_component( 'bg_position_sub','background_position', 'center top' );
-			$this->get_settings_component( 'bg_size_sub','background_size', 0 );
-			$this->get_settings_component( 'bg_fit_sub','background_fit', 'cover' );
-			$this->get_settings_component( 'bg_repeat_sub','background_repeat', 'no-repeat' );
-			$this->get_settings_component( 'bg_attachment_sub','background_attachment', 'fixed' );
+
+			$this->get_setting( 'bg_color_sub' )
+				 ->set_title( __( 'Background Color', 'sv100' ) )
+				 ->set_default_value( '#ffffff' )
+				 ->load_type( 'color' );
+
+			$this->get_setting( 'bg_image_sub' )
+				 ->set_title( __( 'Background Image', 'sv100' ) )
+				 ->load_type( 'upload' );
+
+			$this->get_setting( 'bg_media_size_sub' )
+				 ->set_title( __( 'Background Media Size', 'sv100' ) )
+				 ->set_default_value( 'medium_large' )
+				 ->set_options( array_combine( get_intermediate_image_sizes(), get_intermediate_image_sizes() ) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'bg_position_sub' )
+				 ->set_title( __( 'Background Position', 'sv100' ) )
+				 ->set_default_value( 'center top' )
+				 ->set_placeholder( 'center top' )
+				 ->load_type( 'text' );
+
+			$this->get_setting( 'bg_size_sub' )
+				 ->set_title( __( 'Background Size', 'sv100' ) )
+				 ->set_description( '<p>' . __( 'Background Size in Pixel', 'sv100' ) . '<br>
+				 ' . __( 'If disabled Background Fit will take effect.', 'sv100' ) . '</p>
+				 <p><strong>' . __( '0 = Disabled', 'sv100' ) . '</strong></p>' )
+				 ->set_default_value( 0 )
+				 ->set_placeholder( '0 ' )
+				 ->set_min( 0 )
+				 ->load_type( 'number' );
+
+			$this->get_setting( 'bg_fit_sub' )
+				 ->set_title( __( 'Background Fit', 'sv100' ) )
+				 ->set_description( __( 'Defines how the background image aspect ratio behaves.', 'sv100' ) )
+				 ->set_default_value( 'cover' )
+				 ->set_options( array(
+					'cover' 	=> __( 'Cover', 'sv100' ),
+					'contain' 	=> __( 'Contain', 'sv100' )
+				) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'bg_repeat_sub' )
+				 ->set_title( __( 'Background Repeat', 'sv100' ) )
+				 ->set_default_value( 'no-repeat' )
+				 ->set_options( array(
+					'no-repeat' => __( 'No Repeat', 'sv100' ),
+					'repeat' 	=> __( 'Repeat', 'sv100' ),
+					'repeat-x' 	=> __( 'Repeat Horizontally', 'sv100' ),
+					'repeat-y' 	=> __( 'Repeat Vertically', 'sv100' ),
+					'space' 	=> __( 'Space', 'sv100' ),
+					'round' 	=> __( 'Round', 'sv100' ),
+					'initial' 	=> __( 'Initial', 'sv100' ),
+					'inherit' 	=> __( 'Inherit', 'sv100' )
+				) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'bg_attachment_sub' )
+				 ->set_title( __( 'Background Attachment', 'sv100' ) )
+				 ->set_default_value( 'fixed' )
+				 ->set_options( array(
+					'fixed' 	=> __( 'fixed', 'sv100' ),
+					'scroll' 	=> __( 'scroll', 'sv100' ),
+					'local' 	=> __( 'local', 'sv100' ),
+					'initial' 	=> __( 'initial', 'sv100' ),
+					'inherit' 	=> __( 'inherit', 'sv100' )
+				) )
+				 ->load_type( 'select' );
 
 			// Submenu (Desktop) - Padding
 			$this->get_setting('sub_padding')
@@ -286,17 +526,66 @@
 				->load_type( 'checkbox' );
 
 			// Submenu (Desktop) - Items - Fonts & Colors
-			$this->get_settings_component( 'font_family_sub','font_family' );
-			$this->get_settings_component( 'font_size_sub','font_size', 16 );
-			$this->get_settings_component( 'line_height_sub','line_height', 1 );
-			$this->get_settings_component( 'text_color_sub','text_color', '#1e1e1e' );
-			$this->get_settings_component( 'text_bg_color_sub','background_color', '#ffffff' );
-			$this->get_settings_component( 'text_deco_sub','text_decoration', 'none' );
+			$this->get_setting( 'font_family_sub' )
+				 ->set_title( __( 'Font Family', 'sv100' ) )
+				 ->set_description( __( 'Choose a font for your text.', 'sv100' ) )
+				 ->set_options( $this->get_module( 'sv_webfontloader' )->get_font_options() )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'font_size_sub' )
+				 ->set_title( __( 'Font Size', 'sv100' ) )
+				 ->set_description( __( 'Font Size in pixel.', 'sv100' ) )
+				 ->set_default_value( 16 )
+				 ->load_type( 'number' );
+
+			$this->get_setting( 'line_height_sub' )
+				 ->set_title( __( 'Line Height', 'sv100' ) )
+				 ->set_description( __( 'Set line height as multiplier or with a unit.', 'sv100' ) )
+				 ->set_default_value( 1 )
+				 ->load_type( 'text' );
+
+			$this->get_setting( 'text_color_sub' )
+				 ->set_title( __( 'Text Color', 'sv100' ) )
+				 ->set_default_value( '#1e1e1e' )
+				 ->load_type( 'color' );
+
+			$this->get_setting( 'text_deco_sub' )
+				 ->set_title( __( 'Text Decoration', 'sv100' ) )
+				 ->set_default_value( 'underline' )
+				 ->set_options( array(
+					'none'			=> __( 'None', 'sv100' ),
+					'underline'		=> __( 'Underline', 'sv100' ),
+					'line-through'	=> __( 'Line Through', 'sv100' ),
+					'overline'		=> __( 'Overline', 'sv100' ),
+				 ) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'text_bg_color_sub' )
+				 ->set_title( __( 'Background Color', 'sv100' ) )
+				 ->set_default_value( '#ffffff' )
+				 ->load_type( 'color' );
 
 			// Submenu (Desktop) - Items - Fonts & Colors (Hover/Focus)
-			$this->get_settings_component( 'text_color_sub_hover','text_color', '#1e1e1e' );
-			$this->get_settings_component( 'text_bg_color_sub_hover','background_color', '#ffffff' );
-			$this->get_settings_component( 'text_deco_sub_hover','text_decoration', 'underline' );
+			$this->get_setting( 'text_color_sub_hover' )
+				 ->set_title( __( 'Text Color', 'sv100' ) )
+				 ->set_default_value( '#1e1e1e' )
+				 ->load_type( 'color' );
+
+			$this->get_setting( 'text_deco_sub_hover' )
+				 ->set_title( __( 'Text Decoration', 'sv100' ) )
+				 ->set_default_value( 'underline' )
+				 ->set_options( array(
+					'none'			=> __( 'None', 'sv100' ),
+					'underline'		=> __( 'Underline', 'sv100' ),
+					'line-through'	=> __( 'Line Through', 'sv100' ),
+					'overline'		=> __( 'Overline', 'sv100' ),
+				 ) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'text_bg_color_sub_hover' )
+				 ->set_title( __( 'Background Color', 'sv100' ) )
+				 ->set_default_value( '#ffffff' )
+				 ->load_type( 'color' );
 
 			// Menu (Mobile) - Icon
 			$this->get_setting( 'menu_icon_size' )
@@ -340,14 +629,74 @@
 				->set_min( '0' )
 				->set_default_value( '0' )
 				->load_type( 'number' );
-			$this->get_settings_component( 'bg_color_menu_mobile','background_color', '#ffffff' );
-			$this->get_settings_component( 'bg_image_menu_mobile','background_image' );
-			$this->get_settings_component( 'bg_media_size_menu_mobile','background_media_size', 'medium_large' );
-			$this->get_settings_component( 'bg_position_menu_mobile','background_position', 'center top' );
-			$this->get_settings_component( 'bg_size_menu_mobile','background_size', 0 );
-			$this->get_settings_component( 'bg_fit_menu_mobile','background_fit', 'cover' );
-			$this->get_settings_component( 'bg_repeat_menu_mobile','background_repeat', 'no-repeat' );
-			$this->get_settings_component( 'bg_attachment_menu_mobile','background_attachment', 'fixed' );
+
+			$this->get_setting( 'bg_color_menu_mobile' )
+				 ->set_title( __( 'Background Color', 'sv100' ) )
+				 ->set_default_value( '#ffffff' )
+				 ->load_type( 'color' );
+
+			$this->get_setting( 'bg_image_menu_mobile' )
+				 ->set_title( __( 'Background Image', 'sv100' ) )
+				 ->load_type( 'upload' );
+
+			$this->get_setting( 'bg_media_size_menu_mobile' )
+				 ->set_title( __( 'Background Media Size', 'sv100' ) )
+				 ->set_default_value( 'medium_large' )
+				 ->set_options( array_combine( get_intermediate_image_sizes(), get_intermediate_image_sizes() ) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'bg_position_menu_mobile' )
+				 ->set_title( __( 'Background Position', 'sv100' ) )
+				 ->set_default_value( 'center top' )
+				 ->set_placeholder( 'center top' )
+				 ->load_type( 'text' );
+
+			$this->get_setting( 'bg_size_menu_mobile' )
+				 ->set_title( __( 'Background Size', 'sv100' ) )
+				 ->set_description( '<p>' . __( 'Background Size in Pixel', 'sv100' ) . '<br>
+				 ' . __( 'If disabled Background Fit will take effect.', 'sv100' ) . '</p>
+				 <p><strong>' . __( '0 = Disabled', 'sv100' ) . '</strong></p>' )
+				 ->set_default_value( 0 )
+				 ->set_placeholder( '0 ' )
+				 ->set_min( 0 )
+				 ->load_type( 'number' );
+
+			$this->get_setting( 'bg_fit_menu_mobile' )
+				 ->set_title( __( 'Background Fit', 'sv100' ) )
+				 ->set_description( __( 'Defines how the background image aspect ratio behaves.', 'sv100' ) )
+				 ->set_default_value( 'cover' )
+				 ->set_options( array(
+					'cover' 	=> __( 'Cover', 'sv100' ),
+					'contain' 	=> __( 'Contain', 'sv100' )
+				) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'bg_repeat_menu_mobile' )
+				 ->set_title( __( 'Background Repeat', 'sv100' ) )
+				 ->set_default_value( 'no-repeat' )
+				 ->set_options( array(
+					'no-repeat' => __( 'No Repeat', 'sv100' ),
+					'repeat' 	=> __( 'Repeat', 'sv100' ),
+					'repeat-x' 	=> __( 'Repeat Horizontally', 'sv100' ),
+					'repeat-y' 	=> __( 'Repeat Vertically', 'sv100' ),
+					'space' 	=> __( 'Space', 'sv100' ),
+					'round' 	=> __( 'Round', 'sv100' ),
+					'initial' 	=> __( 'Initial', 'sv100' ),
+					'inherit' 	=> __( 'Inherit', 'sv100' )
+				) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'bg_attachment_menu_mobile' )
+				 ->set_title( __( 'Background Attachment', 'sv100' ) )
+				 ->set_default_value( 'fixed' )
+				 ->set_options( array(
+					'fixed' 	=> __( 'fixed', 'sv100' ),
+					'scroll' 	=> __( 'scroll', 'sv100' ),
+					'local' 	=> __( 'local', 'sv100' ),
+					'initial' 	=> __( 'initial', 'sv100' ),
+					'inherit' 	=> __( 'inherit', 'sv100' )
+				) )
+				 ->load_type( 'select' );
 
 			// Menu (Mobile) - Items - Spacing
 			$this->get_setting('menu_item_margin_mobile')
@@ -358,16 +707,60 @@
 				->load_type('margin');
 
 			// Menu (Mobile) - Items - Fonts & Colors
-			$this->get_settings_component( 'font_size_menu_mobile','font_size', 16 );
-			$this->get_settings_component( 'line_height_menu_mobile','line_height', 1 );
-			$this->get_settings_component( 'text_deco_menu_mobile','text_decoration', 'none' );
-			$this->get_settings_component( 'text_color_menu_mobile','text_color', '#1e1e1e' );
-			$this->get_settings_component( 'text_bg_color_menu_mobile','background_color', '#ffffff' );
+			$this->get_setting( 'font_size_menu_mobile' )
+				 ->set_title( __( 'Font Size', 'sv100' ) )
+				 ->set_description( __( 'Font Size in pixel.', 'sv100' ) )
+				 ->set_default_value( 16 )
+				 ->load_type( 'number' );
+
+			$this->get_setting( 'line_height_menu_mobile' )
+				 ->set_title( __( 'Line Height', 'sv100' ) )
+				 ->set_description( __( 'Set line height as multiplier or with a unit.', 'sv100' ) )
+				 ->set_default_value( 1 )
+				 ->load_type( 'text' );
+
+			$this->get_setting( 'text_color_menu_mobile' )
+				 ->set_title( __( 'Text Color', 'sv100' ) )
+				 ->set_default_value( '#1e1e1e' )
+				 ->load_type( 'color' );
+
+			$this->get_setting( 'text_deco_menu_mobile' )
+				 ->set_title( __( 'Text Decoration', 'sv100' ) )
+				 ->set_default_value( 'none' )
+				 ->set_options( array(
+					'none'			=> __( 'None', 'sv100' ),
+					'underline'		=> __( 'Underline', 'sv100' ),
+					'line-through'	=> __( 'Line Through', 'sv100' ),
+					'overline'		=> __( 'Overline', 'sv100' ),
+				 ) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'text_bg_color_menu_mobile' )
+				 ->set_title( __( 'Background Color', 'sv100' ) )
+				 ->set_default_value( '#ffffff' )
+				 ->load_type( 'color' );
 
 			// Menu (Mobile) - Items - Fonts & Colors (Hover/Focus)
-			$this->get_settings_component( 'text_deco_menu_mobile_hover','text_decoration', 'underline' );
-			$this->get_settings_component( 'text_color_menu_mobile_hover','text_color', '#1e1e1e' );
-			$this->get_settings_component( 'text_bg_color_menu_mobile_hover','background_color', '#ffffff' );
+			$this->get_setting( 'text_deco_menu_mobile_hover' )
+				 ->set_title( __( 'Text Decoration', 'sv100' ) )
+				 ->set_default_value( 'underline' )
+				 ->set_options( array(
+					'none'			=> __( 'None', 'sv100' ),
+					'underline'		=> __( 'Underline', 'sv100' ),
+					'line-through'	=> __( 'Line Through', 'sv100' ),
+					'overline'		=> __( 'Overline', 'sv100' ),
+				 ) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'text_bg_color_menu_mobile_hover' )
+				 ->set_title( __( 'Background Color', 'sv100' ) )
+				 ->set_default_value( '#ffffff' )
+				 ->load_type( 'color' );
+
+			$this->get_setting( 'text_color_menu_mobile_hover' )
+				 ->set_title( __( 'Text Color', 'sv100' ) )
+				 ->set_default_value( '#1e1e1e' )
+				 ->load_type( 'color' );
 
 			// Submenu (Mobile) - Padding
 			$this->get_setting('sub_padding_mobile')
@@ -381,14 +774,74 @@
 				->set_min( '0' )
 				->set_default_value( '0' )
 				->load_type( 'number' );
-			$this->get_settings_component( 'bg_color_sub_mobile','background_color', '#ffffff' );
-			$this->get_settings_component( 'bg_image_sub_mobile','background_image' );
-			$this->get_settings_component( 'bg_media_size_sub_mobile','background_media_size', 'medium_large' );
-			$this->get_settings_component( 'bg_position_sub_mobile','background_position', 'center top' );
-			$this->get_settings_component( 'bg_size_sub_mobile','background_size', 0 );
-			$this->get_settings_component( 'bg_fit_sub_mobile','background_fit', 'cover' );
-			$this->get_settings_component( 'bg_repeat_sub_mobile','background_repeat', 'no-repeat' );
-			$this->get_settings_component( 'bg_attachment_sub_mobile','background_attachment', 'fixed' );
+
+			$this->get_setting( 'bg_color_sub_mobile' )
+				 ->set_title( __( 'Background Color', 'sv100' ) )
+				 ->set_default_value( '#ffffff' )
+				 ->load_type( 'color' );
+
+			$this->get_setting( 'bg_image_sub_mobile' )
+				 ->set_title( __( 'Background Image', 'sv100' ) )
+				 ->load_type( 'upload' );
+
+			$this->get_setting( 'bg_media_size_sub_mobile' )
+				 ->set_title( __( 'Background Media Size', 'sv100' ) )
+				 ->set_default_value( 'medium_large' )
+				 ->set_options( array_combine( get_intermediate_image_sizes(), get_intermediate_image_sizes() ) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'bg_position_sub_mobile' )
+				 ->set_title( __( 'Background Position', 'sv100' ) )
+				 ->set_default_value( 'center top' )
+				 ->set_placeholder( 'center top' )
+				 ->load_type( 'text' );
+
+			$this->get_setting( 'bg_size_sub_mobile' )
+				 ->set_title( __( 'Background Size', 'sv100' ) )
+				 ->set_description( '<p>' . __( 'Background Size in Pixel', 'sv100' ) . '<br>
+				 ' . __( 'If disabled Background Fit will take effect.', 'sv100' ) . '</p>
+				 <p><strong>' . __( '0 = Disabled', 'sv100' ) . '</strong></p>' )
+				 ->set_default_value( 0 )
+				 ->set_placeholder( '0 ' )
+				 ->set_min( 0 )
+				 ->load_type( 'number' );
+
+			$this->get_setting( 'bg_fit_sub_mobile' )
+				 ->set_title( __( 'Background Fit', 'sv100' ) )
+				 ->set_description( __( 'Defines how the background image aspect ratio behaves.', 'sv100' ) )
+				 ->set_default_value( 'cover' )
+				 ->set_options( array(
+					'cover' 	=> __( 'Cover', 'sv100' ),
+					'contain' 	=> __( 'Contain', 'sv100' )
+				) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'bg_repeat_sub_mobile' )
+				 ->set_title( __( 'Background Repeat', 'sv100' ) )
+				 ->set_default_value( 'no-repeat' )
+				 ->set_options( array(
+					'no-repeat' => __( 'No Repeat', 'sv100' ),
+					'repeat' 	=> __( 'Repeat', 'sv100' ),
+					'repeat-x' 	=> __( 'Repeat Horizontally', 'sv100' ),
+					'repeat-y' 	=> __( 'Repeat Vertically', 'sv100' ),
+					'space' 	=> __( 'Space', 'sv100' ),
+					'round' 	=> __( 'Round', 'sv100' ),
+					'initial' 	=> __( 'Initial', 'sv100' ),
+					'inherit' 	=> __( 'Inherit', 'sv100' )
+				) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'bg_attachment_sub_mobile' )
+				 ->set_title( __( 'Background Attachment', 'sv100' ) )
+				 ->set_default_value( 'fixed' )
+				 ->set_options( array(
+					'fixed' 	=> __( 'fixed', 'sv100' ),
+					'scroll' 	=> __( 'scroll', 'sv100' ),
+					'local' 	=> __( 'local', 'sv100' ),
+					'initial' 	=> __( 'initial', 'sv100' ),
+					'inherit' 	=> __( 'inherit', 'sv100' )
+				) )
+				 ->load_type( 'select' );
 
 			// Submenu (Mobile) - Items - Spacing
 			$this->get_setting('sub_item_margin_mobile')
@@ -405,16 +858,60 @@
 				->load_type( 'checkbox' );
 
 			// Submenu (Mobile) - Items - Fonts & Colors
-			$this->get_settings_component( 'font_size_sub_mobile','font_size', 16 );
-			$this->get_settings_component( 'line_height_sub_mobile','line_height', 1 );
-			$this->get_settings_component( 'text_color_sub_mobile','text_color', '#1e1e1e' );
-			$this->get_settings_component( 'text_bg_color_sub_mobile','background_color', '#ffffff' );
-			$this->get_settings_component( 'text_deco_sub_mobile','text_decoration', 'none' );
+			$this->get_setting( 'font_size_sub_mobile' )
+				 ->set_title( __( 'Font Size', 'sv100' ) )
+				 ->set_description( __( 'Font Size in pixel.', 'sv100' ) )
+				 ->set_default_value( 16 )
+				 ->load_type( 'number' );
+
+			$this->get_setting( 'line_height_sub_mobile' )
+				 ->set_title( __( 'Line Height', 'sv100' ) )
+				 ->set_description( __( 'Set line height as multiplier or with a unit.', 'sv100' ) )
+				 ->set_default_value( 1 )
+				 ->load_type( 'text' );
+
+			$this->get_setting( 'text_color_sub_mobile' )
+				 ->set_title( __( 'Text Color', 'sv100' ) )
+				 ->set_default_value( '#1e1e1e' )
+				 ->load_type( 'color' );
+
+			$this->get_setting( 'text_deco_sub_mobile' )
+				 ->set_title( __( 'Text Decoration', 'sv100' ) )
+				 ->set_default_value( 'none' )
+				 ->set_options( array(
+					'none'			=> __( 'None', 'sv100' ),
+					'underline'		=> __( 'Underline', 'sv100' ),
+					'line-through'	=> __( 'Line Through', 'sv100' ),
+					'overline'		=> __( 'Overline', 'sv100' ),
+				 ) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'text_bg_color_sub_mobile' )
+				 ->set_title( __( 'Background Color', 'sv100' ) )
+				 ->set_default_value( '#ffffff' )
+				 ->load_type( 'color' );
 
 			// Submenu (Mobile) - Items - Fonts & Colors (Hover/Focus)
-			$this->get_settings_component( 'text_color_sub_mobile_hover','text_color', '#1e1e1e' );
-			$this->get_settings_component( 'text_bg_color_sub_mobile_hover','background_color', '#ffffff' );
-			$this->get_settings_component( 'text_deco_sub_mobile_hover','text_decoration', 'underline' );
+			$this->get_setting( 'text_color_sub_mobile_hover' )
+				 ->set_title( __( 'Text Color', 'sv100' ) )
+				 ->set_default_value( '#1e1e1e' )
+				 ->load_type( 'color' );
+
+			$this->get_setting( 'text_deco_sub_mobile_hover' )
+				 ->set_title( __( 'Text Decoration', 'sv100' ) )
+				 ->set_default_value( 'underline' )
+				 ->set_options( array(
+					'none'			=> __( 'None', 'sv100' ),
+					'underline'		=> __( 'Underline', 'sv100' ),
+					'line-through'	=> __( 'Line Through', 'sv100' ),
+					'overline'		=> __( 'Overline', 'sv100' ),
+				 ) )
+				 ->load_type( 'select' );
+
+			$this->get_setting( 'text_bg_color_sub_mobile_hover' )
+				 ->set_title( __( 'Background Color', 'sv100' ) )
+				 ->set_default_value( '#ffffff' )
+				 ->load_type( 'color' );
 			
 			// sidebar order settings
             $this->get_setting( 'sidebar_active' )
