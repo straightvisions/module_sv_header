@@ -22,8 +22,11 @@
             $navigation_order   = (int)$this->get_setting('navigation_order')->get_data();
             $sidebar_order      = (int)$this->get_setting('sidebar_order')->get_data();
 
+            echo $this->get_module('sv_branding')->load();
+
+            // @todo: load modules instead of file include
             $arr_order          = array(
-                $branding_order     => 'lib/frontend/tpl/part_branding.php',
+                //$branding_order     => '',
                 $navigation_order   => 'lib/frontend/tpl/part_navigation.php',
                 $sidebar_order      => 'lib/frontend/tpl/part_sidebar.php',
             );

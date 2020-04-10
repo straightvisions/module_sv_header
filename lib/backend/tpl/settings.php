@@ -4,7 +4,6 @@
         <ul class="sv_setting_subpages_nav"></ul>
 		<?php
             require_once( $module->get_path( 'lib/backend/tpl/subpage_header.php' ) );
-			require_once( $module->get_path( 'lib/backend/tpl/subpage_branding.php' ) );
             require_once( $module->get_path( 'lib/backend/tpl/subpage_menu_desktop.php' ) );
 			require_once( $module->get_path( 'lib/backend/tpl/subpage_menu_mobile.php' ) );
 

@@ -44,6 +44,5 @@
 	// Configs
 	require_once( $script->get_parent()->get_path( 'lib/frontend/css/config/header.php' ) );
 	require_once( $script->get_parent()->get_path( 'lib/frontend/css/config/order.php' ) );
-	require_once( $script->get_parent()->get_path( 'lib/frontend/css/config/branding.php' ) );
 	require_once( $script->get_parent()->get_path( 'lib/frontend/css/config/navigation.php' ) );
 	require_once( $script->get_parent()->get_path( 'lib/frontend/css/config/sidebar.php' ) );

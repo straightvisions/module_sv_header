@@ -29,17 +29,3 @@
 		min-height: 100px;
 	}
 }
-
-/* Branding */
-.sv100_sv_header .sv100_sv_header_branding img {
-	max-width: 100%;
-	object-fit: contain;
-}
-
-.sv100_sv_header .sv100_sv_header_branding a {
-	display: block;
-	text-decoration: none;
-}
-.sv100_sv_header .sv100_sv_header_website_title h3 {
-	text-align:center;
-}

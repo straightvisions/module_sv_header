@@ -20,7 +20,7 @@
 				 ->register_navs()
 				 ->register_sidebars()
 				 ->set_section_title( __( 'Header', 'sv100' ) )
-				 ->set_section_desc( __( 'Text, Color & Branding settings.', 'sv100' ) )
+				 ->set_section_desc( $this->get_module_desc() )
 				 ->set_section_type( 'settings' )
 				 ->set_section_template_path( $this->get_path( 'lib/backend/tpl/settings.php' ) )
 				 ->get_root()
@@ -213,27 +213,8 @@
 				->set_description( __( 'Color of the box shadow.', 'sv100' ) )
 				->load_type( 'color' );
 
-			// Branding
-			$this->get_setting( 'branding' )
-				->set_title( __( 'Branding', 'sv100' ) )
-				->set_description( __( 'Activate or deactivate branding in the header.', 'sv100' ) )
-				->set_default_value( 1 )
-				->load_type( 'checkbox' );
-
-			$this->get_setting( 'branding_title' )
-				->set_title( __( 'Title', 'sv100' ) )
-				->set_description(
-					__(
-						'On default the title will be your website title,
-				 	but you can change the title that will be displayed in your header.',
-						'sv100'
-					)
-				)
-				->set_default_value( get_bloginfo( 'name' ) )
-				->load_type( 'text' );
-
 			$this->get_setting( 'branding_order' )
-				->set_title( __( 'Order Position', 'sv100' ) )
+				->set_title( __( 'Branding Order Position', 'sv100' ) )
 				->set_options( array(
 					'1'		=> __( '1', 'sv100' ),
 					'2'	=> __( '2', 'sv100' ),
@@ -241,34 +222,6 @@
 				) )
 				->set_default_value( '1' )
 				->load_type( 'select' );
-
-			$this->get_setting( 'branding_logo_width' )
-				->set_title( __( 'Logo width', 'sv100' ) )
-				->set_description( __( 'Width in pixel. 0 = auto', 'sv100' ) )
-				->set_default_value( 0 )
-				->set_min( 0 )
-				->load_type( 'number' );
-
-			$this->get_setting( 'branding_logo_height' )
-				->set_title( __( 'Logo height', 'sv100' ) )
-				->set_description( __( 'Height in pixel. 0 = auto', 'sv100' ) )
-				->set_default_value( 0 )
-				->set_min( 0 )
-				->load_type( 'number' );
-
-			$this->get_setting( 'branding_logo_width_mobile' )
-				->set_title( __( 'Logo width (mobile)', 'sv100' ) )
-				->set_description( __( 'Width in pixel. 0 = auto', 'sv100' ) )
-				->set_default_value( 0 )
-				->set_min( 0 )
-				->load_type( 'number' );
-
-			$this->get_setting( 'branding_logo_height_mobile' )
-				->set_title( __( 'Logo height (mobile)', 'sv100' ) )
-				->set_description( __( 'Height in pixel. 0 = auto', 'sv100' ) )
-				->set_default_value( 0 )
-				->set_min( 0 )
-				->load_type( 'number' );
 
             // Menu (Desktop)
 			$this->get_setting( 'navigation_active' )
