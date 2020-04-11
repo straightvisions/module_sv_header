@@ -14,6 +14,7 @@
 </head>
 
 <body <?php body_class(); ?>>
+<?php if($this->get_setting('template') != 'no_header'){ ?>
 <header class="<?php echo $this->get_prefix(); ?>">
     <div class="<?php echo $this->get_prefix( 'bar' ); ?>">
         <?php
@@ -37,3 +38,4 @@
             ?>
     </div>
 </header>
+<?php } ?>

@@ -974,7 +974,7 @@
 				switch ( $settings['template'] ) {
 					case 'no_header':
 						$template = array(
-							'name'      => 'no_header',
+							'name'      => 'default',
 							'scripts'   => array(),
 						);
 						break;
