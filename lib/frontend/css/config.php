@@ -16,21 +16,10 @@
 		? $script->get_parent()->get_module( 'sv_webfontloader' )->get_font_by_label( $font_family )
 		: false;
 
-	// Menu
-	$font_menu = $font_family_menu
-		? $script->get_parent()->get_module( 'sv_webfontloader' )->get_font_by_label( $font_family_menu )
-		: false;
-
-	// Submenu
-	$font_sub = $font_family_sub
-		? $script->get_parent()->get_module( 'sv_webfontloader' )->get_font_by_label( $font_family_sub )
-		: false;
-
-
 	// Columns
 	$columns_count = 0;
-	$columns_count += $script->get_parent()->get_setting( 'branding' )->get_data() ? 1 : 0;
-	$columns_count += $script->get_parent()->get_setting( 'navigation_active' )->get_data() ? 1 : 0;
+	$columns_count += $script->get_parent()->get_module('sv_branding')->get_setting( 'active' )->get_data() ? 1 : 0;
+	$columns_count += $script->get_parent()->get_module('sv_header_menu')->get_setting( 'active' )->get_data() ? 1 : 0;
 	$columns_count += $script->get_parent()->get_setting( 'sidebar_active' )->get_data() == 1
 	&& $script->get_parent()->get_root()->get_module( 'sv_sidebar' )
 	&& empty(
@@ -44,5 +33,4 @@
 	// Configs
 	require_once( $script->get_parent()->get_path( 'lib/frontend/css/config/header.php' ) );
 	require_once( $script->get_parent()->get_path( 'lib/frontend/css/config/order.php' ) );
-	require_once( $script->get_parent()->get_path( 'lib/frontend/css/config/navigation.php' ) );
 	require_once( $script->get_parent()->get_path( 'lib/frontend/css/config/sidebar.php' ) );

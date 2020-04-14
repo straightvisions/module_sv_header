@@ -3,9 +3,7 @@
     <div class="sv_setting_subpages">
         <ul class="sv_setting_subpages_nav"></ul>
 		<?php
-            require_once( $module->get_path( 'lib/backend/tpl/subpage_header.php' ) );
-            require_once( $module->get_path( 'lib/backend/tpl/subpage_menu_desktop.php' ) );
-			require_once( $module->get_path( 'lib/backend/tpl/subpage_menu_mobile.php' ) );
+            require_once( $module->get_path( 'lib/backend/tpl/subpage_general.php' ) );
 
 	        if ( $count = count( $module->get_module( 'sv_sidebar' )->get_sidebars( $module ) ) > 0 ) {
 				require_once( $module->get_path( 'lib/backend/tpl/subpage_sidebar.php' ) );

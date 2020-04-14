@@ -24,11 +24,12 @@
             $sidebar_order      = (int)$this->get_setting('sidebar_order')->get_data();
 
             echo $this->get_module('sv_branding')->load();
+			echo $this->get_module('sv_header_menu')->load();
 
             // @todo: load modules instead of file include
             $arr_order          = array(
                 //$branding_order     => '',
-                $navigation_order   => 'lib/frontend/tpl/part_navigation.php',
+                //$navigation_order   => '',
                 $sidebar_order      => 'lib/frontend/tpl/part_sidebar.php',
             );
             ksort($arr_order);

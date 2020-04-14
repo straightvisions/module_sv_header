@@ -5,6 +5,7 @@
 	<div class="sv_setting_flex">
 		<?php
 			echo $module->get_setting( 'branding_order' )->form();
+			echo $module->get_setting( 'navigation_order' )->form();
 		?>
 	</div>
 
@@ -22,22 +23,6 @@
 			echo $module->get_setting( 'header_padding' )->form();
 		?>
 	</div>
-
-	<h3 class="divider"><?php _e( 'Position & Alignment (Mobile)', 'sv100' ); ?></h3>
-	<div class="sv_setting_flex">
-		<?php
-			echo $module->get_setting( 'position_mobile' )->form();
-			echo $module->get_setting( 'box_content_alignment_mobile' )->form();
-			echo $module->get_setting( 'box_margin_top_mobile' )->form();
-			echo $module->get_setting( 'box_margin_bottom_mobile' )->form();
-		?>
-	</div>
-	<div class="sv_setting_flex">
-		<?php
-			echo $module->get_setting( 'header_padding_mobile' )->form();
-		?>
-	</div>
-
     <h3 class="divider"><?php _e( 'Fonts & Colors', 'sv100' ); ?></h3>
     <div class="sv_setting_flex">
 		<?php
