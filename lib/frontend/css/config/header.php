@@ -50,14 +50,13 @@ if ( $bg_image ) {
 body.admin-bar .sv100_sv_header.open {
 		top: <?php echo $position !== 'relative' ? '32px' : '0'?>;
 	}
-	
-	.sv100_sv_header,
-	body.admin-bar .sv100_sv_header,
-	.sv100_sv_header.open {
-		position: <?php echo $position; ?>;
-		<?php echo ($box_margin_top > 0) ? 'margin-top: '.$box_margin_top.'px;' : ''; ?>
-		<?php echo ($box_margin_bottom > 0) ? 'margin-bottom: '.$box_margin_bottom.'px;' : ''; ?>
-	}
+}
+.sv100_sv_header,
+body.admin-bar .sv100_sv_header,
+.sv100_sv_header.open {
+position: <?php echo $position; ?>;
+<?php echo ($box_margin_top > 0) ? 'margin-top: '.$box_margin_top.'px;' : ''; ?>
+<?php echo ($box_margin_bottom > 0) ? 'margin-bottom: '.$box_margin_bottom.'px;' : ''; ?>
 }
 
 
