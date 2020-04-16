@@ -1,16 +1,12 @@
 <div class="sv_setting_subpage">
 	<h2><?php _e('Sidebar', 'sv100'); ?></h2>
-	<?php
-	// Sidebars - Alignment Settings
-    $i = 0;
-
-    echo '<h3 class="divider">' . __( 'Sidebar Alignments', 'sv100' ) . '</h3>';
-    ?>
     <div class="sv_setting_flex">
         <?php echo $module->get_setting( 'sidebar_active' )->form(); ?>
-        <?php echo $module->get_setting( 'sidebar_order' )->form(); ?>
     </div>
+	<h3 class="divider"><?php _e( 'Sidebar Alignments', 'sv100' ); ?></h3>
     <?php
+		// Sidebars - Alignment Settings
+		$i = 0;
     foreach ( $module->get_module( 'sv_sidebar' )->get_sidebars( $module ) as $sidebar ) {
         echo $i === 0 ? '<div class="sv_setting_flex">' : '';
 

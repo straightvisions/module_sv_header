@@ -1,78 +1,60 @@
-/* Header - Mobile */
-.sv100_sv_header {
-position: <?php echo $position_mobile; ?>;
-<?php echo ($box_margin_top_mobile > 0) ? 'margin-top: '.$box_margin_top_mobile.'px;' : ''; ?>
-<?php echo ($box_margin_bottom_mobile > 0) ? 'margin-bottom: '.$box_margin_bottom_mobile.'px;' : ''; ?>
-<?php echo ( $font ? 'font-family: "' . $font['family'] . '", sans-serif;' : '' ); ?>
-font-weight: <?php echo ( $font ? $font['weight'] : '400' ); ?>;
-font-size: <?php echo $font_size; ?>px;
-line-height: <?php echo $line_height; ?>;
-color: rgba(<?php echo $text_color; ?>);
-background-color: rgba(<?php echo $bg_color; ?>);
-box-shadow: 0 1px 10px rgba(<?php echo $box_shadow_color; ?>);
 <?php
-if ( $bg_image ) {
-	$bg_size = $bg_size > 0 ? $bg_size . 'px' : $bg_fit;
-	?>
-	background-image: url( '<?php echo wp_get_attachment_image_src( $bg_image, $bg_media_size )[0]; ?>' );
-	background-position:<?php echo $bg_position; ?>;
-	background-size:<?php echo $bg_size; ?>;
-	background-repeat:<?php echo $bg_repeat; ?>;
-	background-attachment:<?php echo $bg_attachment; ?>;
-<?php } ?>
-}
+	$properties					= array();
 
-
-<?php if ( $position_mobile !== 'relative' ) { ?>
-	body.admin-bar .sv100_sv_header {
-		<?php echo $position_mobile === 'fixed' ? 'position: sticky;' : ''; ?>
-		top: 0;
+	// Background
+	if($position) {
+		$properties['position'] = $setting->prepare_css_property_responsive($position, '', '');
 	}
 
+	if($bg_color) {
+		$properties['background-color'] = $setting->prepare_css_property_responsive($bg_color, 'rgba(', ')');
+	}
 
-	@media ( min-width: 601px ) {
-		body.admin-bar .sv100_sv_header {
-			<?php echo $position_mobile === 'fixed' ? 'position: fixed;' : ''; ?>
-			top: 46px;
+	echo $setting->build_css(
+		'.sv100_sv_header',
+		$properties
+	);
+
+	$properties					= array();
+
+	// Margin
+	if($margin) {
+		$imploded		= false;
+		foreach($margin as $breakpoint => $val) {
+			$top = (isset($val['top']) && strlen($val['top']) > 0) ? $val['top'] : 0;
+			$right = (isset($val['right']) && strlen($val['right']) > 0) ? $val['right'] : 0;
+			$bottom = (isset($val['bottom']) && strlen($val['bottom']) > 0) ? $val['bottom'] : 0;
+			$left = (isset($val['left']) && strlen($val['left']) > 0) ? $val['left'] : 0;
+
+			if($top+$right+$bottom+$left!==0) {
+				$imploded[$breakpoint] = $top . ' ' . $right . ' ' . $bottom . ' ' . $left;
+			}
+		}
+		if($imploded) {
+			$properties['margin'] = $setting->prepare_css_property_responsive($imploded, '', '');
 		}
 	}
 
-	@media ( min-width: 783px ) {
-		body.admin-bar .sv100_sv_header {
-			top: 32px;
+	// Padding
+	// @todo: same as margin, refactor to avoid doubled code
+	if($padding) {
+		$imploded		= false;
+		foreach($padding as $breakpoint => $val) {
+			$top = (isset($val['top']) && strlen($val['top']) > 0) ? $val['top'] : 0;
+			$right = (isset($val['right']) && strlen($val['right']) > 0) ? $val['right'] : 0;
+			$bottom = (isset($val['bottom']) && strlen($val['bottom']) > 0) ? $val['bottom'] : 0;
+			$left = (isset($val['left']) && strlen($val['left']) > 0) ? $val['left'] : 0;
+
+			if($top+$right+$bottom+$left!==0) {
+				$imploded[$breakpoint] = $top . ' ' . $right . ' ' . $bottom . ' ' . $left;
+			}
+		}
+		if($imploded) {
+			$properties['padding'] = $setting->prepare_css_property_responsive($imploded, '', '');
 		}
 	}
-<?php } ?>
 
-/* Header - Desktop */
-@media ( min-width: 1350px ) {
-	body.admin-bar .sv100_sv_header,
-body.admin-bar .sv100_sv_header.open {
-		top: <?php echo $position !== 'relative' ? '32px' : '0'?>;
-	}
-}
-.sv100_sv_header,
-body.admin-bar .sv100_sv_header,
-.sv100_sv_header.open {
-position: <?php echo $position; ?>;
-<?php echo ($box_margin_top > 0) ? 'margin-top: '.$box_margin_top.'px;' : ''; ?>
-<?php echo ($box_margin_bottom > 0) ? 'margin-bottom: '.$box_margin_bottom.'px;' : ''; ?>
-}
-
-
-.sv100_sv_header_bar {
-	padding-top: <?php echo $header_padding_mobile['top'] ? $header_padding_mobile['top'] : '0'; ?>;
-	padding-right: <?php echo $header_padding_mobile['right'] ? $header_padding_mobile['right'] : '0'; ?>;
-	padding-bottom: <?php echo $header_padding_mobile['bottom'] ? $header_padding_mobile['bottom'] : '0'; ?>;
-	padding-left: <?php echo $header_padding_mobile['left'] ? $header_padding_mobile['left'] : '0'; ?>;
-}
-
-@media (min-width: 1350px) {
-	.sv100_sv_header_bar {
-		padding-top: <?php echo $header_padding['top'] ? $header_padding['top'] : '0'; ?>;
-		padding-right: <?php echo $header_padding['right'] ? $header_padding['right'] : '0'; ?>;
-		padding-bottom: <?php echo $header_padding['bottom'] ? $header_padding['bottom'] : '0'; ?>;
-		padding-left: <?php echo $header_padding['left'] ? $header_padding['left'] : '0'; ?>;
-	}
-}
-
+	echo $setting->build_css(
+		'.sv100_sv_header_bar',
+		$properties
+	);

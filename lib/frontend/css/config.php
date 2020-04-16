@@ -3,18 +3,7 @@
 	// This reduces the lines of code for the needed setting values.
 	foreach ( $script->get_parent()->get_settings() as $setting ) {
 		${ $setting->get_ID() } = $setting->get_data();
-
-		// If setting is color, it gets the value in the RGB-Format
-		if ( $setting->get_type() === 'setting_color' ) {
-			${ $setting->get_ID() } = $setting->get_rgb( ${ $setting->get_ID() } );
-		}
 	}
-
-	// Font Vars
-	// Header (General)
-	$font = $font_family
-		? $script->get_parent()->get_module( 'sv_webfontloader' )->get_font_by_label( $font_family )
-		: false;
 
 	// Columns
 	$columns_count = 0;
@@ -32,5 +21,15 @@
 
 	// Configs
 	require_once( $script->get_parent()->get_path( 'lib/frontend/css/config/header.php' ) );
-	require_once( $script->get_parent()->get_path( 'lib/frontend/css/config/order.php' ) );
 	require_once( $script->get_parent()->get_path( 'lib/frontend/css/config/sidebar.php' ) );
+
+?>
+.sv100_sv_header .sv100_sv_header_branding{
+order: <?php echo $branding_order; ?>;
+}
+.sv100_sv_header .sv100_sv_navigation_container{
+order: <?php echo $navigation_order; ?>;
+}
+.sv100_sv_header .sv100_sv_header_sidebar{
+order: <?php echo $sidebar_order; ?>;
+}

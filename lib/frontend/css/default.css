@@ -9,6 +9,14 @@
     padding-right:var( --sv100_sv_common-padding );
     */
 }
+.admin-bar .sv100_sv_header{
+	margin-top:32px;
+}
+@media screen and (max-width: 782px){
+	.admin-bar .sv100_sv_header {
+		margin-top: 46px;
+	}
+}
 
 .sv100_sv_header .sv100_sv_header_bar {
     display: flex;

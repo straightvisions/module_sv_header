@@ -27,7 +27,7 @@
 		}
 		
 		protected function load_settings(): sv_header {
-			// Header - Position & Alignment (Desktop)
+			// Position & Alignment
 			$this->get_setting( 'position' )
 				 ->set_title( __( 'Position', 'sv100' ) )
 				->set_description( __( 'The header bar behavior when scrolling down the page.', 'sv100' ) )
@@ -37,10 +37,11 @@
 					'fixed'			=> __( 'Fixed', 'sv100' ),
 					'sticky'		=> __( 'Sticky', 'sv100' )
 				 ) )
-				 ->set_default_value( 'relative' )
+				->set_default_value( 'relative' )
+				->set_is_responsive(true)
 				 ->load_type( 'select' );
 
-			$this->get_setting( 'box_content_alignment' )
+			$this->get_setting( 'alignment' )
 				->set_title( __( 'Content Alignment', 'sv100' ) )
 				->set_options( array(
 					'left'		=> __( 'Left', 'sv100' ),
@@ -49,167 +50,31 @@
 					'spread'		=> __( 'Spread', 'sv100' ),
 				) )
 				->set_default_value( 'center' )
+				->set_is_responsive(true)
 				->load_type( 'select' );
 
-			$this->get_setting('box_margin_top')
-				->set_title( __( 'Top Margin', 'sv100' ) )
-				->set_description( __( 'Top Margin in Pixel for Headerbox.', 'sv100' ) )
-				->set_default_value( 0 )
-				->load_type( 'number' );
+			$this->get_setting('margin')
+				->set_title(__('Margin', 'sv100'))
+				->set_is_responsive(true)
+				->load_type('margin');
 
-			$this->get_setting('box_margin_bottom')
-				->set_title( __( 'Bottom Margin', 'sv100' ) )
-				->set_description( __( 'Bottom Margin in Pixel for Headerbox.', 'sv100' ) )
-				->set_default_value( 0 )
-				->load_type( 'number' );
-			
-			$this->get_setting('header_padding')
-				 ->set_title(__('Padding (Desktop)', 'sv100'))
-				 ->load_type('margin');
-			
-			// Header - Position & Alignment (Mobile)
-			$this->get_setting( 'position_mobile' )
-				 ->set_title( __( 'Position', 'sv100' ) )
-				 ->set_description( __( 'The header bar behavior when scrolling down the page.', 'sv100' ) )
-				 ->set_options( array(
-					 'relative'		=> __( 'Static', 'sv100' ),
-					 'absolute'		=> __( 'Absolute', 'sv100' ),
-					 'fixed'			=> __( 'Fixed', 'sv100' ),
-					 'sticky'		=> __( 'Sticky', 'sv100' )
-				 ) )
-				 ->set_default_value( 'relative' )
-				 ->load_type( 'select' );
-			
-			$this->get_setting( 'box_content_alignment_mobile' )
-				 ->set_title( __( 'Content Alignment', 'sv100' ) )
-				 ->set_options( array(
-					 'left'		=> __( 'Left', 'sv100' ),
-					 'center'		=> __( 'Center', 'sv100' ),
-					 'right'			=> __( 'Right', 'sv100' ),
-					 'spread'		=> __( 'Spread', 'sv100' ),
-				 ) )
-				 ->set_default_value( 'center' )
-				 ->load_type( 'select' );
-			
-			$this->get_setting('box_margin_top_mobile')
-				 ->set_title( __( 'Top Margin', 'sv100' ) )
-				 ->set_description( __( 'Top Margin in Pixel for Headerbox.', 'sv100' ) )
-				 ->set_default_value( 0 )
-				 ->load_type( 'number' );
-			
-			$this->get_setting('box_margin_bottom_mobile')
-				 ->set_title( __( 'Bottom Margin', 'sv100' ) )
-				 ->set_description( __( 'Bottom Margin in Pixel for Headerbox.', 'sv100' ) )
-				 ->set_default_value( 0 )
-				 ->load_type( 'number' );
-			
-			$this->get_setting('header_padding_mobile')
-				 ->set_title(__('Padding (Mobile)', 'sv100'))
-				 ->load_type('margin');
+			$this->get_setting('padding')
+				->set_title(__('Padding', 'sv100'))
+				->set_is_responsive(true)
+				->load_type('margin');
 
-			// Header - Fonts & Colors
-			$this->get_setting( 'font_family' )
-				 ->set_title( __( 'Font Family', 'sv100' ) )
-				 ->set_description( __( 'Choose a font for your text.', 'sv100' ) )
-				 ->set_options( $this->get_module( 'sv_webfontloader' )->get_font_options() )
-				 ->load_type( 'select' );
-
-			$this->get_setting( 'font_size' )
-				 ->set_title( __( 'Font Size', 'sv100' ) )
-				 ->set_description( __( 'Font Size in pixel.', 'sv100' ) )
-				 ->set_default_value( 16 )
-				 ->load_type( 'number' );
-
-			$this->get_setting( 'line_height' )
-				 ->set_title( __( 'Line Height', 'sv100' ) )
-				 ->set_description( __( 'Set line height as multiplier or with a unit.', 'sv100' ) )
-				 ->set_default_value( 1 )
-				 ->load_type( 'text' );
-
-			$this->get_setting( 'text_color' )
-				 ->set_title( __( 'Text Color', 'sv100' ) )
-				 ->set_default_value( '#1e1e1e' )
-				 ->load_type( 'color' );
-
-			$this->get_setting( 'highlight_color' )
-				 ->set_title( __( 'Highlight Color', 'sv100' ) )
-				 ->set_description( __( 'This color is used for highlighting elements, like links on hover/focus.', 'sv100' ) )
-				 ->set_default_value( '#328ce6' )
-				 ->load_type( 'color' );
-			
-			// Header - Background
+			// Background
 			$this->get_setting( 'bg_color' )
 				 ->set_title( __( 'Background Color', 'sv100' ) )
-				 ->set_default_value( '#ffffff' )
+				 ->set_default_value( '255,255,255,1' )
+				->set_is_responsive(true)
 				 ->load_type( 'color' );
 
-			$this->get_setting( 'bg_image' )
-				 ->set_title( __( 'Background Image', 'sv100' ) )
-				 ->load_type( 'upload' );
-
-			$this->get_setting( 'bg_media_size' )
-				 ->set_title( __( 'Background Media Size', 'sv100' ) )
-				 ->set_default_value( 'large' )
-				 ->set_options( array_combine( get_intermediate_image_sizes(), get_intermediate_image_sizes() ) )
-				 ->load_type( 'select' );
-
-			$this->get_setting( 'bg_position' )
-				 ->set_title( __( 'Background Position', 'sv100' ) )
-				 ->set_default_value( 'center top' )
-				 ->set_placeholder( 'center top' )
-				 ->load_type( 'text' );
-
-			$this->get_setting( 'bg_size' )
-				 ->set_title( __( 'Background Size', 'sv100' ) )
-				 ->set_description( '<p>' . __( 'Background Size in Pixel', 'sv100' ) . '<br>
-				 ' . __( 'If disabled Background Fit will take effect.', 'sv100' ) . '</p>
-				 <p><strong>' . __( '0 = Disabled', 'sv100' ) . '</strong></p>' )
-				 ->set_default_value( 0 )
-				 ->set_placeholder( '0 ' )
-				 ->set_min( 0 )
-				 ->load_type( 'number' );
-
-			$this->get_setting( 'bg_fit' )
-				 ->set_title( __( 'Background Fit', 'sv100' ) )
-				 ->set_description( __( 'Defines how the background image aspect ratio behaves.', 'sv100' ) )
-				 ->set_default_value( 'cover' )
-				 ->set_options( array(
-					'cover' 	=> __( 'Cover', 'sv100' ),
-					'contain' 	=> __( 'Contain', 'sv100' )
-				) )
-				 ->load_type( 'select' );
-
-			$this->get_setting( 'bg_repeat' )
-				 ->set_title( __( 'Background Repeat', 'sv100' ) )
-				 ->set_default_value( 'no-repeat' )
-				 ->set_options( array(
-					'no-repeat' => __( 'No Repeat', 'sv100' ),
-					'repeat' 	=> __( 'Repeat', 'sv100' ),
-					'repeat-x' 	=> __( 'Repeat Horizontally', 'sv100' ),
-					'repeat-y' 	=> __( 'Repeat Vertically', 'sv100' ),
-					'space' 	=> __( 'Space', 'sv100' ),
-					'round' 	=> __( 'Round', 'sv100' ),
-					'initial' 	=> __( 'Initial', 'sv100' ),
-					'inherit' 	=> __( 'Inherit', 'sv100' )
-				) )
-				 ->load_type( 'select' );
-
-			$this->get_setting( 'bg_attachment' )
-				 ->set_title( __( 'Background Attachment', 'sv100' ) )
-				 ->set_default_value( 'fixed' )
-				 ->set_options( array(
-					'fixed' 	=> __( 'fixed', 'sv100' ),
-					'scroll' 	=> __( 'scroll', 'sv100' ),
-					'local' 	=> __( 'local', 'sv100' ),
-					'initial' 	=> __( 'initial', 'sv100' ),
-					'inherit' 	=> __( 'inherit', 'sv100' )
-				) )
-				 ->load_type( 'select' );
-
-			// Header - Box Shadow
+			// Box Shadow
 			$this->get_setting('box_shadow_color')
 				->set_title( __( 'Box Shadow Color', 'sv100' ) )
 				->set_description( __( 'Color of the box shadow.', 'sv100' ) )
+				->set_is_responsive(true)
 				->load_type( 'color' );
 
 			$this->get_setting( 'branding_order' )
