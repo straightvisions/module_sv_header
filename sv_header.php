@@ -14,16 +14,17 @@
 	class sv_header extends init {
 		public function init() {
 			$this->set_module_title( __( 'SV Header', 'sv100' ) )
-				 ->set_module_desc( __( 'Manages the header.', 'sv100' ) )
-				 ->load_settings()
-				 ->register_scripts()
-				 ->register_sidebars()
-				 ->set_section_title( __( 'Header', 'sv100' ) )
-				 ->set_section_desc( $this->get_module_desc() )
-				 ->set_section_type( 'settings' )
-				 ->set_section_template_path( $this->get_path( 'lib/backend/tpl/settings.php' ) )
-				 ->get_root()
-				 ->add_section( $this );
+				->set_module_desc( __( 'Manages the header.', 'sv100' ) )
+				->load_settings()
+				->register_scripts()
+				->register_sidebars()
+				->set_section_title( __( 'Header', 'sv100' ) )
+				->set_section_desc( $this->get_module_desc() )
+				->set_section_type( 'settings' )
+				->set_section_template_path( $this->get_path( 'lib/backend/tpl/settings.php' ) )
+				->set_section_order(20)
+				->get_root()
+				->add_section( $this );
 		}
 		
 		protected function load_settings(): sv_header {
