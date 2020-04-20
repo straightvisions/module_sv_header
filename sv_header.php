@@ -51,7 +51,6 @@
 					'spread'		=> __( 'Spread', 'sv100' ),
 				) )
 				->set_default_value( 'center' )
-				->set_is_responsive(true)
 				->load_type( 'select' );
 
 			$this->get_setting('margin')
