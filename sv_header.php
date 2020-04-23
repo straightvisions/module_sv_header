@@ -51,6 +51,7 @@
 					'spread'		=> __( 'Spread', 'sv100' ),
 				) )
 				->set_default_value( 'center' )
+				->set_is_responsive(true)
 				->load_type( 'select' );
 
 			$this->get_setting('margin')
@@ -61,6 +62,12 @@
 			$this->get_setting('padding')
 				->set_title(__('Padding', 'sv100'))
 				->set_is_responsive(true)
+				->set_default_value( array(
+					'top' => '15px',
+					'right' => '15px',
+					'bottom' => '15px',
+					'left' => '15px',
+				) )
 				->load_type('margin');
 
 			// Background
@@ -85,6 +92,18 @@
 					'3'	=> __( '3', 'sv100' )
 				) )
 				->set_default_value( '1' )
+				->set_is_responsive(true)
+				->load_type( 'select' );
+
+			$this->get_setting( 'branding_alignment' )
+				->set_title( __( 'Branding Alignment', 'sv100' ) )
+				->set_options( array(
+					'left'		=> __( 'Left', 'sv100' ),
+					'center'	=> __( 'Center', 'sv100' ),
+					'right'		=> __( 'Right', 'sv100' )
+				) )
+				->set_default_value( 'left' )
+				->set_is_responsive(true)
 				->load_type( 'select' );
 
 			$this->get_setting( 'navigation_order' )
@@ -95,6 +114,18 @@
 					'3'	=> __( '3', 'sv100' )
 				) )
 				->set_default_value( '2' )
+				->set_is_responsive(true)
+				->load_type( 'select' );
+
+			$this->get_setting( 'navigation_alignment' )
+				->set_title( __( 'Menu Alignment', 'sv100' ) )
+				->set_options( array(
+					'flex-start'	=> __( 'Left', 'sv100' ),
+					'center'		=> __( 'Center', 'sv100' ),
+					'flex-end'		=> __( 'Right', 'sv100' )
+				) )
+				->set_default_value( 'flex-end' )
+				->set_is_responsive(true)
 				->load_type( 'select' );
 			
 			// sidebar order settings
@@ -105,17 +136,30 @@
                     '0'	=> __( 'No', 'sv100' ),
                 ) )
                 ->set_default_value( '1' )
+				->set_is_responsive(true)
                 ->load_type( 'select' );
 
             $this->get_setting( 'sidebar_order' )
-                ->set_title( __( 'Order Position', 'sv100' ) )
+                ->set_title( __( 'Sidebar Order Position', 'sv100' ) )
                 ->set_options( array(
                     '1'		=> __( '1', 'sv100' ),
                     '2'	=> __( '2', 'sv100' ),
                     '3'	=> __( '3', 'sv100' )
                 ) )
                 ->set_default_value( '3' )
+				->set_is_responsive(true)
                 ->load_type( 'select' );
+
+			$this->get_setting( 'sidebar_alignment' )
+				->set_title( __( 'Sidebar Alignment', 'sv100' ) )
+				->set_options( array(
+					'left'		=> __( 'Left', 'sv100' ),
+					'center'	=> __( 'Center', 'sv100' ),
+					'right'		=> __( 'Right', 'sv100' )
+				) )
+				->set_default_value( 'right' )
+				->set_is_responsive(true)
+				->load_type( 'select' );
 			
 			return $this;
 		}
