@@ -1,4 +1,6 @@
-<?php if($alignment == 'left'){ // LEFT / FLEX START ------------- ?>
+<?php // content alignment
+
+if($alignment == 'left'){ // LEFT / FLEX START ------------- ?>
 	.sv100_sv_header .sv100_sv_header_bar {
 	justify-content: flex-start;
 	}
@@ -13,17 +15,13 @@
 	justify-content: center;
 	}
 
-	.sv100_sv_header .sv100_sv_header_bar > *{
-	justify-content: center;
-	}
 
 <?php }else{  // CENTER / FLEX START ------------- ?>
 	.sv100_sv_header .sv100_sv_header_bar {
 	justify-content: center;
 	}
 
-	.sv100_sv_header .sv100_sv_header_bar > *{
-	justify-content: center;
-	}
 
 <?php } ?>
+<?php // inner column alignment
+
