@@ -51,6 +51,7 @@
 					'spread'		=> __( 'Spread', 'sv100' ),
 				) )
 				->set_default_value( 'center' )
+				->set_description( __( 'On desktop, spread is the same as center.', 'sv100' ) )
 				->set_is_responsive(true)
 				->load_type( 'select' );
 

@@ -22,9 +22,22 @@ $container_alignment  = $setting->prepare_css_property_responsive($alignment);
 $properties['flex']   = $setting->get_breakpoints();
 
 foreach( $properties['flex'] as $key => &$value){
-	$value = '1 1 auto';
+	$value = '1 1 0';
 	if(isset($container_alignment[$key]) && !in_array($container_alignment[$key] , ['center', 'spread'])){
 		$value = '0 1 auto';
+	}
+
+	if($key === 'mobile' && isset($container_alignment[$key]) && !in_array($container_alignment[$key] , ['spread'])){
+		//$value = '1 1 auto';
+	}
+}
+
+$properties['margin']   = $setting->get_breakpoints();
+
+foreach( $properties['margin'] as $key => &$value){
+	$value = '0 15px';
+	if($key === 'mobile' && isset($container_alignment[$key]) && in_array($container_alignment[$key] , ['center'])){
+		$value = '0';
 	}
 }
 
