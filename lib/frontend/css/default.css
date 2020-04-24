@@ -3,45 +3,39 @@
 	width: 100%;
 	top: 0;
 	z-index: 900;
-	box-shadow: 0 1px 10px rgba( 0, 0, 0, 0.1 );
+    /* add these lines when grid container padding is refactored */
+    /*
+    padding-left:var( --sv100_sv_common-padding );
+    padding-right:var( --sv100_sv_common-padding );
+    */
 }
-.sv100_sv_header_branding:not(:last-child){
-	padding-right: 60px;
-}
-
-.sv100_sv_header .sv100_sv_header_bar{
-	justify-content:center;
-}
-
-.sv100_sv_header.open {
-	position: sticky;
-}
-
-body.admin-bar .sv100_sv_header.open {
-	top: 0;
-}
-
-
-@media ( min-width: 601px ) {
-	body.admin-bar .sv100_sv_header.open {
-		top: 46px;
+/*
+@media screen and (max-width: 782px){
+	.admin-bar .sv100_sv_header {
+		margin-top: 46px;
 	}
-}
-
-@media ( min-width: 783px ) {
-	body.admin-bar .sv100_sv_header.open {
-		top: 32px;
-	}
-}
+}*/
 
 .sv100_sv_header .sv100_sv_header_bar {
-	max-height: 80px;
+    display: flex;
+    align-items: center;
 	height: 100%;
-	padding: 10px var( --sv100_sv_common-padding );
-	display: flex;
-	align-items: center;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.sv100_sv_header .sv100_sv_header_bar > *{
+	display: flex;
+	flex: 1 1 0;
+    margin: 0 15px;
+}
+
+.sv100_sv_header .sv100_sv_header_bar > *:first-child{
+    margin-left: 0;
+}
+
+.sv100_sv_header .sv100_sv_header_bar > *:last-child{
+    margin-right: 0;
 }
 
 @media ( min-width: 1350px ) {
@@ -49,15 +43,4 @@ body.admin-bar .sv100_sv_header.open {
 		max-width: var( --sv100_sv_common-max-width-lg );
 		min-height: 100px;
 	}
-}
-
-/* Branding */
-.sv100_sv_header .sv100_sv_header_branding img {
-	max-width: 100%;
-	object-fit: contain;
-}
-
-.sv100_sv_header .sv100_sv_header_branding a {
-	display: block;
-	text-decoration: none;
 }

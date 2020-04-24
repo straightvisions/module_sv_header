@@ -2,7 +2,7 @@
 	namespace sv100;
 	
 	/**
-	 * @version         4.000
+	 * @version         4.162
 	 * @author			straightvisions GmbH
 	 * @package			sv100
 	 * @copyright		2019 straightvisions GmbH
@@ -12,161 +12,155 @@
 	 */
 	
 	class sv_header extends init {
-		public $menu_icon_closed = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/></svg>';
-		public $menu_icon_open   = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>';
-
 		public function init() {
 			$this->set_module_title( __( 'SV Header', 'sv100' ) )
-				 ->set_module_desc( __( 'Manages the header.', 'sv100' ) )
-				 ->load_settings()
-				 ->register_scripts()
-				 ->register_navs()
-				 ->register_sidebars()
-				 ->set_section_title( __( 'Header', 'sv100' ) )
-				 ->set_section_desc( __( 'Text, Color & Branding settings.', 'sv100' ) )
-				 ->set_section_type( 'settings' )
-				 ->set_section_template_path( $this->get_path( 'lib/backend/tpl/settings.php' ) )
-				 ->get_root()
-				 ->add_section( $this );
+				->set_module_desc( __( 'Manages the header.', 'sv100' ) )
+				->load_settings()
+				->register_scripts()
+				->register_sidebars()
+				->set_section_title( __( 'Header', 'sv100' ) )
+				->set_section_desc( $this->get_module_desc() )
+				->set_section_type( 'settings' )
+				->set_section_template_path( $this->get_path( 'lib/backend/tpl/settings.php' ) )
+				->set_section_order(20)
+				->get_root()
+				->add_section( $this );
 		}
 		
 		protected function load_settings(): sv_header {
-			// Header Settings
+			// Position & Alignment
 			$this->get_setting( 'position' )
 				 ->set_title( __( 'Position', 'sv100' ) )
+				->set_description( __( 'The header bar behavior when scrolling down the page.', 'sv100' ) )
 				 ->set_options( array(
-				 	'relative'		=> __( 'Default', 'sv100' ),
+				 	'relative'		=> __( 'Static', 'sv100' ),
+					 'absolute'		=> __( 'Absolute', 'sv100' ),
 					'fixed'			=> __( 'Fixed', 'sv100' ),
 					'sticky'		=> __( 'Sticky', 'sv100' )
 				 ) )
-				 ->set_default_value( 'relative' )
+				->set_default_value( 'relative' )
+				->set_is_responsive(true)
 				 ->load_type( 'select' );
-			
-			// Header Branding Settings
-			$this->get_setting( 'branding' )
-			     ->set_title( __( 'Branding', 'sv100' ) )
-			     ->set_description( __( 'Activate or deactivate branding in the header.', 'sv100' ) )
-			     ->set_default_value( 1 )
-			     ->load_type( 'checkbox' );
-			
-			$this->get_setting( 'branding_title' )
-				 ->set_title( __( 'Title', 'sv100' ) )
-				 ->set_description(
-				 	__(
-				 		'On default the title will be your website title,
-				 	but you can change the title that will be displayed in your header.',
-						'sv100'
-					)
-				 )
-				 ->set_default_value( get_bloginfo( 'name' ) )
-				 ->load_type( 'text' );
-			
-			$this->get_setting( 'branding_logo_width' )
-				 ->set_title( __( 'Logo width', 'sv100' ) )
-				 ->set_description( __( 'Width in pixel. 0 = auto', 'sv100' ) )
-				 ->set_default_value( 0 )
-				 ->set_min( 0 )
-				 ->load_type( 'number' );
-			
-			$this->get_setting( 'branding_logo_height' )
-				 ->set_title( __( 'Logo height', 'sv100' ) )
-				 ->set_description( __( 'Height in pixel. 0 = auto', 'sv100' ) )
-				 ->set_default_value( 0 )
-				 ->set_min( 0 )
-				 ->load_type( 'number' );
-			
-			$this->get_setting( 'branding_logo_width_mobile' )
-				 ->set_title( __( 'Logo width (mobile)', 'sv100' ) )
-				 ->set_description( __( 'Width in pixel. 0 = auto', 'sv100' ) )
-				 ->set_default_value( 0 )
-				 ->set_min( 0 )
-				 ->load_type( 'number' );
-			
-			$this->get_setting( 'branding_logo_height_mobile' )
-				 ->set_title( __( 'Logo height (mobile)', 'sv100' ) )
-				 ->set_description( __( 'Height in pixel. 0 = auto', 'sv100' ) )
-				 ->set_default_value( 0 )
-				 ->set_min( 0 )
-				 ->load_type( 'number' );
-			
-			// Header Text Settings
-			$this->get_settings_component( 'font_family','font_family' );
-			$this->get_settings_component( 'font_size','font_size', 16 );
-			$this->get_settings_component( 'text_color','text_color', '#1e1e1e' );
-			$this->get_settings_component( 'highlight_color','highlight_color', '#328ce6' );
-			
-			// Header Background Settings
-			$this->get_settings_component( 'bg_color','background_color', '#ffffff' );
-			$this->get_settings_component( 'bg_image','background_image' );
-			$this->get_settings_component( 'bg_media_size','background_media_size', 'large' );
-			$this->get_settings_component( 'bg_position','background_position', 'center top' );
-			$this->get_settings_component( 'bg_size','background_size', 0 );
-			$this->get_settings_component( 'bg_fit','background_fit', 'cover' );
-			$this->get_settings_component( 'bg_repeat','background_repeat', 'no-repeat' );
-			$this->get_settings_component( 'bg_attachment','background_attachment', 'fixed' );
 
-			// Menu Item Settings
-			$this->get_settings_component( 'text_deco_menu','text_decoration', 'none' );
-			$this->get_settings_component( 'text_color_menu','text_color', '#1e1e1e' );
+			$this->get_setting( 'alignment' )
+				->set_title( __( 'Content Alignment', 'sv100' ) )
+				->set_options( array(
+					'flex-start'	=> __( 'Left', 'sv100' ),
+					'center'		=> __( 'Center', 'sv100' ),
+					'flex-end'		=> __( 'Right', 'sv100' ),
+					'spread'		=> __( 'Spread', 'sv100' ),
+				) )
+				->set_default_value( 'center' )
+				->set_description( __( 'On desktop, spread is the same as center.', 'sv100' ) )
+				->set_is_responsive(true)
+				->load_type( 'select' );
 
-			// Menu Item Settings (Hover/Focus)
-			$this->get_settings_component( 'text_deco_menu_hover','text_decoration', 'underline' );
-			$this->get_settings_component( 'text_color_menu_hover','text_color', '#1e1e1e' );
+			$this->get_setting('margin')
+				->set_title(__('Margin', 'sv100'))
+				->set_is_responsive(true)
+				->load_type('margin');
 
-			// Submenu Item Settings
-			$this->get_settings_component( 'text_deco_sub','text_decoration', 'none' );
-			$this->get_settings_component( 'font_size_sub','font_size', 14 );
-			$this->get_settings_component( 'text_color_sub','text_color', '#1e1e1e' );
-			$this->get_settings_component( 'text_bg_color_sub','background_color', '#ffffff' );
-			
-			$this->get_setting( 'text_bg_active_sub' )
-				 ->set_title( __( 'Activate background color', 'sv100' ) )
-				 ->set_default_value( 0 )
-				 ->load_type( 'checkbox' );
-			
-			$this->get_setting( 'show_thumbnail_sub' )
-				 ->set_title( __( 'Show Thubmnail', 'sv100' ) )
-				 ->set_default_value( 0 )
-				 ->load_type( 'checkbox' );
-			
-			// Submenu Background Settings
-			$this->get_settings_component( 'bg_color_sub','background_color', '#ffffff' );
-			$this->get_settings_component( 'bg_image_sub','background_image' );
-			$this->get_settings_component( 'bg_media_size_sub','background_media_size', 'medium_large' );
-			$this->get_settings_component( 'bg_position_sub','background_position', 'center top' );
-			$this->get_settings_component( 'bg_size_sub','background_size', 0 );
-			$this->get_settings_component( 'bg_fit_sub','background_fit', 'cover' );
-			$this->get_settings_component( 'bg_repeat_sub','background_repeat', 'no-repeat' );
-			$this->get_settings_component( 'bg_attachment_sub','background_attachment', 'fixed' );
-			
-			// Submenu Item Settings (Hover/Focus)
-			$this->get_settings_component( 'text_deco_sub_hover','text_decoration', 'none' );
-			$this->get_settings_component( 'text_color_sub_hover','text_color', '#328ce6' );
-			$this->get_settings_component( 'text_bg_color_sub_hover','background_color', '#dcf0fa' );
-			
-			$this->get_setting( 'text_bg_active_sub_hover' )
-				 ->set_title( __( 'Activate background color', 'sv100' ) )
-				 ->set_default_value( 1 )
-				 ->load_type( 'checkbox' );
-			
-			// Mobile Settings
-			$this->get_setting( 'menu_icon_closed_color' )
-				 ->set_title( __( 'Menu icon (closed) color', 'sv100' ) )
-				 ->set_default_value( '#1e1e1e' )
+			$this->get_setting('padding')
+				->set_title(__('Padding', 'sv100'))
+				->set_is_responsive(true)
+				->set_default_value( array(
+					'top' => '15px',
+					'right' => '15px',
+					'bottom' => '15px',
+					'left' => '15px',
+				) )
+				->load_type('margin');
+
+			// Background
+			$this->get_setting( 'bg_color' )
+				 ->set_title( __( 'Background Color', 'sv100' ) )
+				 ->set_default_value( '255,255,255,1' )
+				->set_is_responsive(true)
 				 ->load_type( 'color' );
+
+			// Box Shadow
+			$this->get_setting('box_shadow_color')
+				->set_title( __( 'Box Shadow Color', 'sv100' ) )
+				->set_description( __( 'Color of the box shadow.', 'sv100' ) )
+				->set_is_responsive(true)
+				->load_type( 'color' );
+
+			$this->get_setting( 'branding_order' )
+				->set_title( __( 'Branding Order Position', 'sv100' ) )
+				->set_options( array(
+					'1'		=> __( '1', 'sv100' ),
+					'2'	=> __( '2', 'sv100' ),
+					'3'	=> __( '3', 'sv100' )
+				) )
+				->set_default_value( '1' )
+				->set_is_responsive(true)
+				->load_type( 'select' );
+
+			$this->get_setting( 'branding_alignment' )
+				->set_title( __( 'Branding Alignment', 'sv100' ) )
+				->set_options( array(
+					'flex-start'	=> __( 'Left', 'sv100' ),
+					'center'		=> __( 'Center', 'sv100' ),
+					'flex-end'		=> __( 'Right', 'sv100' )
+				) )
+				->set_default_value( 'left' )
+				->set_is_responsive(true)
+				->load_type( 'select' );
+
+			$this->get_setting( 'navigation_order' )
+				->set_title( __( 'Menu Order Position', 'sv100' ) )
+				->set_options( array(
+					'1'		=> __( '1', 'sv100' ),
+					'2'	=> __( '2', 'sv100' ),
+					'3'	=> __( '3', 'sv100' )
+				) )
+				->set_default_value( '2' )
+				->set_is_responsive(true)
+				->load_type( 'select' );
+
+			$this->get_setting( 'navigation_alignment' )
+				->set_title( __( 'Menu Alignment', 'sv100' ) )
+				->set_options( array(
+					'flex-start'	=> __( 'Left', 'sv100' ),
+					'center'		=> __( 'Center', 'sv100' ),
+					'flex-end'		=> __( 'Right', 'sv100' )
+				) )
+				->set_default_value( 'flex-end' )
+				->set_is_responsive(true)
+				->load_type( 'select' );
 			
-			$this->get_setting( 'menu_icon_open_color' )
-				 ->set_title( __( 'Menu icon (open) color', 'sv100' ) )
-				 ->set_default_value( '#1e1e1e' )
-				 ->load_type( 'color' );
-			
-			$this->get_setting( 'bg_opacity_mobile' )
-				 ->set_title( __( 'Menu background opacity', 'sv100' ) )
-				 ->set_description( __( 'Define the background opacity of the mobile menu, in percent.', 'sv100' ) )
-				 ->set_default_value( 100 )
-				 ->set_max( 100 )
-				 ->set_min( 0 )
-				 ->load_type( 'number' );
+			// sidebar order settings
+            $this->get_setting( 'sidebar_active' )
+                ->set_title( __( 'Show Header Sidebar', 'sv100' ) )
+                ->set_options( array(
+                    '1'	=> __( 'Yes', 'sv100' ),
+                    '0'	=> __( 'No', 'sv100' ),
+                ) )
+                ->set_default_value( '1' )
+				->set_is_responsive(true)
+                ->load_type( 'select' );
+
+            $this->get_setting( 'sidebar_order' )
+                ->set_title( __( 'Sidebar Order Position', 'sv100' ) )
+                ->set_options( array(
+                    '1'		=> __( '1', 'sv100' ),
+                    '2'	=> __( '2', 'sv100' ),
+                    '3'	=> __( '3', 'sv100' )
+                ) )
+                ->set_default_value( '3' )
+				->set_is_responsive(true)
+                ->load_type( 'select' );
+
+			$this->get_setting( 'sidebar_alignment' )
+				->set_title( __( 'Sidebar Alignment', 'sv100' ) )
+				->set_options( array(
+					'flex-start'	=> __( 'Left', 'sv100' ),
+					'center'		=> __( 'Center', 'sv100' ),
+					'flex-end'		=> __( 'Right', 'sv100' )
+				) )
+				->set_default_value( 'right' )
+				->set_is_responsive(true)
+				->load_type( 'select' );
 			
 			return $this;
 		}
@@ -176,21 +170,11 @@
 			$this->get_script( 'default' )
 				->set_path( 'lib/frontend/css/default.css' )
 				->set_inline( true );
-	
-			$this->get_script( 'navigation_default' )
-				->set_path( 'lib/frontend/css/navigation_default.css' )
-				->set_inline( true );
-	
+
 			$this->get_script( 'sidebar_default' )
 				->set_path( 'lib/frontend/css/sidebar_default.css' )
 				->set_inline( true );
-	
-			// Register Scripts
-			$this->get_script( 'navigation_js' )
-				->set_path( 'lib/frontend/js/navigation.js' )
-				->set_type( 'js' )
-				->set_deps( array(  'jquery' ) );
-			
+
 			// Inline Config
 			$this->get_script( 'inline_config' )
 				 ->set_path( 'lib/frontend/css/config.php' )
@@ -199,28 +183,30 @@
 			return $this;
 		}
 	
-		protected function register_navs(): sv_header {
-			if ( $this->get_module( 'sv_navigation' ) ) {
-				$this->get_module( 'sv_navigation' )
+		protected function register_sidebars(): sv_header {
+			if ( $this->get_module( 'sv_sidebar' ) ) {
+				$this->get_module( 'sv_sidebar' )
 					->create( $this )
-					->set_desc( __( 'Primary menu', 'sv100' ) )
-					->set_location( 'primary' )
-					->load_nav();
+					->set_ID( 'sidebar' )
+					->set_title( __( 'Header', 'sv100' ) )
+					->set_desc( __( 'Widgets in this sidebar will be shown in the header, next to the navigation.', 'sv100' ) )
+					->load_sidebar();
 			}
 	
 			return $this;
 		}
-	
-		protected function register_sidebars(): sv_header {
-			if ( $this->get_module( 'sv_sidebar' ) ) {
-				$this->get_module( 'sv_sidebar' )
-					 ->create( $this )
-					 ->set_title( __( 'Header', 'sv100' ) )
-					 ->set_desc( __( 'Widgets in this sidebar will be shown in the header, next to the navigation.', 'sv100' ) )
-					 ->load_sidebar();
+		
+		public function has_sidebar_content(): bool{
+			if(!$this->get_module( 'sv_sidebar' )){
+				return false;
 			}
-	
-			return $this;
+			
+			$i = false;
+			
+			if($this->get_module( 'sv_sidebar' )->load( array( 'id' => $this->get_module_name() . '_sidebar' ) ) ){
+				$i = true;
+			}
+			return $i;
 		}
 	
 		public function load( $settings = array() ): string {
@@ -242,7 +228,7 @@
 				switch ( $settings['template'] ) {
 					case 'no_header':
 						$template = array(
-							'name'      => 'no_header',
+							'name'      => 'default',
 							'scripts'   => array(),
 						);
 						break;
@@ -251,9 +237,7 @@
 							'name'      => 'default',
 							'scripts'   => array(
 								$this->get_script( 'default' )->set_inline( $settings['inline'] ),
-								$this->get_script( 'navigation_default' )->set_inline( $settings['inline'] ),
-								$this->get_script( 'sidebar_default' )->set_inline( $settings['inline'] ),
-								$this->get_script( 'navigation_js' ),
+								$this->get_script( 'sidebar_default' )->set_inline( $settings['inline'] )
 							),
 						);
 						break;
@@ -263,9 +247,7 @@
 					'name'      => 'default',
 					'scripts'   => array(
 						$this->get_script( 'default' )->set_inline( $settings['inline'] ),
-						$this->get_script( 'navigation_default' )->set_inline( $settings['inline'] ),
-						$this->get_script( 'sidebar_default' )->set_inline( $settings['inline'] ),
-						$this->get_script( 'navigation_js' ),
+						$this->get_script( 'sidebar_default' )->set_inline( $settings['inline'] )
 					),
 				);
 			}
@@ -282,26 +264,18 @@
 		// Loads the templates
 		protected function load_template( array $template, array $settings ): string {
 			ob_start();
-			
+
 			foreach ( $template['scripts'] as $script_name =>  $script ) {
 				if (
-					$this->get_module( 'sv_navigation' )
-					&& ! $this->get_module( 'sv_navigation' )->has_items( $this->get_module_name() . '_primary' )
-				) {
-					continue;
-				}
-				
-				if (
 				$script->get_ID() === 'sidebar_default'
-				&& $this->get_module( 'sv_sidebar' )
-				&& empty( $this->get_module( 'sv_sidebar' )->load( array( 'id' => $this->get_module_name(), ) ) )
+				&& $this->has_sidebar_content()
 				) {
 					continue;
 				}
-				
+
 				$script->set_is_enqueued();
 			}
-			
+
 			$this->get_script( 'inline_config' )->set_is_enqueued();
 			
 			// Loads the template
@@ -309,10 +283,21 @@
 				? $template['custom_path']
 				: $this->get_path('lib/frontend/tpl/' . $template['name'] . '.php' );
 			
-			include ( $path );
+			require ( $path );
 			$output							        = ob_get_contents();
 			ob_end_clean();
 	
 			return $output;
+		}
+		
+		// Returns the settings value "mobile_zoom" from sv_common
+		public function get_mobile_zoom(): bool {
+			if (
+				! $this->get_module( 'sv_common' )
+				||
+				! $this->get_module( 'sv_common' )->get_settings()['mobile_zoom']
+			) return true;
+
+			return boolval( $this->get_module( 'sv_common' )->get_setting( 'mobile_zoom' )->get_data() );
 		}
 	}

@@ -2,56 +2,26 @@
 <html <?php language_attributes(); ?>>
 <head>
     <meta charset="<?php echo get_bloginfo( 'charset' ); ?>" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-	<?php wp_head(); ?>
+	<?php
+		if ( $this->get_mobile_zoom() ) {
+			echo '<meta content="width=device-width, initial-scale=1.0" name="viewport" />';
+		} else {
+			echo '<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">';
+		}
+		
+		wp_head();
+	?>
 </head>
 
 <body <?php body_class(); ?>>
+<?php if($this->get_setting('template') != 'no_header'){ ?>
 <header class="<?php echo $this->get_prefix(); ?>">
     <div class="<?php echo $this->get_prefix( 'bar' ); ?>">
-		<?php if ( $this->get_setting( 'branding' )->run_type()->get_data() ) { ?>
-			<div class="<?php echo $this->get_prefix( 'branding' ); ?>">
-				<?php
-                    if ( get_header_image() ) {
-                    	echo '<a href="' . get_home_url() . '">
-                    		<img src="' . get_header_image() . '" alt="' . get_bloginfo( 'title' ) . '" />
-                    		</a>';
-					} elseif ( get_custom_logo() ) {
-                        echo get_custom_logo();
-                    } else {
-                        $post_title = empty( $this->get_setting( 'branding_title' )->run_type()->get_data() )
-                            ? get_bloginfo( 'name' )
-                            : $this->get_setting( 'branding_title' )->run_type()->get_data();
-                        echo '<a href="' . home_url() . '" class="' . $this->get_prefix( 'website_title' ) . '">
-                                <h3>' . $post_title . '</h3>
-                                </a>';
-                    }
-				?>
-			</div>
-			<?php
-		}
-		
-		echo $this->get_root()->get_module( 'sv_navigation' )
-			? $this->get_root()->get_module( 'sv_navigation' )->load( array(
-				'location' 		=> $this->get_module_name() . '_primary',
-				'show_images'	=> isset($template['show_images']) ? $template['show_images'] : false,
-			) )
-			: '';
-		
-		if (
-			$this->get_root()->get_module( 'sv_sidebar' )
-			&& ! empty(
-					$this->get_root()->get_module( 'sv_sidebar' )->load( array( 'id' => $this->get_module_name(), ) )
-				)
-			) {
-			
-			?>
-        <aside class="<?php echo $this->get_prefix( 'sidebar' ); ?>">
-			<?php
-				echo $this->get_root()->get_module( 'sv_sidebar' )
-									  ->load( array( 'id' => $this->get_module_name(), ) );
-			?>
-        </aside>
-		<?php } ?>
+        <?php
+		    echo $this->get_module('sv_branding')->load();
+		    echo $this->get_module('sv_header_menu')->load();
+		    include($this->get_path('lib/frontend/tpl/part_sidebar.php'));
+            ?>
     </div>
 </header>
+<?php } ?>
