@@ -1,6 +1,15 @@
 <?php
 $properties = array();
 $properties['justify-content']  = $setting->prepare_css_property_responsive($alignment);
+$properties['flex-direction']   = $setting->get_breakpoints();
+
+// flex direction injection
+foreach( $properties['flex-direction'] as $key => &$value){
+	$value = 'row';
+	if(isset($alignment[$key]) && $key === 'mobile' && $alignment[$key] === 'center'){
+		$value = 'column';
+	}
+}
 
 echo $setting->build_css(
 	is_admin() ? '.editor-styles-wrapper .sv100_sv_header .sv100_sv_header_bar, .editor-styles-wrapper .sv100_sv_header .sv100_sv_header_bar' : '.sv100_sv_header .sv100_sv_header_bar',
