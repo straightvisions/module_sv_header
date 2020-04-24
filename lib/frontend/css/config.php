@@ -8,7 +8,7 @@
     include( $script->get_parent()->get_path( 'lib/frontend/css/config/header.php' ) );
 
     // include container css
-    include( $script->get_parent()->get_path( 'lib/frontend/css/config/columns.php' ) );
+    include( $script->get_parent()->get_path( 'lib/frontend/css/config/header_bar.php' ) );
 
     // include inner css
     if( $script->get_parent()->get_module('sv_branding')->get_setting( 'active' )->get_data() ){

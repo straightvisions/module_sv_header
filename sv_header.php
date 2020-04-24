@@ -45,9 +45,9 @@
 			$this->get_setting( 'alignment' )
 				->set_title( __( 'Content Alignment', 'sv100' ) )
 				->set_options( array(
-					'left'		=> __( 'Left', 'sv100' ),
+					'flex-start'	=> __( 'Left', 'sv100' ),
 					'center'		=> __( 'Center', 'sv100' ),
-					'right'			=> __( 'Right', 'sv100' ),
+					'flex-end'		=> __( 'Right', 'sv100' ),
 					'spread'		=> __( 'Spread', 'sv100' ),
 				) )
 				->set_default_value( 'center' )
@@ -98,9 +98,9 @@
 			$this->get_setting( 'branding_alignment' )
 				->set_title( __( 'Branding Alignment', 'sv100' ) )
 				->set_options( array(
-					'left'		=> __( 'Left', 'sv100' ),
-					'center'	=> __( 'Center', 'sv100' ),
-					'right'		=> __( 'Right', 'sv100' )
+					'flex-start'	=> __( 'Left', 'sv100' ),
+					'center'		=> __( 'Center', 'sv100' ),
+					'flex-end'		=> __( 'Right', 'sv100' )
 				) )
 				->set_default_value( 'left' )
 				->set_is_responsive(true)
@@ -153,9 +153,9 @@
 			$this->get_setting( 'sidebar_alignment' )
 				->set_title( __( 'Sidebar Alignment', 'sv100' ) )
 				->set_options( array(
-					'left'		=> __( 'Left', 'sv100' ),
-					'center'	=> __( 'Center', 'sv100' ),
-					'right'		=> __( 'Right', 'sv100' )
+					'flex-start'	=> __( 'Left', 'sv100' ),
+					'center'		=> __( 'Center', 'sv100' ),
+					'flex-end'		=> __( 'Right', 'sv100' )
 				) )
 				->set_default_value( 'right' )
 				->set_is_responsive(true)
