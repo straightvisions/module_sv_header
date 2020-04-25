@@ -45,10 +45,10 @@
 			$this->get_setting( 'alignment' )
 				->set_title( __( 'Content Alignment', 'sv100' ) )
 				->set_options( array(
-					'flex-start'	=> __( 'Left', 'sv100' ),
-					'center'		=> __( 'Center', 'sv100' ),
-					'flex-end'		=> __( 'Right', 'sv100' ),
-					'spread'		=> __( 'Spread', 'sv100' ),
+					'flex-start'		=> __( 'Left', 'sv100' ),
+					'center'			=> __( 'Center', 'sv100' ),
+					'flex-end'			=> __( 'Right', 'sv100' ),
+					'space-between'		=> __( 'Space Between', 'sv100' ),
 				) )
 				->set_default_value( 'center' )
 				->set_description( __( 'On desktop, spread is the same as center.', 'sv100' ) )
