@@ -6,16 +6,20 @@
 		$properties['position'] = $setting->prepare_css_property_responsive($position, '', '');
 	}
 
-	if($bg_color) {
-		$properties['background-color'] = $setting->prepare_css_property_responsive($bg_color, 'rgba(', ')');
-	}
-
 	echo $setting->build_css(
-		'.sv100_sv_header',
+		'.sv100_sv_header_wrapper',
 		$properties
 	);
 
 	$properties					= array();
+
+	if($bg_color) {
+		$properties['background-color'] = $setting->prepare_css_property_responsive($bg_color, 'rgba(', ')');
+	}
+
+	if($max_width) {
+		$properties['max-width'] = $setting->prepare_css_property($max_width, '', '');
+	}
 
 	// Margin
 	if($margin) {
@@ -55,6 +59,6 @@
 	}
 
 	echo $setting->build_css(
-		'.sv100_sv_header_bar',
+		'.sv100_sv_header',
 		$properties
 	);
