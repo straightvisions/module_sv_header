@@ -29,6 +29,14 @@
 		
 		protected function load_settings(): sv_header {
 			// Position & Alignment
+			// Max Width
+			$this->get_setting( 'max_width' )
+				->set_title( __( 'Max Width', 'sv100' ) )
+				->set_description( __( 'Set the max width of the Header', 'sv100' ) )
+				->set_options( $this->get_module('sv_common')->get_max_width_options() )
+				->set_default_value( '100%' )
+				->load_type( 'select' );
+
 			$this->get_setting( 'position' )
 				 ->set_title( __( 'Position', 'sv100' ) )
 				->set_description( __( 'The header bar behavior when scrolling down the page.', 'sv100' ) )
@@ -45,10 +53,10 @@
 			$this->get_setting( 'alignment' )
 				->set_title( __( 'Content Alignment', 'sv100' ) )
 				->set_options( array(
-					'flex-start'	=> __( 'Left', 'sv100' ),
-					'center'		=> __( 'Center', 'sv100' ),
-					'flex-end'		=> __( 'Right', 'sv100' ),
-					'spread'		=> __( 'Spread', 'sv100' ),
+					'flex-start'		=> __( 'Left', 'sv100' ),
+					'center'			=> __( 'Center', 'sv100' ),
+					'flex-end'			=> __( 'Right', 'sv100' ),
+					'space-between'		=> __( 'Space Between', 'sv100' ),
 				) )
 				->set_default_value( 'center' )
 				->set_description( __( 'On desktop, spread is the same as center.', 'sv100' ) )
@@ -167,8 +175,8 @@
 	
 		protected function register_scripts(): sv_header {
 			// Register Styles
-			$this->get_script( 'default' )
-				->set_path( 'lib/frontend/css/default.css' )
+			$this->get_script( 'common' )
+				->set_path( 'lib/frontend/css/common.css' )
 				->set_inline( true );
 
 			$this->get_script( 'sidebar_default' )
@@ -236,7 +244,7 @@
 						$template = array(
 							'name'      => 'default',
 							'scripts'   => array(
-								$this->get_script( 'default' )->set_inline( $settings['inline'] ),
+								$this->get_script( 'common' )->set_inline( $settings['inline'] ),
 								$this->get_script( 'sidebar_default' )->set_inline( $settings['inline'] )
 							),
 						);
@@ -246,7 +254,7 @@
 				$template = array(
 					'name'      => 'default',
 					'scripts'   => array(
-						$this->get_script( 'default' )->set_inline( $settings['inline'] ),
+						$this->get_script( 'common' )->set_inline( $settings['inline'] ),
 						$this->get_script( 'sidebar_default' )->set_inline( $settings['inline'] )
 					),
 				);

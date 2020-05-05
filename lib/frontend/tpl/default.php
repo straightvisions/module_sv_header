@@ -15,13 +15,15 @@
 
 <body <?php body_class(); ?>>
 <?php if($this->get_setting('template') != 'no_header'){ ?>
-<header class="<?php echo $this->get_prefix(); ?>">
-    <div class="<?php echo $this->get_prefix( 'bar' ); ?>">
-        <?php
-		    echo $this->get_module('sv_branding')->load();
-		    echo $this->get_module('sv_header_menu')->load();
-		    include($this->get_path('lib/frontend/tpl/part_sidebar.php'));
-            ?>
-    </div>
-</header>
+<div class="<?php echo $this->get_prefix('wrapper'); ?>">
+	<header class="<?php echo $this->get_prefix(); ?>">
+		<div class="<?php echo $this->get_prefix( 'bar' ); ?>">
+			<?php
+				echo $this->get_module('sv_branding')->load();
+				echo $this->get_module('sv_header_menu')->load();
+				include($this->get_path('lib/frontend/tpl/part_sidebar.php'));
+				?>
+		</div>
+	</header>
+</div>
 <?php } ?>
