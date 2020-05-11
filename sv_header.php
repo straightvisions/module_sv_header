@@ -35,6 +35,7 @@
 				->set_description( __( 'Set the max width of the Header', 'sv100' ) )
 				->set_options( $this->get_module('sv_common')->get_max_width_options() )
 				->set_default_value( '100%' )
+				->set_is_responsive(true)
 				->load_type( 'select' );
 
 			$this->get_setting( 'position' )
@@ -184,7 +185,7 @@
 				->set_inline( true );
 
 			// Inline Config
-			$this->get_script( 'inline_config' )
+			$this->get_script( 'config' )
 				 ->set_path( 'lib/frontend/css/config.php' )
 				 ->set_inline( true );
 	
@@ -284,7 +285,7 @@
 				$script->set_is_enqueued();
 			}
 
-			$this->get_script( 'inline_config' )->set_is_enqueued();
+			$this->get_script( 'config' )->set_is_enqueued();
 			
 			// Loads the template
 			$path = isset($template['custom_path'])
