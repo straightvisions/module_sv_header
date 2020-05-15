@@ -1,7 +1,7 @@
 /* ### Mobile ### */
 .sv100_sv_header_wrapper {
 	width: 100%;
-	min-height: 100px;
+	/*min-height: 100px;*/
 	top: 0;
 	z-index: 900;
 }
