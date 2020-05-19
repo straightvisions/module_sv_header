@@ -4,7 +4,13 @@
 	/*min-height: 100px;*/
 	top: 0;
 	z-index: 900;
+	margin:0 auto;
 }
+
+.sv100_sv_header{
+	margin:0 auto;
+}
+
 .sv100_sv_header .sv100_sv_header_bar {
     display: flex;
     align-items: center;

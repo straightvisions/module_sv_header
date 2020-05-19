@@ -30,9 +30,17 @@
 		protected function load_settings(): sv_header {
 			// Position & Alignment
 			// Max Width
+			$this->get_setting( 'max_width_wrapper' )
+				->set_title( __( 'Max Width Wrapper', 'sv100' ) )
+				->set_description( __( 'Set the max width of the header wrapper.', 'sv100' ) )
+				->set_options( $this->get_module('sv_common')->get_max_width_options() )
+				->set_default_value( '100%' )
+				->set_is_responsive(true)
+				->load_type( 'select' );
+
 			$this->get_setting( 'max_width' )
-				->set_title( __( 'Max Width', 'sv100' ) )
-				->set_description( __( 'Set the max width of the Header', 'sv100' ) )
+				->set_title( __( 'Max Width Inner', 'sv100' ) )
+				->set_description( __( 'Set the max width of the header.', 'sv100' ) )
 				->set_options( $this->get_module('sv_common')->get_max_width_options() )
 				->set_default_value( '100%' )
 				->set_is_responsive(true)
@@ -82,10 +90,10 @@
 
 			// Background
 			$this->get_setting( 'bg_color' )
-				 ->set_title( __( 'Background Color', 'sv100' ) )
-				 ->set_default_value( '255,255,255,1' )
+				->set_title( __( 'Background Color', 'sv100' ) )
+				->set_default_value( '255,255,255,1' )
 				->set_is_responsive(true)
-				 ->load_type( 'color' );
+				->load_type( 'color' );
 
 			// Box Shadow
 			$this->get_setting('box_shadow_color')
