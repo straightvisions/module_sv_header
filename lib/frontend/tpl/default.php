@@ -14,7 +14,10 @@
 </head>
 
 <body <?php body_class(); ?>>
-<?php if($this->get_setting('template') != 'no_header'){ ?>
+<?php
+    if($this->get_setting('template') != 'no_header'){
+        echo $this->get_module( 'sv_header_bar' ) ? $this->get_module( 'sv_header_bar' )->load() : '';
+?>
 <div class="<?php echo $this->get_prefix('wrapper'); ?>">
 	<header class="<?php echo $this->get_prefix(); ?>">
 		<div class="<?php echo $this->get_prefix( 'bar' ); ?>">
