@@ -76,7 +76,7 @@
 				->set_title(__('Margin', 'sv100'))
 				->set_is_responsive(true)
 				->set_default_value(array(
-					'top'		=> '50px',
+					'top'		=> '0',
 					'right'		=> 'auto',
 					'bottom'	=> '0',
 					'left'		=> 'auto'
