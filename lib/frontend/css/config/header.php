@@ -5,6 +5,7 @@
 		array_merge(
 			$script->get_parent()->get_setting('position')->get_css_data('position'),
 			$script->get_parent()->get_setting('bg_color')->get_css_data('background-color'),
+			$script->get_parent()->get_setting('box_shadow_color')->get_css_data('box-shadow','0px 5px 5px 0px rgba(',')'),
 			$script->get_parent()->get_setting('max_width_wrapper')->get_css_data('max-width')
 		)
 	);
