@@ -184,6 +184,13 @@
 				->set_default_value( 'right' )
 				->set_is_responsive(true)
 				->load_type( 'select' );
+
+			$this->get_setting( 'sidebar_max_width' )
+				->set_title( __( 'Max Width Sidebar', 'sv100' ) )
+				->set_description( __( 'Set the max width of the header sidebar.', 'sv100' ) )
+				->set_default_value( '100%' )
+				->set_is_responsive(true)
+				->load_type( 'text' );
 			
 			return $this;
 		}
