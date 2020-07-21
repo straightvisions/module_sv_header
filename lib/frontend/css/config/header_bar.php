@@ -35,7 +35,7 @@
 	$properties['margin']   = $setting->get_breakpoints();
 
 	foreach( $properties['margin'] as $key => &$value){
-		$value = '0 15px';
+		$value = '0';
 		if($key === 'mobile' && isset($container_alignment[$key]) && in_array($container_alignment[$key] , ['center'])){
 			$value = '0';
 		}
