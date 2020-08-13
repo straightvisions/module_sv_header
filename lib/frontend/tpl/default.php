@@ -17,8 +17,18 @@
 <?php
     if($this->get_setting('template') != 'no_header'){
         echo $this->get_module( 'sv_header_bar' ) ? $this->get_module( 'sv_header_bar' )->load() : '';
+
+    $page_type = 'undefined';
+
+    if ( is_single() ) {
+        $page_type = 'single';
+    } else if( is_page() ) {
+	    $page_type = is_front_page() ? 'front_page' : 'page';
+    } else if ( is_home() ) {
+        $page_type = 'front_page';
+    }
 ?>
-<div class="<?php echo $this->get_prefix('wrapper'); ?>">
+<div class="<?php echo $this->get_prefix('wrapper') . ' ' . $this->get_prefix( $page_type ); ?>">
 	<header class="<?php echo $this->get_prefix(); ?>">
 		<div class="<?php echo $this->get_prefix( 'bar' ); ?>">
 			<?php
