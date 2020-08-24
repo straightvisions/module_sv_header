@@ -191,6 +191,16 @@
 				->set_default_value( '100%' )
 				->set_is_responsive(true)
 				->load_type( 'text' );
+
+			$this->get_setting('sidebar_margin')
+				->set_title(__('Margin', 'sv100'))
+				->set_is_responsive(true)
+				->load_type('margin');
+
+			$this->get_setting('sidebar_padding')
+				->set_title(__('Padding', 'sv100'))
+				->set_is_responsive(true)
+				->load_type('margin');
 			
 			return $this;
 		}
