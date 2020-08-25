@@ -16,15 +16,20 @@
             echo $module->get_setting( 'sidebar_alignment' )->form();
 		?>
     </div>
-    <h3 class="divider"><?php _e( 'Position & Alignment', 'sv100' ); ?></h3>
+    <h3 class="divider"><?php _e( 'Width', 'sv100' ); ?></h3>
     <div class="sv_setting_flex">
 		<?php
 		    echo $module->get_setting( 'max_width_wrapper' )->form();
 			echo $module->get_setting( 'max_width' )->form();
-		    echo $module->get_setting( 'position' )->form();
-		    echo $module->get_setting( 'alignment' )->form();
 		?>
     </div>
+	<h3 class="divider"><?php _e( 'Position & Alignment', 'sv100' ); ?></h3>
+	<div class="sv_setting_flex">
+		<?php
+			echo $module->get_setting( 'position' )->form();
+			echo $module->get_setting( 'alignment' )->form();
+		?>
+	</div>
 	<h3 class="divider"><?php _e( 'Spacing', 'sv100' ); ?></h3>
 	<div class="sv_setting_flex">
 		<?php

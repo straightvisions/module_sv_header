@@ -1,10 +1,18 @@
-/* ### Mobile ### */
 .sv100_sv_header_wrapper {
 	width: 100%;
 	z-index: 900;
 	margin:0 auto 0 auto;
 	left: 0;
 	right: 0;
+	top:0;
+}
+.admin-bar .sv100_sv_header_wrapper{
+	top:32px;
+}
+@media screen and (max-width: 782px){
+	.admin-bar .sv100_sv_header_wrapper {
+		top: 46px;
+	}
 }
 
 .sv100_sv_header .sv100_sv_header_bar {
