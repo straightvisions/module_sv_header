@@ -1,8 +1,23 @@
 <?php
 
+	// calculate margin for adminbar when header has position fixed
+	$top_set	= false;
+	$top		= array('top' => array());
+	foreach($script->get_parent()->get_setting('position')->get_data() as $screen_size => $value){
+		if($value == 'fixed'){
+			$top_set = true;
+			if($screen_size == 'desktop') {
+				$top['top'][$screen_size] = '32px';
+			}else{
+				$top['top'][$screen_size] = '46px';
+			}
+		}
+	}
+
 	echo $_s->build_css(
 		'.sv100_sv_header_wrapper',
 		array_merge(
+			$top_set ? $top : array(),
 			$script->get_parent()->get_setting('position')->get_css_data('position'),
 			$script->get_parent()->get_setting('bg_color')->get_css_data('background-color'),
 			$script->get_parent()->get_setting('box_shadow_color')->get_css_data('box-shadow','0px 5px 5px 0px rgba(',')'),
