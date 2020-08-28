@@ -4,7 +4,7 @@
 	$top_set	= false;
 	$top		= array('top' => array());
 	foreach($script->get_parent()->get_setting('position')->get_data() as $screen_size => $value){
-		if($value == 'fixed'){
+		if($value == 'fixed' || $value == 'absolute' || $value == 'sticky'){
 			$top_set = true;
 			if($screen_size == 'desktop') {
 				$top['top'][$screen_size] = '32px';
@@ -14,10 +14,16 @@
 		}
 	}
 
+	if($top_set) {
+		echo $_s->build_css(
+			'.admin-bar .sv100_sv_header_wrapper',
+			$top
+		);
+	}
+
 	echo $_s->build_css(
 		'.sv100_sv_header_wrapper',
 		array_merge(
-			$top_set ? $top : array(),
 			$script->get_parent()->get_setting('position')->get_css_data('position'),
 			$script->get_parent()->get_setting('bg_color')->get_css_data('background-color'),
 			$script->get_parent()->get_setting('box_shadow_color')->get_css_data('box-shadow','0px 5px 5px 0px rgba(',')'),
