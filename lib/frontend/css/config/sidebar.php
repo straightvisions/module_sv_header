@@ -1,7 +1,9 @@
 <?php
 $properties = array();
 $properties['justify-content']		= $setting->prepare_css_property_responsive($sidebar_alignment);
+$properties['-webkit-justify-content']		= $setting->prepare_css_property_responsive($sidebar_alignment);
 $properties['order']				= $setting->prepare_css_property_responsive($sidebar_order);
+$properties['-webkit-order']				= $setting->prepare_css_property_responsive($sidebar_order);
 
 echo $setting->build_css(
 	'.sv100_sv_header .sv100_sv_header_sidebar',

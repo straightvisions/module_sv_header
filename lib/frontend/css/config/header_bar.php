@@ -1,7 +1,9 @@
 <?php
 	$properties = array();
 	$properties['justify-content']  = $setting->prepare_css_property_responsive($alignment);
+	$properties['-webkit-justify-content']  = $setting->prepare_css_property_responsive($alignment);
 	$properties['flex-direction']   = $setting->get_breakpoints();
+	$properties['-webkit-flex-direction']   = $setting->get_breakpoints();
 
 	// flex direction injection
 	foreach( $properties['flex-direction'] as $key => &$value){
@@ -20,6 +22,7 @@
 	$properties = array();
 	$container_alignment  = $setting->prepare_css_property_responsive($alignment);
 	$properties['flex']   = $setting->get_breakpoints();
+	$properties['-webkit-flex']   = $setting->get_breakpoints();
 
 	foreach( $properties['flex'] as $key => &$value){
 		$value = '1 1 0';
