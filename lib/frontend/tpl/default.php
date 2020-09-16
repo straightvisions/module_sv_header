@@ -32,8 +32,8 @@
 	<header class="<?php echo $this->get_prefix(); ?>">
 		<div class="<?php echo $this->get_prefix( 'bar' ); ?>">
 			<?php
-				echo $this->get_module('sv_branding')->load();
-				echo $this->get_module('sv_header_menu')->load();
+				echo $this->get_module('sv_branding') ? $this->get_module('sv_branding')->load() : '';
+				echo $this->get_module('sv_header_menu') ? $this->get_module('sv_header_menu')->load() : '';
 				include($this->get_path('lib/frontend/tpl/part_sidebar.php'));
 				?>
 		</div>

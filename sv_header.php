@@ -33,7 +33,7 @@
 			$this->get_setting( 'max_width_wrapper' )
 				->set_title( __( 'Max Width Wrapper', 'sv100' ) )
 				->set_description( __( 'Set the max width of the header wrapper.', 'sv100' ) )
-				->set_options( $this->get_module('sv_common')->get_max_width_options() )
+				->set_options( $this->get_module('sv_common') ? $this->get_module('sv_common')->get_max_width_options() : array('' => __('Please activate module SV Common for this Feature.', 'sv100')) )
 				->set_default_value( '100%' )
 				->set_is_responsive(true)
 				->load_type( 'select' );
@@ -41,7 +41,7 @@
 			$this->get_setting( 'max_width' )
 				->set_title( __( 'Max Width Inner', 'sv100' ) )
 				->set_description( __( 'Set the max width of the header.', 'sv100' ) )
-				->set_options( $this->get_module('sv_common')->get_max_width_options() )
+				->set_options( $this->get_module('sv_common') ? $this->get_module('sv_common')->get_max_width_options() : array('' => __('Please activate module SV Common for this Feature.', 'sv100')) )
 				->set_default_value( '100%' )
 				->set_is_responsive(true)
 				->load_type( 'select' );

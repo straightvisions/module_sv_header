@@ -11,10 +11,10 @@
     include( $script->get_parent()->get_path( 'lib/frontend/css/config/header_bar.php' ) );
 
     // include inner css
-    if( $script->get_parent()->get_module('sv_branding')->get_setting( 'active' )->get_data() ){
+    if( $script->get_parent()->get_module('sv_branding') && $script->get_parent()->get_module('sv_branding')->get_setting( 'active' )->get_data() ){
 		include( $script->get_parent()->get_path( 'lib/frontend/css/config/branding.php' ) );
     }
-    if( $script->get_parent()->get_module('sv_header_menu')->get_setting( 'active' )->get_data() ){
+    if( $script->get_parent()->get_module('sv_header_menu') && $script->get_parent()->get_module('sv_header_menu')->get_setting( 'active' )->get_data() ){
         include( $script->get_parent()->get_path( 'lib/frontend/css/config/navigation.php' ) );
     }
 
