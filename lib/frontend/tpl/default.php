@@ -12,7 +12,7 @@
 		wp_head();
 
 		/* Prevent Browsers from looking for Favicon in Domainroot, when no Site Icon is set */
-		if( false === get_option( 'site_icon', false ) ) {
+		if( get_option( 'site_icon', false ) == false ) {
 			echo '<link rel="icon" href="data:,">';
 		}
 	?>
