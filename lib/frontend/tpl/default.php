@@ -10,9 +10,13 @@
 		}
 		
 		wp_head();
+
+		/* Prevent Browsers from looking for Favicon in Domainroot, when no Site Icon is set */
+		if( false === get_option( 'site_icon', false ) ) {
+			echo '<link rel="icon" href="data:,">';
+		}
 	?>
 </head>
-
 <body <?php body_class(); ?>>
 <?php
     if($this->get_setting('template') != 'no_header'){
