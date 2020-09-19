@@ -4,7 +4,7 @@
     <meta charset="<?php echo get_bloginfo( 'charset' ); ?>" />
 	<?php
 		if ( $this->get_mobile_zoom() ) {
-			echo '<meta content="width=device-width, initial-scale=1.0" name="viewport" />';
+			echo '<meta content="width=device-width, initial-scale=1" name="viewport" />';
 		} else {
 			echo '<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">';
 		}
@@ -38,7 +38,7 @@
 			<?php
 				echo $this->get_module('sv_branding') ? $this->get_module('sv_branding')->load() : '';
 				echo $this->get_module('sv_header_menu') ? $this->get_module('sv_header_menu')->load() : '';
-				include($this->get_path('lib/frontend/tpl/part_sidebar.php'));
+				include($this->get_path('lib/tpl/frontend/part_sidebar.php'));
 				?>
 		</div>
 	</header>

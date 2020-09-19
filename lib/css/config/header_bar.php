@@ -1,25 +1,25 @@
 <?php
 	$properties = array();
-	$properties['justify-content']  = $setting->prepare_css_property_responsive($alignment);
-	$properties['flex-direction']   = $setting->get_breakpoints();
+	$properties['justify-content']  = $_s->prepare_css_property_responsive($script->get_parent()->get_setting('alignment')->get_data());
+	$properties['flex-direction']   = $_s->get_breakpoints();
 
 	// flex direction injection
 	foreach( $properties['flex-direction'] as $key => &$value){
 		$value = 'row';
-		if(isset($alignment[$key]) && $key === 'mobile' && $alignment[$key] === 'center'){
+		if(isset($script->get_parent()->get_setting('alignment')->get_data()[$key]) && $key === 'mobile' && $script->get_parent()->get_setting('alignment')->get_data()[$key] === 'center'){
 			$value = 'column';
 		}
 	}
 
-	echo $setting->build_css(
+	echo $_s->build_css(
 		is_admin() ? '.editor-styles-wrapper .sv100_sv_header .sv100_sv_header_bar, .editor-styles-wrapper .sv100_sv_header .sv100_sv_header_bar' : '.sv100_sv_header .sv100_sv_header_bar',
 		$properties
 	);
 
 	// children flex setup
 	$properties = array();
-	$container_alignment  = $setting->prepare_css_property_responsive($alignment);
-	$properties['flex']   = $setting->get_breakpoints();
+	$container_alignment  = $_s->prepare_css_property_responsive($script->get_parent()->get_setting('alignment')->get_data());
+	$properties['flex']   = $_s->get_breakpoints();
 
 	foreach( $properties['flex'] as $key => &$value){
 		$value = '1 1 0';
@@ -32,7 +32,7 @@
 		}
 	}
 
-	$properties['margin']   = $setting->get_breakpoints();
+	$properties['margin']   = $_s->get_breakpoints();
 
 	foreach( $properties['margin'] as $key => &$value){
 		$value = '0';
@@ -41,7 +41,7 @@
 		}
 	}
 
-	echo $setting->build_css(
+	echo $_s->build_css(
 		is_admin() ? '.editor-styles-wrapper .sv100_sv_header .sv100_sv_header_bar > *, .editor-styles-wrapper .sv100_sv_header .sv100_sv_header_bar > *' : '.sv100_sv_header .sv100_sv_header_bar > *',
 		$properties
 	);

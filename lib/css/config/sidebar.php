@@ -1,9 +1,9 @@
 <?php
 $properties = array();
-$properties['justify-content']		= $setting->prepare_css_property_responsive($sidebar_alignment);
-$properties['order']				= $setting->prepare_css_property_responsive($sidebar_order);
+$properties['justify-content']		= $_s->prepare_css_property_responsive($script->get_parent()->get_setting('sidebar_alignment')->get_data());
+$properties['order']				= $_s->prepare_css_property_responsive($script->get_parent()->get_setting('sidebar_order')->get_data());
 
-echo $setting->build_css(
+echo $_s->build_css(
 	'.sv100_sv_header .sv100_sv_header_sidebar',
 	array_merge(
 		$properties,
@@ -11,7 +11,7 @@ echo $setting->build_css(
 	)
 );
 
-	echo $setting->build_css(
+	echo $_s->build_css(
 		'.sv100_sv_header .sv100_sv_header_sidebar .sv100_sv_sidebar_sv_header_sidebar',
 		array_merge(
 			$properties,

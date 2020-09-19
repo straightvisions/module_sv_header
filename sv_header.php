@@ -1,28 +1,17 @@
 <?php
 	namespace sv100;
-	
-	/**
-	 * @version         4.173
-	 * @author			straightvisions GmbH
-	 * @package			sv100
-	 * @copyright		2019 straightvisions GmbH
-	 * @link			https://straightvisions.com
-	 * @since			1.000
-	 * @license			See license.txt or https://straightvisions.com
-	 */
-	
+
 	class sv_header extends init {
 		public function init() {
 			$this->set_module_title( __( 'SV Header', 'sv100' ) )
 				->set_module_desc( __( 'Manages the header.', 'sv100' ) )
-				->load_settings()
-				->register_scripts()
-				->register_sidebars()
-				->set_section_title( __( 'Header', 'sv100' ) )
+				->set_css_cache_active()
+				->set_section_title( $this->get_module_title() )
 				->set_section_desc( $this->get_module_desc() )
 				->set_section_type( 'settings' )
-				->set_section_template_path( $this->get_path( 'lib/backend/tpl/settings.php' ) )
-				->set_section_order(20)
+				->set_section_template_path()
+				->set_section_order(5000)
+				->register_sidebars()
 				->get_root()
 				->add_section( $this );
 		}
@@ -206,20 +195,13 @@
 		}
 	
 		protected function register_scripts(): sv_header {
+			parent::register_scripts();
+
 			// Register Styles
-			$this->get_script( 'common' )
-				->set_path( 'lib/frontend/css/common.css' )
-				->set_inline( true );
-
 			$this->get_script( 'sidebar_default' )
-				->set_path( 'lib/frontend/css/sidebar_default.css' )
+				->set_path( 'lib/css/common/sidebar.css' )
 				->set_inline( true );
 
-			// Inline Config
-			$this->get_script( 'config' )
-				 ->set_path( 'lib/frontend/css/config.php' )
-				 ->set_inline( true );
-	
 			return $this;
 		}
 	
@@ -248,88 +230,27 @@
 			}
 			return $i;
 		}
-	
+
 		public function load( $settings = array() ): string {
-			$settings								= shortcode_atts(
-				array(
-					'inline'						=> true,
-					'template'                      => false,
-				),
-				$settings,
-				$this->get_module_name()
-			);
-	
-			return $this->router( $settings );
-		}
-	
-		// Handles the routing of the templates
-		protected function router( array $settings ): string {
-			if ( $settings['template'] ) {
-				switch ( $settings['template'] ) {
-					case 'no_header':
-						$template = array(
-							'name'      => 'default',
-							'scripts'   => array(),
-						);
-						break;
-					default:
-						$template = array(
-							'name'      => 'default',
-							'scripts'   => array(
-								$this->get_script( 'common' )->set_inline( $settings['inline'] ),
-								$this->get_script( 'sidebar_default' )->set_inline( $settings['inline'] )
-							),
-						);
-						break;
+			if(!is_admin()){
+				$this->load_settings()->register_scripts();
+
+				if ( $this->has_sidebar_content() ) {
+					foreach($this->get_scripts() as $script){
+						$script->set_is_enqueued();
+					}
+				}else{
+					$this->get_script( 'common' )->set_is_enqueued();
+					$this->get_script( 'config' )->set_is_enqueued();
 				}
-			} else {
-				$template = array(
-					'name'      => 'default',
-					'scripts'   => array(
-						$this->get_script( 'common' )->set_inline( $settings['inline'] ),
-						$this->get_script( 'sidebar_default' )->set_inline( $settings['inline'] )
-					),
-				);
 			}
-			
-			// @filter: sv100_sv_header_template
-			return $this->load_template(
-				apply_filters(
-					$this->get_prefix( 'template' ),
-					$template, $settings, $this
-				), $settings
-			);
-		}
-		
-		// Loads the templates
-		protected function load_template( array $template, array $settings ): string {
+
 			ob_start();
+			require ( $this->get_path('lib/tpl/frontend/default.php' ) );
+			$output							= ob_get_clean();
 
-			foreach ( $template['scripts'] as $script_name =>  $script ) {
-				if (
-				$script->get_ID() === 'sidebar_default'
-				&& $this->has_sidebar_content()
-				) {
-					continue;
-				}
-
-				$script->set_is_enqueued();
-			}
-
-			$this->get_script( 'config' )->set_is_enqueued();
-			
-			// Loads the template
-			$path = isset($template['custom_path'])
-				? $template['custom_path']
-				: $this->get_path('lib/frontend/tpl/' . $template['name'] . '.php' );
-			
-			require ( $path );
-			$output							        = ob_get_contents();
-			ob_end_clean();
-	
 			return $output;
 		}
-		
 		// Returns the settings value "mobile_zoom" from sv_common
 		public function get_mobile_zoom(): bool {
 			if (
