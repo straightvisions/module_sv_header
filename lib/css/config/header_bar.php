@@ -1,12 +1,12 @@
 <?php
 	$properties = array();
-	$properties['justify-content']  = $_s->prepare_css_property_responsive($script->get_parent()->get_setting('alignment')->get_data());
+	$properties['justify-content']  = $_s->prepare_css_property_responsive($module->get_setting('alignment')->get_data());
 	$properties['flex-direction']   = $_s->get_breakpoints();
 
 	// flex direction injection
 	foreach( $properties['flex-direction'] as $key => &$value){
 		$value = 'row';
-		if(isset($script->get_parent()->get_setting('alignment')->get_data()[$key]) && $key === 'mobile' && $script->get_parent()->get_setting('alignment')->get_data()[$key] === 'center'){
+		if(isset($module->get_setting('alignment')->get_data()[$key]) && $key === 'mobile' && $module->get_setting('alignment')->get_data()[$key] === 'center'){
 			$value = 'column';
 		}
 	}
@@ -18,7 +18,7 @@
 
 	// children flex setup
 	$properties = array();
-	$container_alignment  = $_s->prepare_css_property_responsive($script->get_parent()->get_setting('alignment')->get_data());
+	$container_alignment  = $_s->prepare_css_property_responsive($module->get_setting('alignment')->get_data());
 	$properties['flex']   = $_s->get_breakpoints();
 
 	foreach( $properties['flex'] as $key => &$value){
