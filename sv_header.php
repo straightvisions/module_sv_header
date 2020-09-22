@@ -237,11 +237,11 @@
 
 				if ( $this->has_sidebar_content() ) {
 					foreach($this->get_scripts() as $script){
-						$script->set_is_enqueued();
+						$script->set_inline(true)->set_is_enqueued();
 					}
 				}else{
-					$this->get_script( 'common' )->set_is_enqueued();
-					$this->get_script( 'config' )->set_is_enqueued();
+					$this->get_script( 'common' )->set_inline(true)->set_is_enqueued();
+					$this->get_script( 'config' )->set_inline(true)->set_is_enqueued();
 				}
 			}
 
