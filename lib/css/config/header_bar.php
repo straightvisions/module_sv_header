@@ -5,18 +5,16 @@
 
 	// flex direction injection
 	// @todo: why? / MB
-	/*foreach( $properties['flex-direction'] as $key => &$value){
+	foreach( $properties['flex-direction'] as $key => &$value){
 		$value = 'row';
 		if(isset($module->get_setting('alignment')->get_data()[$key]) && $key === 'mobile' && $module->get_setting('alignment')->get_data()[$key] === 'center'){
 			$value = 'column';
 		}
-	}*/
-
+	}
 	echo $_s->build_css(
 		is_admin() ? '.editor-styles-wrapper .sv100_sv_header .sv100_sv_header_bar, .editor-styles-wrapper .sv100_sv_header .sv100_sv_header_bar' : '.sv100_sv_header .sv100_sv_header_bar',
 		array_merge(
-			$properties,
-			$module->get_setting('flex-direction')->get_css_data('flex-direction')
+			$properties
 		)
 	);
 
