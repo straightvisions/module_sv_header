@@ -25,3 +25,12 @@
 .sv100_sv_header .sv100_sv_header_bar > *:last-child{
 	margin-right: 0;
 }
+.admin-bar .sv100_sv_header_wrapper{
+	position:relative;
+	top:46px;
+}
+@media only screen and (min-width: 782px){
+	.admin-bar .sv100_sv_header_wrapper{
+		top:32px;
+	}
+}
