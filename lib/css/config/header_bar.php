@@ -1,7 +1,7 @@
 <?php
 	$properties = array();
 	$properties['justify-content']  = $_s->prepare_css_property_responsive($module->get_setting('alignment')->get_data());
-	//$properties['flex-direction']   = $_s->get_breakpoints();
+	$properties['flex-direction']   = $_s->get_breakpoints();
 
 	// flex direction injection
 	// @todo: why? / MB
