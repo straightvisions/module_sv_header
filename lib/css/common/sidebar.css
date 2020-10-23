@@ -1,11 +1,9 @@
 /* Widgets  - General */
-.sv100_sv_header_sidebar {
-	display: none;
+.sv100_sv_header .sv100_sv_header_bar > .sv100_sv_header_sidebar {
 	align-items: stretch;
-	justify-content: flex-end;
 }
 
-.sv100_sv_header_sidebar .sv100_sv_sidebar_sv_header {
+.sv100_sv_header .sv100_sv_header_bar > .sv100_sv_header_sidebar .sv100_sv_sidebar_sv_header {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
