@@ -1,6 +1,7 @@
 /* Widgets  - General */
 .sv100_sv_header .sv100_sv_header_bar > .sv100_sv_header_sidebar {
 	align-items: stretch;
+	display:flex;
 }
 
 .sv100_sv_header .sv100_sv_header_bar > .sv100_sv_header_sidebar .sv100_sv_sidebar_sv_header {

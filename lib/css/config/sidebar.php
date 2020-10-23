@@ -3,11 +3,17 @@
 
 	$sidebar_active		= $module->get_setting('sidebar_active')->get_data();
 	if(empty($sidebar_active) === false) {
-		$sidebar_display = array_map(function ($val) {
-			return $val ? 'flex' : 'none';
+		$sidebar_height = array_map(function ($val) {
+			return $val ? 'auto' : '0';
 		}, $sidebar_active);
 
-		$properties['display'] = $_s->prepare_css_property_responsive($sidebar_display, '', '');
+		$properties['height'] = $_s->prepare_css_property_responsive($sidebar_height, '', '');
+
+		$sidebar_opacity = array_map(function ($val) {
+			return $val ? '100' : '0';
+		}, $sidebar_active);
+
+		$properties['opacity'] = $_s->prepare_css_property_responsive($sidebar_opacity, '', '');
 	}
 
 	echo $_s->build_css(
