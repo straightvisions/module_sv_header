@@ -11,6 +11,8 @@
 				->set_section_type( 'settings' )
 				->set_section_template_path()
 				->set_section_order(2100)
+				->load_settings()
+				->register_scripts()
 				->register_sidebars()
 				->get_root()
 				->add_section( $this );
@@ -231,19 +233,21 @@
 			return $i;
 		}
 
-		public function load( $settings = array() ): string {
-			if(!is_admin()){
-				$this->load_settings()->register_scripts();
-
-				if ( $this->has_sidebar_content() ) {
-					foreach($this->get_scripts() as $script){
-						$script->set_inline(true)->set_is_enqueued();
-					}
-				}else{
-					$this->get_script( 'common' )->set_inline(true)->set_is_enqueued();
-					$this->get_script( 'config' )->set_inline(true)->set_is_enqueued();
+		public function enqueue_scripts(): sv_header {
+			if ( $this->has_sidebar_content() ) {
+				foreach($this->get_scripts() as $script){
+					$script->set_inline(true)->set_is_enqueued();
 				}
+			}else{
+				$this->get_script( 'common' )->set_inline(true)->set_is_enqueued();
+				$this->get_script( 'config' )->set_inline(true)->set_is_enqueued();
 			}
+
+			return $this;
+		}
+
+		public function load( $settings = array() ): string {
+			$this->enqueue_scripts();
 
 			ob_start();
 			require ( $this->get_path('lib/tpl/frontend/default.php' ) );
