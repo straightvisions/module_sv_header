@@ -8,12 +8,19 @@
 		}, $sidebar_active);
 
 		$properties['height'] = $_s->prepare_css_property_responsive($sidebar_height, '', '');
+		$properties['width'] = $_s->prepare_css_property_responsive($sidebar_height, '', '');
 
 		$sidebar_opacity = array_map(function ($val) {
 			return $val ? '100' : '0';
 		}, $sidebar_active);
 
 		$properties['opacity'] = $_s->prepare_css_property_responsive($sidebar_opacity, '', '');
+
+		$sidebar_overflow = array_map(function ($val) {
+			return $val ? 'visible' : 'hidden';
+		}, $sidebar_active);
+
+		$properties['overflow'] = $_s->prepare_css_property_responsive($sidebar_overflow, '', '');
 	}
 
 	echo $_s->build_css(
