@@ -28,6 +28,7 @@
 			<?php
 				echo $module->get_setting( 'position' )->form();
 				echo $module->get_setting( 'alignment' )->form();
+				echo $module->get_setting( 'direction' )->form();
 			?>
 		</div>
 		<h3 class="divider"><?php _e( 'Spacing', 'sv100' ); ?></h3>

@@ -63,6 +63,19 @@
 				->set_is_responsive(true)
 				->load_type( 'select' );
 
+			$this->get_setting( 'direction' )
+				->set_title( __( 'Direction', 'sv100' ) )
+				->set_options( array(
+					'column'			=> __( 'column', 'sv100' ),
+					'row'			=> __( 'row', 'sv100' ),
+					'column-reverse'			=> __( 'column-reverse', 'sv100' ),
+					'row-reverse'		=> __( 'row-reverse', 'sv100' ),
+				) )
+				->set_default_value( 'row' )
+				->set_description( __( 'Set the direction of the areas', 'sv100' ) )
+				->set_is_responsive(true)
+				->load_type( 'select' );
+
 			$this->get_setting('margin')
 				->set_title(__('Margin', 'sv100'))
 				->set_is_responsive(true)
