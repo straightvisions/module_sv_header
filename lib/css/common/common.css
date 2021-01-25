@@ -6,6 +6,11 @@
 	right: 0;
 	top:0;
 }
+
+.admin-bar .sv100_sv_header_wrapper{
+	top:32px;
+}
+
 .sv100_sv_header .sv100_sv_header_bar {
 	display: flex;
 	align-items: center;
@@ -25,11 +30,11 @@
 .sv100_sv_header .sv100_sv_header_bar > *:last-child{
 	margin-right: 0;
 }
-.admin-bar .sv100_sv_header_wrapper{
-	top:46px;
-}
-@media only screen and (min-width: 782px){
-	.admin-bar .sv100_sv_header_wrapper{
-		top:32px;
+
+/* make admin bar fixed on smartphone to prevent unexpected header bar positioning */
+@media screen and (max-width: 600px){
+	.admin-bar > #wpadminbar {
+		position: fixed;
 	}
 }
+
