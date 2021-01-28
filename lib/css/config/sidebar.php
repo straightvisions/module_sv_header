@@ -21,6 +21,8 @@
 		}, $sidebar_active);
 
 		$properties['overflow'] = $_s->prepare_css_property_responsive($sidebar_overflow, '', '');
+		
+		$properties['order'] 	= $_s->prepare_css_property_responsive($module->get_setting('sidebar_order')->get_data());
 	}
 
 	echo $_s->build_css(
@@ -28,8 +30,7 @@
 		array_merge(
 			$properties,
 			$module->get_setting('sidebar_max_width')->get_css_data('max-width'),
-			$module->get_setting('sidebar_alignment')->get_css_data('justify-content'),
-			$module->get_setting('sidebar_order')->get_css_data('order')
+			$module->get_setting('sidebar_alignment')->get_css_data('justify-content')
 		)
 	);
 
