@@ -22,6 +22,8 @@
 
 		$properties['overflow'] = $_s->prepare_css_property_responsive($sidebar_overflow, '', '');
 
+		$properties['order'] 			= $_s->prepare_css_property_responsive($module->get_setting('sidebar_order')->get_data());
+
 	}
 
 	echo $_s->build_css(
