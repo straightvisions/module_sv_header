@@ -14,7 +14,7 @@
 
 	if( in_array('1', $module->get_setting( 'sidebar_active' )->get_data())
 		&& $module->get_root()->get_module( 'sv_sidebar' )
-		&& $module->get_root()->get_module( 'sv_sidebar' )->load( $module->get_module_name().'_sidebar' )
+		&& $module->get_root()->get_module( 'sv_sidebar' )->load( $module->get_prefix('sidebar') )
 	){
 		require( $module->get_path( 'lib/css/config/sidebar.php' ) );
 	}
