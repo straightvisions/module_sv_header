@@ -157,26 +157,26 @@
 				->load_type( 'select' );
 			
 			// sidebar order settings
-            $this->get_setting( 'sidebar_active' )
-                ->set_title( __( 'Show Header Sidebar', 'sv100' ) )
-                ->set_options( array(
-                    '1'	=> __( 'Yes', 'sv100' ),
-                    '0'	=> __( 'No', 'sv100' ),
-                ) )
-                ->set_default_value( '1' )
+			$this->get_setting( 'sidebar_active' )
+				->set_title( __( 'Show Header Sidebar', 'sv100' ) )
+				->set_options( array(
+					'1'	=> __( 'Yes', 'sv100' ),
+					'0'	=> __( 'No', 'sv100' ),
+				) )
+				->set_default_value( '1' )
 				->set_is_responsive(true)
-                ->load_type( 'select' );
+				->load_type( 'select' );
 
-            $this->get_setting( 'sidebar_order' )
-                ->set_title( __( 'Sidebar Order Position', 'sv100' ) )
-                ->set_options( array(
-                    '1'		=> __( '1', 'sv100' ),
-                    '2'	=> __( '2', 'sv100' ),
-                    '3'	=> __( '3', 'sv100' )
-                ) )
-                ->set_default_value( '3' )
+			$this->get_setting( 'sidebar_order' )
+				->set_title( __( 'Sidebar Order Position', 'sv100' ) )
+				->set_options( array(
+					'1'		=> __( '1', 'sv100' ),
+					'2'	=> __( '2', 'sv100' ),
+					'3'	=> __( '3', 'sv100' )
+				) )
+				->set_default_value( '3' )
 				->set_is_responsive(true)
-                ->load_type( 'select' );
+				->load_type( 'select' );
 
 			$this->get_setting( 'sidebar_alignment' )
 				->set_title( __( 'Sidebar Alignment', 'sv100' ) )

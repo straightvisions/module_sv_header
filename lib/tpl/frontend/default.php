@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-    <meta charset="<?php echo get_bloginfo( 'charset' ); ?>" />
+	<meta charset="<?php echo get_bloginfo( 'charset' ); ?>" />
 	<?php
 		if ( $this->get_mobile_zoom() ) {
 			echo '<meta content="width=device-width, initial-scale=1" name="viewport" />';
@@ -19,18 +19,18 @@
 </head>
 <body <?php body_class(); ?>>
 <?php
-    if($this->get_setting('template') != 'no_header'){
-        echo $this->get_module( 'sv_header_bar' ) ? $this->get_module( 'sv_header_bar' )->load() : '';
+	if($this->get_setting('template') != 'no_header'){
+		echo $this->get_module( 'sv_header_bar' ) ? $this->get_module( 'sv_header_bar' )->load() : '';
 
-    $page_type = 'undefined';
+	$page_type = 'undefined';
 
-    if ( is_single() ) {
-        $page_type = 'single';
-    } else if( is_page() ) {
-	    $page_type = is_front_page() ? 'front_page' : 'page';
-    } else if ( is_home() ) {
-        $page_type = 'front_page';
-    }
+	if ( is_single() ) {
+		$page_type = 'single';
+	} else if( is_page() ) {
+		$page_type = is_front_page() ? 'front_page' : 'page';
+	} else if ( is_home() ) {
+		$page_type = 'front_page';
+	}
 ?>
 <div class="<?php echo $this->get_prefix('wrapper') . ' ' . $this->get_prefix( $page_type ); ?>">
 	<header class="<?php echo $this->get_prefix(); ?>">
