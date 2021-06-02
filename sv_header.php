@@ -223,7 +223,7 @@
 		protected function register_sidebars(): sv_header {
 			if ( $this->get_module( 'sv_sidebar' ) ) {
 				$this->get_module( 'sv_sidebar' )
-					->create( $this, $this->get_prefix('sidebar') )
+					->create( $this, $this->get_prefix('right_bar') )
 					->set_title( __( 'Header', 'sv100' ) )
 					->set_desc( __( 'Widgets in this sidebar will be shown in the header, next to the navigation.', 'sv100' ) )
 					->load_sidebar();
@@ -239,7 +239,7 @@
 			
 			$i = false;
 			
-			if($this->get_module( 'sv_sidebar' )->load( $this->get_prefix('sidebar') ) ){
+			if($this->get_module( 'sv_sidebar' )->load( $this->get_prefix('right_bar') ) ){
 				$i = true;
 			}
 			return $i;
