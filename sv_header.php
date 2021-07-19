@@ -2,6 +2,8 @@
 	namespace sv100;
 
 	class sv_header extends init {
+		protected static $metaboxes = false;
+
 		public function init() {
 			$this->set_module_title( __( 'SV Header', 'sv100' ) )
 				->set_module_desc( __( 'Manages the header.', 'sv100' ) )
@@ -14,6 +16,7 @@
 				->load_settings()
 				->register_scripts()
 				->register_sidebars()
+				->add_metaboxes()
 				->get_root()
 				->add_section( $this );
 		}
@@ -276,5 +279,30 @@
 			) return true;
 
 			return boolval( $this->get_module( 'sv_common' )->get_setting( 'mobile_zoom' )->get_data() );
+		}
+		private function add_metaboxes(): sv_header{
+			static::$metaboxes = $this->get_root()->get_module('sv_metabox');
+
+			static::$metaboxes->get_setting($this->get_prefix('invert_logo'))
+				->set_title(__('Invert Logo', 'sv100'))
+				->set_description(__('Invert Logo Colors', 'sv100'))
+				->load_type('select')
+				->set_options(array(
+					'' => __('Default', 'sv100'),
+					'1' => __('Invert', 'sv100')
+				));
+
+			return $this;
+		}
+		public function invert_logo(): bool {
+			global $post;
+
+			if(!$post){
+				return false;
+			}
+
+			$setting = static::$metaboxes->get_data( $post->ID, $this->get_prefix('invert_logo'), $this->get_setting( 'invert_logo' )->get_data() );
+
+			return $setting;
 		}
 	}
