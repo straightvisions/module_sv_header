@@ -7,7 +7,7 @@
 		public function init() {
 			$this->set_module_title( __( 'SV Header', 'sv100' ) )
 				->set_module_desc( __( 'Manages the header.', 'sv100' ) )
-				->set_css_cache_active()
+				//->set_css_cache_active() // CSS cache deactivated due to use of metaboxes in this module
 				->set_section_title( $this->get_module_title() )
 				->set_section_desc( $this->get_module_desc() )
 				->set_section_template_path()
@@ -216,9 +216,19 @@
 			parent::register_scripts();
 
 			// Register Styles
+			$this->get_script('config')
+				->set_path('lib/css/config/init.php')
+				->set_inline(true)
+				->set_is_enqueued();
+
+			$this->get_script('common')
+				->set_path('lib/css/common/common.css')
+				->set_inline(true)
+				->set_is_enqueued();
+
 			$this->get_script( 'sidebar_default' )
 				->set_path( 'lib/css/common/sidebar.css' )
-				->set_inline( true );
+				->set_inline(true);
 
 			return $this;
 		}
@@ -250,13 +260,11 @@
 
 		public function enqueue_scripts(): sv_header {
 			if ( $this->has_sidebar_content() ) {
-				foreach($this->get_scripts() as $script){
-					$script->set_inline(true)->set_is_enqueued();
-				}
-			}else{
-				$this->get_script( 'common' )->set_inline(true)->set_is_enqueued();
-				$this->get_script( 'config' )->set_inline(true)->set_is_enqueued();
+				$this->get_script( 'sidebar_default' )->set_is_enqueued();
 			}
+
+			$this->get_script( 'common' )->set_is_enqueued();
+			$this->get_script( 'config' )->set_is_enqueued();
 
 			return $this;
 		}
