@@ -4,9 +4,7 @@
 		<ul class="sv_setting_subpages_nav"></ul>
 		<?php
 			require_once( $module->get_path( 'lib/tpl/settings/general.php' ) );
-			if ( $count = count( $module->get_module( 'sv_sidebar' )->get_sidebars( $module ) ) > 0 ) {
-				require_once( $module->get_path( 'lib/tpl/settings/sidebar.php' ) );
-			}
+			require_once( $module->get_path( 'lib/tpl/settings/sidebar.php' ) );
 		?>
 	</div>
 	<?php

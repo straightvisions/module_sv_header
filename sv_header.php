@@ -2,8 +2,6 @@
 	namespace sv100;
 
 	class sv_header extends init {
-		protected static $metaboxes = false;
-
 		public function init() {
 			$this->set_module_title( __( 'SV Header', 'sv100' ) )
 				->set_module_desc( __( 'Manages the header.', 'sv100' ) )
@@ -15,7 +13,6 @@
 				->set_section_icon('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 6h-6v-6h6v6zm9-6h-6v6h6v-6zm9 0h-6v6h6v-6zm0 8h-24v16h24v-16z"/></svg>')
 				->load_settings()
 				->register_scripts()
-				->register_sidebars()
 				->add_metaboxes()
 				->get_root()
 				->add_section( $this );
@@ -181,6 +178,12 @@
 				->set_is_responsive(true)
 				->load_type( 'select' );
 
+			$this->get_setting( 'sidebar' )
+				->set_title( __( 'Sidebar', 'sv100' ) )
+				->set_description( __( 'Select Sidebar.', 'sv100' ) )
+				->set_options( $this->get_module('sv_sidebar') ? $this->get_module('sv_sidebar')->get_sidebars_for_settings_options() : array('' => __('Please activate module SV Sidebar for this Feature.', 'sv100')) )
+				->load_type( 'select' );
+
 			$this->get_setting( 'sidebar_alignment' )
 				->set_title( __( 'Sidebar Alignment', 'sv100' ) )
 				->set_options( array(
@@ -226,41 +229,28 @@
 				->set_inline(true)
 				->set_is_enqueued();
 
-			$this->get_script( 'sidebar_default' )
+			$this->get_script( 'sidebar' )
 				->set_path( 'lib/css/common/sidebar.css' )
 				->set_inline(true);
 
 			return $this;
 		}
-	
-		protected function register_sidebars(): sv_header {
-			if ( $this->get_module( 'sv_sidebar' ) ) {
-				$this->get_module( 'sv_sidebar' )
-					->create( $this, $this->get_prefix('right_bar') )
-					->set_title( __( 'Header', 'sv100' ) )
-					->set_desc( __( 'Widgets in this sidebar will be shown in the header, next to the navigation.', 'sv100' ) )
-					->load_sidebar();
-			}
-	
-			return $this;
-		}
-		
+
 		public function has_sidebar_content(): bool{
-			if(!$this->get_module( 'sv_sidebar' )){
+			if ( !$this->get_module( 'sv_sidebar' ) ) {
 				return false;
 			}
-			
-			$i = false;
-			
-			if($this->get_module( 'sv_sidebar' )->load( $this->get_prefix('right_bar') ) ){
-				$i = true;
+
+			if( $this->get_module( 'sv_sidebar' )->load( $this->get_setting('sidebar')->get_data() ) ) {
+				return true;
 			}
-			return $i;
+
+			return false;
 		}
 
 		public function enqueue_scripts(): sv_header {
 			if ( $this->has_sidebar_content() ) {
-				$this->get_script( 'sidebar_default' )->set_is_enqueued();
+				$this->get_script( 'sidebar' )->set_is_enqueued();
 			}
 
 			$this->get_script( 'common' )->set_is_enqueued();
@@ -289,9 +279,9 @@
 			return boolval( $this->get_module( 'sv_common' )->get_setting( 'mobile_zoom' )->get_data() );
 		}
 		private function add_metaboxes(): sv_header{
-			static::$metaboxes = $this->get_root()->get_module('sv_metabox');
+			$this->metaboxes = $this->get_root()->get_module('sv_metabox');
 
-			static::$metaboxes->get_setting($this->get_prefix('invert_logo'))
+			$this->metaboxes->get_setting($this->get_prefix('invert_logo'))
 				->set_title(__('Invert Logo', 'sv100'))
 				->set_description(__('Invert Logo Colors', 'sv100'))
 				->load_type('select')
@@ -309,7 +299,7 @@
 				return false;
 			}
 
-			$setting = static::$metaboxes->get_data( $post->ID, $this->get_prefix('invert_logo'), $this->get_setting( 'invert_logo' )->get_data() );
+			$setting = $this->metaboxes->get_data( $post->ID, $this->get_prefix('invert_logo'), $this->get_setting( 'invert_logo' )->get_data() );
 
 			return $setting;
 		}
