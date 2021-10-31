@@ -11,11 +11,11 @@
 		$properties['height'] = $_s->prepare_css_property_responsive($sidebar_height, '', '');
 		$properties['width'] = $_s->prepare_css_property_responsive($sidebar_height, '', '');
 
-		$sidebar_opacity = array_map(function ($val) {
-			return $val ? '100' : '0';
+		$sidebar_display= array_map(function ($val) {
+			return $val ? 'flex' : 'none';
 		}, $sidebar_active);
 
-		$properties['opacity'] = $_s->prepare_css_property_responsive($sidebar_opacity, '', '');
+		$properties['display'] = $_s->prepare_css_property_responsive($sidebar_display, '', '');
 
 		$sidebar_overflow = array_map(function ($val) {
 			return $val ? 'visible' : 'hidden';
