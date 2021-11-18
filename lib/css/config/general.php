@@ -1,8 +1,48 @@
 <?php
 
+	// if position is absolute or fixed, header must have spacing to top for wp-admin-bar
+	$properties = array();
+	$container_alignment  = $_s->prepare_css_property_responsive($module->get_setting('position')->get_data());
+	$properties['top']   = $_s->get_breakpoints();
+
+	foreach( $properties['top'] as $key => &$value){
+		$value = '0';
+
+		if(isset($container_alignment[$key])) {
+			if ($container_alignment[$key] == 'absolute' || $container_alignment[$key] == 'fixed') {
+				if ($key === 'mobile') {
+					$value = '46px';
+				} else {
+					$value = '32px';
+				}
+			}
+		}
+	}
+
+	echo $_s->build_css(
+		'.admin-bar .sv100_sv_header_wrapper',
+		$properties
+	);
+
+	// if position is sticky, header must have top = 0
+	$properties = array();
+	$container_alignment  = $_s->prepare_css_property_responsive($module->get_setting('position')->get_data());
+	$properties['top']   = $_s->get_breakpoints();
+
+	foreach( $properties['top'] as $key => &$value){
+		$value = '';
+
+		if(isset($container_alignment[$key])) {
+			if ($container_alignment[$key] == 'sticky') {
+				$value = '0';
+			}
+		}
+	}
+
 	echo $_s->build_css(
 		'.sv100_sv_header_wrapper',
 		array_merge(
+			$properties,
 			$module->get_setting('position')->get_css_data('position'),
 			$module->get_setting('bg_color')->get_css_data('background-color'),
 			$module->get_setting('box_shadow_color')->get_css_data('box-shadow','0px 5px 5px 0px rgba(',')'),

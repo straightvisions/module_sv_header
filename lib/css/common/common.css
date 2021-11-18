@@ -4,15 +4,6 @@
 	margin:0 auto 0 auto;
 	left: 0;
 	right: 0;
-	top:0;
-}
-.admin-bar .sv100_sv_header_wrapper {
-	top:46px;
-}
-@media screen and (min-width: 783px){
-	.admin-bar .sv100_sv_header_wrapper {
-		top:32px;
-	}
 }
 
 body #wpadminbar:hover{
