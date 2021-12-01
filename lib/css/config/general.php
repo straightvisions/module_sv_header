@@ -33,7 +33,7 @@
 		$value = '';
 
 		if(isset($container_alignment[$key])) {
-			if ($container_alignment[$key] == 'sticky') {
+			if ($container_alignment[$key] == 'sticky' || $container_alignment[$key] == 'absolute') {
 				$value = '0';
 			}
 		}
