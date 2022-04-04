@@ -31,18 +31,10 @@
 				echo $module->get_setting( 'direction' )->form();
 			?>
 		</div>
-		<h3 class="divider"><?php _e( 'Spacing', 'sv100' ); ?></h3>
-		<div class="sv_setting_flex">
-			<?php
-				echo $module->get_setting( 'margin' )->form();
-				echo $module->get_setting( 'padding' )->form();
-			?>
-		</div>
 		<h3 class="divider"><?php _e( 'Colors', 'sv100' ); ?></h3>
 		<div class="sv_setting_flex">
 			<?php
 				echo $module->get_setting( 'bg_color' )->form();
-				echo $module->get_setting( 'box_shadow_color' )->form();
 			?>
 		</div>
 	</div>

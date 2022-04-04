@@ -6,8 +6,9 @@
 	right: 0;
 }
 
-body #wpadminbar:hover{
-	z-index: 1000000;
+.sv100_sv_header_wrapper .sv100_sv_header{
+	margin:0 auto;
+	padding:20px var(--sv100_sv_common-spacing);
 }
 
 .sv100_sv_header .sv100_sv_header_bar {
