@@ -6,7 +6,7 @@
 	) {
 	?>
 		<aside class="<?php echo $this->get_prefix( 'sidebar' ); ?>  <?php echo $this->get_prefix( 'bar_column' ); ?>">
-			<?php echo $this->get_module( 'sv_sidebar' )->load( $this->get_setting('sidebar')->get_data() ); ?>
+			<?php echo $this->get_module( 'sv_sidebar' )->load( $this->show_sidebar() ); ?>
 		</aside>
 <?php
 	}

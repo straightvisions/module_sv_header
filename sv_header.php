@@ -211,7 +211,7 @@
 				return false;
 			}
 
-			if( $this->get_module( 'sv_sidebar' )->load( $this->get_setting('sidebar')->get_data() ) ) {
+			if( $this->get_module( 'sv_sidebar' )->load( $this->get_metabox_data('sidebar') ) ) {
 				return true;
 			}
 
@@ -261,6 +261,14 @@
 					'1' => __('Invert', 'sv100')
 				));
 
+			$states						= $this->get_module('sv_sidebar') ? $this->get_module('sv_sidebar')->get_sidebars_for_metabox_options() : array('' => __('Please activate module SV Sidebar for this Feature.', 'sv100'));
+
+			$this->metaboxes->get_setting( $this->get_prefix('sidebar') )
+				->set_title( __('Sidebar Header', 'sv100') )
+				->set_description( __('Override Default Settings', 'sv100') )
+				->load_type( 'select' )
+				->set_options($states);
+
 			return $this;
 		}
 		public function invert_logo(): bool {
@@ -273,5 +281,8 @@
 			$setting = $this->metaboxes->get_data( $post->ID, $this->get_prefix('invert_logo'), $this->get_setting( 'invert_logo' )->get_data() );
 
 			return $setting;
+		}
+		public function show_sidebar(): string{
+			return $this->has_sidebar_content() ? $this->get_metabox_data('sidebar') : '';
 		}
 	}
