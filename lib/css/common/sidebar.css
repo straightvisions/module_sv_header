@@ -1,0 +1,11 @@
+/* Widgets  - General */
+.sv100_sv_header .sv100_sv_header_bar > .sv100_sv_header_right_bar {
+	align-items: stretch;
+	display:flex;
+}
+
+.sv100_sv_header .sv100_sv_header_bar > .sv100_sv_header_right_bar .sv100_sv_sidebar_sv_header {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
