@@ -252,13 +252,14 @@
 		private function add_metaboxes(): sv_header{
 			$this->metaboxes = $this->get_root()->get_module('sv_metabox');
 
-			$this->metaboxes->get_setting($this->get_prefix('invert_logo'))
-				->set_title(__('Invert Logo', 'sv100'))
-				->set_description(__('Invert Logo Colors', 'sv100'))
+			$this->metaboxes->get_setting($this->get_prefix('override_logo'))
+				->set_title(__('Logo', 'sv100'))
+				->set_description(__('Override Logo Behavior', 'sv100'))
 				->load_type('select')
 				->set_options(array(
-					'' => __('Default', 'sv100'),
-					'1' => __('Invert', 'sv100')
+					'' => __('Show', 'sv100'),
+					'hide' => __('Hide', 'sv100'),
+					'invert_colors' => __('Invert Colors', 'sv100')
 				));
 
 			$states						= $this->get_module('sv_sidebar') ? $this->get_module('sv_sidebar')->get_sidebars_for_metabox_options() : array('' => __('Please activate module SV Sidebar for this Feature.', 'sv100'));
@@ -271,16 +272,14 @@
 
 			return $this;
 		}
-		public function invert_logo(): bool {
+		public function override_logo(): string {
 			global $post;
 
 			if(!$post){
-				return false;
+				return '';
 			}
 
-			$setting = $this->metaboxes->get_data( $post->ID, $this->get_prefix('invert_logo'), $this->get_setting( 'invert_logo' )->get_data() );
-
-			return $setting;
+			return strval($this->metaboxes->get_data( $post->ID, $this->get_prefix('override_logo') ));
 		}
 		public function show_sidebar(): string{
 			return $this->has_sidebar_content() ? $this->get_metabox_data('sidebar') : '';
