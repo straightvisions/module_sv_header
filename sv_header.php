@@ -210,7 +210,7 @@
 			if ( !$this->get_module( 'sv_sidebar' ) ) {
 				return false;
 			}
-
+			
 			if( $this->get_module( 'sv_sidebar' )->load( $this->get_metabox_data('sidebar') ) ) {
 				return true;
 			}
