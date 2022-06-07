@@ -6,7 +6,7 @@
 	$properties['top']   = $_s->get_breakpoints();
 
 	foreach( $properties['top'] as $key => &$value){
-		$value = '0';
+		$value = '-1px';
 
 		if(isset($container_alignment[$key])) {
 			if ($container_alignment[$key] == 'absolute' || $container_alignment[$key] == 'fixed') {
@@ -34,7 +34,7 @@
 
 		if(isset($container_alignment[$key])) {
 			if ($container_alignment[$key] == 'sticky' || $container_alignment[$key] == 'absolute') {
-				$value = '0';
+				$value = '-1px';
 			}
 		}
 	}
